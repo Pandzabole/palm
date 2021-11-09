@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Repositories;
+
+use App\Repositories\Contracts\DummyClass as DummyClassInterface;
+use App\Repositories\Infrastructure\EloquentRepository;
+
+class DummyClass extends EloquentRepository implements DummyClassInterface
+{
+}

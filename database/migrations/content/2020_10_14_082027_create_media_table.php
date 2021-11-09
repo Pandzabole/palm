@@ -1,0 +1,40 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateMediaTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up(): void
+    {
+        Schema::create('media', static function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('file_name');
+            $table->string('directory');
+            $table->string('mime_type')->nullable();
+            $table->string('extension');
+            $table->string('thumb_name');
+            $table->longText('file_blob')->nullable();
+            $table->unsignedBigInteger('size');
+            $table->json('responsive_images')->nullable();
+            $table->string('config')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('media');
+    }
+}

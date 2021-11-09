@@ -1,5 +1,3 @@
-{{$pera}}
-
 <div class="navbar-wrapper">
     <div class="navbar-toggle">
         <button type="button" class="navbar-toggler">

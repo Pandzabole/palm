@@ -16679,12 +16679,12 @@ a.text-success:focus {
 }
 
 .text-info {
-    color: #11cdef !important;
+    color: #c45151 !important;
 }
 
 a.text-info:hover,
 a.text-info:focus {
-    color: #0b90a8 !important;
+    color: #c45151 !important;
 }
 
 .text-warning {

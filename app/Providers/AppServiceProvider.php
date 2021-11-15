@@ -194,6 +194,13 @@ class AppServiceProvider extends ServiceProvider
                 return new \App\Repositories\ClassSubCategoryRepository(new \App\Models\ClassSubCategory());
             }
         );
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\ClassesRepository::class,
+            static function () {
+                return new \App\Repositories\ClassesRepository(new \App\Models\Classe());
+            }
+        );
     }
 
     /**

@@ -18,7 +18,7 @@
                                     data-toggle="select" data-placeholder="Filter by categories"
                                     name="category">
                                 <option value="0">All categories</option>
-                                @foreach($classes as $name => $id)
+                                @foreach($categories as $name => $id)
                                     <option value="{{ $name }}">{{ $id }}</option>
                                 @endforeach
                             </select>
@@ -31,9 +31,9 @@
                             <thead class="text-primary">
                             <tr>
                                 <th> Position</th>
-                                <th> Title</th>
+                                <th> Name</th>
                                 <th> Categories</th>
-                                <th> Date</th>
+                                <th> Sub category</th>
                                 <th class="text-right"> Action</th>
                             </tr>
                             </thead>
@@ -59,7 +59,7 @@
                     serverSide: true,
                     destroy: true,
                     ajax: {
-                        url: '{{ route('activities.data' )}}',
+                        url: '{{ route('classes.data')}}',
                         data: {
                             categoryId: categoryId
                         },
@@ -78,9 +78,9 @@
                                 return '<i class="fa fa-bars"></i>';
                             }
                         },
-                        {data: 'title', name: 'title'},
-                        {data: 'categories', name: 'categories.name', sortable: false},
-                        {data: 'date', name: 'date'},
+                        {data: 'name', name: 'name'},
+                        {data: 'class_category.name', name: 'category'},
+                        {data: 'class_sub_category.name', name: 'sub category'},
                         {data: 'actions', name: 'actions', sortable: false, searchable: false, className: 'text-right'},
                     ]
                 });
@@ -98,7 +98,7 @@
                                 _token: "{{ csrf_token() }}"
                             },
                             type: "POST",
-                            url: "{!! route('activities.reorder') !!}",
+                            url: "{!! route('classes.reorder') !!}",
                             success: function () {
                                 dataTable.ajax.reload(null, false);
                             }

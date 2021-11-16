@@ -88,13 +88,11 @@ class ClassController extends Controller
      */
     public function getData(Request $request): JsonResponse
     {
-        dd($this->classesRepository->getAll());
         $classesRepository = $this->classesRepository;
         if ($categoryId = $request->get('categoryId')) {
             $classes = $classesRepository->findByHasRelationship('categories', ['activity_categories.id' => $categoryId]);
         } else {
             $classes = $classesRepository->findByFilters();
-            dd($classes);
         }
 
         return DataTables::of($classes)
@@ -178,5 +176,18 @@ class ClassController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Reorder items
+     *
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function reorderSortable(Request $request): JsonResponse
+    {
+        $this->classesRepository->reorderSortable($request->get('items'));
+
+        return response()->json();
     }
 }

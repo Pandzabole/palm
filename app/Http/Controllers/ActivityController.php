@@ -47,10 +47,10 @@ class ActivityController extends Controller
      * @param ActivityCategoriesRepository $activityCategoriesRepository
      */
     public function __construct(
-        MediaManager $mediaManager,
-        MediaRepository $mediaRepository,
-        ActivitiesRepository $activitiesRepository,
-        StaticComponentsRepository $staticComponentsRepository,
+        MediaManager                 $mediaManager,
+        MediaRepository              $mediaRepository,
+        ActivitiesRepository         $activitiesRepository,
+        StaticComponentsRepository   $staticComponentsRepository,
         ActivityCategoriesRepository $activityCategoriesRepository
     )
     {

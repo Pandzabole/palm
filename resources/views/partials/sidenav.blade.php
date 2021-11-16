@@ -26,6 +26,31 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link @if(request()->is('admin/classes*')) active @endif" href="#navbar-classes"
+                               data-toggle="collapse" role="button"
+                               @if(request()->is('admin/classes*')) aria-expanded="true"
+                               @endif aria-controls="navbar-classes">
+                                <i class="ni ni-single-copy-04 text-info"></i>
+                                <span class="nav-link-text">Classes</span>
+                            </a>
+                            <div class="collapse @if(request()->is('admin/classes*')) show @endif" id="navbar-classes">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('classes.index') }}"
+                                           class="nav-link @if(request()->is('admin/classes')) active @endif">
+                                            <span class="sidenav-normal"> Classes </span>
+                                        </a>
+                                    </li>
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('classes-categories.index') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/classes-categories')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> classes Categories </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link @if(request()->is('admin/page-components*')) active @endif"
                                href="#navbar-components" data-toggle="collapse" role="button"
                                @if(request()->is(['admin/page-component*'])) aria-expanded="true" @endif

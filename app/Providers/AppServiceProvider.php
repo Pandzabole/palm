@@ -180,6 +180,34 @@ class AppServiceProvider extends ServiceProvider
                 return new \App\Repositories\MainMarketsRepository(new \App\Models\MainMarket());
             }
         );
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\ClassCategoryRepository::class,
+            static function () {
+                return new \App\Repositories\ClassCategoryRepository(new \App\Models\ClassCategory());
+            }
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\ClassSubCategoryRepository::class,
+            static function () {
+                return new \App\Repositories\ClassSubCategoryRepository(new \App\Models\ClassSubCategory());
+            }
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\ClassesRepository::class,
+            static function () {
+                return new \App\Repositories\ClassesRepository(new \App\Models\Classe());
+            }
+        );
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\ClassLocationRepository::class,
+            static function () {
+                return new \App\Repositories\ClassLocationRepository(new \App\Models\ClassLocation());
+            }
+        );
     }
 
     /**

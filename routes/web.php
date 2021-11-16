@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityCategoryController;
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DashboardController;
@@ -104,6 +105,10 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
 
     Route::resource('certificates', CertificateController::class);
     Route::get('certificates-data', [CertificateController::class, 'getData'])->name('certificates.data');
+
+    Route::resource('classes', ClassController::class);
+    Route::get('classes-data', [ClassController::class, 'getData'])->name('classes.data');
+    Route::post('classes-reorder', [ClassController::class, 'reorderSortable'])->name('classes.reorder');
 });
 
 Auth::routes(['register' => false]);

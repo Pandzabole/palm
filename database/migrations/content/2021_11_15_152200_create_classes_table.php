@@ -23,10 +23,12 @@ class CreateClassesTable extends Migration
             $table->longText('description');
             $table->decimal('price', $precision = 8, $scale = 2);
             $table->longText('map_location')->nullable();
-            $table->foreignId(ClassLocation::class);
-            $table->foreignId(ClassCategory::class);
-            $table->foreignId(ClassSubCategory::class);
-            $table->foreignId(Teacher::class);
+            $table->boolean('highlighted')->default(false);
+            $table->unsignedInteger('position');
+            $table->foreignIdFor(ClassLocation::class);
+            $table->foreignIdFor(ClassCategory::class);
+            $table->foreignIdFor(ClassSubCategory::class);
+            $table->foreignIdFor(Teacher::class);
             $table->timestamps();
         });
     }

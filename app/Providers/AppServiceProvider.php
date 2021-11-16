@@ -201,6 +201,13 @@ class AppServiceProvider extends ServiceProvider
                 return new \App\Repositories\ClassesRepository(new \App\Models\Classe());
             }
         );
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\ClassLocationRepository::class,
+            static function () {
+                return new \App\Repositories\ClassLocationRepository(new \App\Models\ClassLocation());
+            }
+        );
     }
 
     /**

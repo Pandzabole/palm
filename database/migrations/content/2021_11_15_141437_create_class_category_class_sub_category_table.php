@@ -17,8 +17,8 @@ class CreateClassCategoryClassSubCategoryTable extends Migration
     {
         Schema::create('class_category_class_sub_category', function (Blueprint $table) {
             $table->id();
-            $table->foreignId(ClassCategory::class);
-            $table->foreignId(ClassSubCategory::class);
+            $table->foreignIdFor(ClassCategory::class);
+            $table->foreignIdFor(ClassSubCategory::class);
             $table->timestamps();
         });
     }

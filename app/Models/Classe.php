@@ -9,6 +9,8 @@ use App\Models\Teacher;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class Classe extends Model
 {
@@ -23,37 +25,37 @@ class Classe extends Model
 
     /**
      * Get the comments for the classes.
-     * @return HasMany
+     * @return BelongsTo
      */
-    public function classLocation(): HasMany
+    public function classLocation(): BelongsTo
     {
-        return $this->hasMany(ClassLocation::class);
+        return $this->belongsTo(ClassLocation::class);
     }
 
     /**
      * Get the classCategory for the classes.
-     * @return HasMany
+     * @return BelongsTo
      */
-    public function classCategory(): HasMany
+    public function classCategory(): BelongsTo
     {
-        return $this->hasMany(ClassCategory::class);
+        return $this->belongsTo(ClassCategory::class);
     }
 
     /**
      * Get the comments for the classes.
-     * @return HasMany
+     * @return BelongsTo
      */
-    public function classSubCategory(): HasMany
+    public function classSubCategory(): BelongsTo
     {
-        return $this->hasMany(ClassSubCategory::class);
+        return $this->belongsTo(ClassSubCategory::class);
     }
 
     /**
      * Get the comments for the classes.
-     * @return HasMany
+     * @return BelongsTo
      */
-    public function teachers(): HasMany
+    public function teachers(): BelongsTo
     {
-        return $this->hasMany(Teacher::class);
+        return $this->belongsTo(Teacher::class);
     }
 }

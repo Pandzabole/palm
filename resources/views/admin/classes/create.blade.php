@@ -12,7 +12,7 @@
                         @csrf
                         <div class="form-row">
                             <div class="form-group col-md-6 @if($errors->has('name')) has-danger @endif">
-                                <label for="name">Class name</label>
+                                <label for="name">Class title</label>
                                 <input id="name" class="form-control" placeholder="Name"
                                        name="name"
                                        value="{{ old('name')}}" required>
@@ -20,48 +20,51 @@
                                     <span class="text-danger">*{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group col-md-6 @if($errors->has('classCategory')) has-danger @endif">
+                            <div class="form-group col-md-6 @if($errors->has('class_category_id')) has-danger @endif">
                                 <label for="categories">Main categories</label>
                                 <select class="form-control category-search" id="classCategory"
                                         data-toggle="select" data-placeholder="Filter by categories"
                                         name="class_category_id">
                                     <option value="0">All categories</option>
                                     @foreach($classCategory as $name => $id)
-                                        <option value="{{ $name }}">{{ $id }}</option>
+                                        <option @if(old('class_category_id') == $name) selected @endif
+                                            value="{{ $name }}">{{ $id }}</option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('classCategory'))
-                                    <span class="text-danger">*{{ $errors->first('classCategory') }}</span>
+                                @if($errors->has('class_category_id'))
+                                    <span class="text-danger">*{{ $errors->first('class_category_id') }}</span>
                                 @endif
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6 @if($errors->has('classSubCategory')) has-danger @endif">
+                            <div class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif">
                                 <label for="classSubCategory">Sub categories</label>
                                 <select class="form-control category-search" id="classSubCategory"
                                         data-toggle="select" data-placeholder="Filter by sub categories"
                                         name="class_sub_category_id">
                                     <option value="0">All sub categories</option>
                                     @foreach($classSubCategory as $name => $id)
-                                        <option value="{{ $name }}">{{ $id }}</option>
+                                        <option @if(old('class_sub_category_id') == $name) selected @endif
+                                            value="{{ $name }}">{{ $id }}</option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('classSubCategory'))
-                                    <span class="text-danger">*{{ $errors->first('classSubCategory') }}</span>
+                                @if($errors->has('class_sub_category_id'))
+                                    <span class="text-danger">*{{ $errors->first('class_sub_category_id') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group col-md-6 @if($errors->has('teacher')) has-danger @endif">
+                            <div class="form-group col-md-6 @if($errors->has('teacher_id')) has-danger @endif">
                                 <label for="teacher">Teacher</label>
                                 <select class="form-control category-search" id="teacher"
                                         data-toggle="select" data-placeholder="Filter by teacher"
                                         name="teacher_id">
                                     <option value="0">All teachers</option>
                                     @foreach($teacher as $name => $id)
-                                        <option value="{{ $name }}">{{ $id }}</option>
+                                        <option @if(old('teacher_id') == $name) selected @endif
+                                            value="{{ $name }}">{{ $id }}</option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('teacher'))
-                                    <span class="text-danger">*{{ $errors->first('teacher') }}</span>
+                                @if($errors->has('teacher_id'))
+                                    <span class="text-danger">*{{ $errors->first('teacher_id') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -76,20 +79,20 @@
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-6 @if($errors->has('classLocation')) has-danger @endif">
+                            <div class="form-group col-md-6 @if($errors->has('class_location')) has-danger @endif">
                                 <label for="classLocation" class="asterisk">Class Location</label>
                                 <select class="form-control category-search" id="classLocation"
                                         data-toggle="select" multiple data-placeholder="Class Location" required
                                         name="class_location[]">
                                     @foreach($classLocation as $id => $name)
                                         <option
-                                            value="{{ $id }}" {{ (collect(old('classLocation'))->contains($id)) ? 'selected':'' }}>
+                                            value="{{ $id }}" {{ (collect(old('class_location'))->contains($id)) ? 'selected':'' }}>
                                             {{ $name }}
                                         </option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('classLocation'))
-                                    <span class="text-danger">*{{ $errors->first('classLocation') }}</span>
+                                @if($errors->has('class_location'))
+                                    <span class="text-danger">*{{ $errors->first('class_location') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -116,14 +119,24 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col">
-                                <label class="asterisk">Image</label>
-                                @include('partials.media.form', ['inputName' => 'image', 'exists' => false, 'mediaModal' => 'media-modal-image'])
-                                <p class="form-control-label">
-                                    Recommended dimensions: 750x1686px
+                            <div class="form-group col-md-6 error-danger">
+                                <label class="form-control-label" for="image">Main Image</label>
+                                @include('partials.media.form', ['inputName' => 'image_desktop', 'mediaName' => 'media_desktop_id',  'mediaModal' => 'media-modal-desktop', 'exists' => false])
+                                <p class="form-control-label">Required image: landscape <span
+                                        class="image-desktop-portrait"></span>
                                 </p>
+                                <span class="text-danger d-none error-span"></span>
+                            </div>
+                            <div class="form-group col-md-6 error-danger">
+                                <label class="form-control-label" for="image">Second Image</label>
+                                @include('partials.media.form', ['inputName' => 'image_mobile', 'mediaName' => 'media_mobile_id', 'mediaModal' => 'media-modal-mobile', 'exists' => false])
+                                <p class="form-control-label">Required image: landscape <span
+                                        class="image-desktop-portrait"></span>
+                                </p>
+                                <span class="text-danger d-none error-span"></span>
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="col-12 ml-auto mr-auto text-right">
                                 <a href="{{ route('classes.index') }}" class="btn"> Cancel </a>
@@ -137,7 +150,8 @@
     </div>
 @endsection
 
-@include('partials.media.media-modal', ['mediaModalId' => 'image'])
+@include('partials.media.media-modal', ['mediaModalId' => 'mobile', 'media' => $mediaMobile])
+@include('partials.media.media-modal', ['mediaModalId' => 'desktop', 'media' => $mediaDesktop])
 
 @section('js-links')
     @parent

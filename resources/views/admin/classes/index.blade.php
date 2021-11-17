@@ -31,7 +31,7 @@
                             <thead class="text-primary">
                             <tr>
                                 <th> Position</th>
-                                <th> Name</th>
+                                <th> Class title</th>
                                 <th> Categories</th>
                                 <th> Sub category</th>
                                 <th> Highlighted</th>

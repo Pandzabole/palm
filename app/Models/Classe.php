@@ -39,8 +39,9 @@ class Classe extends Model
     protected $with = [
         'classCategory',
         'classSubCategory',
-        'teachers',
-        'locations'
+        'teacher',
+        'locations',
+        'media'
     ];
 
     /**
@@ -65,7 +66,7 @@ class Classe extends Model
      * Get the comments for the classes.
      * @return BelongsTo
      */
-    public function teachers(): BelongsTo
+    public function teacher(): BelongsTo
     {
         return $this->belongsTo(Teacher::class);
     }

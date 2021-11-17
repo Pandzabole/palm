@@ -31,9 +31,10 @@
                             <thead class="text-primary">
                             <tr>
                                 <th> Position</th>
-                                <th> Name</th>
+                                <th> Class title</th>
                                 <th> Categories</th>
                                 <th> Sub category</th>
+                                <th> Highlighted</th>
                                 <th class="text-right"> Action</th>
                             </tr>
                             </thead>
@@ -81,6 +82,7 @@
                         {data: 'name', name: 'name'},
                         {data: 'class_category.name', name: 'category'},
                         {data: 'class_sub_category.name', name: 'sub category'},
+                        {data: 'highlighted', name: 'highlighted'},
                         {data: 'actions', name: 'actions', sortable: false, searchable: false, className: 'text-right'},
                     ]
                 });

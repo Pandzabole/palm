@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ActivitySearchRequest;
-use App\Models\Activity;
 use App\Models\Classe;
+use App\Models\Media;
 use App\Repositories\Contracts\ClassesRepository;
 use App\Repositories\Contracts\ClassLocationRepository;
 use App\Repositories\Contracts\ClassCategoryRepository;
 use App\Repositories\Contracts\ClassSubCategoryRepository;
+use App\Repositories\Contracts\TeacherRepository;
 use App\Repositories\Contracts\MediaRepository;
 use App\Services\MediaManager\MediaManager;
+use App\Http\Requests\ClassControllerCreateRequest;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
@@ -40,6 +41,9 @@ class ClassController extends Controller
     /** @var ClassSubCategoryRepository $classSubCategoryRepository */
     public $classSubCategoryRepository;
 
+    /** @var TeacherRepository $teacherRepository */
+    public $teacherRepository;
+
     /**
      * ClassController constructor.
      *
@@ -49,6 +53,7 @@ class ClassController extends Controller
      * @param ClassLocationRepository $classLocationRepository
      * @param ClassCategoryRepository $classCategoryRepository
      * @param ClassSubCategoryRepository $classSubCategoryRepository
+     * @param TeacherRepository $teacherRepository
      */
     public function __construct(
         MediaManager               $mediaManager,
@@ -56,7 +61,8 @@ class ClassController extends Controller
         ClassesRepository          $classesRepository,
         ClassLocationRepository    $classLocationRepository,
         ClassCategoryRepository    $classCategoryRepository,
-        ClassSubCategoryRepository $classSubCategoryRepository
+        ClassSubCategoryRepository $classSubCategoryRepository,
+        TeacherRepository          $teacherRepository
     )
     {
         $this->mediaManager = $mediaManager;
@@ -65,6 +71,7 @@ class ClassController extends Controller
         $this->classLocationRepository = $classLocationRepository;
         $this->classCategoryRepository = $classCategoryRepository;
         $this->classSubCategoryRepository = $classSubCategoryRepository;
+        $this->teacherRepository = $teacherRepository;
     }
 
     /**
@@ -90,7 +97,7 @@ class ClassController extends Controller
     {
         $classesRepository = $this->classesRepository;
         if ($categoryId = $request->get('categoryId')) {
-            $classes = $classesRepository->findByHasRelationship('categories', ['activity_categories.id' => $categoryId]);
+            $classes = $classesRepository->findByHasRelationship('classCategory', ['class_category_id' => $categoryId]);
         } else {
             $classes = $classesRepository->findByFilters();
         }
@@ -102,10 +109,11 @@ class ClassController extends Controller
                     ['model' => $class, 'routeModelName' => 'classes']
                 );
             })
+            ->editColumn('highlighted', 'admin.classes.datatables.highlighted')
             ->editColumn('date', static function ($class) {
                 return $class->created_at;
             })
-            ->rawColumns(['actions'])
+            ->rawColumns(['actions', 'highlighted'])
             ->addColumn('categories', static function (Classe $class) {
                 return $class->classCategory->pluck('name')->implode(', ');
             })
@@ -115,33 +123,75 @@ class ClassController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
-        //
+        $mediaDesktop = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'desktop']);
+        $mediaMobile = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'mobile']);
+        $classCategory = $this->classCategoryRepository->findByFilters()->pluck('name', 'id');
+        $classSubCategory = $this->classSubCategoryRepository->findByFilters()->pluck('name', 'id');
+        $classLocation = $this->classLocationRepository->findByFilters()->pluck('location', 'id');
+        $teacher = $this->teacherRepository->findByFilters()->pluck('name', 'id');
+
+        return view('admin.classes.create', compact(
+            'mediaDesktop',
+            'mediaMobile',
+            'classCategory',
+            'classSubCategory',
+            'classLocation',
+            'teacher'
+        ));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param ClassControllerCreateRequest $request
+     *  @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(ClassControllerCreateRequest $request): RedirectResponse
     {
-        //
+        $data = $request->all();
+        $position = $this->classesRepository->getAll()->pluck('position')->max() + 1;
+        $data['position'] = $position;
+        $classes = $this->classesRepository->store($data);
+
+        $this->classesRepository->attach($classes, 'locations', $data['class_location']);
+
+
+        $this->mediaManager->uploadMedia(
+            [$request->file("image_desktop")],
+            $classes,
+            [$request->get('media_desktop_id')],
+            Media::DESKTOP,
+            true
+        );
+        $this->mediaManager->uploadMedia(
+            [$request->file("image_mobile")],
+            $classes,
+            [$request->get('media_mobile_id')],
+            Media::MOBILE,
+            true
+        );
+
+        return redirect()
+            ->route('classes.show', $classes->id)
+            ->with('success', 'News created successfully!');
     }
 
     /**
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $classes = $this->classesRepository->findOneById($id);
+        $media = $this->mediaRepository->findByFilters();
+
+        return view('admin.classes.show', compact('classes', 'media'));
     }
 
     /**
@@ -189,5 +239,20 @@ class ClassController extends Controller
         $this->classesRepository->reorderSortable($request->get('items'));
 
         return response()->json();
+    }
+
+    /**
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function highlight(int $id): RedirectResponse
+    {
+        $this->classesRepository->updateMultiple(['highlighted' => true], ['highlighted' => false]);
+        $class = $this->classesRepository->findOneById($id);
+        $this->classesRepository->update($class, ['highlighted' => true]);
+
+        return redirect()
+            ->route('classes.index')
+            ->with('success', 'News highlighted successfully!');
     }
 }

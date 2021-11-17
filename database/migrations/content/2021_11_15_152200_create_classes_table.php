@@ -25,7 +25,6 @@ class CreateClassesTable extends Migration
             $table->longText('map_location')->nullable();
             $table->boolean('highlighted')->default(false);
             $table->unsignedInteger('position');
-            $table->foreignIdFor(ClassLocation::class);
             $table->foreignIdFor(ClassCategory::class);
             $table->foreignIdFor(ClassSubCategory::class);
             $table->foreignIdFor(Teacher::class);

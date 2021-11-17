@@ -109,6 +109,8 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
     Route::resource('classes', ClassController::class);
     Route::get('classes-data', [ClassController::class, 'getData'])->name('classes.data');
     Route::post('classes-reorder', [ClassController::class, 'reorderSortable'])->name('classes.reorder');
+    Route::get('classes-highlight/{id}', [ClassController::class, 'highlight'])->name('classes.highlight');
+
 });
 
 Auth::routes(['register' => false]);

@@ -45,9 +45,11 @@
                                 </tr>
                                 <tr class="border-bottom">
                                     <th scope="row" width="30%"> Class location</th>
+                                    <td>
                                     @foreach($classes->locations as $location)
+                                        {{ $location->location }} /
                                     @endforeach
-                                    <td>{{ $location->location }} / </td>
+                                        </td>
                                 </tr>
                                 <tr class="border-bottom">
                                     <th scope="row" width="30%">Main Image</th>

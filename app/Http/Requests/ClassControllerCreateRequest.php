@@ -26,7 +26,7 @@ class ClassControllerCreateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required',
+            'price' => 'required|numeric',
             'class_category_id' =>'required|exists:class_categories,id',
             'class_sub_category_id' =>'required|exists:class_sub_categories,id',
             'teacher_id' =>'required|exists:teachers,id',

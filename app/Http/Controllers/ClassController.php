@@ -12,6 +12,7 @@ use App\Repositories\Contracts\TeacherRepository;
 use App\Repositories\Contracts\MediaRepository;
 use App\Services\MediaManager\MediaManager;
 use App\Http\Requests\ClassControllerCreateRequest;
+use App\Http\Requests\ClassControllerUpdateRequest;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
@@ -177,7 +178,7 @@ class ClassController extends Controller
 
         return redirect()
             ->route('classes.show', $classes->id)
-            ->with('success', 'News created successfully!');
+            ->with('success', 'Class created successfully!');
     }
 
     /**
@@ -198,34 +199,80 @@ class ClassController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        $class = $this->classesRepository->findOneById($id);
+        $mediaDesktop = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'desktop']);
+        $mediaMobile = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'mobile']);
+        $classCategory = $this->classCategoryRepository->findByFilters()->pluck('name', 'id');
+        $classSubCategory = $this->classSubCategoryRepository->findByFilters()->pluck('name', 'id');
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $selectedLocations = $class->locations->pluck('id')->toArray();
+        $teacher = $this->teacherRepository->findByFilters()->pluck('name', 'id');
+
+        return view('admin.classes.edit', compact('class',
+            'mediaDesktop',
+            'mediaMobile',
+            'classCategory',
+            'classSubCategory',
+            'classLocation',
+            'selectedLocations',
+            'teacher'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param ClassControllerUpdateRequest $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(ClassControllerUpdateRequest $request, int $id): RedirectResponse
     {
-        //
+        $data = $request->all();
+
+        $class = $this->classesRepository->findOneById($id);
+        $this->classesRepository->update($class, $data);
+        $this->classesRepository->sync($class, 'locations', $data['class_location']);
+
+
+        $files = [
+            [
+                'type' => Media::DESKTOP,
+                'file' => $request->file("image_desktop"),
+                'existing_media' => $request->get('media_desktop_id')
+            ],
+            [
+                'type' => Media::MOBILE,
+                'file' => $request->file("image_mobile"),
+                'existing_media' => $request->get('media_mobile_id')
+            ]
+        ];
+
+        $this->mediaManager->uploadTypedMedia($class, $files);
+
+        return redirect()
+            ->route('classes.show', $class->id)
+            ->with('success', 'Class updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        $class = $this->classesRepository->findOneById($id);
+        $this->classesRepository->delete($class);
+
+        return redirect()
+            ->route('classes.index')
+            ->with('success', 'Class deleted successfully!');
     }
 
     /**

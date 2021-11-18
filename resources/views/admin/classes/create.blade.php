@@ -74,7 +74,8 @@
                                 <input id="price" class="form-control" placeholder="Price"
                                        name="price"
                                        value="{{ old('price')}}" required>
-                                @if($errors->has('price'))
+                                <span class="form-control-label">The price must be in the format 9.99,use a dot as a separator (9.99)</span>
+                            @if($errors->has('price'))
                                     <span class="text-danger">*{{ $errors->first('price') }}</span>
                                 @endif
                             </div>
@@ -111,7 +112,7 @@
                             <div class="form-group col-md-12 @if($errors->has('map_location')) has-danger @endif">
                                 <label for="map_location">Map location</label>
                                 <textarea id="map_location" class="form-control" placeholder="Map location"
-                                          name="map_location" rows="2" cols="50"
+                                          name="map_location" rows="4" cols="50"
                                           >{{ old('map_location') }}</textarea>
                                 @if($errors->has('map_location'))
                                     <span class="text-danger">*{{ $errors->first('map_location') }}</span>

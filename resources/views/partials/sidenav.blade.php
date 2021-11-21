@@ -51,6 +51,13 @@
                             </div>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link @if(request()->is('admin/teachers*')) active @endif"
+                               href="{{ route('teachers.index') }}">
+                                <i class="ni ni-tablet-button text-primary"></i>
+                                <span class="nav-link-text">Teachers</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link @if(request()->is('admin/page-components*')) active @endif"
                                href="#navbar-components" data-toggle="collapse" role="button"
                                @if(request()->is(['admin/page-component*'])) aria-expanded="true" @endif

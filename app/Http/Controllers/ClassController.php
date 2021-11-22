@@ -149,7 +149,7 @@ class ClassController extends Controller
      * Store a newly created resource in storage.
      *
      * @param ClassControllerCreateRequest $request
-     *  @return RedirectResponse
+     * @return RedirectResponse
      */
     public function store(ClassControllerCreateRequest $request): RedirectResponse
     {
@@ -157,6 +157,11 @@ class ClassController extends Controller
         $position = $this->classesRepository->getAll()->pluck('position')->max() + 1;
         $data['position'] = $position;
         $classes = $this->classesRepository->store($data);
+        $classCategoryId = [$request->get('class_category_id')];
+        $classSubCategoryId = $request->get('class_sub_category_id');
+        $classSubCategoryRepository = $this->classSubCategoryRepository->findOneById($classSubCategoryId);
+
+        $this->classCategoryRepository->attach($classSubCategoryRepository, 'classCategory', $classCategoryId);
 
         $this->classesRepository->attach($classes, 'locations', $data['class_location']);
 
@@ -235,9 +240,15 @@ class ClassController extends Controller
         $data = $request->all();
 
         $class = $this->classesRepository->findOneById($id);
+
         $this->classesRepository->update($class, $data);
         $this->classesRepository->sync($class, 'locations', $data['class_location']);
 
+        $classCategoryId = [$request->get('class_category_id')];
+        $classSubCategoryId = $request->get('class_sub_category_id');
+        $classSubCategoryRepository = $this->classSubCategoryRepository->findOneById($classSubCategoryId);
+
+        $this->classCategoryRepository->sync($classSubCategoryRepository, 'classCategory', $classCategoryId);
 
         $files = [
             [

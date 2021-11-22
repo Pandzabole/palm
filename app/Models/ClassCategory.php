@@ -2,14 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\ClassSubCategory;
+use App\Traits\Slug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class ClassCategory extends Model
 {
     use HasFactory;
+    use Slug;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+    ];
 
     /**
      * @return string

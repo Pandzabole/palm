@@ -41,12 +41,12 @@
                                             <span class="sidenav-normal"> Classes </span>
                                         </a>
                                     </li>
-{{--                                    <li class="nav-item">--}}
-{{--                                        <a href="{{ route('classes-categories.index') }}"--}}
-{{--                                           class="nav-link @if(request()->is('admin/classes-categories')) active @endif">--}}
-{{--                                            <span class="sidenav-normal"> classes Categories </span>--}}
-{{--                                        </a>--}}
-{{--                                    </li>--}}
+                                    <li class="nav-item">
+                                        <a href="{{ route('main-categories.index') }}"
+                                           class="nav-link @if(request()->is('admin/main-categories')) active @endif">
+                                            <span class="sidenav-normal"> Main categories </span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

@@ -13,7 +13,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-3 pr-1">
-                            <label for="categories">Filter by classes</label>
+                            <label for="categories">Filter by main category </label>
                             <select class="form-control category-search" id="categories"
                                     data-toggle="select" data-placeholder="Filter by categories"
                                     name="category">
@@ -31,7 +31,7 @@
                             <thead class="text-primary">
                             <tr>
                                 <th> Position</th>
-                                <th> Class title</th>
+                                <th> Teacher </th>
                                 <th> Categories</th>
                                 <th> Sub category</th>
                                 <th> Highlighted</th>
@@ -79,9 +79,9 @@
                                 return '<i class="fa fa-bars"></i>';
                             }
                         },
-                        {data: 'name', name: 'name'},
-                        {data: 'class_category.name', name: 'category'},
-                        {data: 'class_sub_category.name', name: 'sub category'},
+                        {data: 'name', name: 'name', searchable: true},
+                        {data: 'class_category.name', name: 'category', searchable: true},
+                        {data: 'class_sub_category.name', name: 'sub category', searchable: true},
                         {data: 'highlighted', name: 'highlighted'},
                         {data: 'actions', name: 'actions', sortable: false, searchable: false, className: 'text-right'},
                     ]

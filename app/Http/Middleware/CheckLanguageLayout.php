@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\View;
 class CheckLanguageLayout
 {
     /** @var ContentService $contentService */
-    private ContentService $contentService;
+    private  $contentService;
 
     /**
      * CheckLanguage constructor.

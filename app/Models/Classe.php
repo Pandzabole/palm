@@ -14,11 +14,7 @@ class Classe extends Model
 {
     use Mediable;
     use HasFactory;
-    /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
+
     /**
      * The attributes that are mass assignable.
      *

@@ -20,6 +20,8 @@ use App\Http\Controllers\MetaDataController;
 use App\Http\Controllers\Layout\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\ClassCategoryController;
+use App\Http\Controllers\ClassSubCategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -114,6 +116,12 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
 
     Route::resource('teachers', TeacherController::class);
     Route::get('teachers-data', [TeacherController::class, 'getData'])->name('teachers.data');
+
+    Route::resource('main-categories', ClassCategoryController::class);
+    Route::get('main-categories-data', [ClassCategoryController::class, 'getData'])->name('main-categories.data');
+
+    Route::resource('sub-categories', ClassSubCategoryController::class);
+    Route::get('sub-categories-data', [ClassSubCategoryController::class, 'getData'])->name('sub-categories.data');
 
 });
 

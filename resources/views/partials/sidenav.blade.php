@@ -47,6 +47,12 @@
                                             <span class="sidenav-normal"> Main categories </span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('sub-categories.index') }}"
+                                           class="nav-link @if(request()->is('admin/sub-categories')) active @endif">
+                                            <span class="sidenav-normal"> Sub categories </span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

@@ -83,6 +83,16 @@
                     </form>
                 </div>
             </div>
+
+            <div class="row">
+                @foreach($classes as $classe)
+                   <div>{{$classe->name}}</div>
+                   <div>{{$classe->description}}</div>
+                   <div>{{$classe->price}}</div>
+                @endforeach
+            </div>
+            <span>{{$session}}</span>
+
         </div>
     </div>
 </div>

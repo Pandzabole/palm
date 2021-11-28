@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LayoutRequests\SetLanguageLayoutRequest;
 use App\Repositories\Contracts\ActivitiesRepository;
 use App\Repositories\Contracts\LanguagesRepository;
+use App\Repositories\Contracts\ClassesRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,24 +19,30 @@ class HomeController extends Controller
 {
 
     /** @var ActivitiesRepository $activityCategoriesRepository */
-    public ActivitiesRepository $activityCategoriesRepository;
+    public $activityCategoriesRepository;
 
-    /** @var LanguagesRepository $languagesRepository*/
-    public LanguagesRepository $languagesRepository;
+    /** @var LanguagesRepository $languagesRepository */
+    public $languagesRepository;
+
+    /** @var ClassesRepository $classesRepository */
+    public $classesRepository;
 
     /**
      * ActivityCategoryController constructor.
      *
      * @param ActivitiesRepository $activityCategoriesRepository
      * @param LanguagesRepository $languagesRepository
+     * @param ClassesRepository $classesRepository
      */
     public function __construct(
         ActivitiesRepository $activityCategoriesRepository,
-        LanguagesRepository $languagesRepository
+        LanguagesRepository $languagesRepository,
+        ClassesRepository $classesRepository
     )
     {
         $this->activityCategoriesRepository = $activityCategoriesRepository;
         $this->languagesRepository = $languagesRepository;
+        $this->classesRepository = $classesRepository;
     }
 
     /**
@@ -46,8 +53,11 @@ class HomeController extends Controller
     public function index()
     {
         $languageList = config('languages');
+        $classes  = $this->classesRepository->getAll();
         $pera = $this->activityCategoriesRepository->findOneById('1')->title;
-        return view('main', compact('pera', 'languageList'));
+        $session = Session::get('db_language_layout');
+
+        return view('main', compact('pera', 'languageList', 'classes', 'session'));
     }
 
     /**

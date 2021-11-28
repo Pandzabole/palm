@@ -59,7 +59,7 @@ class ReservationClassController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $data['classe_id'] = 17;
+        $data['classe_id'] = 1;
         $this->reservationClassRepository->store($data);
     }
 

@@ -23,4 +23,66 @@
             </div>
         </div>
     @endif
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title text-left"> Create Class </h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{route('reservation-class.store')}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-row">
+                            <div class="form-group col-md-6 @if($errors->has('name')) has-danger @endif">
+                                <label for="name">Class title</label>
+                                <input id="name" class="form-control" placeholder="Name"
+                                       name="name"
+                                       value="{{ old('name')}}" required>
+                                @if($errors->has('name'))
+                                    <span class="text-danger">*{{ $errors->first('name') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6 @if($errors->has('email')) has-danger @endif">
+                                <label for="email">email</label>
+                                <input id="email" class="form-control" placeholder="email"
+                                       name="email"
+                                       value="{{ old('email')}}" required>
+                                @if($errors->has('email'))
+                                    <span class="text-danger">*{{ $errors->first('email') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12 @if($errors->has('comment')) has-danger @endif">
+                                <label for="comment">comment</label>
+                                <textarea id="comment" class="form-control" placeholder="comment"
+                                          name="comment" rows="4" cols="50"
+                                          required>{{ old('comment') }}</textarea>
+                                @if($errors->has('comment'))
+                                    <span class="text-danger">*{{ $errors->first('comment') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6 @if($errors->has('phone')) has-danger @endif">
+                                <label for="phone">phone</label>
+                                <input id="phone" class="form-control" placeholder="phone"
+                                       name="phone"
+                                       value="{{ old('phone')}}" required>
+                                @if($errors->has('phone'))
+                                    <span class="text-danger">*{{ $errors->first('phone') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-12 ml-auto mr-auto text-right">
+                                <a href="{{ route('classes.index') }}" class="btn"> Cancel </a>
+                                <button type="submit" class="btn btn-primary"> Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

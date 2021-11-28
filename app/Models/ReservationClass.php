@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class ReservationClass extends Model
 {
     use HasFactory;
+
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'comment',
+        'phone',
+        'country',
+        'city',
+        'classe_id'
+    ];
 }

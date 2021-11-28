@@ -22,6 +22,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassCategoryController;
 use App\Http\Controllers\ClassSubCategoryController;
+use App\Http\Controllers\Layout\ReservationClassController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,8 @@ Route::get('/set-language-layout', [HomeController::class, 'setLanguage'])->name
 
 Route::middleware('language.layout')->group(static function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('reservation-class', ReservationClassController::class);
+
 });
 
 Route::middleware('auth')->group(static function () {

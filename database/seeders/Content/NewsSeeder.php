@@ -54,6 +54,14 @@ class NewsSeeder extends Seeder
     }
 
     /**
+     * @return void
+     */
+    public function getOmData(): void
+    {
+        $this->getEnData();
+    }
+
+    /**
      * @param int $newsId
      */
     private function seedContent(int $newsId): void

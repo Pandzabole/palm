@@ -23,7 +23,10 @@ class Classe extends Model
     protected $fillable = [
         'name',
         'description',
-        'price',
+        'price_usd',
+        'price_eur',
+        'price_omr',
+        'price_sar',
         'map_location',
         'position',
         'highlighted',

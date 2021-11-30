@@ -82,4 +82,34 @@ class PackageVolumeTableSeeder extends Seeder
             ]
         ];
     }
+
+    /**
+     * Get english pages.
+     * @return array
+     */
+    protected function getOmData(): array
+    {
+        return [
+            [
+                'value' => '0.33',
+                'created_at' => now(),
+            ],
+            [
+                'value' => '0.5',
+                'created_at' => now(),
+            ],
+            [
+                'value' => '0.75',
+                'created_at' => now(),
+            ],
+            [
+                'value' => '1.0',
+                'created_at' => now(),
+            ],
+            [
+                'value' => '1.5',
+                'created_at' => now(),
+            ]
+        ];
+    }
 }

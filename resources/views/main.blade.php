@@ -83,6 +83,21 @@
                     </form>
                 </div>
             </div>
+
+            <div class="row">
+                @foreach($classes as $classe)
+                   <div>{{$classe->name}}</div>
+                   <div>{{$classe->description}}</div>
+                @if($session === 'database-ar')
+                        <div>{{$classe->price_usd}}</div>
+                    @endif
+                    @if($session === 'database-en')
+                        <div>{{$classe->price_usd}}</div>
+                        <div>{{$classe->price_eur}}</div>
+                    @endif
+                @endforeach
+            </div>
+            <div>{{$session}}</div>
         </div>
     </div>
 </div>

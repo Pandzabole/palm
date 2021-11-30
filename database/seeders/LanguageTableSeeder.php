@@ -30,6 +30,14 @@ class LanguageTableSeeder extends Seeder
                 'connection_name' => 'database-ar',
                 'created_at' => now(),
                 'default' => false,
+            ],
+            [
+                'name' => 'Oman',
+                'native_name' => 'oman',
+                'short' => 'om',
+                'connection_name' => 'database-om',
+                'created_at' => now(),
+                'default' => false,
             ]
         ];
 

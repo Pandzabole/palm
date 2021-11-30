@@ -48,4 +48,12 @@ class ProductsSeeder extends Seeder
     {
         $this->getEnData();
     }
+
+    /**
+     * @throws Exception
+     */
+    public function getOmData(): void
+    {
+        $this->getEnData();
+    }
 }

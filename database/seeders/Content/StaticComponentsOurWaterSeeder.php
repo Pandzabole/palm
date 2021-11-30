@@ -148,4 +148,12 @@ class StaticComponentsOurWaterSeeder extends Seeder
     {
         return $this->getEnData();
     }
+
+    /**
+     * @return array
+     */
+    protected function getOmData(): array
+    {
+        return $this->getEnData();
+    }
 }

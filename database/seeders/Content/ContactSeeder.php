@@ -35,4 +35,12 @@ class ContactSeeder extends Seeder
     {
         $this->getEnData();
     }
+
+    /**
+     * @return void
+     */
+    protected function getOmData(): void
+    {
+        $this->getEnData();
+    }
 }

@@ -72,4 +72,29 @@ class ActivityCategorySeeder extends Seeder
             ]
         ];
     }
+
+    /**
+     * @return array
+     */
+    protected function getOmData(): array
+    {
+        return [
+            [
+                'name' => 'الفئة 1',
+                'slug' => 'category_1'
+            ],
+            [
+                'name' => ' الفئة 1',
+                'slug' => 'category_2'
+            ],
+            [
+                'name' => 'الفئة 3',
+                'slug' => 'category_3'
+            ],
+            [
+                'name' => "الفئة 4",
+                'slug' => 'category_4'
+            ]
+        ];
+    }
 }

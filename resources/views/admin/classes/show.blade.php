@@ -29,7 +29,10 @@
                                 </tr>
                                 <tr class="border-bottom">
                                     <th scope="row" width="30%"> Price</th>
-                                    <td>{{ $classes->price }} usd</td>
+                                    <td>{{ $classes->price_usd }} usd</td>
+                                    <td>{{ $classes->price_eur }} eur</td>
+                                    <td>{{ $classes->price_sar }} sar</td>
+                                    <td>{{ $classes->price_omr }} omr</td>
                                 </tr>
                                 <tr class="border-bottom">
                                     <th scope="row" width="30%"> Main category</th>
@@ -47,7 +50,7 @@
                                     <th scope="row" width="30%"> Class location</th>
                                     <td>
                                     @foreach($classes->locations as $location)
-                                        {{ $location->location }} /
+                                        {{ $location->location }}
                                     @endforeach
                                         </td>
                                 </tr>

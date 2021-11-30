@@ -30,6 +30,14 @@ class MainMarketUserTableSeeder extends Seeder
             [
                 'main_market_id' => 1,
                 'user_id' => 1
+            ],
+            [
+                'main_market_id' => 3,
+                'user_id' => 3
+            ],
+            [
+                'main_market_id' => 3,
+                'user_id' => 1
             ]
 
         ];

@@ -72,4 +72,29 @@ class NewsCategorySeeder extends Seeder
             ]
         ];
     }
+
+    /**
+     * @return array
+     */
+    protected function getOmData(): array
+    {
+        return [
+            [
+                'name' => 'الفئة 1',
+                'slug' => 'kategorija_1'
+            ],
+            [
+                'name' => ' الفئة 1',
+                'slug' => 'kategorija_2'
+            ],
+            [
+                'name' => 'الفئة 3',
+                'slug' => 'kategorija_3'
+            ],
+            [
+                'name' => "الفئة 4",
+                'slug' => 'kategorija_4'
+            ]
+        ];
+    }
 }

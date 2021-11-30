@@ -66,4 +66,27 @@ class StaticComponentsContactSeeder extends Seeder
             ]
         ];
     }
+
+    /**
+     * @return array
+     */
+    protected function getOmData(): array
+    {
+        return [
+            [
+                'tag' => null,
+                'primary_title' => 'اتصل بنا',
+                'secondary_title' => 'لأننا دائما هناك من أجلك',
+                'sub_title' => null,
+                'description' => null,
+                'cta' => null,
+                'url' => null,
+                'cta_type' => "internal",
+                'slug' => null,
+                'type' => 'staticComponent',
+                'position' => 1,
+                'created_at' => now(),
+            ]
+        ];
+    }
 }

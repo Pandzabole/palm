@@ -81,12 +81,6 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('components.show', 'products') }}"
-                                           class="nav-link @if(request()->is('admin/page-components/products*')) active @endif">
-                                            <span class="sidenav-normal"> Products </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a href="{{ route('components.show', 'contact') }}"
                                            class="nav-link @if(request()->is('admin/page-components/contact*')) active @endif">
                                             <span class="sidenav-normal"> Contact </span>
@@ -100,13 +94,6 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/products*')) active @endif"
-                               href="{{route('products.index')}}">
-                                <i class="fas fa-wine-bottle text-primary"></i>
-                                <span class="nav-link-text">Products</span>
-                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @if(request()->is('admin/news*')) active @endif" href="#navbar-news"

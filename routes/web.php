@@ -14,7 +14,6 @@ use App\Http\Controllers\PublishController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\MarketController;
 use App\Http\Controllers\StaticComponentController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MetaDataController;
 use App\Http\Controllers\Layout\HomeController;
@@ -96,10 +95,6 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
     Route::post('contents/destroy', [ContentController::class, 'destroy'])->name('contents.destroy');
     Route::get('contents-data', [ContentController::class, 'getData'])->name('contents.data');
     Route::post('contents-reorder', [ContentController::class, 'reorderSortable'])->name('contents.reorder');
-
-    Route::resource('products', ProductController::class);
-    Route::get('products-data', [ProductController::class, 'getData'])->name('products.data');
-    Route::post('products-reorder', [ProductController::class, 'reorderSortable'])->name('products.reorder');
 
     Route::resource('contacts', ContactController::class)->except(['store', 'edit']);
     Route::get('contacts-data', [ContactController::class, 'getData'])->name('contacts.data');

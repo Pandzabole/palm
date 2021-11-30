@@ -14,11 +14,7 @@ use Database\Seeders\Content\PublishSeeder;
 use Database\Seeders\Content\StaticComponentsContactSeeder;
 use Database\Seeders\Content\StaticComponentsHomeSeeder;
 use Database\Seeders\Content\StaticComponentsOurWaterSeeder;
-use Database\Seeders\Content\ProductsSeeder;
-use Database\Seeders\Content\StaticComponentsProductSeeder;
 use Database\Seeders\Content\SliderSeeder;
-use Database\Seeders\Content\PackageVolumeTableSeeder;
-use Database\Seeders\Content\PackageNumberTableSeeder;
 use Database\Seeders\Content\MetaDataSeeder;
 use Illuminate\Database\Seeder;
 
@@ -34,12 +30,8 @@ class ContentSeeder extends Seeder
         $this->call(MediaTableSeeder::class);
         $this->call(PagesTableSeeder::class);
         $this->call(MarketsTableSeeder::class);
-        $this->call(PackageVolumeTableSeeder::class);
-        $this->call(PackageNumberTableSeeder::class);
-        $this->call(ProductsSeeder::class);
         $this->call(StaticComponentsContactSeeder::class);
         $this->call(StaticComponentsHomeSeeder::class);
-        $this->call(StaticComponentsProductSeeder::class);
         $this->call(StaticComponentsOurWaterSeeder::class);
         $this->call(ActivityCategorySeeder::class);
         $this->call(ActivitiesSeeder::class);

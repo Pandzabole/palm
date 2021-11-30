@@ -96,12 +96,6 @@ class AppServiceProvider extends ServiceProvider
             }
         );
         $this->app->singleton(
-            \App\Repositories\Contracts\ProductsRepository::class,
-            static function () {
-                return new \App\Repositories\ProductsRepository(new \App\Models\Product());
-            }
-        );
-        $this->app->singleton(
             \App\Repositories\Contracts\PackageNumbersRepository::class,
             static function () {
                 return new \App\Repositories\PackageNumbersRepository(new \App\Models\PackageNumber());

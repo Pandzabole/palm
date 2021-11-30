@@ -88,11 +88,16 @@
                 @foreach($classes as $classe)
                    <div>{{$classe->name}}</div>
                    <div>{{$classe->description}}</div>
-                   <div>{{$classe->price}}</div>
+                @if($session === 'database-ar')
+                        <div>{{$classe->price_usd}}</div>
+                    @endif
+                    @if($session === 'database-en')
+                        <div>{{$classe->price_usd}}</div>
+                        <div>{{$classe->price_eur}}</div>
+                    @endif
                 @endforeach
             </div>
-            <span>{{$session}}</span>
-
+            <div>{{$session}}</div>
         </div>
     </div>
 </div>

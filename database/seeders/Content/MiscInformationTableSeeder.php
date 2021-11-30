@@ -84,11 +84,71 @@ class MiscInformationTableSeeder extends Seeder
     }
 
     /**
-     * Get kuwait pages.
+     * Get Arabian pages.
      *
      * @return array
      */
     protected function getArData(): array
+    {
+        return [
+            [
+                'name' => 'Vincent Van Gogh',
+                'slug' => 'quote',
+                'type' => 'long-text',
+                'value' => 'إذا كنت تحب الطبيعة حقًا ، ستجد الجمال في كل مكان.',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'Facebook',
+                'slug' => 'facebook',
+                'type' => 'external-link',
+                'value' => 'https://www.facebook.com/',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'Instagram',
+                'slug' => 'instagram',
+                'type' => 'external-link',
+                'value' => 'https://www.instagram.com/',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'Youtube',
+                'slug' => 'youtube',
+                'type' => 'external-link',
+                'value' => 'https://www.youtube.com/',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'مركز الاتصال',
+                'slug' => 'call-center',
+                'type' => 'phone',
+                'value' => '011 25 80 100',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'بريد الالكتروني',
+                'slug' => 'email',
+                'type' => 'email',
+                'value' => 'marketing@vodavoda.com',
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'تبوك',
+                'slug' => 'address',
+                'type' => 'address',
+                'value' => 'Gornja Toplica BB, Banja Vrujci, Srbija',
+                'created_at' => now(),
+            ],
+        ];
+    }
+
+    /**
+     * Get Oman pages.
+     *
+     * @return array
+     */
+    protected function getOmData(): array
     {
         return [
             [

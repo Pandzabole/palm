@@ -69,18 +69,52 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6 @if($errors->has('price')) has-danger @endif">
-                                <label for="price">Class price</label>
-                                <input id="price" class="form-control" placeholder="Price"
-                                       name="price"
-                                       value="{{ old('price')}}" required>
+                            <div class="form-group col-md-6 @if($errors->has('price_usd')) has-danger @endif">
+                                <label for="price_usd">Class price in USD</label>
+                                <input id="price_usd" class="form-control" placeholder="USD price"
+                                       name="price_usd"
+                                       value="{{ old('price_usd')}}" required>
                                 <span class="form-control-label">The price must be in the format 9.99,use a dot as a separator (9.99)</span>
-                            @if($errors->has('price'))
-                                    <span class="text-danger">*{{ $errors->first('price') }}</span>
+                            @if($errors->has('price_usd'))
+                                    <span class="text-danger">*{{ $errors->first('price_usd') }}</span>
                                 @endif
                             </div>
 
-                            <div class="form-group col-md-6 @if($errors->has('class_location')) has-danger @endif">
+                            <div class="form-group col-md-6 @if($errors->has('price_eur')) has-danger @endif">
+                                <label for="price_eur">Class price in EUR</label>
+                                <input id="price_eur" class="form-control" placeholder="EUR price"
+                                       name="price_eur"
+                                       value="{{ old('price_eur')}}" required>
+                                <span class="form-control-label">The price must be in the format 9.99,use a dot as a separator (9.99)</span>
+                                @if($errors->has('price_eur'))
+                                    <span class="text-danger">*{{ $errors->first('price_eur') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                            <div class="form-row">
+                            <div class="form-group col-md-6 @if($errors->has('price_sar')) has-danger @endif">
+                                <label for="price_sar">Class price in SAR</label>
+                                <input id="price_sar" class="form-control" placeholder="SAR price"
+                                       name="price_sar"
+                                       value="{{ old('price_sar')}}" required>
+                                <span class="form-control-label">The price must be in the format 9.99,use a dot as a separator (9.99)</span>
+                                @if($errors->has('price_sar'))
+                                    <span class="text-danger">*{{ $errors->first('price_sar') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6 @if($errors->has('price_omr')) has-danger @endif">
+                                <label for="price_omr">Class price in OMR</label>
+                                <input id="price_omr" class="form-control" placeholder="OMR price"
+                                       name="price_omr"
+                                       value="{{ old('price_omr')}}" required>
+                                <span class="form-control-label">The price must be in the format 9.99,use a dot as a separator (9.99)</span>
+                                @if($errors->has('price_omr'))
+                                    <span class="text-danger">*{{ $errors->first('price_omr') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12 @if($errors->has('class_location')) has-danger @endif">
                                 <label for="classLocation" class="asterisk">Class Location</label>
                                 <select class="form-control category-search" id="classLocation"
                                         data-toggle="select" multiple data-placeholder="Class Location" required

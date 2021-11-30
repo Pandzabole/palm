@@ -192,4 +192,93 @@ class StaticComponentsHomeSeeder extends Seeder
             ]
         ];
     }
+
+    protected function getOmData(): array
+    {
+        return [
+            [
+                'tag' => null,
+                'primary_title' => 'Our',
+                'secondary_title' => 'Water',
+                'sub_title' => 'is the highest quality artesian water in the world',
+                'description' => 'Thanks to its well-balanced composition, VODAVODA is a perfect combination of minerals and salt and is ideal for everyday use. Its consumption has a beneficial effect on all cellular processes in the body and is good for all age groups.',
+                'cta' => 'our water',
+                'url' => '/water',
+                'cta_type' => 'internal',
+                'slug' => 'our',
+                'type' => 'staticComponent',
+                'config' => [
+                    'image' => [
+                        'desktop' => [
+                            'required' => false,
+                            'recommended' => '540x740'
+                        ],
+                        'mobile' => [
+                            'required' => false,
+                            'recommended' => '675x925'
+                        ]
+                    ]
+                ],
+                'position' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'tag' => null,
+                'primary_title' => 'Proud',
+                'secondary_title' => 'on our products',
+                'sub_title' => null,
+                'description' => 'Thanks to its well-balanced composition, VODAVODA is a perfect combination of minerals and salt and is ideal for everyday use',
+                'cta' => 'our products',
+                'url' => '/products',
+                'cta_type' => 'internal',
+                'slug' => 'proud',
+                'type' => 'staticComponent',
+                'position' => 2,
+                'created_at' => now(),
+            ],
+            [
+                'tag' => 'We are',
+                'primary_title' => 'international',
+                'secondary_title' => null,
+                'sub_title' => 'vodavoda',
+                'description' => 'Thanks to its well-balanced composition, VODAVODA is a perfect combination of minerals and salt and is ideal for everyday use',
+                'cta' => 'discover',
+                'url' => '/home',
+                'cta_type' => 'internal',
+                'slug' => 'markets',
+                'type' => 'staticComponent',
+                'position' => 3,
+                'created_at' => now(),
+            ],
+            [
+                'tag' => null,
+                'primary_title' => 'News',
+                'secondary_title' => null,
+                'sub_title' => 'about us',
+                'description' => null,
+                'cta' => 'See all',
+                'url' => '/news',
+                'cta_type' => 'internal',
+                'slug' => 'news',
+                'type' => 'news',
+                'position' => 4,
+                'created_at' => now(),
+            ],
+            [
+                'tag' => null,
+                'primary_title' => 'Actual',
+                'secondary_title' => null,
+                'sub_title' => 'about us',
+                'description' => null,
+                'cta' => 'See all',
+                'url' => '/actual',
+                'cta_type' => 'internal',
+                'slug' => 'actual',
+                'type' => 'activity',
+                'position' => 5,
+                'created_at' => now(),
+            ]
+        ];
+    }
+
 }

@@ -32,7 +32,7 @@ class MarketsTableSeeder extends Seeder
         return [
             [
                 'name' => 'English',
-                'href' => '/kw',
+                'href' => '/en',
                 'position' => 1,
                 'created_at' => now(),
             ],
@@ -50,6 +50,28 @@ class MarketsTableSeeder extends Seeder
      * @return array
      */
     protected function getArData(): array
+    {
+        return [
+            [
+                'name' => 'English',
+                'href' => '/en',
+                'position' => 1,
+                'created_at' => now(),
+            ],
+            [
+                'name' => 'Arabic',
+                'href' => '/ar',
+                'position' => 2,
+                'created_at' => now(),
+            ]
+        ];
+    }
+
+    /**
+     * Get serbian pages.
+     * @return array
+     */
+    protected function getOmData(): array
     {
         return [
             [

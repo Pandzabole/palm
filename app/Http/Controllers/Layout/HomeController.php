@@ -52,11 +52,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $moneyValue = '';
         $languageList = config('languages');
         $classes  = $this->classesRepository->getAll();
         $pera = $this->activityCategoriesRepository->findOneById('1')->title;
         $session = Session::get('db_language_layout');
-
+//        if($session === 'database-ar') {
+//            $moneyValue = 'price_sar';
+//        }
+//        if($session === 'database-en') {
+//            $moneyValue = 'price_usd';
+//        }
         return view('main', compact('pera', 'languageList', 'classes', 'session'));
     }
 

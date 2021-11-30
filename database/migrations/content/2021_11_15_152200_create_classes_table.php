@@ -21,7 +21,10 @@ class CreateClassesTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
-            $table->decimal('price', $precision = 8, $scale = 2);
+            $table->decimal('price_usd', $precision = 8, $scale = 2);
+            $table->decimal('price_eur', $precision = 8, $scale = 2);
+            $table->decimal('price_sar', $precision = 8, $scale = 2);
+            $table->decimal('price_omr', $precision = 8, $scale = 2);
             $table->longText('map_location')->nullable();
             $table->boolean('highlighted')->default(false);
             $table->unsignedInteger('position');

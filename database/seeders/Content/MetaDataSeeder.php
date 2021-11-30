@@ -53,4 +53,20 @@ class MetaDataSeeder extends Seeder
                 }
             );
     }
+
+    /**
+     * @return void
+     */
+    protected function getOmData(): void
+    {
+        MetaDataFactory::resetPosition();
+        MetaData::factory()
+            ->count(7)
+            ->create()
+            ->each(
+                function ($metaData) {
+                    $metaData->media()->attach(1);
+                }
+            );
+    }
 }

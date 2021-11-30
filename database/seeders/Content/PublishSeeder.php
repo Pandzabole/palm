@@ -34,4 +34,12 @@ class PublishSeeder extends Seeder
     {
         Publish::factory()->create();
     }
+
+    /**
+     * @return void|array
+     */
+    protected function getOmData(): void
+    {
+        Publish::factory()->create();
+    }
 }

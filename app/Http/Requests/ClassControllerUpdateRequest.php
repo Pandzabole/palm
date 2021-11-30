@@ -27,7 +27,10 @@ class ClassControllerUpdateRequest extends FormRequest
         $rules = [
             'name' => 'required|string',
             'description' => 'required|string',
-            'price' => 'required|numeric',
+            'price_usd' => 'required|numeric',
+            'price_eur' => 'required|numeric',
+            'price_omr' => 'required|numeric',
+            'price_sar' => 'required|numeric',
             'class_category_id' =>'required|exists:class_categories,id',
             'class_sub_category_id' =>'required|exists:class_sub_categories,id',
             'teacher_id' =>'required|exists:teachers,id',

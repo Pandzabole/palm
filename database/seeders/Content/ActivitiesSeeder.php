@@ -53,6 +53,14 @@ class ActivitiesSeeder extends Seeder
     }
 
     /**
+     * @return void
+     */
+    protected function getOmData(): void
+    {
+        $this->getEnData();
+    }
+
+    /**
      * @param int $activityId
      */
     private function seedContent(int $activityId): void

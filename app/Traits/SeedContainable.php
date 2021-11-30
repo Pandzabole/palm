@@ -127,6 +127,7 @@ trait SeedContainable
         return [
             'database-en' => 'getEnData',
             'database-ar' => 'getArData',
+            'database-om' => 'getOmData',
         ];
     }
 
@@ -138,6 +139,7 @@ trait SeedContainable
         return [
             'database-en' => $this->getEnData(),
             'database-ar' => $this->getArData(),
+            'database-om' => $this->getOmData(),
         ];
     }
 
@@ -150,5 +152,10 @@ trait SeedContainable
      * @return void|array
      */
     abstract protected function getArData(): array;
+
+    /**
+     * @return void|array
+     */
+    abstract protected function getOmData(): array;
 
 }

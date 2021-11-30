@@ -31,6 +31,14 @@ class MainMarketsTableSeeder extends Seeder
                 'position' => 2,
                 'privileges' => User::MICRO_ADMIN,
                 'created_at' => now(),
+            ],
+            [
+                'name' => 'Oman',
+                'href' => '/om',
+                'short' => 'om',
+                'position' => 3,
+                'privileges' => User::MICRO_ADMIN,
+                'created_at' => now(),
             ]
         ];
 

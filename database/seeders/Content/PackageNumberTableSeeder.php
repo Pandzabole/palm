@@ -58,4 +58,22 @@ class PackageNumberTableSeeder extends Seeder
             ]
         ];
     }
+
+    /**
+     * Get serbian pages.
+     * @return array
+     */
+    protected function getOmData(): array
+    {
+        return [
+            [
+                'value' => 6,
+                'created_at' => now(),
+            ],
+            [
+                'value' => 12,
+                'created_at' => now(),
+            ]
+        ];
+    }
 }

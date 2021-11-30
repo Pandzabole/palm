@@ -2,5 +2,6 @@
 
 return [
     "ar" => "Arabic",
-    "en" => "English"
+    "en" => "English",
+    "om" => "Oman"
 ];

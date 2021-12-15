@@ -105,6 +105,6 @@
 
 @extends('front-layout.app')
 
-@section('content')
+{{--@section('content')--}}
 
-@endsection
+{{--@endsection--}}

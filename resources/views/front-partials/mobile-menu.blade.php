@@ -1,5 +1,4 @@
 <!-- MOBILE MENU-->
-
 <div class="b-main_menu-wrapper hidden-lg-up">
     <ul class="mobile-top">
         <li class="search">
@@ -116,5 +115,6 @@
         </li>
     </ul>
 </div>
+
 
 @yield('mobile-menu')

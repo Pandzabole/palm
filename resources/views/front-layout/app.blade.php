@@ -1,26 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <!-- PAGE TITLE -->
     <title>Palm Skils</title>
 
     @include('front-partials.meta-data')
-
     @include('front-partials.css-links')
-
 </head>
 <body>
-<!-- MOBILE MENU-->
     @include('front-partials.mobile-menu')
-<!-- TOP LINE -->
 <div class="b-wrapper">
     <header id="b-header">
-        <div class="b-header b-header_main">
-            @include('front-partials.top-line')
-
-            @include('front-partials.main-navigation')
-        </div>
+        @include('front-partials.top-line')
+        @include('front-partials.main-navigation')
     </header>
     <div  class="rev_slider_wrapper fullwidthbanner-container" data-alias="classic4export" data-source="gallery">
         <div id="b-home_01_slider" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.1">

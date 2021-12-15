@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\ReservationClass;
 use App\Models\Classe;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -24,6 +23,8 @@ class CreateReservationClassesTable extends Migration
             $table->string('phone');
             $table->string('country')->nullable();
             $table->string('city')->nullable();
+            $table->boolean('read_reservation')->default(false);
+            $table->boolean('reply_client')->default(false);
             $table->timestamps();
         });
     }

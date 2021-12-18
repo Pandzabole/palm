@@ -7,6 +7,7 @@
 {{--        </button>--}}
 {{--    </div>--}}
 {{--    @if (isset($selectedLanguageLayout))--}}
+{{--        {{ $selectedLanguageLayout }}--}}
 {{--        <div class="btn-group select-language">--}}
 {{--            <button type="button"--}}
 {{--                    class="btn">{{ data_get($languageList, $selectedLanguageLayout) }}</button>--}}
@@ -17,6 +18,7 @@
 {{--            </button>--}}
 {{--            <div class="dropdown-menu">--}}
 {{--                @foreach($languageList as $code => $language)--}}
+{{--                    {{$code}}--}}
 {{--                    <a class="dropdown-item"--}}
 {{--                       href="{{ route('set-language-layout', ['lang' => $code]) }}">{{ $language }}</a>--}}
 {{--                @endforeach--}}
@@ -102,7 +104,7 @@
 {{--    </div>--}}
 {{--</div>--}}
 
-
+{{$classes}}
 @extends('front-layout.app')
 
 {{--@section('content')--}}

@@ -18,5 +18,6 @@
 
 <!-- CSS:: MAIN -->
 <link rel="stylesheet" type="text/css" href="{{ asset('front-css/assets/css/main.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('front-css/assets/css/palm.css') }}">
 
 @yield('css-links')

@@ -25,7 +25,7 @@ class TeacherUpdateRequest extends FormRequest
     {
         $rules = [
             'name' => 'required',
-            'gender' => 'required',
+            'gender_id' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
             'image' => 'nullable|mimes:jpeg,bmp,png',

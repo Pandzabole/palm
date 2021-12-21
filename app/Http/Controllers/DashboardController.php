@@ -8,6 +8,7 @@ use App\Repositories\Contracts\ContactsRepository;
 use App\Repositories\Contracts\LanguagesRepository;
 use App\Repositories\Contracts\NewsRepository;
 use App\Repositories\Contracts\UsersRepository;
+use App\Repositories\Contracts\ReservationClassRepository;
 use App\Services\ContentManager\ContentService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -33,6 +34,9 @@ class DashboardController extends Controller
     /** @var UsersRepository */
     private $userRepository;
 
+    /** @var ReservationClassRepository */
+    private $reservationClassRepository;
+
     /**
      * DashboardController constructor.
      *
@@ -42,6 +46,7 @@ class DashboardController extends Controller
      * @param LanguagesRepository $languagesRepository
      * @param ActivitiesRepository $activitiesRepository
      * @param UsersRepository $userRepository
+     * @param ReservationClassRepository $reservationClassRepository
      */
     public function __construct(
         ContentService $contentService,
@@ -49,7 +54,8 @@ class DashboardController extends Controller
         ContactsRepository $contactsRepository,
         LanguagesRepository $languagesRepository,
         ActivitiesRepository $activitiesRepository,
-        UsersRepository $userRepository
+        UsersRepository $userRepository,
+        ReservationClassRepository $reservationClassRepository
     ) {
         $this->newsRepository = $newsRepository;
         $contentService->setDefaultConnectionDatabase();
@@ -57,6 +63,7 @@ class DashboardController extends Controller
         $this->languagesRepository = $languagesRepository;
         $this->activitiesRepository = $activitiesRepository;
         $this->userRepository = $userRepository;
+        $this->reservationClassRepository = $reservationClassRepository;
     }
 
     /**
@@ -64,11 +71,11 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $news = $this->newsRepository->findByFilters('created_at', 'desc', [], [], 5);
+        $reservationClass = $this->reservationClassRepository->findByFilters('created_at', 'asc', ['reply_client' => false], [], 5);
         $contacts = $this->contactsRepository->findByFilters('created_at', 'desc', [], [], 5);
         $activities = $this->activitiesRepository->findByFilters('created_at', 'desc', [], [], 5);
 
-        return view('admin.dashboard', compact('news', 'contacts', 'activities'));
+        return view('admin.dashboard', compact('reservationClass', 'contacts', 'activities'));
     }
 
     /**

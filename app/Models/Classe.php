@@ -44,7 +44,6 @@ class Classe extends Model
     ];
 
     /**
-     * Get the classCategory for the classes.
      * @return BelongsTo
      */
     public function classCategory(): BelongsTo
@@ -53,7 +52,6 @@ class Classe extends Model
     }
 
     /**
-     * Get the comments for the classes.
      * @return BelongsTo
      */
     public function classSubCategory(): BelongsTo
@@ -62,7 +60,6 @@ class Classe extends Model
     }
 
     /**
-     * Get the comments for the classes.
      * @return BelongsTo
      */
     public function teacher(): BelongsTo

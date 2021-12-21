@@ -350,37 +350,26 @@
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-8 col-xs-6">
-                <div class="b-header_right">
-                    <div class="b-header_links hidden-sm-down">
-                        <ul class="pl-0 mb-0 list-unstyled">
-                            <li>
-                                <a href="my-account.html">Login / Register</a>
-                            </li>
-                        </ul>
+                @if (isset($selectedLanguageLayout))
+                    <div class="b-header_right">
+
+                        <a href="{{ route('set-language-layout', ['lang' => 'en']) }}">
+                         <img class="language-flags d-inline @if($session === 'database-en') language-border @endif" src="{{ asset('img/en.svg') }}" alt="language-flags">
+                       </a>
+
+                        <a href="{{ route('set-language-layout', ['lang' => 'om']) }}">
+                        <img class="language-flags d-inline @if($session === 'database-om') language-border @endif" src="{{ asset('img/om.svg') }}" alt="language-flags">
+                        </a>
+
+                        <a href="{{ route('set-language-layout', ['lang' => 'ar']) }}">
+                        <img class="language-flags d-inline @if($session === 'database-ar') language-border @endif" src="{{ asset('img/sa.svg') }}" alt="language-flags">
+                        </a>
                     </div>
+                @endif
+                <div class="b-header_right">
                     <div class="b-search_icon hidden-sm-down">
                         <a href="javascript:;" id="b-search_toggle" class="d-inline-block">
                             <i class="icon-magnifier icons"></i>
-                        </a>
-                    </div>
-                    <div class="b-wishlist_icon">
-                        <a href="wishlist.html" class="d-inline-block">
-                            <i class="icon-heart icons"></i>
-                            <span>3</span>
-                        </a>
-                    </div>
-                    <div class="b-cart_basket pr-0">
-                        <a href="javascript:void(0);" id="b-mini_cart" class="d-inline-block">
-                            <i class="icon-basket icons"></i>
-                            <span class="b-cart_totals">
-                              <span class="b-cart_number">3</span>
-                              <span class="b-subtotal_divider">/</span>
-                              <span class="b-cart_subtotal">
-                                <span class="b-cart_amount amount">
-                                  <span class="b-cart_currency">£</span>100.00
-                                </span>
-                              </span>
-                            </span>
                         </a>
                     </div>
                     <div class="hidden-lg-up">

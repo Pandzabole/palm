@@ -32,7 +32,7 @@
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Gender</th>
-                                                <td>{{ $teacher->gender }}</td>
+                                                <td>{{ $teacher->gender->gender}}</td>
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Email</th>

@@ -14,7 +14,7 @@
                                class="btn btn-warning btn-fab btn-icon btn-round">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            @include('partials.delete-with-confirmation', ['model' => $classes, 'routeModelName' => 'products'])
+                            @include('partials.delete-with-confirmation', ['model' => $classes, 'routeModelName' => 'classes'])
                         </div>
                         <div class="table-responsive">
                             <table class="table table-borderless">

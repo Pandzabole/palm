@@ -21,7 +21,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassCategoryController;
 use App\Http\Controllers\ClassSubCategoryController;
+use App\Http\Controllers\ClassReservationController;
 use App\Http\Controllers\Layout\ReservationClassController;
+use App\Http\Controllers\ClassLocation;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -69,7 +71,7 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
     Route::put('page-components/{pageSlug}/update', [StaticComponentController::class, 'update'])->name('components.update');
 
     Route::resource('misc-information', MiscInformationController::class)->except(['show', 'create', 'store', 'destroy']);
-    Route::get('misc-information-data', [MiscInformationController::class, 'getData'])->name('misc-information.data');
+    Route::get('emailmisc-information-data', [MiscInformationController::class, 'getData'])->name('misc-information.data');
 
     Route::resource('sliders', SliderController::class);
     Route::get('sliders-data', [SliderController::class, 'getData'])->name('sliders.data');
@@ -120,6 +122,12 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
 
     Route::resource('sub-categories', ClassSubCategoryController::class);
     Route::get('sub-categories-data', [ClassSubCategoryController::class, 'getData'])->name('sub-categories.data');
+
+    Route::resource('class-reservation', ClassReservationController::class);
+    Route::get('classes-reservation-data', [ClassReservationController::class, 'getData'])->name('classes-reservation.data');
+
+    Route::resource('class-location', ClassLocation::class)->except(['destroy']);
+    Route::get('class-location-data', [ClassLocation::class, 'getData'])->name('class-location.data');
 
 });
 

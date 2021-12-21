@@ -27,11 +27,11 @@
                                     <label for="gender">Gender</label>
                                     <select class="form-control"
                                             id="gender"
-                                            name="gender">
+                                            name="gender_id">
                                         @foreach($genders as $gender)
-                                            {{$gender}}
-                                            <option @if(in_array($teacher->id, $genders)) selected
-                                                    @endif value="{{ $gender }}">{{ $gender}}</option>
+                                            {{$name}}
+                                            <option @if($gender->id === $teacher->gender->id) selected
+                                                    @endif value="{{ $gender->id  }}">{{$gender->gender}}</option>
                                         @endforeach
                                     </select>
                                     <span class="text-danger d-none error-span error-gender"></span>

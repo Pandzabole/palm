@@ -85,7 +85,7 @@ class ClassCategoryController extends Controller
      * @param ClassCategoryCreateRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(ClassCategoryCreateRequest $request): RedirectResponse
     {
         $data = $request->all();
 
@@ -129,7 +129,7 @@ class ClassCategoryController extends Controller
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(ClassCategoryUpdateRequest $request, int $id): RedirectResponse
     {
         $data = $request->all();
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\Mediable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Teacher extends Model
 {
@@ -18,10 +19,26 @@ class Teacher extends Model
      */
     protected $fillable = [
         'name',
-        'gender',
+        'gender_id',
         'email',
         'phone',
         'url',
     ];
 
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'gender',
+    ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class);
+    }
 }

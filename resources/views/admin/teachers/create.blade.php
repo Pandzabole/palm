@@ -24,9 +24,10 @@
                                     <label for="gender">Gender</label>
                                     <select class="form-control category-search" id="gender"
                                             data-toggle="select" data-placeholder="Gender"
-                                            name="gender">
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
+                                            name="gender_id">
+                                        @foreach($genders as $gender)
+                                            <option value="{{$gender->id}}">{{$gender->gender}}</option>
+                                        @endforeach
                                     </select>
                                     @if($errors->has('gender'))
                                         <span class="text-danger">*{{ $errors->first('gender') }}</span>

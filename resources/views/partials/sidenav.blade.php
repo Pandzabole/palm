@@ -26,6 +26,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link @if(request()->is('admin/class-reservation*')) active @endif"
+                               href="{{ route('class-reservation.index') }}">
+                                <i class="ni ni-books text-primary"></i>
+                                <span class="nav-link-text">Class Reservations</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link @if(request()->is('admin/classes*')) active @endif" href="#navbar-classes"
                                data-toggle="collapse" role="button"
                                @if(request()->is('admin/classes*')) aria-expanded="true"

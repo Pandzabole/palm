@@ -55,7 +55,7 @@
                                     <!-- Title -->
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="h3 mb-0">Latest News</h5>
+                                            <h5 class="h3 mb-0">Latest Reservations</h5>
                                         </div>
                                         <div class="col text-right">
                                             <a href="{{ route('news.create') }}" class="btn btn-sm btn-primary">
@@ -68,17 +68,20 @@
                                 <div class="card-body">
                                     <!-- List group -->
                                     <ul class="list-group list-group-flush list my--3">
-                                        @forelse($news as $new)
+                                        @forelse($reservationClass as $reservation)
                                             <li class="list-group-item px-0">
                                                 <div class="row align-items-center">
                                                     <div class="col ml--2">
                                                         <h4 class="mb-0">
-                                                            <a href="{{ route('news.show', $new) }}">{{ $new->title }}</a>
+                                                            <a href="{{ route('news.show', $reservation) }}">{{ $reservation->name }}</a>
                                                         </h4>
-                                                        <small>{{ $new->created_at }}</small>
+                                                        <h4 class="mb-0">
+                                                            <a href="{{ route('news.show', $reservation) }}">{{ $reservation->email }}</a>
+                                                        </h4>
+                                                        <small>{{ $reservation->created_at }}</small>
                                                     </div>
                                                     <div class="col-auto">
-                                                        <a href="{{ route('news.show', $new) }}"
+                                                        <a href="{{ route('news.show', $reservation) }}"
                                                            class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></a>
                                                     </div>
                                                 </div>

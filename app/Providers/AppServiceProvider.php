@@ -216,6 +216,13 @@ class AppServiceProvider extends ServiceProvider
                 return new \App\Repositories\ReservationClassRepository(new \App\Models\ReservationClass());
             }
         );
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\GendersRepository::class,
+            static function () {
+                return new \App\Repositories\GendersRepository(new \App\Models\Gender());
+            }
+        );
     }
 
     /**

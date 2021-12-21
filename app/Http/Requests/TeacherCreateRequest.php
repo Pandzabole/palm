@@ -25,7 +25,7 @@ class TeacherCreateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'gender' => 'required',
+            'gender_id' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
             'image' => 'nullable|required_without:media_id|mimes:jpeg,bmp,png',

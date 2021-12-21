@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\MediaManager\MediaManager;
 use App\Repositories\Contracts\TeacherRepository;
 use App\Repositories\Contracts\MediaRepository;
+use App\Repositories\Contracts\GendersRepository;
 use App\Http\Requests\TeacherCreateRequest;
 use App\Http\Requests\TeacherUpdateRequest;
 use Exception;
@@ -27,22 +28,28 @@ class TeacherController extends Controller
     /** @var TeacherRepository $teacherRepository */
     public $teacherRepository;
 
+    /** @var GendersRepository $gendersRepository */
+    public $gendersRepository;
+
     /**
      * ActivityController constructor.
      *
      * @param MediaManager $mediaManager
      * @param MediaRepository $mediaRepository
      * @param TeacherRepository $teacherRepository
+     * @param GendersRepository $gendersRepository
      */
     public function __construct(
         MediaManager      $mediaManager,
         MediaRepository   $mediaRepository,
-        TeacherRepository $teacherRepository
+        TeacherRepository $teacherRepository,
+        GendersRepository $gendersRepository
     )
     {
         $this->mediaManager = $mediaManager;
         $this->mediaRepository = $mediaRepository;
         $this->teacherRepository = $teacherRepository;
+        $this->gendersRepository = $gendersRepository;
     }
 
     /**
@@ -52,9 +59,9 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $categories = $this->teacherRepository->findByFilters()->pluck('name', 'id');
+        $teachers = $this->teacherRepository->findByFilters()->pluck('name', 'id');
 
-        return view('admin.teachers.index', compact('categories'));
+        return view('admin.teachers.index', compact('teachers'));
     }
 
     /**
@@ -94,7 +101,8 @@ class TeacherController extends Controller
     public function create()
     {
         $media = $this->mediaRepository->findImages();
-        return view('admin.teachers.create', compact('media'));
+        $genders = $this->gendersRepository->findByFilters();
+        return view('admin.teachers.create', compact('media', 'genders'));
     }
 
     /**
@@ -138,7 +146,7 @@ class TeacherController extends Controller
     {
         $teacher = $this->teacherRepository->findOneById($id);
         $media = $this->mediaRepository->findByFilters();
-        $genders = ['Male', 'Female'];
+        $genders = $this->gendersRepository->findByFilters();
 
         return view('admin.teachers.edit', compact('teacher', 'media', 'genders'));
     }

@@ -60,6 +60,12 @@
                                             <span class="sidenav-normal"> Sub categories </span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('class-location.index') }}"
+                                           class="nav-link @if(request()->is('admin/class-location')) active @endif">
+                                            <span class="sidenav-normal"> Class location</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

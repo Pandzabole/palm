@@ -125,6 +125,8 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
 
     Route::resource('class-reservation', ClassReservationController::class);
     Route::get('classes-reservation-data', [ClassReservationController::class, 'getData'])->name('classes-reservation.data');
+    Route::get('class-reservation-read/{id}', [ClassReservationController::class, 'updateClassRead'])->name('class.read');
+    Route::get('class-reservation-reply/{id}', [ClassReservationController::class, 'updateClassReply'])->name('class.reply');
 
     Route::resource('class-location', ClassLocation::class)->except(['destroy']);
     Route::get('class-location-data', [ClassLocation::class, 'getData'])->name('class-location.data');

@@ -385,3 +385,6 @@ table.dataTable.display tbody tr.even:hover {
 .select2-container--default .select2-selection--multiple{
     overflow: auto;
 }
+.count-class-btn{
+    border-radius: 50%;
+}

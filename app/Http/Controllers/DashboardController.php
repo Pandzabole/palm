@@ -71,11 +71,13 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $reservationClass = $this->reservationClassRepository->findByFilters('created_at', 'asc', ['reply_client' => false], [], 5);
+        $reservationClass = $this->reservationClassRepository->findByFilters('created_at', 'asc', [], [], 5);
+        $reservationClassUnread = $this->reservationClassRepository->findByFilters('created_at', 'asc', ['read_reservation' => false], [], 5);
         $contacts = $this->contactsRepository->findByFilters('created_at', 'desc', [], [], 5);
         $activities = $this->activitiesRepository->findByFilters('created_at', 'desc', [], [], 5);
+        $noAnsweredReservations = $this->reservationClassRepository->findByFilters('created_at', 'desc', ['reply_client' => false]);
 
-        return view('admin.dashboard', compact('reservationClass', 'contacts', 'activities'));
+        return view('admin.dashboard', compact('reservationClass', 'contacts', 'activities', 'reservationClassUnread', 'noAnsweredReservations'));
     }
 
     /**

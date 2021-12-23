@@ -8,6 +8,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Exception;
 use Yajra\DataTables\Facades\DataTables;
@@ -84,12 +85,14 @@ class ClassReservationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Application|Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function show(int $id)
     {
-        //
+        $classReservation = $this->reservationClassRepository->findOneById($id);
+
+        return view('admin.class-reservation.show', compact('classReservation'));
     }
 
     /**
@@ -124,5 +127,33 @@ class ClassReservationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function updateClassRead(int $id): RedirectResponse
+    {
+        $classReservation = $this->reservationClassRepository->findOneById($id);
+        $this->reservationClassRepository->update($classReservation, ['read_reservation' => true ]);
+
+        return redirect()
+            ->route('class-reservation.show', $id)
+            ->with('success', 'Reservation read successfully!');
+    }
+
+    /**
+     * @param int $id
+     * @return RedirectResponse
+     */
+    public function updateClassReply(int $id): RedirectResponse
+    {
+        $classReservation = $this->reservationClassRepository->findOneById($id);
+        $this->reservationClassRepository->update($classReservation, ['reply_client' => true ]);
+
+        return redirect()
+            ->route('class-reservation.show', $id)
+            ->with('success', 'Reservation change successfully!');
     }
 }

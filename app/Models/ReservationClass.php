@@ -25,7 +25,14 @@ class ReservationClass extends Model
         'phone',
         'country',
         'city',
-        'classe_id'
+        'classe_id',
+        'read_reservation',
+        'reply_client'
+    ];
+
+    protected $with = [
+        'teacher',
+        'classe'
     ];
 
     /**
@@ -49,7 +56,7 @@ class ReservationClass extends Model
     /**
      * @return BelongsTo
      */
-    public function class(): BelongsTo
+    public function classe(): BelongsTo
     {
         return $this->belongsTo(Classe::class);
     }

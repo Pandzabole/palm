@@ -13,6 +13,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -52,17 +53,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $moneyValue = '';
+        $langSession = Session::get('db_language_name_layout');
+        App::setLocale($langSession);
+
+        session()->put('locale', $langSession);
+
         $languageList = config('languages');
         $classes  = $this->classesRepository->getAll();
         $pera = $this->activityCategoriesRepository->findOneById('1')->title;
         $session = Session::get('db_language_layout');
-//        if($session === 'database-ar') {
-//            $moneyValue = 'price_sar';
-//        }
-//        if($session === 'database-en') {
-//            $moneyValue = 'price_usd';
-//        }
+
         return view('main', compact('pera', 'languageList', 'classes', 'session'));
     }
 

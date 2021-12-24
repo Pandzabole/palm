@@ -1,3 +1,11 @@
+<html class="wide wow-animation @yield('page-class')" lang="{{ app()->getLocale() }}">
+
+<div class="item">
+    <div class="box-info-classic">
+        <h4 class="box-info-classic-title">{{__('email.test')}}</h4>
+    </div>
+</div>
+
 <div class="navbar-wrapper">
     <div class="navbar-toggle">
         <button type="button" class="navbar-toggler">
@@ -76,6 +84,7 @@
                                 @endif
                             </div>
                         </div>
+                        <input type="hidden" name="language" value="{{$selectedLanguageLayout}}">
                         <div class="form-row">
                             <div class="col-12 ml-auto mr-auto text-right">
                                 <a href="{{ route('classes.index') }}" class="btn"> Cancel </a>
@@ -85,7 +94,7 @@
                     </form>
                 </div>
             </div>
-
+            <span>kslskl {{$selectedLanguageLayout}}</span>
             <div class="row">
                 @foreach($classes as $classe)
                    <div>{{$classe->name}}</div>
@@ -103,7 +112,7 @@
         </div>
     </div>
 </div>
-
+</html>
 {{--@extends('front-layout.app')--}}
 
 {{--@section('content')--}}

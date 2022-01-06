@@ -10,3 +10,14 @@
     width: 35px;
     height: 35px;
 }
+.online-class-bg{
+    background-color: #1daaa3;
+}
+
+.online-class-color{
+    color: white;
+}
+
+.dropdown-menu-width{
+    width: 700px;
+}

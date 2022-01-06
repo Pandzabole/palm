@@ -116,7 +116,7 @@ var App = (function(window){
 
     FlipProductImage: function(){
       if($(".img-switch").length > 0){
-      $(".b-product_grid  .b-product_grid_single .b-product_grid_header > a").each(function(){  
+      $(".b-product_grid  .b-product_grid_single .b-product_grid_header > a").each(function(){
         var img_html = $(this).html();
         var data_src = $(this).find('img').attr("data-src");
         var data_src = data_src.split(",");
@@ -332,7 +332,6 @@ var App = (function(window){
               gridheight:[600,600,500,400],
               lazyType:"none",
               parallax: {
-                type:"mouse",
                 origo:"slidercenter",
                 speed:2000,
                 levels:[2,3,4,5,6,7,12,16,10,50,47,48,49,50,51,55],
@@ -435,7 +434,6 @@ var App = (function(window){
               gridheight:[600,600,500,400],
               lazyType:"none",
               parallax: {
-                type:"mouse",
                 origo:"slidercenter",
                 speed:2000,
                 levels:[2,3,4,5,6,7,12,16,10,50,47,48,49,50,51,55],
@@ -539,7 +537,6 @@ var App = (function(window){
               gridheight:[600,600,500,400],
               lazyType:"none",
               parallax: {
-                type:"mouse",
                 origo:"slidercenter",
                 speed:2000,
                 levels:[2,3,4,5,6,7,12,16,10,50,47,48,49,50,51,55],

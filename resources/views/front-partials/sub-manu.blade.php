@@ -410,7 +410,7 @@
                             <!-- Business and career -->
                             <li class=" b-has_sub b-dropdown_wrapper from-bottom">
                                 <a href="shop-grid-three.html" class=" description ">
-                                    <span class="top"> Business & career</span><i class="fa fa-angle-down"></i></a>
+                                    <span class="top">Business & career</span><i class="fa fa-angle-down"></i></a>
                                 <!-- Sub Menu items -->
                                 <div class="b-dropdown_content sub-holder dropdown-menu-right dropdown-menu-width">
                                     <div class="dropdown-inner">

@@ -27,6 +27,7 @@ class CreateClassesTable extends Migration
             $table->decimal('price_omr', $precision = 8, $scale = 2);
             $table->longText('map_location')->nullable();
             $table->boolean('highlighted')->default(false);
+            $table->boolean('discount')->default(false);
             $table->unsignedInteger('position');
             $table->foreignIdFor(ClassCategory::class);
             $table->foreignIdFor(ClassSubCategory::class);

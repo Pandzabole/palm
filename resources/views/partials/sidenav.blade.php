@@ -28,7 +28,7 @@
                         <li class="nav-item">
                             <a class="nav-link @if(request()->is('admin/class-reservation*')) active @endif"
                                href="{{ route('class-reservation.index') }}">
-                                <i class="ni ni-books text-primary"></i>
+                                <i class="ni ni-calendar-grid-58 text-primary"></i>
                                 <span class="nav-link-text">Class Reservations</span>
                             </a>
                         </li>

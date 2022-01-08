@@ -71,7 +71,8 @@ class ContactController extends Controller
         $contact = $this->contactsRepository->store($data);
         $admin = $this->usersRepository->findAdminUser();
 
-        Notification::send($admin, (new ContactNotification($contact))->locale($request->get('lang')));
+        Notification::send($admin, (new
+        ContactNotification($contact))->locale($request->get('lang')));
 
         return response()->json(['message' => 'Message Sent Successfully'], 201);
     }

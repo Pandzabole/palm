@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="{{ asset('css/jasny-bootstrap.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}" type="text/css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-<!-- VodaVoda CSS -->
+<!-- Palmskils CSS -->
 <link rel="stylesheet" href="{{ asset('css/palmskills.css') }}" type="text/css">
 
 <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">

@@ -19,7 +19,15 @@
 <script src="{{ asset('front-css/assets/js/plugins/revolution/revolution.extension.parallax.min.js') }}"></script>
 <script src="{{ asset('front-css/assets/js/plugins/revolution/revolution.extension.slideanims.min.js') }}"></script>
 
+<!-- JQUERY:: ZOOM SLIDER.JS -->
+<script src="{{ asset('front-css/assets/js/plugins/lightbox/simple-lightbox.min.js') }}"></script>
+
+<!-- JQUERY:: ISOTOPE.JS -->
+<script src="{{ asset('front-css/assets/js/plugins/isotop/imagesloaded.min.js') }}"></script>
+<script src="{{ asset('front-css/assets/js/plugins/isotop/isotope.min.js') }}"></script>
+
 <!-- JQUERY:: CUSTOM.JS -->
 <script src="{{ asset('front-css/assets/js/custom.js') }}"></script>
+
 
 @yield('js-links')

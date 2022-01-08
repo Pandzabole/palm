@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Notifications\Notifiable;
+
 
 class ReservationClass extends Model
 {
     use HasFactory;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +28,16 @@ class ReservationClass extends Model
         'phone',
         'country',
         'city',
-        'classe_id'
+        'classe_id',
+        'teacher_id',
+        'read_reservation',
+        'reply_client',
+        'amount'
+    ];
+
+    protected $with = [
+        'teacher',
+        'classe'
     ];
 
     /**
@@ -49,7 +61,7 @@ class ReservationClass extends Model
     /**
      * @return BelongsTo
      */
-    public function class(): BelongsTo
+    public function classe(): BelongsTo
     {
         return $this->belongsTo(Classe::class);
     }

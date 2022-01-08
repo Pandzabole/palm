@@ -17,50 +17,11 @@
                                     <!-- Title -->
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="h3 mb-0">Contacts</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Card body -->
-                                <div class="card-body">
-                                    <!-- List group -->
-                                    <ul class="list-group list-group-flush list my--3">
-                                        @forelse($contacts as $contact)
-                                            <li class="list-group-item px-0">
-                                                <div class="row align-items-center">
-                                                    <div class="col ml--2">
-                                                        <h4 class="mb-0">
-                                                            <a href="{{ route('contacts.show', $contact) }}">{{ $contact->name }}</a>
-                                                        </h4>
-                                                        <small>{{ $contact->created_at }}</small>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <a href="{{ route('contacts.show', $contact) }}"
-                                                           class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        @empty
-                                            No contacts
-                                        @endforelse
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <!-- Members list group card -->
-                            <div class="card">
-                                <!-- Card header -->
-                                <div class="card-header">
-                                    <!-- Title -->
-                                    <div class="row">
-                                        <div class="col">
-                                            <h5 class="h3 mb-0">Latest Reservations</h5>
+                                            <h5 class="h3 mb-0">Latest reservations</h5>
                                         </div>
                                         <div class="col text-right">
-                                            <a href="{{ route('news.create') }}" class="btn btn-sm btn-primary">
-                                                Create
-                                            </a>
+                                            <a href="{{ route('class-reservation.index') }}"
+                                               class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -73,21 +34,21 @@
                                                 <div class="row align-items-center">
                                                     <div class="col ml--2">
                                                         <h4 class="mb-0">
-                                                            <a href="{{ route('news.show', $reservation) }}">{{ $reservation->name }}</a>
+                                                            <a href="{{ route('class-reservation.show', $reservation) }}">{{ $reservation->name }}</a>
                                                         </h4>
                                                         <h4 class="mb-0">
-                                                            <a href="{{ route('news.show', $reservation) }}">{{ $reservation->email }}</a>
+                                                            <a href="{{ route('class-reservation.show', $reservation) }}">{{ $reservation->email }}</a>
                                                         </h4>
-                                                        <small>{{ $reservation->created_at }}</small>
+                                                        <small>{{ $reservation->created_at->format('Y/m/d') }}</small>
                                                     </div>
                                                     <div class="col-auto">
-                                                        <a href="{{ route('news.show', $reservation) }}"
+                                                        <a href="{{ route('class-reservation.show', $reservation) }}"
                                                            class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></a>
                                                     </div>
                                                 </div>
                                             </li>
                                         @empty
-                                            No news
+                                            No reservations
                                         @endforelse
                                     </ul>
                                 </div>
@@ -101,12 +62,10 @@
                                     <!-- Title -->
                                     <div class="row">
                                         <div class="col">
-                                            <h5 class="h3 mb-0">Latest Activities</h5>
-                                        </div>
-                                        <div class="col text-right">
-                                            <a href="{{ route('news.create') }}" class="btn btn-sm btn-primary">
-                                                Create
-                                            </a>
+                                            <h5 class="h3 mb-0 d-inline">Unread reservations</h5>
+                                            @if($reservationClassUnread->count() > 0)
+                                                <button type="button" class="btn btn-danger btn-circle btn-sm d-inline count-class-btn">{{$reservationClassUnread->count()}}</button>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -114,27 +73,75 @@
                                 <div class="card-body">
                                     <!-- List group -->
                                     <ul class="list-group list-group-flush list my--3">
-                                        @forelse($activities as $activity)
+                                        @forelse($reservationClassUnread as $reservation)
                                             <li class="list-group-item px-0">
                                                 <div class="row align-items-center">
                                                     <div class="col ml--2">
                                                         <h4 class="mb-0">
-                                                            <a href="{{ route('activities.show', $activity) }}">{{ $activity->title }}</a>
+                                                            <a href="{{ route('class-reservation.show', $reservation) }}">{{ $reservation->name }}</a>
                                                         </h4>
-                                                        <small>{{ $activity->created_at }}</small>
+                                                        <h4 class="mb-0">
+                                                            <a href="{{ route('class-reservation.show', $reservation) }}">{{ $reservation->email }}</a>
+                                                        </h4>
+                                                        <small>{{ $reservation->created_at->format('Y/m/d') }}</small>
                                                     </div>
                                                     <div class="col-auto">
-                                                        <a href="{{ route('activities.show', $activity) }}"
-                                                           class="btn btn-sm btn-success"><i class="fa fa-eye"></i></a>
+                                                        <a href="{{ route('class-reservation.show', $reservation) }}"
+                                                           class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></a>
                                                     </div>
                                                 </div>
                                             </li>
                                         @empty
-                                            No activities
+                                            No unread reservations
                                         @endforelse
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-xl-4">
+                            <!-- Members list group card -->
+                            <div class="card">
+                                <!-- Card header -->
+                                <div class="card-header">
+                                    <!-- Title -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <h5 class="h3 mb-0 d-inline">No answered reservations</h5>
+                                            @if($noAnsweredReservations->count() > 0)
+                                                <button type="button" class="btn btn-danger btn-circle btn-sm d-inline count-class-btn">{{$noAnsweredReservations->count()}}</button>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card body -->
+                                <div class="card-body">
+                                    <!-- List group -->
+                                    <ul class="list-group list-group-flush list my--3">
+                                        @forelse($noAnsweredReservations as $reservation)
+                                            <li class="list-group-item px-0">
+                                                <div class="row align-items-center">
+                                                    <div class="col ml--2">
+                                                        <h4 class="mb-0">
+                                                            <a href="{{ route('class-reservation.show', $reservation) }}">{{ $reservation->name }}</a>
+                                                        </h4>
+                                                        <h4 class="mb-0">
+                                                            <a href="{{ route('class-reservation.show', $reservation) }}">{{ $reservation->email }}</a>
+                                                        </h4>
+                                                        <small>{{ $reservation->created_at->format('Y/m/d') }}</small>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <a href="{{ route('class-reservation.show', $reservation) }}"
+                                                           class="btn btn-sm btn-warning"><i class="fa fa-eye"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @empty
+                                            No not answered reservations
+                                        @endforelse
+                                    </ul>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

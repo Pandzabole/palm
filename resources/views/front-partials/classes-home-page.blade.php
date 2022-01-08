@@ -1,5 +1,5 @@
 <section id="b-portfolio">
-    <div class="b-portfolio_grid b-portfolio_grid_full mb-5">
+    <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
         <div class="b-section_title text-center">
             <h2 class="text-uppercase">
                 Local Classes

@@ -31,6 +31,8 @@ class ClassControllerUpdateRequest extends FormRequest
             'price_eur' => 'required|numeric',
             'price_omr' => 'required|numeric',
             'price_sar' => 'required|numeric',
+            'discount' => 'sometimes',
+            'discount_percentage' => 'required_unless:discount,null',
             'class_category_id' =>'required|exists:class_categories,id',
             'class_sub_category_id' =>'required|exists:class_sub_categories,id',
             'teacher_id' =>'required|exists:teachers,id',
@@ -52,5 +54,22 @@ class ClassControllerUpdateRequest extends FormRequest
         }
 
         return $rules;
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'media_id' => 'media',
+            'class_category_id' =>'categories',
+            'class_sub_category_id' =>'categories',
+            'teacher_id' =>'teacher',
+            'discount_percentage' => 'Class discount',
+            'discount' => 'discount not checked'
+        ];
     }
 }

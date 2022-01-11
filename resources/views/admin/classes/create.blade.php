@@ -28,7 +28,7 @@
                                     <option value="0">All categories</option>
                                     @foreach($classCategory as $name => $id)
                                         <option @if(old('class_category_id') == $name) selected @endif
-                                            value="{{ $name }}">{{ $id }}</option>
+                                        value="{{ $name }}">{{ $id }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('class_category_id'))
@@ -37,7 +37,8 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif">
+                            <div
+                                class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif">
                                 <label for="classSubCategory">Sub categories</label>
                                 <select class="form-control category-search" id="classSubCategory"
                                         data-toggle="select" data-placeholder="Filter by sub categories"
@@ -45,7 +46,7 @@
                                     <option value="0">All sub categories</option>
                                     @foreach($classSubCategory as $name => $id)
                                         <option @if(old('class_sub_category_id') == $name) selected @endif
-                                            value="{{ $name }}">{{ $id }}</option>
+                                        value="{{ $name }}">{{ $id }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('class_sub_category_id'))
@@ -60,7 +61,7 @@
                                     <option value="0">All teachers</option>
                                     @foreach($teacher as $name => $id)
                                         <option @if(old('teacher_id') == $name) selected @endif
-                                            value="{{ $name }}">{{ $id }}</option>
+                                        value="{{ $name }}">{{ $id }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('teacher_id'))
@@ -75,7 +76,7 @@
                                        name="price_usd"
                                        value="{{ old('price_usd')}}" required>
                                 <span class="form-control-label">The price must be in the format 9.99,use a dot as a separator (9.99)</span>
-                            @if($errors->has('price_usd'))
+                                @if($errors->has('price_usd'))
                                     <span class="text-danger">*{{ $errors->first('price_usd') }}</span>
                                 @endif
                             </div>
@@ -91,7 +92,7 @@
                                 @endif
                             </div>
                         </div>
-                            <div class="form-row">
+                        <div class="form-row">
                             <div class="form-group col-md-6 @if($errors->has('price_sar')) has-danger @endif">
                                 <label for="price_sar">Class price in SAR</label>
                                 <input id="price_sar" class="form-control" placeholder="SAR price"
@@ -110,6 +111,43 @@
                                 <span class="form-control-label">The price must be in the format 9.99,use a dot as a separator (9.99)</span>
                                 @if($errors->has('price_omr'))
                                     <span class="text-danger">*{{ $errors->first('price_omr') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row discount-price p-1 mb-3">
+                            <div class="form-check col-md-2 mb-3">
+                                <div class="form-check-label mb-3 mt-2">Popular class</div>
+                                <input type="checkbox" name="popular" class="switch-input"
+                                       value="1" {{ old('popular') ? 'checked="checked"' : '' }}/>
+                                <label class="form-check-label" for="popular" style="color: #c45151">Popular
+                                    class</label>
+
+                            </div>
+                            <div class="form-check col-md-2 mb-3">
+                                <div class="form-check-label mb-3 mt-2">Show on home page</div>
+                                <input type="checkbox" name="highlighted" class="switch-input"
+                                       value="1" {{ old('highlighted') ? 'checked="checked"' : '' }}/>
+                                <label class="form-check-label" for="highlighted" style="color: #c45151">Show on home page</label>
+
+                            </div>
+                            <div class="form-check col-md-2 mb-3">
+                                <div class="form-check-label mb-3 mt-2">Discounted class</div>
+                                <input type="checkbox" name="discount" class="switch-input"
+                                       value="1" {{ old('discount') ? 'checked="checked"' : '' }}/>
+                                <label class="form-check-label" for="discount" style="color: #c45151">Discounted
+                                    class</label>
+
+                            </div>
+
+                            <div class="form-group col-md-6 pt-2 @if($errors->has('discount_percentage')) has-danger @endif">
+                                <label for="discount_percentage">Class discount</label>
+                                <input id="discount_percentage" class="form-control" placeholder="Class discount"
+                                       name="discount_percentage"
+                                       type="number"
+                                       value="{{ old('discount_percentage')}}">
+                                <span class="form-control-label">The discount must be in the format 20.00 use a dot as a separator (20.00)</span>
+                                @if($errors->has('discount_percentage'))
+                                    <span class="text-danger">*{{ $errors->first('discount_percentage') }}</span>
                                 @endif
                             </div>
                         </div>
@@ -147,7 +185,7 @@
                                 <label for="map_location">Map location</label>
                                 <textarea id="map_location" class="form-control" placeholder="Map location"
                                           name="map_location" rows="4" cols="50"
-                                          >{{ old('map_location') }}</textarea>
+                                >{{ old('map_location') }}</textarea>
                                 @if($errors->has('map_location'))
                                     <span class="text-danger">*{{ $errors->first('map_location') }}</span>
                                 @endif
@@ -171,7 +209,6 @@
                                 <span class="text-danger d-none error-span"></span>
                             </div>
                         </div>
-
                         <div class="form-row">
                             <div class="col-12 ml-auto mr-auto text-right">
                                 <a href="{{ route('classes.index') }}" class="btn"> Cancel </a>

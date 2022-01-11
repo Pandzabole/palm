@@ -55,6 +55,33 @@
                                         </td>
                                 </tr>
                                 <tr class="border-bottom">
+                                    <th scope="row" width="30%">On home page</th>
+                                    <td>
+                                        <img src="@if($classes->highlighted) {{ asset('img/checked.png') }}
+                                        @else {{ asset('img/unchecked.png') }} @endif" width="20px">
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <th scope="row" width="30%">Popular</th>
+                                    <td>
+                                        <img src="@if($classes->popular) {{ asset('img/checked.png') }}
+                                        @else {{ asset('img/unchecked.png') }} @endif" width="20px">
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <th scope="row" width="30%">Discounted</th>
+                                    <td>
+                                        <img src="@if($classes->discount) {{ asset('img/checked.png') }}
+                                        @else {{ asset('img/unchecked.png') }} @endif" width="20px">
+                                    </td>
+                                </tr>
+                                <tr class="border-bottom">
+                                    <th scope="row" width="30%"> Discount</th>
+                                    @if($classes->discount_percentage )
+                                        <td>{{ $classes->discount_percentage }} %</td>
+                                    @endif
+                                </tr>
+                                <tr class="border-bottom">
                                     <th scope="row" width="30%">Main Image</th>
                                     <td>
                                         <img class="thumbnail-show-products" alt=""

@@ -22,7 +22,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class11024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">
@@ -46,7 +46,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class31024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">
@@ -70,7 +70,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class21024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">
@@ -95,7 +95,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class31024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">
@@ -120,7 +120,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class11024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">
@@ -144,7 +144,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class31024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">
@@ -168,7 +168,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class21024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">
@@ -193,7 +193,7 @@
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class31024.jpg" class="img-fluid d-block" alt="">
+                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
                             <div class="b-portfolio_info_in">

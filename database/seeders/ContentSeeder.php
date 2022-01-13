@@ -17,7 +17,10 @@ use Database\Seeders\Content\StaticComponentsOurWaterSeeder;
 use Database\Seeders\Content\SliderSeeder;
 use Database\Seeders\Content\MetaDataSeeder;
 use Database\Seeders\Content\GenderSeeder;
+use Database\Seeders\Content\MainCategorySeeder;
+use Database\Seeders\Content\ClassSubCategorySeeder;
 use Database\Seeders\Content\ClassLocationSeeder;
+use Database\Seeders\Content\TeacherSeeder;
 use Illuminate\Database\Seeder;
 
 class ContentSeeder extends Seeder
@@ -45,6 +48,9 @@ class ContentSeeder extends Seeder
         $this->call(MetaDataSeeder::class);
         $this->call(GenderSeeder::class);
         $this->call(ClassLocationSeeder::class);
+        $this->call(MainCategorySeeder::class);
+        $this->call(ClassSubCategorySeeder::class);
+        $this->call(TeacherSeeder::class);
 
     }
 }

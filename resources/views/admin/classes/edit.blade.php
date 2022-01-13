@@ -120,6 +120,43 @@
                                 </div>
                             </div>
                         </div>
+                            <div class="row discount-price p-1 mb-3">
+                                <div class="form-check col-md-2 mb-3">
+                                    <div class="form-check-label mb-3 mt-2">Popular class</div>
+                                    <input type="checkbox" name="popular" class="switch-input" @if($class->popular) checked @endif
+                                    value="1" {{ old('popular') ? 'checked="checked"' : '' }}/>
+                                    <label class="form-check-label" for="popular" style="color: #c45151">Popular
+                                        class</label>
+
+                                </div>
+                                <div class="form-check col-md-2 mb-3">
+                                    <div class="form-check-label mb-3 mt-2">Show on home page</div>
+                                    <input type="checkbox" name="highlighted" class="switch-input" @if($class->highlighted) checked @endif
+                                    value="1" {{ old('highlighted') ? 'checked="checked"' : '' }}/>
+                                    <label class="form-check-label" for="highlighted" style="color: #c45151">Show on home page</label>
+
+                                </div>
+                                <div class="form-check col-md-2 mb-3">
+                                    <div class="form-check-label mb-3 mt-2">Discounted class</div>
+                                    <input type="checkbox" name="discount" class="switch-input" @if($class->discount) checked @endif
+                                    value="1" {{ old('discount') ? 'checked="checked"' : '' }}/>
+                                    <label class="form-check-label" for="discount" style="color: #c45151">Discounted
+                                        class</label>
+
+                                </div>
+
+                                <div class="form-group col-md-6 pt-2 @if($errors->has('discount_percentage')) has-danger @endif">
+                                    <label for="discount_percentage">Class discount</label>
+                                    <input id="discount_percentage" class="form-control" placeholder="Class discount"
+                                           name="discount_percentage"
+                                           type="number"
+                                           value="{{ old('name') ?? $class->discount_percentage }}">
+                                    <span class="form-control-label">The discount must be in the format 20.00 use a dot as a separator (20.00)</span>
+                                    @if($errors->has('discount_percentage'))
+                                        <span class="text-danger">*{{ $errors->first('discount_percentage') }}</span>
+                                    @endif
+                                </div>
+                            </div>
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="class_location">Location</label>

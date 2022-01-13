@@ -9,7 +9,7 @@
                                 <!-- Mega menu -->
                                 <!-- Top level items -->
                                 <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                    <a href="index.html" class=" description ">
+                                    <a href="{{ route('home') }}" class=" description ">
                                         <span class="top">Home</span></a>
                                     <!-- Sub Menu items -->
                                 </li>
@@ -216,8 +216,8 @@
                                     </div>
                                 </li>
                                 <!-- Top level items -->
-                                <li class="b-has_sub b-dropdown_wrapper from-bottom">
-                                    <a href="product-single.html"><span class="top">Contact</span></a>
+                                <li class="b-has_sub b-dropdown_wrapper from-bottom nav-link @if(request()->is('contact-us*')) active @endif">
+                                    <a href="{{route('contact-us')}}"><span class="top">Contact</span></a>
                                 </li>
                             </ul>
                         </div>

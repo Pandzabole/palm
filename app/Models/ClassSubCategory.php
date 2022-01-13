@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Traits\Slug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -10,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class ClassSubCategory extends Model
 {
     use HasFactory;
-    use Slug;
 
     /**
      * The relations to eager load on every query.
@@ -29,15 +27,6 @@ class ClassSubCategory extends Model
     protected $fillable = [
         'name',
     ];
-
-    /**
-     * @return string
-     */
-    public function slugable(): string
-    {
-        return $this->name;
-    }
-
 
     /**
      * The roles that belong to the user.

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Mediable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -33,6 +34,9 @@ class Classe extends Model
         'class_category_id',
         'class_sub_category_id',
         'teacher_id',
+        'discount',
+        'discount_percentage',
+        'popular'
     ];
 
     protected $with = [
@@ -41,6 +45,12 @@ class Classe extends Model
         'teacher',
         'locations',
         'media'
+    ];
+
+    protected $casts = [
+        'discount' => 'boolean',
+        'highlighted' => 'boolean',
+        'popular' => 'boolean'
     ];
 
     /**

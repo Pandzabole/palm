@@ -111,10 +111,11 @@ class ClassController extends Controller
                 );
             })
             ->editColumn('highlighted', 'admin.classes.datatables.highlighted')
+            ->editColumn('discount', 'admin.classes.datatables.discounted')
             ->editColumn('date', static function ($class) {
                 return $class->created_at;
             })
-            ->rawColumns(['actions', 'highlighted'])
+            ->rawColumns(['actions', 'highlighted', 'discount'])
             ->addColumn('categories', static function (Classe $class) {
                 return $class->classCategory->pluck('name')->implode(', ');
             })
@@ -238,7 +239,9 @@ class ClassController extends Controller
     public function update(ClassControllerUpdateRequest $request, int $id): RedirectResponse
     {
         $data = $request->all();
-
+        $data['discount'] = $data['discount'] ?? false;
+        $data['highlighted'] = $data['highlighted'] ?? false;
+        $data['popular'] = $data['popular'] ?? false;
         $class = $this->classesRepository->findOneById($id);
 
         $this->classesRepository->update($class, $data);
@@ -305,7 +308,7 @@ class ClassController extends Controller
      */
     public function highlight(int $id): RedirectResponse
     {
-        $this->classesRepository->updateMultiple(['highlighted' => true], ['highlighted' => false]);
+//        $this->classesRepository->updateMultiple(['highlighted' => true], ['highlighted' => false]);
         $class = $this->classesRepository->findOneById($id);
         $this->classesRepository->update($class, ['highlighted' => true]);
 

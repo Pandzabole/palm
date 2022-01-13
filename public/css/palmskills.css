@@ -388,3 +388,9 @@ table.dataTable.display tbody tr.even:hover {
 .count-class-btn{
     border-radius: 50%;
 }
+
+.discount-price{
+    border: 1px solid #c45151;
+    border-radius: 7px;
+    margin: 2px;
+}

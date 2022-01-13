@@ -4,6 +4,8 @@
             <span>BOOK YOUR CLASS</span>
             <h2 class="text-uppercase">
                 WHY US
+                <hr style="width: 200px; position: center">
+                <hr style="width: 200px; position: center">
             </h2>
         </div>
     </div>

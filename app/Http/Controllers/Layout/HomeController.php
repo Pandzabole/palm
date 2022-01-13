@@ -7,6 +7,7 @@ use App\Http\Requests\LayoutRequests\SetLanguageLayoutRequest;
 use App\Repositories\Contracts\ActivitiesRepository;
 use App\Repositories\Contracts\LanguagesRepository;
 use App\Repositories\Contracts\ClassesRepository;
+use App\Repositories\Contracts\ClassCategoryRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -28,22 +29,28 @@ class HomeController extends Controller
     /** @var ClassesRepository $classesRepository */
     public $classesRepository;
 
+    /** @var ClassCategoryRepository $classCategoryRepository */
+    public $classCategoryRepository;
+
     /**
      * ActivityCategoryController constructor.
      *
      * @param ActivitiesRepository $activityCategoriesRepository
      * @param LanguagesRepository $languagesRepository
      * @param ClassesRepository $classesRepository
+     * @param ClassCategoryRepository $classCategoryRepository
      */
     public function __construct(
         ActivitiesRepository $activityCategoriesRepository,
         LanguagesRepository $languagesRepository,
-        ClassesRepository $classesRepository
+        ClassesRepository $classesRepository,
+        ClassCategoryRepository $classCategoryRepository
     )
     {
         $this->activityCategoriesRepository = $activityCategoriesRepository;
         $this->languagesRepository = $languagesRepository;
         $this->classesRepository = $classesRepository;
+        $this->classCategoryRepository = $classCategoryRepository;
     }
 
     /**
@@ -59,11 +66,10 @@ class HomeController extends Controller
         session()->put('locale', $langSession);
 
         $languageList = config('languages');
-        $classes  = $this->classesRepository->getAll();
-        $pera = $this->activityCategoriesRepository->findOneById('1')->title;
         $session = Session::get('db_language_layout');
+        $mainCategories = $this->classCategoryRepository->getAll();
 
-        return view('main', compact('pera', 'languageList', 'classes', 'session'));
+        return view('main', compact('languageList', 'session', 'mainCategories'));
     }
 
     /**

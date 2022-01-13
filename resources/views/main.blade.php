@@ -2,7 +2,7 @@
 
 {{--<div class="item">--}}
 {{--    <div class="box-info-classic">--}}
-{{--        <h4 class="box-info-classic-title">{{__('email.test')}}</h4>--}}
+{{--        <h4 class="box-info-classic-title">{{__('contact.test')}}</h4>--}}
 {{--    </div>--}}
 {{--</div>--}}
 
@@ -115,6 +115,12 @@
 {{--</html>--}}
 @extends('front-layout.app')
 
-{{--@section('content')--}}
 
-{{--@endsection--}}
+@section('content')
+
+    @include('front-partials.home-slider')
+    @include('front-partials.how-to-reserve-class')
+    @include('front-partials.classes-home-page')
+    @include('front-partials.why-us')
+
+@endsection

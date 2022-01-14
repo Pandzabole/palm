@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClassCategoryCreateRequest;
 use App\Http\Requests\ClassCategoryUpdateRequest;
+use App\Models\ClassSubCategory;
 use App\Repositories\Contracts\ClassSubCategoryRepository;
 use App\Repositories\Contracts\ClassesRepository;
+use App\Repositories\Contracts\ClassCategoryRepository;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -22,17 +24,25 @@ class ClassSubCategoryController extends Controller
     /** @var ClassesRepository $classesRepository */
     private $classesRepository;
 
+    /** @var ClassCategoryRepository $classCategoryRepository */
+    private $classCategoryRepository;
 
     /**
      * ContactController constructor.
      *
      * @param ClassSubCategoryRepository $classSubCategoryRepository
+     * @param ClassCategoryRepository $classCategoryRepository
      * @param ClassesRepository $classesRepository
      */
-    public function __construct(ClassSubCategoryRepository $classSubCategoryRepository, ClassesRepository $classesRepository )
+    public function __construct(
+        ClassSubCategoryRepository $classSubCategoryRepository,
+        ClassesRepository $classesRepository,
+        ClassCategoryRepository $classCategoryRepository
+    )
     {
         $this->classSubCategoryRepository = $classSubCategoryRepository;
         $this->classesRepository = $classesRepository;
+        $this->classCategoryRepository =  $classCategoryRepository;
     }
 
     /**
@@ -62,6 +72,9 @@ class ClassSubCategoryController extends Controller
                     ['model' => $category, 'routeModelName' => 'sub-categories']
                 );
             })
+            ->addColumn('categories', static function (ClassSubCategory $category) {
+                return $category->classCategory->pluck('name')->implode(', ');
+            })
             ->rawColumns(['actions'])
             ->make(true);
     }
@@ -73,7 +86,7 @@ class ClassSubCategoryController extends Controller
      */
     public function create()
     {
-        $mainCategory = $this->classSubCategoryRepository->findByFilters()->pluck('name', 'id');
+        $mainCategory = $this->classCategoryRepository->findByFilters()->pluck('name', 'id');
 
         return view('admin.class-sub-categories.create', compact('mainCategory'));
     }
@@ -90,6 +103,7 @@ class ClassSubCategoryController extends Controller
         $data = $request->all();
 
         $subCategory = $this->classSubCategoryRepository->store($data);
+        $this->classCategoryRepository->attach($subCategory, 'classCategory', [$request->get('main_category')]);
 
         return redirect()
             ->route('sub-categories.show', $subCategory->id)
@@ -104,7 +118,7 @@ class ClassSubCategoryController extends Controller
      */
     public function show(int $id)
     {
-        $subCategory = $this->classSubCategoryRepository->findOneById($id);
+        $subCategory = $this->classSubCategoryRepository->findOneById($id)->load('classCategory');
 
         return view('admin.class-sub-categories.show', compact('subCategory'));
     }
@@ -118,8 +132,9 @@ class ClassSubCategoryController extends Controller
     public function edit(int $id)
     {
         $subCategory = $this->classSubCategoryRepository->findOneById($id);
+        $mainCategory = $this->classCategoryRepository->findByFilters()->pluck('name', 'id');
 
-        return view('admin.class-sub-categories.edit', compact('subCategory'));
+        return view('admin.class-sub-categories.edit', compact('subCategory', 'mainCategory'));
     }
 
     /**
@@ -132,9 +147,10 @@ class ClassSubCategoryController extends Controller
     public function update(Request $request, int $id): RedirectResponse
     {
         $data = $request->all();
-
         $subCategory = $this->classSubCategoryRepository->findOneById($id);
         $this->classSubCategoryRepository->update($subCategory, $data);
+        $this->classesRepository->sync($subCategory, 'classCategory', [$data['main_category']]);
+
 
         return redirect()
             ->route('sub-categories.show', $subCategory->id)

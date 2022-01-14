@@ -42,7 +42,8 @@ class ContactController extends Controller
 
         $languageList = config('languages');
         $session = Session::get('db_language_layout');
-        $mainCategories = $this->classCategoryRepository->getAll();
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+
 
         return view('front-pages.contact', compact('languageList', 'session', 'mainCategories'));
 

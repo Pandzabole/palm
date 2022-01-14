@@ -67,7 +67,7 @@ class HomeController extends Controller
 
         $languageList = config('languages');
         $session = Session::get('db_language_layout');
-        $mainCategories = $this->classCategoryRepository->getAll();
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
 
         return view('main', compact('languageList', 'session', 'mainCategories'));
     }

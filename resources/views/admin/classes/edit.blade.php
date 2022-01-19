@@ -26,8 +26,8 @@
                             <div class="col-lg-6 pl-3">
                                 <div class="form-group">
                                     <label for="class_category_id">Main category</label>
-                                    <select class="form-control"
-                                            id="classCategory"
+                                    <select class="form-control category-search" id="classCategory"
+                                            data-toggle="select" data-placeholder="Filter by categories"
                                             name="class_category_id">
                                         @foreach($classCategory as $id => $name))
                                         <option @if($id === $class->classCategory->id) selected
@@ -38,17 +38,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                            <div class="row">
                             <div class="col-lg-6 pl-3">
                                 <div class="form-group">
                                     <label for="class_sub_category_id">Sub category</label>
-                                    <select class="form-control"
-                                            id="subcategory"
+                                    <select class="form-control category-search" id="subcategory"
+                                            data-toggle="select" data-placeholder="Filter by sub categories"
                                             name="class_sub_category_id">
-                                        @foreach($classSubCategory as $id => $name))
-                                        <option @if($id === $class->classSubCategory->id) selected
-                                                @endif value="{{$id}}" id="pera">{{$name}}</option>
-                                        @endforeach
+                                        <option value="{{$classSubCategory->id}}" id="hide-sub-category">{{$classSubCategory->name}}</option>
                                     </select>
                                     <span class="text-danger d-none error-span error-class_sub_category_id"></span>
                                     <span class="text-danger" id="selected-sub">* there are no sub categories for the selected main category</span>
@@ -57,8 +54,8 @@
                             <div class="col-lg-6 pl-3">
                                 <div class="form-group">
                                     <label for="teacher_id">Teacher</label>
-                                    <select class="form-control"
-                                            id="teacher_id"
+                                    <select class="form-control category-search" id="teacher"
+                                            data-toggle="select" data-placeholder="Filter by teacher"
                                             name="teacher_id">
                                         @foreach($teacher as $id => $name))
                                         <option @if($id === $class->teacher->id) selected
@@ -263,7 +260,7 @@
                 $(document).ready(function () {
                     $('#selected-sub').hide()
                     $('#classCategory').on('change', function () {
-                        $('#pera').hide()
+                        $('#hide-sub-category').hide()
 
                         let categoryID = $(this).val();
                         if (categoryID) {

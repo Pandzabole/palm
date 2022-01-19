@@ -209,7 +209,7 @@ class ClassController extends Controller
         $mediaDesktop = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'desktop']);
         $mediaMobile = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'mobile']);
         $classCategory = $this->classCategoryRepository->findByFilters()->pluck('name', 'id');
-        $classSubCategory = $this->classSubCategoryRepository->findByFilters()->pluck('name', 'id');
+        $classSubCategory = $this->classSubCategoryRepository->findOneById($class->class_sub_category_id);
         $classLocation = $this->classLocationRepository->findByFilters();
         $selectedLocations = $class->locations->pluck('id')->toArray();
         $teacher = $this->teacherRepository->findByFilters()->pluck('name', 'id');

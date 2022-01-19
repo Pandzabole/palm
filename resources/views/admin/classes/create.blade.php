@@ -38,7 +38,7 @@
                         </div>
                         <div class="form-row">
                             <div
-                                class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif" >
+                                class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif">
                                 <label for="classSubCategory">Sub categories</label>
                                 <select class="form-control category-search" id="subcategory"
                                         data-toggle="select" data-placeholder="Filter by sub categories"

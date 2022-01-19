@@ -34,7 +34,7 @@ class ClassControllerUpdateRequest extends FormRequest
             'discount' => 'sometimes',
             'discount_percentage' => 'required_unless:discount,null',
             'class_category_id' =>'required|exists:class_categories,id',
-            'class_sub_category_id' =>'required|exists:class_sub_categories,id',
+            'class_sub_category_id' =>'required|exists:class_category_class_sub_category,class_sub_category_id',
             'teacher_id' =>'required|exists:teachers,id',
             'class_location' => 'required',
             'image_desktop' => 'nullable|mimes:jpeg,bmp,png',

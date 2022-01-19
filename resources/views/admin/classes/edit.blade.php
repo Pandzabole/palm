@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="class_category_id">Main category</label>
                                     <select class="form-control"
-                                            id="class_category_id"
+                                            id="classCategory"
                                             name="class_category_id">
                                         @foreach($classCategory as $id => $name))
                                         <option @if($id === $class->classCategory->id) selected
@@ -43,14 +43,15 @@
                                 <div class="form-group">
                                     <label for="class_sub_category_id">Sub category</label>
                                     <select class="form-control"
-                                            id="class_sub_category_id"
+                                            id="subcategory"
                                             name="class_sub_category_id">
                                         @foreach($classSubCategory as $id => $name))
                                         <option @if($id === $class->classSubCategory->id) selected
-                                                @endif value="{{$id}}">{{$name}}</option>
+                                                @endif value="{{$id}}" id="pera">{{$name}}</option>
                                         @endforeach
                                     </select>
                                     <span class="text-danger d-none error-span error-class_sub_category_id"></span>
+                                    <span class="text-danger" id="selected-sub">* there are no sub categories for the selected main category</span>
                                 </div>
                             </div>
                             <div class="col-lg-6 pl-3">
@@ -258,5 +259,40 @@
             @parent
 
             <script src="{{ asset('js/media-model.js') }}"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#selected-sub').hide()
+                    $('#classCategory').on('change', function () {
+                        $('#pera').hide()
+
+                        let categoryID = $(this).val();
+                        if (categoryID) {
+                            $.ajax({
+                                url: "{{ route('class-sub-categories') }}",
+                                data: {
+                                    id: categoryID,
+                                    _token: "{{ csrf_token() }}"
+                                },
+                                type: "GET",
+                                success: function (data) {
+                                    if (data) {
+                                        $('#selected-sub').hide()
+                                        $('#subcategory').empty();
+                                        $.each(data.subcategories, function (index, subcategory) {
+                                            $('#subcategory').append('<option value="' + subcategory.class_sub_category.id + '">' + subcategory.class_sub_category.name + '</option>');
+                                        })
+                                    }
+                                    if (data.subcategories.length === 0) {
+                                        $('#subcategory').empty();
+                                        $('#selected-sub').show()
+                                    }
+                                }
+                            });
+                        } else {
+                            $('#subcategory').empty();
+                        }
+                    });
+                });
+            </script>
 
 @endsection

@@ -25,7 +25,7 @@
                                 </tr>
                                 <tr class="border-bottom">
                                     <th scope="row" width="30%"> Description</th>
-                                    <td class="component-description">{{ $classes->description }}</td>
+                                    <td class="component-description">{!! $classes->description !!}</td>
                                 </tr>
                                 <tr class="border-bottom">
                                     <th scope="row" width="30%"> Price</th>

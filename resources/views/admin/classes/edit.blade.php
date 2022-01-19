@@ -169,20 +169,33 @@
                                 <span class="text-danger d-none error-span error-class_location"></span>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group @if($errors->has('description')) has-danger @endif">
+{{--                        <div class="row">--}}
+{{--                            <div class="col-md-12">--}}
+{{--                                <div class="form-group @if($errors->has('description')) has-danger @endif">--}}
+{{--                                    <label for="description">Description</label>--}}
+{{--                                    <textarea id="description" class="form-control" placeholder="Description"--}}
+{{--                                              name="description"--}}
+{{--                                              rows="4" cols="50"--}}
+{{--                                              required>{{ old('description') ?? $class->description }}</textarea>--}}
+{{--                                    @if($errors->has('description'))--}}
+{{--                                        <span class="text-danger">*{{ $errors->first('description') }}</span>--}}
+{{--                                    @endif--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
+                            <div class="form-row">
+                                <div class="col form-group @if($errors->has('description')) has-danger @endif">
                                     <label for="description">Description</label>
-                                    <textarea id="description" class="form-control" placeholder="Description"
-                                              name="description"
-                                              rows="4" cols="50"
+                                    <textarea name="description"
+                                              cols="30" rows="5"
+                                              class="form-control summernote"
                                               required>{{ old('description') ?? $class->description }}</textarea>
                                     @if($errors->has('description'))
                                         <span class="text-danger">*{{ $errors->first('description') }}</span>
                                     @endif
                                 </div>
                             </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group @if($errors->has('map_location')) has-danger @endif">

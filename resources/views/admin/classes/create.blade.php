@@ -38,21 +38,16 @@
                         </div>
                         <div class="form-row">
                             <div
-                                class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif">
+                                class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif" >
                                 <label for="classSubCategory">Sub categories</label>
                                 <select class="form-control category-search" id="subcategory"
                                         data-toggle="select" data-placeholder="Filter by sub categories"
                                         name="class_sub_category_id">
-{{--                                    <option value="0">All sub categories</option>--}}
-{{--                                    @foreach($classSubCategory as $name => $id)--}}
-{{--                                        <option @if(old('class_sub_category_id') == $name) selected @endif--}}
-{{--                                        value="{{ $name }}">{{ $id }}</option>--}}
-{{--                                    @endforeach--}}
-
                                 </select>
                                 @if($errors->has('class_sub_category_id'))
                                     <span class="text-danger">*{{ $errors->first('class_sub_category_id') }}</span>
                                 @endif
+                                <span class="text-danger" id="selected-sub">* there are no sub categories for the selected main category</span>
                             </div>
                             <div class="form-group col-md-6 @if($errors->has('teacher_id')) has-danger @endif">
                                 <label for="teacher">Teacher</label>
@@ -128,7 +123,8 @@
                                 <div class="form-check-label mb-3 mt-2">Show on home page</div>
                                 <input type="checkbox" name="highlighted" class="switch-input"
                                        value="1" {{ old('highlighted') ? 'checked="checked"' : '' }}/>
-                                <label class="form-check-label" for="highlighted" style="color: #c45151">Show on home page</label>
+                                <label class="form-check-label" for="highlighted" style="color: #c45151">Show on home
+                                    page</label>
 
                             </div>
                             <div class="form-check col-md-2 mb-3">
@@ -140,7 +136,8 @@
 
                             </div>
 
-                            <div class="form-group col-md-6 pt-2 @if($errors->has('discount_percentage')) has-danger @endif">
+                            <div
+                                class="form-group col-md-6 pt-2 @if($errors->has('discount_percentage')) has-danger @endif">
                                 <label for="discount_percentage">Class discount</label>
                                 <input id="discount_percentage" class="form-control" placeholder="Class discount"
                                        name="discount_percentage"
@@ -231,10 +228,11 @@
 
     <script src="{{ asset('js/media-model.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $('#classCategory').on('change', function() {
+        $(document).ready(function () {
+            $('#selected-sub').hide()
+            $('#classCategory').on('change', function () {
                 let categoryID = $(this).val();
-                if(categoryID) {
+                if (categoryID) {
                     $.ajax({
                         url: "{{ route('class-sub-categories') }}",
                         data: {
@@ -242,23 +240,21 @@
                             _token: "{{ csrf_token() }}"
                         },
                         type: "GET",
-                        success:function(data)
-                        {
-                            if(data){
+                        success: function (data) {
+                            if (data) {
+                                $('#selected-sub').hide()
                                 $('#subcategory').empty();
-                                $.each(data.subcategories,function(index,subcategory) {
-                                    console.log(subcategory.class_sub_category.name)
+                                $.each(data.subcategories, function (index, subcategory) {
                                     $('#subcategory').append('<option value="' + subcategory.class_sub_category.id + '">' + subcategory.class_sub_category.name + '</option>');
-
                                 })
                             }
-                            else{
+                            if (data.subcategories.length === 0) {
                                 $('#subcategory').empty();
+                                $('#selected-sub').show()
                             }
                         }
                     });
-                }
-                else{
+                } else {
                     $('#subcategory').empty();
                 }
             });

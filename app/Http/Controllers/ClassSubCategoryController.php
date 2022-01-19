@@ -8,6 +8,7 @@ use App\Models\ClassSubCategory;
 use App\Repositories\Contracts\ClassSubCategoryRepository;
 use App\Repositories\Contracts\ClassesRepository;
 use App\Repositories\Contracts\ClassCategoryRepository;
+use App\Repositories\Contracts\ClassCategoryClassSubCategory;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
@@ -27,22 +28,28 @@ class ClassSubCategoryController extends Controller
     /** @var ClassCategoryRepository $classCategoryRepository */
     private $classCategoryRepository;
 
+    /** @var ClassCategoryClassSubCategory $classCategoryClassSubCategory */
+    private $classCategoryClassSubCategory;
+
     /**
      * ContactController constructor.
      *
      * @param ClassSubCategoryRepository $classSubCategoryRepository
      * @param ClassCategoryRepository $classCategoryRepository
      * @param ClassesRepository $classesRepository
+     * @param ClassCategoryClassSubCategory $classCategoryClassSubCategory
      */
     public function __construct(
         ClassSubCategoryRepository $classSubCategoryRepository,
         ClassesRepository $classesRepository,
-        ClassCategoryRepository $classCategoryRepository
+        ClassCategoryRepository $classCategoryRepository,
+        ClassCategoryClassSubCategory $classCategoryClassSubCategory
     )
     {
         $this->classSubCategoryRepository = $classSubCategoryRepository;
         $this->classesRepository = $classesRepository;
         $this->classCategoryRepository =  $classCategoryRepository;
+        $this->classCategoryClassSubCategory =  $classCategoryClassSubCategory;
     }
 
     /**
@@ -180,5 +187,19 @@ class ClassSubCategoryController extends Controller
                 ->route('sub-categories.index')
                 ->with('success', 'You cannot delete a sub category because it is in use');
         }
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function getSubCategories(Request $request): JsonResponse
+    {
+        $mainCategoryId = $request->get('id');
+        $subCategory = $this->classCategoryClassSubCategory->findByFilters(
+            'created_at',
+            'desc',
+            ['class_category_id' => $mainCategoryId])->load('classSubCategory');
+        return response()->json(['subcategories' => $subCategory], 200);
     }
 }

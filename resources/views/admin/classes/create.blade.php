@@ -40,14 +40,15 @@
                             <div
                                 class="form-group col-md-6 @if($errors->has('class_sub_category_id')) has-danger @endif">
                                 <label for="classSubCategory">Sub categories</label>
-                                <select class="form-control category-search" id="classSubCategory"
+                                <select class="form-control category-search" id="subcategory"
                                         data-toggle="select" data-placeholder="Filter by sub categories"
                                         name="class_sub_category_id">
-                                    <option value="0">All sub categories</option>
-                                    @foreach($classSubCategory as $name => $id)
-                                        <option @if(old('class_sub_category_id') == $name) selected @endif
-                                        value="{{ $name }}">{{ $id }}</option>
-                                    @endforeach
+{{--                                    <option value="0">All sub categories</option>--}}
+{{--                                    @foreach($classSubCategory as $name => $id)--}}
+{{--                                        <option @if(old('class_sub_category_id') == $name) selected @endif--}}
+{{--                                        value="{{ $name }}">{{ $id }}</option>--}}
+{{--                                    @endforeach--}}
+
                                 </select>
                                 @if($errors->has('class_sub_category_id'))
                                     <span class="text-danger">*{{ $errors->first('class_sub_category_id') }}</span>
@@ -229,5 +230,39 @@
     @parent
 
     <script src="{{ asset('js/media-model.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#classCategory').on('change', function() {
+                let categoryID = $(this).val();
+                if(categoryID) {
+                    $.ajax({
+                        url: "{{ route('class-sub-categories') }}",
+                        data: {
+                            id: categoryID,
+                            _token: "{{ csrf_token() }}"
+                        },
+                        type: "GET",
+                        success:function(data)
+                        {
+                            if(data){
+                                $('#subcategory').empty();
+                                $.each(data.subcategories,function(index,subcategory) {
+                                    console.log(subcategory.class_sub_category.name)
+                                    $('#subcategory').append('<option value="' + subcategory.class_sub_category.id + '">' + subcategory.class_sub_category.name + '</option>');
+
+                                })
+                            }
+                            else{
+                                $('#subcategory').empty();
+                            }
+                        }
+                    });
+                }
+                else{
+                    $('#subcategory').empty();
+                }
+            });
+        });
+    </script>
 
 @endsection

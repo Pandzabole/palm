@@ -125,6 +125,8 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
 
     Route::resource('sub-categories', ClassSubCategoryController::class);
     Route::get('sub-categories-data', [ClassSubCategoryController::class, 'getData'])->name('sub-categories.data');
+    Route::get('class-sub-categories', [ClassSubCategoryController::class, 'getSubCategories'])->name('class-sub-categories');
+
 
     Route::resource('class-reservation', ClassReservationController::class);
     Route::get('classes-reservation-data', [ClassReservationController::class, 'getData'])->name('classes-reservation.data');

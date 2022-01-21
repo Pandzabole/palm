@@ -15,7 +15,7 @@
                                 </li>
                                 <!-- Top level items -->
                                 <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                    <a href="shop-grid-three.html" class=" description ">
+                                    <a href="{{ route('single-class') }}" class=" description ">
                                         <span class="top">Classes</span><i class="fa fa-angle-down"></i></a>
                                     <!-- Sub Menu items -->
                                     <div class="b-dropdown_content sub-holder dropdown-left" style="width: 992px;">

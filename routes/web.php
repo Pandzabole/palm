@@ -23,6 +23,7 @@ use App\Http\Controllers\ClassCategoryController;
 use App\Http\Controllers\ClassSubCategoryController;
 use App\Http\Controllers\ClassReservationController;
 use App\Http\Controllers\Layout\ReservationClassController;
+use App\Http\Controllers\Layout\ClassController as FrontClassController;
 use App\Http\Controllers\Layout\ContactController as FrontContactController;
 use App\Http\Controllers\ClassLocation;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,7 @@ Route::get('/set-language-layout', [HomeController::class, 'setLanguage'])->name
 Route::middleware('language.layout')->group(static function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('contact-us', [FrontContactController::class, 'index'])->name('contact-us');
+Route::get('single-class', [FrontClassController::class, 'index'])->name('single-class');
 Route::resource('reservation-class', ReservationClassController::class);
 /** Return contact view*/
 

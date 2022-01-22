@@ -49,66 +49,30 @@
 
             <div class="container" style="width: 80%">
                 <div class="row clearfix gallery" id="b-portfolio_isotop">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
                         <div class="b-portfolio_single">
                             <div class="b-portfolio_img b-img_zoom">
-                                <img src="front-css/assets/images/classes/class11024.jpg" class="img-fluid d-block" alt="">
+{{--                                Slika mora da bude 1200 - 600 odnos 1:0.5--}}
+                                <img src="front-css/assets/images/classes/class110244.jpg" class="img-fluid d-block" alt="">
                             </div>
                         </div>
                         <div class="b-portfolio_single">
-                            <section id="b-testimonial">
-                                <div class="b-testimonial b-testimonial_small mb-5">
-                                    <div class="b-testimonial_listing owl-carousel owl-theme" id="b-testimonial_list">
-                                        <div class="b-testimonial_single">
-                                            <div class="b-testimonial_inner">
-                                                <div class="b-testimonial_avatar">
-                                                    <img class="img-fluid rounded-circle m-auto d-block" src="front-css/assets/images/testimonial_01.jpg" alt="" title="" width="100" height="100">
-                                                </div>
-                                                <div class="b-testimonial_content text-center">
-                                                    <p>
-                                                        Fringilla iaculis ante torquent a diam a vestibulum diam nisi augue dictumst parturient a vestibulum tortor viverra inceptos adipiscing nec a ullamcorper.Ullamcorper aliquam rutrum.
-                                                    </p>
-                                                    <footer>
-                                                        John Doe <span>Happy Customer</span>
-                                                    </footer>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="b-testimonial_single">
-                                            <div class="b-testimonial_inner">
-                                                <div class="b-testimonial_avatar">
-                                                    <img class="img-fluid rounded-circle m-auto d-block" src="front-css/assets/images/testimonial_02.jpg" alt="" title="" width="100" height="100">
-                                                </div>
-                                                <div class="b-testimonial_content text-center">
-                                                    <p>
-                                                        Fringilla iaculis ante torquent a diam a vestibulum diam nisi augue dictumst parturient a vestibulum tortor viverra inceptos adipiscing nec a ullamcorper.Ullamcorper aliquam rutrum.
-                                                    </p>
-                                                    <footer>
-                                                        John Doe <span>Happy Customer</span>
-                                                    </footer>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
                         <div class="b-portfolio_single">
                             <div class="b-portfolio_img b-img_zoom">
-                                <img src="front-css/assets/images/classes/class21024.jpg" class="img-fluid d-block" alt="">
+                                <img src="front-css/assets/images/classes/class110244.jpg" class="img-fluid d-block" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-print p-1">
-                        <div class="b-portfolio_single">
-                            <div class="b-portfolio_img b-img_zoom">
-                                <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-print p-1">--}}
+{{--                        <div class="b-portfolio_single">--}}
+{{--                            <div class="b-portfolio_img b-img_zoom">--}}
+{{--                                <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

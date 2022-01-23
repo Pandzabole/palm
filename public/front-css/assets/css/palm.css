@@ -28,3 +28,47 @@
 .how-its-work-text{
     font-size: 20px;
 }
+
+/* Single class css */
+
+.book-main{
+    border: 1px solid #1daaa3;
+    padding: 0;
+}
+
+.book-header{
+    background-color: #1daaa3;
+    color: white;
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 7px;
+}
+
+.book-class-tabs{
+    background-color: white;
+}
+
+.book-now{
+    font-size: 30px;
+    height: 50px;
+    margin-top: 8px;
+    padding-top: 14px;
+}
+
+
+.title-single-class::after{
+    display: none;
+}
+.container-single-class-header{
+    width: 100%;
+}
+
+.container-single-class{
+    width: 80%;
+}
+
+/* End single class css */
+

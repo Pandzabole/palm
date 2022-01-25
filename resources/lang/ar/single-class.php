@@ -7,5 +7,9 @@ return [
     'subject' => 'Phone',
     'message' => 'هاتف',
     'btn' => 'ارسل رسالة',
-    'btn-book-class' => 'احجز صفًا'
+    'btn-book-class' => 'احجز صفًا',
+    'short-description' => 'وصف قصير',
+    'class-location' => 'موقع الفصل',
+    'skill-level' => 'مستوى المهارة',
+    'price' => 'السعر'
 ];

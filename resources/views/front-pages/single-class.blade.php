@@ -109,9 +109,10 @@
                                 <div role="tabpanel" class="tab-pane fade in active show p-3" id="tab-01">
                                     <div class="row clearfix">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h5><strong>Viverra a consectetur</strong></h5>
-                                            <p class="b-font_title pt-1 pb-1"><i>Enim in malesuada fusce dolor mi massa leo taciti nulla vestibulum dignissim senectus vitae elit ullamcorper primis.</i></p>
-                                            <h5><strong>Facilisis scelerisque mi</strong></h5>
+                                            <h5 class="text-center mb-4"><strong class="single-class-index"> {{__('single-class.price')}} : </strong> <span class="price-book-class"> 50 EUR / </span> <span class="price-book-class"> 80 DOL </span> </h5>
+                                            <h5><strong> {{__('single-class.skill-level')}} : </strong> <span> intermediate </span> </h5>
+                                            <h5><strong> {{__('single-class.class-location')}} : </strong> <span> online </span> <span> from home </span> </h5>
+                                            <h5><strong>{{__('single-class.short-description')}}</strong></h5>
                                             <p>Amet quisque adipiscing scelerisque vestibulum a parturient aptent et pretium a a suspendisse a vestibulum dolor a adipiscing a curabitur integer vulputate praesent convallis. Est nisi ante accumsan pulvinar facilisi orci dignissim lacinia ad sodales conubia viverra a consectetur lectus cras quis aliquam eros curabitur ultricies mauris lectus dictumst magna hac aenean. Odio nec adipiscing.&nbsp;Pulvinar in taciti dui condimentum a vel bibendum aliquet velit nam ultrices.&nbsp;Odio nec adipiscing neque purus parturient a est eu accumsan placerat vestibulum.</p>
                                             <div class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12 text-center">
                                                 <a href="" class="btn btn-bg btn-lg btn-block text-white book-now">{{__('single-class.btn-book-class')}}</a>

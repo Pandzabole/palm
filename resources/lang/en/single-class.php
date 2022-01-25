@@ -7,5 +7,9 @@ return [
     'subject' => 'Phone',
     'message' => 'Your Message',
     'btn' => 'SEND A MESSAGE',
-    'btn-book-class' => 'BOOK A CLASS'
+    'btn-book-class' => 'BOOK A CLASS',
+    'short-description' => 'Short description',
+    'class-location' => 'Class location',
+    'skill-level' => 'Skill level',
+    'price' => 'Price'
 ];

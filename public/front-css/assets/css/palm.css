@@ -70,5 +70,14 @@
     width: 80%;
 }
 
+.price-book-class{
+    color: red;
+    font-size: 23px;
+}
+
+.single-class-index{
+    font-size: 23px;
+}
 /* End single class css */
+
 

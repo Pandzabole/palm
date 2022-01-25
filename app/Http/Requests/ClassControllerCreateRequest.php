@@ -26,6 +26,9 @@ class ClassControllerCreateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'description' => 'required|string',
+            'description_first' => 'required|string',
+            'description_second' => 'required|string',
+            'level' => 'required|string',
             'price_usd' => 'required|numeric',
             'price_eur' => 'required|numeric',
             'price_omr' => 'required|numeric',

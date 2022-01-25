@@ -133,9 +133,7 @@
                                        value="1" {{ old('discount') ? 'checked="checked"' : '' }}/>
                                 <label class="form-check-label" for="discount" style="color: #c45151">Discounted
                                     class</label>
-
                             </div>
-
                             <div
                                 class="form-group col-md-6 pt-2 @if($errors->has('discount_percentage')) has-danger @endif">
                                 <label for="discount_percentage">Class discount</label>
@@ -150,7 +148,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-12 @if($errors->has('class_location')) has-danger @endif">
+                            <div class="form-group col-md-6 @if($errors->has('class_location')) has-danger @endif">
                                 <label for="classLocation" class="asterisk">Class Location</label>
                                 <select class="form-control category-search" id="classLocation"
                                         data-toggle="select" multiple data-placeholder="Class Location" required
@@ -166,16 +164,47 @@
                                     <span class="text-danger">*{{ $errors->first('class_location') }}</span>
                                 @endif
                             </div>
+                            <div class="form-group col-md-6 @if($errors->has('level')) has-danger @endif">
+                                <label for="level" class="asterisk">Class level</label>
+                                    <input id="level" class="form-control" placeholder="Class level"
+                                           name="level"
+                                           value="{{ old('level')}}">
+                                @if($errors->has('level'))
+                                    <span class="text-danger">*{{ $errors->first('level') }}</span>
+                                @endif
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="col form-group @if($errors->has('description')) has-danger @endif">
-                                <label for="description">Description</label>
+                                <label for="description">Description book class</label>
                                 <textarea name="description"
                                           cols="30" rows="5"
                                           class="form-control summernote"
                                           required>{{ old('description') }}</textarea>
                                 @if($errors->has('description'))
                                     <span class="text-danger">*{{ $errors->first('description') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group @if($errors->has('description_first')) has-danger @endif">
+                                <label for="description_first">Description left</label>
+                                <textarea name="description_first"
+                                          cols="30" rows="5"
+                                          class="form-control summernote"
+                                          required>{{ old('description_first') }}</textarea>
+                                @if($errors->has('description_first'))
+                                    <span class="text-danger">*{{ $errors->first('description_first') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6 form-group @if($errors->has('description_second')) has-danger @endif">
+                                <label for="description_second">Description right</label>
+                                <textarea name="description_second"
+                                          cols="30" rows="5"
+                                          class="form-control summernote"
+                                          required>{{ old('description_second') }}</textarea>
+                                @if($errors->has('description_second'))
+                                    <span class="text-danger">*{{ $errors->first('description_second') }}</span>
                                 @endif
                             </div>
                         </div>

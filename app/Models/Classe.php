@@ -36,7 +36,10 @@ class Classe extends Model
         'teacher_id',
         'discount',
         'discount_percentage',
-        'popular'
+        'popular',
+        'description_first',
+        'description_second',
+        'level'
     ];
 
     protected $with = [

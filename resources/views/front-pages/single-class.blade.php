@@ -90,6 +90,8 @@
                         </div>
                     </div>
                 </section>
+                <p>Amet quisque adipiscing scelerisque vestibulum a parturient aptent et pretium a a suspendisse a vestibulum dolor a adipiscing a curabitur integer vulputate praesent convallis. Est nisi ante accumsan pulvinar facilisi orci dignissim lacinia ad sodales conubia viverra a consectetur lectus cras quis aliquam eros curabitur ultricies mauris lectus dictumst magna hac aenean. Odio nec adipiscing.&nbsp;Pulvinar in taciti dui condimentum a vel bibendum aliquet velit nam ultrices.&nbsp;Odio nec adipiscing neque purus parturient a est eu accumsan placerat vestibulum.</p>
+
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 book-main">
                <div class="book-header">Book Your Class</div>
@@ -109,9 +111,19 @@
                                 <div role="tabpanel" class="tab-pane fade in active show p-3" id="tab-01">
                                     <div class="row clearfix">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h5 class="text-center mb-4"><strong class="single-class-index"> {{__('single-class.price')}} : </strong> <span class="price-book-class"> 50 EUR / </span> <span class="price-book-class"> 80 DOL </span> </h5>
-                                            <h5><strong> {{__('single-class.skill-level')}} : </strong> <span> intermediate </span> </h5>
-                                            <h5><strong> {{__('single-class.class-location')}} : </strong> <span> online </span> <span> from home </span> </h5>
+                                            @if($session === 'database-en')
+                                                <h5 class="text-center mb-4"><span class="single-class-index"> {{__('single-class.price')}} : </span> <span class="price-book-class"> 50 EUR or </span> <span class="price-book-class"> 80 DOL </span> </h5>
+                                                <h5><strong> {{__('single-class.skill-level')}} : </strong> <span> intermediate </span> </h5>
+                                                <h5><strong> {{__('single-class.class-location')}} : </strong> <span> online </span> <span> from home </span> </h5>
+                                            @endif
+                                            @if($session === 'database-ar')
+                                                    <h5 class="text-center mb-4"><span class="single-class-index"> <span class="price-book-class"> EUR 50 </span> : {{__('single-class.price')}} </span></h5>
+                                                    <h5> <span> intermediate </span> : <strong> {{__('single-class.skill-level')}}  </strong> </h5>
+                                                    <h5><span> online </span> <span> from home </span> : <strong> {{__('single-class.class-location')}} : </strong> </h5>
+                                                @endif
+                                            @if($session === 'database-om')
+                                                    <h5 class="text-center mb-4"><span class="single-class-index"> <span class="price-book-class"> EUR 50 </span> : {{__('single-class.price')}} </span></h5>
+                                                @endif
                                             <h5><strong>{{__('single-class.short-description')}}</strong></h5>
                                             <p>Amet quisque adipiscing scelerisque vestibulum a parturient aptent et pretium a a suspendisse a vestibulum dolor a adipiscing a curabitur integer vulputate praesent convallis. Est nisi ante accumsan pulvinar facilisi orci dignissim lacinia ad sodales conubia viverra a consectetur lectus cras quis aliquam eros curabitur ultricies mauris lectus dictumst magna hac aenean. Odio nec adipiscing.&nbsp;Pulvinar in taciti dui condimentum a vel bibendum aliquet velit nam ultrices.&nbsp;Odio nec adipiscing neque purus parturient a est eu accumsan placerat vestibulum.</p>
                                             <div class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12 text-center">

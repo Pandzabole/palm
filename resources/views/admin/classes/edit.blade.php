@@ -156,7 +156,7 @@
                                 </div>
                             </div>
                         <div class="row">
-                            <div class="form-group col-md-12">
+                            <div class="form-group col-md-6">
                                 <label for="class_location">Location</label>
                                 <select class="selectpicker form-control"
                                         data-toggle="select" multiple data-placeholder="Location" required
@@ -168,16 +168,49 @@
                                 </select>
                                 <span class="text-danger d-none error-span error-class_location"></span>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group @if($errors->has('level')) has-danger @endif">
+                                    <label for="level">Class level</label>
+                                    <input id="level" class="form-control" placeholder="Class level"
+                                           name="level"
+                                           value="{{ old('level') ?? $class->level }}">
+                                    @if($errors->has('level'))
+                                        <span class="text-danger">*{{ $errors->first('level') }}</span>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                             <div class="form-row">
                                 <div class="col form-group @if($errors->has('description')) has-danger @endif">
-                                    <label for="description">Description</label>
+                                    <label for="description">Description book class</label>
                                     <textarea name="description"
                                               cols="30" rows="5"
                                               class="form-control summernote"
                                               required>{{ old('description') ?? $class->description }}</textarea>
                                     @if($errors->has('description'))
                                         <span class="text-danger">*{{ $errors->first('description') }}</span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 form-group @if($errors->has('description_first')) has-danger @endif">
+                                    <label for="description_first">Description left</label>
+                                    <textarea name="description_first"
+                                              cols="30" rows="5"
+                                              class="form-control summernote"
+                                              required>{{ old('description_first') ?? $class->description_first }}</textarea>
+                                    @if($errors->has('description_first'))
+                                        <span class="text-danger">*{{ $errors->first('description_first') }}</span>
+                                    @endif
+                                </div>
+                                <div class="col-md-6 form-group @if($errors->has('description_second')) has-danger @endif">
+                                    <label for="description_second">Description right</label>
+                                    <textarea name="description_second"
+                                              cols="30" rows="5"
+                                              class="form-control summernote"
+                                              required>{{ old('description_second') ?? $class->description_second }}</textarea>
+                                    @if($errors->has('description_second'))
+                                        <span class="text-danger">*{{ $errors->first('description_second') }}</span>
                                     @endif
                                 </div>
                             </div>

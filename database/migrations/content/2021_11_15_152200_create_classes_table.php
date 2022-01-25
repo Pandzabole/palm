@@ -21,6 +21,9 @@ class CreateClassesTable extends Migration
             $table->id();
             $table->string('name');
             $table->longText('description');
+            $table->longText('description_first');
+            $table->longText('description_second');
+            $table->string('level')->nullable();
             $table->unsignedDecimal('price_usd', $precision = 8, $scale = 2);
             $table->unsignedDecimal('price_eur', $precision = 8, $scale = 2);
             $table->unsignedDecimal('price_sar', $precision = 8, $scale = 2);

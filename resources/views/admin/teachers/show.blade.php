@@ -47,6 +47,18 @@
                                                 <td>{{ $teacher->url }}</td>
                                             </tr>
                                             <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Description</th>
+                                                <td class="component-description">{!! $teacher->description !!}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Testimonials first</th>
+                                                <td class="component-testimonials_first">{!! $teacher->testimonials_first !!}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Testimonials second</th>
+                                                <td class="component-testimonials_second">{!! $teacher->testimonials_second !!}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Teacher image</th>
                                                 <td>
                                                     <img class="thumbnail-show" alt=""

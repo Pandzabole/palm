@@ -28,6 +28,9 @@ class TeacherCreateRequest extends FormRequest
             'gender_id' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
+            'description' => 'required',
+            'testimonials_first' => 'required',
+            'testimonials_second' => 'required',
             'image' => 'nullable|required_without:media_id|mimes:jpeg,bmp,png',
             'media_id' => 'nullable|required_without:image|exists:media,id',
         ];

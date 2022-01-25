@@ -71,6 +71,40 @@
                             </div>
                         </div>
                         <div class="form-row">
+                            <div class="col form-group @if($errors->has('description')) has-danger @endif">
+                                <label for="description">Description</label>
+                                <textarea name="description"
+                                          cols="30" rows="5"
+                                          class="form-control summernote"
+                                          required>{{ old('description') ?? $teacher->description }}</textarea>
+                                @if($errors->has('description'))
+                                    <span class="text-danger">*{{ $errors->first('description') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 form-group @if($errors->has('testimonials_first')) has-danger @endif">
+                                <label for="testimonials_first">Testimonials first</label>
+                                <textarea name="testimonials_first"
+                                          cols="30" rows="5"
+                                          class="form-control summernote"
+                                          required>{{ old('testimonials_first') ?? $teacher->testimonials_first }}</textarea>
+                                @if($errors->has('testimonials_first'))
+                                    <span class="text-danger">*{{ $errors->first('testimonials_first') }}</span>
+                                @endif
+                            </div>
+                            <div class="col-md-6 form-group @if($errors->has('testimonials_second')) has-danger @endif">
+                                <label for="testimonials_second">Testimonials second</label>
+                                <textarea name="testimonials_second"
+                                          cols="30" rows="5"
+                                          class="form-control summernote"
+                                          required>{{ old('testimonials_second') ?? $teacher->testimonials_second }}</textarea>
+                                @if($errors->has('testimonials_second'))
+                                    <span class="text-danger">*{{ $errors->first('testimonials_second') }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group col">
                                 <label class="asterisk">Image</label>
                                 @include('partials.media.form', [

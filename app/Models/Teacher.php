@@ -23,6 +23,9 @@ class Teacher extends Model
         'email',
         'phone',
         'url',
+        'description',
+        'testimonials_first',
+        'testimonials_second'
     ];
 
     /**

@@ -78,6 +78,11 @@
 .single-class-index{
     font-size: 23px;
 }
+
+.class-header-text{
+    background-color: #1daaa3;
+    color: white;
+}
 /* End single class css */
 
 

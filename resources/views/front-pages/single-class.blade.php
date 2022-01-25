@@ -2,11 +2,8 @@
 
 @section('content')
     <div class="b-wrapper">
-        <div class="b-page-title-wrap b-title-dark-scheme" style="background: red">
+        <div class="b-page-title-wrap class-header-text mt-1">
             <h1 class="b-page-title text-center">Single Product</h1>
-            <ul class="b-breadcrumbs">
-                <li> Single Product </li>
-            </ul>
         </div>
 
         <div class="container container-single-class-header">

@@ -22,22 +22,14 @@
                                     <div class="dropdown-inner">
                                         <div class="row">
                                             @foreach($mainCategory->classSubCategory as $classSub)
-                                            <div class="col-xs-12 col-sm-4">
+                                                <div class="col-xs-12 col-sm-4">
                                                 <div class="menu-item">
 {{--                                                    <h4 class="column-title"><b>SHOP STYLES</b></h4>--}}
                                                     <div class="categories">
                                                         <div class="row">
                                                             <div class="col-sm-12 hover-menu">
                                                                 <ul>
-                                                                    <li><a href="#">{{$classSub->name}}<i class="menu-tag hot">HOT</i></a></li>
-{{--                                                                    <li><a href="shop-grid-leftbar.html">Alternative shop</a></li>--}}
-{{--                                                                    <li><a href="shop-grid-four.html">Default style</a></li>--}}
-{{--                                                                    <li><a href="shop-hover-02.html">Button on hover</a></li>--}}
-{{--                                                                    <li><a href="shop-hover-03.html">Button hover alt</a></li>--}}
-{{--                                                                    <li><a href="shop-hover-04.html">Hover info</a></li>--}}
-{{--                                                                    <li><a href="shop-hover-05.html">Standard button</a></li>--}}
-{{--                                                                    <li><a href="shop-hover-06.html">Quick shop products <i class="menu-tag new">NEW</i></a></li>--}}
-{{--                                                                    <li><a href="shop-grid-list-switcher.html">Grid/List switcher <i class="menu-tag hot">HOT</i></a></li>--}}
+                                                                    <li><a href="{{ route('sub-classes', $classSub->id) }}">{{$classSub->name}}</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>

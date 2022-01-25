@@ -242,12 +242,6 @@ class ClassController extends Controller
 
         $this->classesRepository->update($class, $data);
 
-        $classCategoryId = [$request->get('class_category_id')];
-        $classSubCategoryId = $request->get('class_sub_category_id');
-        $classSubCategoryRepository = $this->classSubCategoryRepository->findOneById($classSubCategoryId);
-
-        $this->classCategoryRepository->sync($classSubCategoryRepository, 'classCategory', $classCategoryId);
-
         $files = [
             [
                 'type' => Media::DESKTOP,

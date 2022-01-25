@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Layout;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ClassCategoryRepository;
+use App\Repositories\Contracts\ClassesRepository;
+use App\Services\FrontLayout\FrontLayoutDataService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -16,16 +18,28 @@ class ClassController extends Controller
     /** @var ClassCategoryRepository $classCategoryRepository */
     public $classCategoryRepository;
 
+    /** @var ClassesRepository $classesRepository */
+    public $classesRepository;
+
+    /** @var FrontLayoutDataService $frontLayoutDataService */
+    public $frontLayoutDataService;
+
     /**
      * ActivityCategoryController constructor.
      *
      * @param ClassCategoryRepository $classCategoryRepository
+     * @param FrontLayoutDataService $frontLayoutDataService
+     * @param ClassesRepository $classesRepository
      */
     public function __construct(
-        ClassCategoryRepository $classCategoryRepository
+        ClassCategoryRepository $classCategoryRepository,
+        FrontLayoutDataService $frontLayoutDataService,
+        ClassesRepository $classesRepository
     )
     {
         $this->classCategoryRepository = $classCategoryRepository;
+        $this->frontLayoutDataService = $frontLayoutDataService;
+        $this->classesRepository = $classesRepository;
     }
 
     /**
@@ -35,19 +49,32 @@ class ClassController extends Controller
      */
     public function index()
     {
-        $langSession = Session::get('db_language_name_layout');
-        App::setLocale($langSession);
-
-        session()->put('locale', $langSession);
+//        $langSession = Session::get('db_language_name_layout');
+//        App::setLocale($langSession);
+//
+//        session()->put('locale', $langSession);
+//        $this->frontLayoutDataService->getData();
 
         $languageList = config('languages');
         $session = Session::get('db_language_layout');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
 
-        return view('front-pages.single-class', compact('languageList', 'session', 'mainCategories'));
+//        return view('front-pages.single-class', compact('languageList', 'session', 'mainCategories'));
+        return view('front-pages.all-classes', compact('languageList', 'session', 'mainCategories'));
 
     }
 
+    public function showSubCategoryClasses($id)
+    {
+        $classes = $this->classesRepository->findByFilters('created_at', 'desc', ['class_sub_category_id' => $id]);
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+
+        $session = Session::get('db_language_layout');
+
+        return view('front-pages.all-sub-classes', compact('classes', 'session', 'mainCategories'));
+
+
+    }
     /**
      * Show the form for creating a new resource.
      *

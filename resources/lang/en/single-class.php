@@ -11,5 +11,6 @@ return [
     'short-description' => 'Short description',
     'class-location' => 'Class location',
     'skill-level' => 'Skill level',
-    'price' => 'Price'
+    'price' => 'Price',
+    'no-classes' => 'For the selected criterion there is no classes'
 ];

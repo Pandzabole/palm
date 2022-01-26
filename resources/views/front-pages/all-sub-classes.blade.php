@@ -3,9 +3,13 @@
 @section('content')
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
-            @if($classes)
-                <h1 class="b-page-title text-center">{{$classes[0]->name}} classes</h1>
+            @if($singleClass)
+                <h1 class="b-page-title text-center">{{ $singleClass->name }} </h1>
+
+            @else
+                <h1 class="b-page-title text-center">{{__('single-class.no-classes')}} </h1>
             @endif
+
         </div>
 
         <div class="container container-single-class-header">

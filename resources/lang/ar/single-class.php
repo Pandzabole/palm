@@ -11,5 +11,6 @@ return [
     'short-description' => 'وصف قصير',
     'class-location' => 'موقع الفصل',
     'skill-level' => 'مستوى المهارة',
-    'price' => 'السعر'
+    'price' => 'السعر',
+    'no-classes' => 'بالنسبة للمعيار المحدد لا توجد فئات'
 ];

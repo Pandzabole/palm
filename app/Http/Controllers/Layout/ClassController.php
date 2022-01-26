@@ -68,10 +68,10 @@ class ClassController extends Controller
     {
         $classes = $this->classesRepository->findByFilters('created_at', 'desc', ['class_sub_category_id' => $id]);
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
-
+        $singleClass = $classes->first();
         $session = Session::get('db_language_layout');
 
-        return view('front-pages.all-sub-classes', compact('classes', 'session', 'mainCategories'));
+        return view('front-pages.all-sub-classes', compact('classes', 'session', 'mainCategories', 'singleClass'));
 
 
     }

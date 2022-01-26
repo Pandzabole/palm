@@ -60,10 +60,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $langSession = Session::get('db_language_name_layout');
-        App::setLocale($langSession);
-
-        session()->put('locale', $langSession);
+//        $langSession = Session::get('db_language_name_layout');
+//        App::setLocale($langSession);
+//
+//        session()->put('locale', $langSession);
 
         $languageList = config('languages');
         $session = Session::get('db_language_layout');

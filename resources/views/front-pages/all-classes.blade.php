@@ -3,7 +3,7 @@
 @section('content')
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
-            <h1 class="b-page-title text-center">Single Product</h1>
+            <h1 class="b-page-title text-center">All classes</h1>
         </div>
 
         <div class="container container-single-class-header">
@@ -21,5 +21,5 @@
                 </div>
             </div>
         </div>
-
+    </div>
 @endsection

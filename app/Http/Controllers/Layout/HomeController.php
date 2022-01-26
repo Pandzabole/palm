@@ -9,6 +9,7 @@ use App\Repositories\Contracts\LanguagesRepository;
 use App\Repositories\Contracts\ClassesRepository;
 use App\Repositories\Contracts\ClassCategoryRepository;
 use Illuminate\Contracts\Foundation\Application;
+use App\Services\FrontLayout\FrontLayoutDataService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
@@ -32,6 +33,10 @@ class HomeController extends Controller
     /** @var ClassCategoryRepository $classCategoryRepository */
     public $classCategoryRepository;
 
+    /** @var FrontLayoutDataService $frontLayoutDataService */
+    public $frontLayoutDataService;
+
+
     /**
      * ActivityCategoryController constructor.
      *
@@ -39,11 +44,13 @@ class HomeController extends Controller
      * @param LanguagesRepository $languagesRepository
      * @param ClassesRepository $classesRepository
      * @param ClassCategoryRepository $classCategoryRepository
+     * @param FrontLayoutDataService $frontLayoutDataService
      */
     public function __construct(
         ActivitiesRepository $activityCategoriesRepository,
         LanguagesRepository $languagesRepository,
         ClassesRepository $classesRepository,
+        FrontLayoutDataService $frontLayoutDataService,
         ClassCategoryRepository $classCategoryRepository
     )
     {
@@ -51,6 +58,7 @@ class HomeController extends Controller
         $this->languagesRepository = $languagesRepository;
         $this->classesRepository = $classesRepository;
         $this->classCategoryRepository = $classCategoryRepository;
+        $this->frontLayoutDataService = $frontLayoutDataService;
     }
 
     /**
@@ -60,11 +68,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $langSession = Session::get('db_language_name_layout');
-//        App::setLocale($langSession);
-//
-//        session()->put('locale', $langSession);
-
+        $this->frontLayoutDataService->getData();
         $languageList = config('languages');
         $session = Session::get('db_language_layout');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');

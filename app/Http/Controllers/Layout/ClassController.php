@@ -49,12 +49,8 @@ class ClassController extends Controller
      */
     public function index()
     {
-//        $langSession = Session::get('db_language_name_layout');
-//        App::setLocale($langSession);
-//
-//        session()->put('locale', $langSession);
-//        $this->frontLayoutDataService->getData();
 
+        $this->frontLayoutDataService->getData();
         $languageList = config('languages');
         $session = Session::get('db_language_layout');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
@@ -66,6 +62,7 @@ class ClassController extends Controller
 
     public function showSubCategoryClasses($id)
     {
+        $this->frontLayoutDataService->getData();
         $classes = $this->classesRepository->findByFilters('created_at', 'desc', ['class_sub_category_id' => $id]);
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $singleClass = $classes->first();

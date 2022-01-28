@@ -83,7 +83,7 @@ class ClassController extends Controller
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $session = Session::get('db_language_layout');
 
-        return view('front-pages.single-class', compact('session', 'mainCategories'));
+        return view('front-pages.single-class', compact('session', 'mainCategories', 'class'));
 
     }
 

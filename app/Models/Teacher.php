@@ -35,6 +35,7 @@ class Teacher extends Model
      */
     protected $with = [
         'gender',
+        'media'
     ];
 
     /**

@@ -29,8 +29,8 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
                         <div class="b-portfolio_single">
                             <div class="b-portfolio_img b-img_zoom">
-{{--                                Slika mora da bude 1200 - 600 odnos 1:0.5--}}
-                                <img src="front-css/assets/images/classes/class110244.jpg" class="img-fluid d-block" alt="">
+{{--                                Slika mora da bude 1200 - 700 odnos 1:0.5--}}
+                                <img src="{{ asset( $class->desktopImage()->getUrl()) }}" class="img-fluid d-block" alt="">
                             </div>
                         </div>
                         <div class="b-portfolio_single">
@@ -39,7 +39,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
                         <div class="b-portfolio_single">
                             <div class="b-portfolio_img b-img_zoom">
-                                <img src="front-css/assets/images/classes/class110244.jpg" class="img-fluid d-block" alt="">
+                                <img src="{{ asset( $class->mobileImage()->getUrl()) }}"class="img-fluid d-block" alt="">
                             </div>
                         </div>
                     </div>
@@ -47,22 +47,21 @@
             </div>
         </div>
     </section>
-
+{{--    @dd($class)--}}
     <div class="container container-single-class">
-        <div class="row clearfix pb-5 pt-5">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="row clearfix pb-5">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                 <section id="b-testimonial">
                     <div class="b-testimonial b-testimonial_small mb-5">
                         <div class="b-testimonial_listing owl-carousel owl-theme" id="b-testimonial_list">
                             <div class="b-testimonial_single">
                                 <div class="b-testimonial_inner">
                                     <div class="b-testimonial_avatar">
-                                        <img class="img-fluid rounded-circle m-auto d-block" src="front-css/assets/images/classes/teacher.jpg" alt="" title="" width="200" height="200">
+                                        <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->firstMediaUrl()) }}" alt="" title="" width="200" height="200">
                                     </div>
                                     <div class="b-testimonial_content text-center">
-                                        <p>
-                                            Fringilla iaculis ante torquent a diam a vestibulum diam nisi augue dictumst parturient a vestibulum tortor viverra inceptos adipiscing nec a ullamcorper.Ullamcorper aliquam rutrum.
-                                        </p>
+                                        <p> {!! $class->teacher->testimonials_first !!} </p>
+
                                         <footer>
                                             John Doe <span>Happy Customer</span>
                                         </footer>
@@ -72,12 +71,10 @@
                             <div class="b-testimonial_single">
                                 <div class="b-testimonial_inner">
                                     <div class="b-testimonial_avatar">
-                                        <img class="img-fluid rounded-circle m-auto d-block" src="front-css/assets/images/testimonial_02.jpg" alt="" title="" width="100" height="100">
+                                        <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->firstMediaUrl()) }}" alt="" title="" width="100" height="100">
                                     </div>
                                     <div class="b-testimonial_content text-center">
-                                        <p>
-                                            Fringilla iaculis ante torquent a diam a vestibulum diam nisi augue dictumst parturient a vestibulum tortor viverra inceptos adipiscing nec a ullamcorper.Ullamcorper aliquam rutrum.
-                                        </p>
+                                        <p> {!! $class->teacher->testimonials_second !!} </p>
                                         <footer>
                                             John Doe <span>Happy Customer</span>
                                         </footer>
@@ -87,8 +84,7 @@
                         </div>
                     </div>
                 </section>
-                <p>Amet quisque adipiscing scelerisque vestibulum a parturient aptent et pretium a a suspendisse a vestibulum dolor a adipiscing a curabitur integer vulputate praesent convallis. Est nisi ante accumsan pulvinar facilisi orci dignissim lacinia ad sodales conubia viverra a consectetur lectus cras quis aliquam eros curabitur ultricies mauris lectus dictumst magna hac aenean. Odio nec adipiscing.&nbsp;Pulvinar in taciti dui condimentum a vel bibendum aliquet velit nam ultrices.&nbsp;Odio nec adipiscing neque purus parturient a est eu accumsan placerat vestibulum.</p>
-
+            <p>{!! $class->teacher->description !!}</p>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 book-main">
                <div class="book-header">Book Your Class</div>

@@ -40,11 +40,23 @@ class ClassControllerUpdateRequest extends FormRequest
             'class_sub_category_id' =>'required|exists:class_category_class_sub_category,class_sub_category_id',
             'teacher_id' =>'required|exists:teachers,id',
             'class_location' => 'required',
-            'image_desktop' => 'nullable|mimes:jpeg,bmp,png',
+            'image_desktop' => 'nullable',
             'media_desktop_id' => 'nullable|exists:media,id',
-            'image_mobile' => 'nullable|mimes:jpeg,bmp,png',
+            'image_mobile' => 'nullable',
             'media_mobile_id' => 'nullable|exists:media,id',
         ];
+
+        if ($this->request->get('desktop_deleted')) {
+            $rules['image_desktop'] = 'nullable|required_without:media_desktop_id|mimes:jpeg,bmp,png';
+            $rules['media_desktop_id'] = 'nullable|required_without:image_desktop|exists:media,id';
+        }
+
+        if ($this->request->get('mobile_deleted')) {
+            $rules['image_mobile'] = 'nullable|required_without:media_id|mimes:jpeg,bmp,png';
+            $rules['media_mobile_id'] = 'nullable|required_without:image_mobile|exists:media,id';
+        }
+
+        return $rules;
 
         return $rules;
     }

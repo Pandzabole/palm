@@ -130,7 +130,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-4 col-xs-6">
                 <div class="b-logo text-sm-left text-lg-center text-xl-center">
-                    <a href="index.html" class="d-inline-block"><img src="front-css/assets/images/logo.png" class="img-fluid d-block" alt=""></a>
+                    <a href="index.html" class="d-inline-block"><img src="{{ asset('front-css/assets/images/logo.png') }}" class="img-fluid d-block" alt=""></a>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-8 col-xs-6">

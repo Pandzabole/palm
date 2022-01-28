@@ -1,10 +1,11 @@
 @extends('front-layout.app')
 
 @section('content')
+
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
             @if($singleClass)
-                <h1 class="b-page-title text-center">{{ $singleClass->name }} </h1>
+                <h1 class="b-page-title text-center">{{ $singleClass->classSubCategory->name}} classes</h1>
 
             @else
                 <h1 class="b-page-title text-center">{{__('single-class.no-classes')}} </h1>
@@ -12,7 +13,7 @@
 
         </div>
 
-        <div class="container container-single-class-header">
+        <div class="container container-single-class">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="b-decent-title-wrap">
@@ -27,8 +28,7 @@
                 </div>
             </div>
         </div>
-
-        <div class="container">
+        <div class="container  container-single-class">
             <div class="row clearfix b-shop_head">
                 <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-6 col-xs-12">
                     <nav class="b-shop_breadcrumb">
@@ -132,37 +132,45 @@
             </div>
         </div>
         <div class="b-products b-product_grid b-product_grid_four mb-4">
-            <div class="container">
+            <div class="container container-single-class">
                 <div class="row clearfix">
                     @foreach($classes as $class)
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="b-product_grid_single">
                             <div class="b-product_grid_header">
-                                <a href="#">
-                                    <img data-src="assets/images/products/home/product_grid_04_01.jpg, assets/images/products/home/product_grid_04_02.jpg" src="{{ asset( $class->desktopImage()->getThumbUrl()) }}" class="img-fluid img-switch d-block" alt="" style="">
+                                <a href="{{ route('single-class', $class->id) }}">
+                                    <img src="{{ asset( $class->desktopImage()->getUrl()) }}" class="" alt="" style="">
                                 </a>
                                 <div class="b-product_grid_action">
-                                    <a href="javascript:void(0)" data-whishurl="whishlist.html" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Whishlist">
-                                        <i class="icon-heart icons b-add_to_whish">
-                                            <img src="{{ asset( $class->desktopImage()->getThumbUrl()) }}" class="g-loading_gif" alt="">
-                                        </i>
-                                    </a>
-                                    <i data-toggle="tooltip" data-placement="left" title="" class="icon-refresh icons" data-original-title="Compare"></i>
-                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">
-                                        <i data-toggle="tooltip" data-placement="left" title="" class="icon-magnifier-add icons" data-original-title="Quick View"></i>
-                                    </a>
+{{--                                    <a href="javascript:void(0)" data-whishurl="whishlist.html" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Whishlist">--}}
+{{--                                        <i class="icon-heart icons b-add_to_whish">--}}
+{{--                                            <img src="{{ asset( $class->desktopImage()->getThumbUrl()) }}" class="g-loading_gif" alt="">--}}
+{{--                                        </i>--}}
+{{--                                    </a>--}}
+{{--                                    <i data-toggle="tooltip" data-placement="left" title="" class="icon-refresh icons" data-original-title="Compare"></i>--}}
+{{--                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">--}}
+{{--                                        <i data-toggle="tooltip" data-placement="left" title="" class="icon-magnifier-add icons" data-original-title="Quick View"></i>--}}
+{{--                                    </a>--}}
                                 </div>
                             </div>
                             <div class="b-product_grid_info">
                                 <h3 class="product-title">
-                                    <a href="#">Before decaf phone case</a>
+                                    <a href="{{ route('single-class', $class->id) }}">{{ $class->name }}</a>
                                 </h3>
                                 <div class="clearfix">
                                     <div class="b-product_grid_toggle float-left">
-                                        <span class="b-price">$49</span>
+                                        @if($session === 'database-ar')
+                                            <span class="b-price price-style">{{ $class->price_sar }} AED</span>
+                                        @endif
+                                            @if($session === 'database-en')
+                                                <span class="b-price price-style">{{ $class->price_usd }} USD or {{ $class->price_eur }} EUR</span>
+                                            @endif
+                                            @if($session === 'database-om')
+                                                <span class="b-price price-style">{{ $class->price_omr }}</span>
+                                            @endif
                                         <span class="b-add_cart">
                                           <i class="icon-basket icons"></i>
-                                          <a href="#">Add to cart</a>
+                                          <a href="{{ route('single-class', $class->id) }}">Add to cart</a>
                                       </span>
                                     </div>
                                 </div>
@@ -170,6 +178,9 @@
                         </div>
                     </div>
                     @endforeach
+                        {{--                @if($session === 'database-ar')--}}
+                        {{--                        <div>{{$classe->price_usd}}</div>--}}
+                        {{--                    @endif--}}
 
 {{--                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">--}}
 {{--                        <div class="b-product_grid_single">--}}

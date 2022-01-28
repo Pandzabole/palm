@@ -240,7 +240,6 @@
                                         'exists' => true,
                                         'resource' => $class,
                                         'mediaModal' => 'media-modal-desktop'
-
                                    ])
                                 <p class="form-control-label">Required image: landscape <span
                                         class="image-desktop-portrait"></span>
@@ -259,7 +258,7 @@
                                         'exists' => true,
                                         'resource' => $class,
                                         'mediaModal' => 'media-modal-mobile'
-                                   ])
+                                  ])
                                 <p class="form-control-label">Required image: landscape <span
                                         class="image-desktop-portrait"></span>
                                 </p>

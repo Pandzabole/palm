@@ -49,17 +49,18 @@ class ClassController extends Controller
      */
     public function index()
     {
-
         $this->frontLayoutDataService->getData();
         $languageList = config('languages');
         $session = Session::get('db_language_layout');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
 
-//        return view('front-pages.single-class', compact('languageList', 'session', 'mainCategories'));
         return view('front-pages.all-classes', compact('languageList', 'session', 'mainCategories'));
-
     }
 
+    /**
+     * @param $id
+     * @return Application|Factory|View
+     */
     public function showSubCategoryClasses($id)
     {
         $this->frontLayoutDataService->getData();
@@ -69,9 +70,23 @@ class ClassController extends Controller
         $session = Session::get('db_language_layout');
 
         return view('front-pages.all-sub-classes', compact('classes', 'session', 'mainCategories', 'singleClass'));
+    }
 
+    /**
+     * @param $id
+     * @return Application|Factory|View
+     */
+    public function showSingleClass($id)
+    {
+        $this->frontLayoutDataService->getData();
+        $class = $this->classesRepository->findOneById($id);
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $session = Session::get('db_language_layout');
+
+        return view('front-pages.single-class', compact('session', 'mainCategories'));
 
     }
+
     /**
      * Show the form for creating a new resource.
      *

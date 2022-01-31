@@ -241,6 +241,7 @@ class ClassController extends Controller
         $class = $this->classesRepository->findOneById($id);
 
         $this->classesRepository->update($class, $data);
+        $this->classesRepository->sync($class, 'locations', $data['class_location']);
 
         $files = [
             [

@@ -104,7 +104,7 @@
                                 <label class="asterisk">Image</label>
                                 @include('partials.media.form', ['inputName' => 'image', 'exists' => false, 'mediaModal' => 'media-modal-image'])
                                 <p class="form-control-label">
-                                    Recommended dimensions: 750x1686px
+                                    Recommended dimensions: 300x300px
                                 </p>
                             </div>
                         </div>

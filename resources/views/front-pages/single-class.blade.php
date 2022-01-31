@@ -3,7 +3,7 @@
 @section('content')
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
-            <h1 class="b-page-title text-center">Single Product</h1>
+            <h1 class="b-page-title text-center">{{ $class->name }}</h1>
         </div>
 
         <div class="container container-single-class-header">
@@ -32,6 +32,11 @@
 {{--                                Slika mora da bude 1200 - 700 odnos 1:0.5--}}
                                 <img src="{{ asset( $class->desktopImage()->getUrl()) }}" class="img-fluid d-block" alt="">
                             </div>
+                            @if($session === 'database-en')
+                            <div class="b-product_labels b-labels_rounded b-new image-on-image-single-class">
+                                    <span class="b-product_label">{{ $class->price_usd }} DOL </span>
+                            </div>
+                            @endif
                         </div>
                         <div class="b-portfolio_single">
                         </div>
@@ -40,6 +45,18 @@
                         <div class="b-portfolio_single">
                             <div class="b-portfolio_img b-img_zoom">
                                 <img src="{{ asset( $class->mobileImage()->getUrl()) }}"class="img-fluid d-block" alt="">
+                            </div>
+                            <div class="b-product_labels b-labels_rounded b-new image-on-image-single-class">
+                                @if($session === 'database-en')
+                                    <span class="b-product_label">{{ $class->price_eur }} EUR </span>
+                                @endif
+                                    @if($session === 'database-ar')
+                                        <span class="b-product_label"> {{ $class->price_sar }} AED </span>
+
+                                    @endif
+                                    @if($session === 'database-om')
+                                        <span class="b-product_label"> {{ $class->price_omr }} OMR </span>
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -52,7 +69,7 @@
         <div class="row clearfix pb-5">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                 <section id="b-testimonial">
-                    <div class="b-testimonial b-testimonial_small mb-5">
+                    <div class="b-testimonial b-testimonial_small mb-2">
                         <div class="b-testimonial_listing owl-carousel owl-theme" id="b-testimonial_list">
                             <div class="b-testimonial_single">
                                 <div class="b-testimonial_inner">
@@ -63,7 +80,7 @@
                                         <p> {!! $class->teacher->testimonials_first !!} </p>
 
                                         <footer>
-                                            John Doe <span>Happy Customer</span>
+                                            <strong>Teacher </strong><span>{{ $class->teacher->name }}</span>
                                         </footer>
                                     </div>
                                 </div>
@@ -76,7 +93,7 @@
                                     <div class="b-testimonial_content text-center">
                                         <p> {!! $class->teacher->testimonials_second !!} </p>
                                         <footer>
-                                            John Doe <span>Happy Customer</span>
+                                           <strong>Teacher </strong><span>{{ $class->teacher->name }}</span>
                                         </footer>
                                     </div>
                                 </div>
@@ -93,39 +110,54 @@
                         <div class="row">
                             <ul class="nav nav-tabs clearfix" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#tab-01" role="tab" data-toggle="tab">Book Class</a>
+                                    <a class="nav-link active" href="#tab-011" role="tab" data-toggle="tab">Book Class</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#tab-02" role="tab" data-toggle="tab">Additional information</a>
+                                    <a class="nav-link" href="#tab-022" role="tab" data-toggle="tab">Additional information</a>
                                 </li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane fade in active show p-3" id="tab-01">
+                                <div role="tabpanel" class="tab-pane fade in active show p-3" id="tab-011">
                                     <div class="row clearfix">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             @if($session === 'database-en')
-                                                <h5 class="text-center mb-4"><span class="single-class-index"> {{__('single-class.price')}} : </span> <span class="price-book-class"> 50 EUR or </span> <span class="price-book-class"> 80 DOL </span> </h5>
-                                                <h5><strong> {{__('single-class.skill-level')}} : </strong> <span> intermediate </span> </h5>
-                                                <h5><strong> {{__('single-class.class-location')}} : </strong> <span> online </span> <span> from home </span> </h5>
+                                                <h5 class="text-center"><span class="single-class-index"> {{__('single-class.price')}} : </span> <span class="price-book-class"> {{ $class->price_eur }} EUR or </span> <span class="price-book-class"> {{ $class->price_usd }}  DOL </span> </h5>
+                                                <hr class="hr-underline-eur">
+                                                <h5><strong> {{__('single-class.skill-level')}} : </strong> <span> {{ $class->level }}  </span> </h5>
+                                                <h5><strong> {{__('single-class.class-location')}} : </strong>
+                                                    @foreach($class->locations as $location)
+                                                        <span> {{ $location->location }}  </span>
+                                                    @endforeach
+                                                </h5>
                                             @endif
                                             @if($session === 'database-ar')
-                                                    <h5 class="text-center mb-4"><span class="single-class-index"> <span class="price-book-class"> EUR 50 </span> : {{__('single-class.price')}} </span></h5>
-                                                    <h5> <span> intermediate </span> : <strong> {{__('single-class.skill-level')}}  </strong> </h5>
-                                                    <h5><span> online </span> <span> from home </span> : <strong> {{__('single-class.class-location')}} : </strong> </h5>
+                                                    <h5 class="text-center"><span class="single-class-index"> <span class="price-book-class"> {{ $class->price_sar }} AED</span></span></h5>
+                                                    <hr class="hr-underline">
+                                                    <h5> <span> {{ $class->level  }} </span> : <strong> {{__('single-class.skill-level')}}  </strong> </h5>
+                                                    <h5>
+                                                        @foreach($class->locations as $location)
+                                                            <span> {{ $location->location }}  </span>
+                                                        @endforeach : <strong> {{__('single-class.class-location')}} </strong> </h5>
                                                 @endif
                                             @if($session === 'database-om')
-                                                    <h5 class="text-center mb-4"><span class="single-class-index"> <span class="price-book-class"> EUR 50 </span> : {{__('single-class.price')}} </span></h5>
+                                                    <h5 class="text-center"><span class="single-class-index"><span class="price-book-class">  {{ $class->price_omr }} OMR</span></span></h5>
+                                                    <hr class="hr-underline">
+                                                    <h5> <span> {{ $class->level  }} </span> : <strong> {{__('single-class.skill-level')}}  </strong> </h5>
+                                                    <h5>
+                                                        @foreach($class->locations as $location)
+                                                            <span> {{ $location->location }}  </span>
+                                                        @endforeach : <strong> {{__('single-class.class-location')}} </strong> </h5>
                                                 @endif
                                             <h5><strong>{{__('single-class.short-description')}}</strong></h5>
-                                            <p>Amet quisque adipiscing scelerisque vestibulum a parturient aptent et pretium a a suspendisse a vestibulum dolor a adipiscing a curabitur integer vulputate praesent convallis. Est nisi ante accumsan pulvinar facilisi orci dignissim lacinia ad sodales conubia viverra a consectetur lectus cras quis aliquam eros curabitur ultricies mauris lectus dictumst magna hac aenean. Odio nec adipiscing.&nbsp;Pulvinar in taciti dui condimentum a vel bibendum aliquet velit nam ultrices.&nbsp;Odio nec adipiscing neque purus parturient a est eu accumsan placerat vestibulum.</p>
+                                                <p>{!! $class->description !!}</p>
                                             <div class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12 text-center">
                                                 <a href="" class="btn btn-bg btn-lg btn-block text-white book-now">{{__('single-class.btn-book-class')}}</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div role="tabpanel" class="tab-pane fade p-3" id="tab-02">
+                                <div role="tabpanel" class="tab-pane fade p-3" id="tab-022">
                                     <div class="row clearfix">
                                         <div class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12">
                                             <div class="b-title text-center title-single-class">
@@ -180,43 +212,58 @@
                         <a class="nav-link active" href="#tab-01" role="tab" data-toggle="tab">Description</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tab-02" role="tab" data-toggle="tab">Additional information</a>
+                        <a class="nav-link" href="#tab-02" role="tab" data-toggle="tab">Class information</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#tab-03" role="tab" data-toggle="tab">Reviews (0)</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tab-04" role="tab" data-toggle="tab">Shipping & Delivery</a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="#tab-04" role="tab" data-toggle="tab">Shipping & Delivery</a>--}}
+{{--                    </li>--}}
                 </ul>
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active show" id="tab-01">
                         <div class="row clearfix">
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <h5><strong>Viverra a consectetur</strong></h5>
-                                <p class="b-font_title pt-1 pb-1"><i>Enim in malesuada fusce dolor mi massa leo taciti nulla vestibulum dignissim senectus vitae elit ullamcorper primis.</i></p>
-                                <h5><strong>Facilisis scelerisque mi</strong></h5>
-                                <p>Amet quisque adipiscing scelerisque vestibulum a parturient aptent et pretium a a suspendisse a vestibulum dolor a adipiscing a curabitur integer vulputate praesent convallis. Est nisi ante accumsan pulvinar facilisi orci dignissim lacinia ad sodales conubia viverra a consectetur lectus cras quis aliquam eros curabitur ultricies mauris lectus dictumst magna hac aenean. Odio nec adipiscing.&nbsp;Pulvinar in taciti dui condimentum a vel bibendum aliquet velit nam ultrices.&nbsp;Odio nec adipiscing neque purus parturient a est eu accumsan placerat vestibulum.</p>
+                                <p class="b-font_title pt-1 pb-1"><i> {!! $class->description_first !!}</i></p>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <h5><strong>Ullamcorper metus</strong></h5>
-                                <p>Nam orci mi non ultricies ut eu in vitae pharetra est in dapibus eu cum nam. Nisl orci quisque congue in ullamcorper metus a hac a arcu tristique class ullamcorper mi lacinia leo id mi at lectus. Pulvinar in taciti dui condimentum a vel bibendum aliquet velit nam ultrices.&nbsp;Odio nec adipiscing neque purus parturient a est eu accumsan placerat dapibus adipiscing parturient placerat a tincidunt enim.</p>
-                                <h5><strong>Dignissim a leo cum</strong></h5>
-                                <p>A&nbsp;parturient adipiscing dignissim facilisi ullamcorper ut natoque vestibulum class. Mus sit ridiculus risus dignissim a leo cum adipiscing vehicula et adipiscing maecenas adipiscing senectus ultrices at pulvinar neque iaculis a viverra.&nbsp;Bibendum class nec sapien at cubilia dictumst torquent felis.</p>
+                                <p class="b-font_title pt-1 pb-1"><i> {!! $class->description_first !!}</i></p>
                             </div>
                         </div>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="tab-02">
-                        <table class="b-shop_attributes">
+                        <table class="b-shop_attributes" style="max-width: 90%">
                             <tbody>
                             <tr>
-                                <th>Color</th>
-                                <td><p>Black, Brown, Blue</p></td>
+                                @if($session === 'database-en')
+                                    <th>{{__('single-class.skill-level')}} : </th>
+                                    <td><p class=" text-left"> {{ $class->level }}</p></td>
+                                    <th>Class category : </th>
+                                    <td><p class=" text-left">{{ $class->classCategory->name }}</p></td>
+                                    <th>Class subcategory : </th>
+                                    <td><p class=" text-left">{{ $class->classSubCategory->name }}</p></td>
+                                @endif
+                                @if($session === 'database-ar')
+                                        <th>Class level </th>
+                                        <td><p class=" text-left">Black, Brown, Blue</p></td>
+                                        <th>Class category</th>
+                                        <td><p class=" text-left">L, M, XS</p></td>
+                                @endif
+                                @if($session === 'database-om')
+                                        <th>Class level </th>
+                                        <td><p class=" text-left">Black, Brown, Blue</p></td>
+                                        <th>Class category</th>
+                                        <td><p class=" text-left">L, M, XS</p></td>
+                                @endif
+
                             </tr>
                             <tr>
-                                <th>Size</th>
-                                <td><p>L, M, XS</p></td>
+                                @if($session === 'database-en')
+                                    <th>Class teacher : </th>
+                                    <td><p class=" text-left"> {{ $class->teacher->name }}</p></td>
+                                @endif
                             </tr>
                             </tbody>
                         </table>
@@ -302,18 +349,18 @@
                             </div>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="tab-04">
-                        <div>
-                            <img src="front-css/assets/images/products/product-single/shipping.jpg" class="alignleft">
-                            <p>Vestibulum curae torquent diam diam commodo parturient penatibus nunc dui adipiscing convallis bulum parturient suspendisse parturient a.Parturient in parturient scelerisque nibh lectus quam a natoque adipiscing a vestibulum hendrerit et pharetra fames.Consequat net</p>
+{{--                    <div role="tabpanel" class="tab-pane fade" id="tab-04">--}}
+{{--                        <div>--}}
+{{--                            <img src="front-css/assets/images/products/product-single/shipping.jpg" class="alignleft">--}}
+{{--                            <p>Vestibulum curae torquent diam diam commodo parturient penatibus nunc dui adipiscing convallis bulum parturient suspendisse parturient a.Parturient in parturient scelerisque nibh lectus quam a natoque adipiscing a vestibulum hendrerit et pharetra fames.Consequat net</p>--}}
 
-                            <p>Vestibulum parturient suspendisse parturient a.Parturient in parturient scelerisque  nibh lectus quam a natoque adipiscing a vestibulum hendrerit et pharetra fames.Consequat netus.</p>
+{{--                            <p>Vestibulum parturient suspendisse parturient a.Parturient in parturient scelerisque  nibh lectus quam a natoque adipiscing a vestibulum hendrerit et pharetra fames.Consequat netus.</p>--}}
 
-                            <p>Scelerisque adipiscing bibendum sem vestibulum et in a a a purus lectus faucibus lobortis tincidunt purus lectus nisl class eros.Condimentum a et ullamcorper dictumst mus et tristique elementum nam inceptos hac vestibulum amet elit</p>
+{{--                            <p>Scelerisque adipiscing bibendum sem vestibulum et in a a a purus lectus faucibus lobortis tincidunt purus lectus nisl class eros.Condimentum a et ullamcorper dictumst mus et tristique elementum nam inceptos hac vestibulum amet elit</p>--}}
 
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
+{{--                            <div class="clearfix"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

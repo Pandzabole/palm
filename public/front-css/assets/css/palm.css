@@ -92,3 +92,39 @@
 .home-classes-info{
     top: 27% !important;
 }
+
+.image-on-image-single-class{
+    width: 150px !important;
+    height: 60px !important;
+    border-radius: 0%;
+    background-color: #1daaa3;
+    left: 4px !important;
+    top: 4px !important;
+}
+
+.image-on-image-single-class .b-product_label{
+    width: 100px !important;
+    height: 100px !important;
+ }
+
+.hr-underline{
+    width: 200px;
+    position: center;
+    background-color: #1daaa3;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    height: 1px;
+}
+
+.hr-underline-eur{
+    width: 300px;
+    position: center;
+    background-color: #1daaa3;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    height: 1px;
+}
+
+.b-testimonial_content footer span::after {
+    content: " - ";
+}

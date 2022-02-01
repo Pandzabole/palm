@@ -51,7 +51,7 @@
                                 <span class="text-danger" id="selected-sub">* there are no sub categories for the selected main category</span>
                             </div>
                             <div class="form-group col-md-6 @if($errors->has('teacher_id')) has-danger @endif">
-                                <label for="teacher">Teacher  <span class="text-danger">*</span> </label>
+                                <label for="teacher">Teacher <span class="text-danger">*</span> </label>
                                 <select class="form-control category-search" id="teacher"
                                         data-toggle="select" data-placeholder="Filter by teacher"
                                         name="teacher_id">
@@ -150,7 +150,8 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6 @if($errors->has('class_location')) has-danger @endif">
-                                <label for="classLocation" class="asterisk">Class Location <span class="text-danger">*</span> </label>
+                                <label for="classLocation" class="asterisk">Class Location <span
+                                        class="text-danger">*</span> </label>
                                 <select class="form-control category-search" id="classLocation"
                                         data-toggle="select" multiple data-placeholder="Class Location" required
                                         name="class_location[]">
@@ -166,17 +167,19 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-6 @if($errors->has('level')) has-danger @endif">
-                                <label for="level" class="asterisk">Class level <span class="text-danger">*</span> </label>
-                                    <input id="level" class="form-control" placeholder="Class level"
-                                           name="level"
-                                           required
-                                           value="{{ old('level')}}">
+                                <label for="level" class="asterisk">Class level <span class="text-danger">*</span>
+                                </label>
+                                <input id="level" class="form-control" placeholder="Class level"
+                                       name="level"
+                                       required
+                                       value="{{ old('level')}}">
                                 @if($errors->has('level'))
                                     <span class="text-danger">*{{ $errors->first('level') }}</span>
                                 @endif
                             </div>
                             <div class="form-group col-md-6 @if($errors->has('class_length')) has-danger @endif">
-                                <label for="class_length" class="asterisk">Class length (in minutes )<span class="text-danger">*</span> </label>
+                                <label for="class_length" class="asterisk">Class length (in minutes )<span
+                                        class="text-danger">*</span> </label>
                                 <input id="class_length" class="form-control" placeholder="Class length"
                                        name="class_length"
                                        type="number"
@@ -212,7 +215,7 @@
                                 <textarea name="description"
                                           cols="30" rows="5"
                                           class="form-control summernote"
-                                          >{{ old('description') }}</textarea>
+                                >{{ old('description') }}</textarea>
                                 @if($errors->has('description'))
                                     <span class="text-danger">*{{ $errors->first('description') }}</span>
                                 @endif
@@ -220,21 +223,23 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 form-group @if($errors->has('description_first')) has-danger @endif">
-                                <label for="description_first">Description left <span class="text-danger">*</span> </label>
+                                <label for="description_first">Description left <span class="text-danger">*</span>
+                                </label>
                                 <textarea name="description_first"
                                           cols="30" rows="5"
                                           class="form-control summernote"
-                                          >{{ old('description_first') }}</textarea>
+                                >{{ old('description_first') }}</textarea>
                                 @if($errors->has('description_first'))
                                     <span class="text-danger">*{{ $errors->first('description_first') }}</span>
                                 @endif
                             </div>
                             <div class="col-md-6 form-group @if($errors->has('description_second')) has-danger @endif">
-                                <label for="description_second">Description right <span class="text-danger">*</span> </label>
+                                <label for="description_second">Description right <span class="text-danger">*</span>
+                                </label>
                                 <textarea name="description_second"
                                           cols="30" rows="5"
                                           class="form-control summernote"
-                                          >{{ old('description_second') }}</textarea>
+                                >{{ old('description_second') }}</textarea>
                                 @if($errors->has('description_second'))
                                     <span class="text-danger">*{{ $errors->first('description_second') }}</span>
                                 @endif
@@ -253,7 +258,8 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6 error-danger">
-                                <label class="form-control-label" for="image">Main Image <span class="text-danger">*</span> </label>
+                                <label class="form-control-label" for="image">Main Image <span
+                                        class="text-danger">*</span> </label>
                                 @include('partials.media.form', ['inputName' => 'image_desktop', 'mediaName' => 'media_desktop_id',  'mediaModal' => 'media-modal-desktop', 'exists' => false])
                                 <p class="form-control-label">Required dimensions: 1200px x 300px<span
                                         class="image-desktop-portrait"></span>
@@ -261,7 +267,8 @@
                                 <span class="text-danger d-none error-span"></span>
                             </div>
                             <div class="form-group col-md-6 error-danger">
-                                <label class="form-control-label" for="image">Second Image <span class="text-danger">*</span> </label>
+                                <label class="form-control-label" for="image">Second Image <span
+                                        class="text-danger">*</span> </label>
                                 @include('partials.media.form', ['inputName' => 'image_mobile', 'mediaName' => 'media_mobile_id', 'mediaModal' => 'media-modal-mobile', 'exists' => false])
                                 <p class="form-control-label">Required dimensions: 1200px x 300px <span
                                         class="image-desktop-portrait"></span>
@@ -292,34 +299,44 @@
     <script>
         $(document).ready(function () {
             $('#selected-sub').hide()
+            let categoryID = $('#classCategory').val()
+
+            if (categoryID != 0) {
+                getData(categoryID)
+            }
+
             $('#classCategory').on('change', function () {
-                let categoryID = $(this).val();
-                if (categoryID) {
-                    $.ajax({
-                        url: "{{ route('class-sub-categories') }}",
-                        data: {
-                            id: categoryID,
-                            _token: "{{ csrf_token() }}"
-                        },
-                        type: "GET",
-                        success: function (data) {
-                            if (data) {
-                                $('#selected-sub').hide()
-                                $('#subcategory').empty();
-                                $.each(data.subcategories, function (index, subcategory) {
-                                    $('#subcategory').append('<option value="' + subcategory.class_sub_category.id + '">' + subcategory.class_sub_category.name + '</option>');
-                                })
-                            }
-                            if (data.subcategories.length === 0) {
-                                $('#subcategory').empty();
-                                $('#selected-sub').show()
-                            }
-                        }
-                    });
+                categoryID = $(this).val();
+                if (categoryID && categoryID !== 0) {
+                    getData(categoryID)
                 } else {
                     $('#subcategory').empty();
                 }
             });
+
+            function getData(categoryID) {
+                $.ajax({
+                    url: "{{ route('class-sub-categories') }}",
+                    data: {
+                        id: categoryID,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    type: "GET",
+                    success: function (data) {
+                        if (data) {
+                            $('#selected-sub').hide()
+                            $('#subcategory').empty();
+                            $.each(data.subcategories, function (index, subcategory) {
+                                $('#subcategory').append('<option value="' + subcategory.class_sub_category.id + '">' + subcategory.class_sub_category.name + '</option>');
+                            })
+                        }
+                        if (data.subcategories.length === 0) {
+                            $('#subcategory').empty();
+                            $('#selected-sub').show()
+                        }
+                    }
+                });
+            }
         });
     </script>
 

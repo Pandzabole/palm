@@ -37,7 +37,7 @@ class ClassControllerUpdateRequest extends FormRequest
             'discount' => 'sometimes',
             'class_length' => 'required|numeric',
             'age_restriction' => 'required|numeric',
-            'materials' => 'required|string',
+            'materials' => 'sometimes',
             'discount_percentage' => 'required_unless:discount,null',
             'class_category_id' =>'required|exists:class_categories,id',
             'class_sub_category_id' =>'required|exists:class_category_class_sub_category,class_sub_category_id',

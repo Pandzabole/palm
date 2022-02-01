@@ -336,6 +336,7 @@
     <script>
         $(document).ready(function () {
             $('#selected-sub').hide()
+
             $('#classCategory').on('change', function () {
                 $('#hide-sub-category').hide()
 

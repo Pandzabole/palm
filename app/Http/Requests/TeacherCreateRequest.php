@@ -31,6 +31,11 @@ class TeacherCreateRequest extends FormRequest
             'description' => 'required',
             'testimonials_first' => 'required',
             'testimonials_second' => 'required',
+            'age' => 'required',
+            'nationality' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'country' => 'required',
             'image' => 'nullable|required_without:media_id|mimes:jpeg,bmp,png',
             'media_id' => 'nullable|required_without:image|exists:media,id',
         ];

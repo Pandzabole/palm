@@ -23,6 +23,11 @@ class CreateTeachersTable extends Migration
             $table->longText('testimonials_second');
             $table->string('email');
             $table->string('phone');
+            $table->string('nationality');
+            $table->string('address');
+            $table->string('city');
+            $table->string('country');
+            $table->integer('age');
             $table->string('url')->nullable();
             $table->timestamps();
         });

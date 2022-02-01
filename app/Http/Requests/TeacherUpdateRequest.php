@@ -31,6 +31,11 @@ class TeacherUpdateRequest extends FormRequest
             'description' => 'required',
             'testimonials_first' => 'required',
             'testimonials_second' => 'required',
+            'age' => 'required',
+            'nationality' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'country' => 'required',
             'image' => 'nullable|mimes:jpeg,bmp,png',
             'media_id' => 'nullable|exists:media,id',
         ];

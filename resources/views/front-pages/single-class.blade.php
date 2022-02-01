@@ -80,7 +80,8 @@
                                         <p> {!! $class->teacher->testimonials_first !!} </p>
 
                                         <footer>
-                                            <strong>Teacher </strong><span>{{ $class->teacher->name }}</span>
+                                            <strong>{{ $class->teacher->name }}</strong><br>
+                                            <strong>{{ $class->teacher->name }}</strong>
                                         </footer>
                                     </div>
                                 </div>
@@ -93,7 +94,8 @@
                                     <div class="b-testimonial_content text-center">
                                         <p> {!! $class->teacher->testimonials_second !!} </p>
                                         <footer>
-                                           <strong>Teacher </strong><span>{{ $class->teacher->name }}</span>
+                                            <strong>{{ $class->teacher->name }}</strong><br>
+                                            <strong>{{ $class->teacher->name }}</strong>
                                         </footer>
                                     </div>
                                 </div>

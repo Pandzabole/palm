@@ -6,6 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title text-left"> Edit Teacher </h4>
+                    <h4 class="card-title text-left"> Fields with <span class="text-danger">*</span> are required </h4>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{route('teachers.update', $teacher->id)}}"
@@ -14,7 +15,7 @@
                         {{ method_field('PUT') }}
                         <div class="form-row">
                             <div class="form-group col-md-6 @if($errors->has('name')) has-danger @endif">
-                                <label for="name">Name and second name</label>
+                                <label for="name">Name and second name <span class="text-danger">*</span></label>
                                 <input id="name" class="form-control" placeholder="Name and second name"
                                        name="name"
                                        value="{{ old('name') ?? $teacher->name }}" required>
@@ -24,8 +25,9 @@
                             </div>
                             <div class="col-lg-6 pl-3">
                                 <div class="form-group">
-                                    <label for="gender">Gender</label>
-                                    <select class="form-control"
+                                    <label for="gender">Gender <span class="text-danger">*</span></label>
+                                    <select class="form-control category-search"
+                                            data-toggle="select"
                                             id="gender"
                                             name="gender_id">
                                         @foreach($genders as $gender)
@@ -41,7 +43,7 @@
                         <div class="form-row">
 
                             <div class="form-group col-md-6 @if($errors->has('email')) has-danger @endif">
-                                <label for="email">Email</label>
+                                <label for="email">Email <span class="text-danger">*</span></label>
                                 <input id="email" class="form-control" placeholder="Email"
                                        name="email"
                                        value="{{ old('email') ?? $teacher->email }}" required>
@@ -50,7 +52,7 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-6 @if($errors->has('phone')) has-danger @endif">
-                                <label for="phone">Phone</label>
+                                <label for="phone">Phone <span class="text-danger">*</span></label>
                                 <input id="phone" class="form-control" placeholder="Name and second name"
                                        name="phone"
                                        value="{{ old('phone') ?? $teacher->phone }}" required>
@@ -58,8 +60,6 @@
                                     <span class="text-danger">*{{ $errors->first('phone') }}</span>
                                 @endif
                             </div>
-
-
                             <div class="form-group col-md-6 @if($errors->has('url')) has-danger @endif">
                                 <label for="url">Social link</label>
                                 <input id="url" class="form-control" placeholder="Social link"
@@ -69,10 +69,59 @@
                                     <span class="text-danger">*{{ $errors->first('url') }}</span>
                                 @endif
                             </div>
+                            <div class="form-group col-md-6 @if($errors->has('age')) has-danger @endif">
+                                <label for="age">Age <span class="text-danger">*</span></label>
+                                <input id="age" class="form-control" placeholder="Age"
+                                       type="number"
+                                       name="age"
+                                       required
+                                       value="{{ old('age') ?? $teacher->age }}">
+                                @if($errors->has('age'))
+                                    <span class="text-danger">*{{ $errors->first('age') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6 @if($errors->has('nationality')) has-danger @endif">
+                                <label for="nationality">Nationality <span class="text-danger">*</span></label>
+                                <input id="nationality" class="form-control" placeholder="Nationality"
+                                       name="nationality"
+                                       value="{{ old('nationality') ?? $teacher->nationality }}">
+                                @if($errors->has('nationality'))
+                                    <span class="text-danger">*{{ $errors->first('nationality') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6 @if($errors->has('address')) has-danger @endif">
+                                <label for="address">Address <span class="text-danger">*</span></label>
+                                <input id="address" class="form-control" placeholder="Address"
+                                       name="address"
+                                       required
+                                       value="{{ old('address') ?? $teacher->address }}">
+                                @if($errors->has('address'))
+                                    <span class="text-danger">*{{ $errors->first('address') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6 @if($errors->has('city')) has-danger @endif">
+                                <label for="city">City <span class="text-danger">*</span></label>
+                                <input id="city" class="form-control" placeholder="City"
+                                       name="city"
+                                       value="{{ old('city') ?? $teacher->city }}">
+                                @if($errors->has('city'))
+                                    <span class="text-danger">*{{ $errors->first('city') }}</span>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6 @if($errors->has('country')) has-danger @endif">
+                                <label for="country">Country <span class="text-danger">*</span></label>
+                                <input id="country" class="form-control" placeholder="Country"
+                                       name="country"
+                                       required
+                                       value="{{ old('country') ?? $teacher->country }}">
+                                @if($errors->has('country'))
+                                    <span class="text-danger">*{{ $errors->first('country') }}</span>
+                                @endif
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="col form-group @if($errors->has('description')) has-danger @endif">
-                                <label for="description">Description</label>
+                                <label for="description">Description <span class="text-danger">*</span></label>
                                 <textarea name="description"
                                           cols="30" rows="5"
                                           class="form-control summernote"
@@ -84,7 +133,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 form-group @if($errors->has('testimonials_first')) has-danger @endif">
-                                <label for="testimonials_first">Testimonials first</label>
+                                <label for="testimonials_first">Education <span class="text-danger">*</span></label>
                                 <textarea name="testimonials_first"
                                           cols="30" rows="5"
                                           class="form-control summernote"
@@ -94,7 +143,7 @@
                                 @endif
                             </div>
                             <div class="col-md-6 form-group @if($errors->has('testimonials_second')) has-danger @endif">
-                                <label for="testimonials_second">Testimonials second</label>
+                                <label for="testimonials_second">Experience <span class="text-danger">*</span></label>
                                 <textarea name="testimonials_second"
                                           cols="30" rows="5"
                                           class="form-control summernote"
@@ -106,7 +155,7 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group col">
-                                <label class="asterisk">Image</label>
+                                <label class="asterisk">Teacher Image <span class="text-danger">*</span></label>
                                 @include('partials.media.form', [
                                     'inputName' => 'image',
                                     'exists' => true,
@@ -115,7 +164,7 @@
                                     'mediaModal' => 'media-modal-image'
                                 ])
                                 <p class="form-control-label">
-                                    Recommended dimensions: 300x300px
+                                    Recommended dimensions: 300px x 300px
                                 </p>
                             </div>
                         </div>

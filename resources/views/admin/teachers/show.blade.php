@@ -51,12 +51,32 @@
                                                 <td class="component-description">{!! $teacher->description !!}</td>
                                             </tr>
                                             <tr class="border-bottom">
-                                                <th scope="row" width="30%"> Testimonials first</th>
+                                                <th scope="row" width="30%"> Education</th>
                                                 <td class="component-testimonials_first">{!! $teacher->testimonials_first !!}</td>
                                             </tr>
                                             <tr class="border-bottom">
-                                                <th scope="row" width="30%"> Testimonials second</th>
+                                                <th scope="row" width="30%">Experience</th>
                                                 <td class="component-testimonials_second">{!! $teacher->testimonials_second !!}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Age</th>
+                                                <td>{{ $teacher->age }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Nationality</th>
+                                                <td>{{ $teacher->nationality }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Address</th>
+                                                <td>{{ $teacher->address }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> City</th>
+                                                <td>{{ $teacher->city }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Country</th>
+                                                <td>{{ $teacher->country }}</td>
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Teacher image</th>

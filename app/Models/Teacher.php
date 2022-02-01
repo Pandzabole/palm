@@ -25,7 +25,12 @@ class Teacher extends Model
         'url',
         'description',
         'testimonials_first',
-        'testimonials_second'
+        'testimonials_second',
+        'age',
+        'nationality',
+        'address',
+        'city',
+        'country'
     ];
 
     /**

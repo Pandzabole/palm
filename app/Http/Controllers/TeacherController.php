@@ -154,11 +154,11 @@ class TeacherController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param TeacherUpdateRequest $request
      * @param int $id
      * @return RedirectResponse
      */
-    public function update(Request $request, int $id): RedirectResponse
+    public function update(TeacherUpdateRequest $request, int $id): RedirectResponse
     {
         $data = $request->all();
 

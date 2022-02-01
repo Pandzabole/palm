@@ -77,11 +77,10 @@
                                         <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->firstMediaUrl()) }}" alt="" title="" width="200" height="200">
                                     </div>
                                     <div class="b-testimonial_content text-center">
-                                        <p> {!! $class->teacher->testimonials_first !!} </p>
-
+                                        <strong>{{ $class->teacher->name }}</strong><br>
+                                        <p> {!! $class->teacher->testimonials_first !!} </p
                                         <footer>
-                                            <strong>{{ $class->teacher->name }}</strong><br>
-                                            <strong>{{ $class->teacher->name }}</strong>
+                                            <strong>Experience</strong><br>
                                         </footer>
                                     </div>
                                 </div>
@@ -92,10 +91,10 @@
                                         <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->firstMediaUrl()) }}" alt="" title="" width="100" height="100">
                                     </div>
                                     <div class="b-testimonial_content text-center">
+                                        <strong>{{ $class->teacher->name }}</strong><br>
                                         <p> {!! $class->teacher->testimonials_second !!} </p>
                                         <footer>
-                                            <strong>{{ $class->teacher->name }}</strong><br>
-                                            <strong>{{ $class->teacher->name }}</strong>
+                                            <strong>Education</strong>
                                         </footer>
                                     </div>
                                 </div>

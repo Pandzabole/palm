@@ -48,7 +48,7 @@
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Teacher</th>
-                                                <td>{{ $classes->teacher->name }} , <b>gender : {{$classes->teacher->gender->gender}}</b></td>
+                                                <td><b>Teacher name : </b> {{ $classes->teacher->name }} , <b>gender : {{$classes->teacher->gender->gender}}</b></td>
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Class location</th>
@@ -61,6 +61,18 @@
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Class level</th>
                                                 <td>{{ $classes->level }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Class length</th>
+                                                <td>{{ $classes->class_length }} minutes</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Age restriction</th>
+                                                <td>{{ $classes->age_restriction }} years</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Class materials</th>
+                                                <td>{{ $classes->materials }}</td>
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%">On home page</th>
@@ -108,7 +120,7 @@
                                                 <td>{!!  $classes->map_location !!}</td>
                                             </tr>
                                             <tr class="border-bottom">
-                                                <th scope="row" width="30%"> Description book class</th>
+                                                <th scope="row" width="30%"> Class description </th>
                                                 <td class="component-description">{!! $classes->description !!}</td>
                                             </tr>
                                             <tr class="border-bottom">

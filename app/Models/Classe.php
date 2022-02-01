@@ -42,7 +42,10 @@ class Classe extends Model
         'popular',
         'description_first',
         'description_second',
-        'level'
+        'level',
+        'class_length',
+        'age_restriction',
+        'materials'
     ];
 
     protected $with = [

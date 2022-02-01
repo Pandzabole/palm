@@ -138,7 +138,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
                         <div class="b-product_grid_single">
                             <div class="b-product_grid_header">
-                                <a href="{{ route('single-class', $class->id) }}">
+                                <a href="{{ route('single-class', $class->uuid) }}">
                                     <img src="{{ asset( $class->desktopImage()->getUrl()) }}" class="" alt="" style="">
                                 </a>
                                 <div class="b-product_grid_action">

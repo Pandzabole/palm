@@ -50,9 +50,9 @@ Route::get('/set-language-layout', [HomeController::class, 'setLanguage'])->name
 Route::middleware('language.layout')->group(static function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('contact-us', [FrontContactController::class, 'index'])->name('contact-us');
-Route::get('single-class/{id}', [FrontClassController::class, 'showSingleClass'])->name('single-class');
+Route::get('single-class/{uuid}', [FrontClassController::class, 'showSingleClass'])->name('single-class');
 Route::get('all-classes', [FrontClassController::class, 'index'])->name('all-classes');
-Route::get('sub-classes/{id}', [FrontClassController::class, 'showSubCategoryClasses'])->name('sub-classes');
+Route::get('sub-classes/{uuid}', [FrontClassController::class, 'showSubCategoryClasses'])->name('sub-classes');
 Route::resource('reservation-class', ReservationClassController::class);
 /** Return contact view*/
 

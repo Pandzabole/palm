@@ -30,21 +30,27 @@ class MainCategorySeeder extends Seeder
     {
         return [
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Arts & Entertainment',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Cooking & Tasting',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Sports & Wellness',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Kids & Family',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Life Skills',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Business & career',
             ]
         ];
@@ -57,24 +63,32 @@ class MainCategorySeeder extends Seeder
     {
         return [
             [
+                'uuid' => 'das616-asdsa-664646',
                 'name' => 'فنون وترفيه',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'الطبخ والتذوق',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'الرياضة والعافية',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'الأطفال والعائلة',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'المهارات الحياتية',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'العمل الوظيفي',
             ]
+
         ];
+
     }
 
     /**
@@ -84,21 +98,27 @@ class MainCategorySeeder extends Seeder
     {
         return [
             [
+                'uuid' => 'das616-asdsa-664646',
                 'name' => 'فنون وترفيه',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'الطبخ والتذوق',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'الرياضة والعافية',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'الأطفال والعائلة',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'المهارات الحياتية',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'العمل الوظيفي',
             ]
         ];

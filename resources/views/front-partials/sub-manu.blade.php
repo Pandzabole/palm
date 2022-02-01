@@ -32,7 +32,7 @@
                                                                             <div class="col-sm-12 hover-menu">
                                                                                 <ul>
                                                                                     <li>
-                                                                                        <a href="{{ route('sub-classes', $classSub->id) }}">{{$classSub->name}}</a>
+                                                                                        <a href="{{ route('sub-classes', $classSub->uuid) }}">{{$classSub->name}}</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>

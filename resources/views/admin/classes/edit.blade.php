@@ -288,7 +288,7 @@
                                         'resource' => $class,
                                         'mediaModal' => 'media-modal-desktop'
                                    ])
-                                <p class="form-control-label">Required image: landscape <span
+                                <p class="form-control-label">Recommended dimensions: 1200px x 700px<span
                                         class="image-desktop-portrait"></span>
                                 </p>
                                 <span
@@ -306,7 +306,7 @@
                                         'resource' => $class,
                                         'mediaModal' => 'media-modal-mobile'
                                   ])
-                                <p class="form-control-label">Required image: landscape <span
+                                <p class="form-control-label">Recommended dimensions: 1200px x 700px<span
                                         class="image-desktop-portrait"></span>
                                 </p>
                                 <span

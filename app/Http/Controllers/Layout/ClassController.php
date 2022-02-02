@@ -12,7 +12,6 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
 
 class ClassController extends Controller
 {
@@ -59,10 +58,9 @@ class ClassController extends Controller
     {
         $this->frontLayoutDataService->getData();
         $languageList = config('languages');
-        $session = Session::get('db_language_layout');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
 
-        return view('front-pages.all-classes', compact('languageList', 'session', 'mainCategories'));
+        return view('front-pages.all-classes', compact('languageList', 'mainCategories'));
     }
 
     /**
@@ -76,9 +74,9 @@ class ClassController extends Controller
         $classes = $this->classesRepository->findByFilters('created_at', 'desc', ['class_sub_category_id' => $classSubCategoryId]);
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $singleClass = $classes->first();
-        $session = Session::get('db_language_layout');
+//        $session = Session::get('db_language_layout');
 
-        return view('front-pages.all-sub-classes', compact('classes', 'session', 'mainCategories', 'singleClass'));
+        return view('front-pages.all-sub-classes', compact('classes', 'mainCategories', 'singleClass'));
     }
 
     /**
@@ -90,9 +88,8 @@ class ClassController extends Controller
         $this->frontLayoutDataService->getData();
         $class = $this->classesRepository->findOneBy(['uuid' => $uuid]);
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
-        $session = Session::get('db_language_layout');
 
-        return view('front-pages.single-class', compact('session', 'mainCategories', 'class'));
+        return view('front-pages.single-class', compact('mainCategories', 'class'));
 
     }
 

@@ -23,14 +23,13 @@
         </div>
     <section id="b-portfolio">
         <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
-
             <div class="container container-single-class">
                 <div class="row clearfix gallery" id="b-portfolio_isotop">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
                         <div class="b-portfolio_single">
                             <div class="b-portfolio_img b-img_zoom">
 {{--                                Slika mora da bude 1200 - 700 odnos 1:0.5--}}
-                                <img src="{{ asset( $class->desktopImage()->getUrl()) }}" class="img-fluid d-block" alt="">
+                                <img src="{{ asset( $class->desktopImage()->getUrlResponsive('1200')) }}" class="img-fluid d-block" alt="">
                             </div>
                             @if($session === 'database-en')
                             <div class="b-product_labels b-labels_rounded b-new image-on-image-single-class">
@@ -44,7 +43,7 @@
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups p-1">
                         <div class="b-portfolio_single">
                             <div class="b-portfolio_img b-img_zoom">
-                                <img src="{{ asset( $class->mobileImage()->getUrl()) }}"class="img-fluid d-block" alt="">
+                                <img src="{{ asset( $class->mobileImage()->getUrlResponsive('1200')) }}"class="img-fluid d-block" alt="">
                             </div>
                             <div class="b-product_labels b-labels_rounded b-new image-on-image-single-class">
                                 @if($session === 'database-en')

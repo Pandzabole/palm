@@ -47,6 +47,38 @@
                                                 <td>{{ $teacher->url }}</td>
                                             </tr>
                                             <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Description</th>
+                                                <td class="component-description">{!! $teacher->description !!}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Education</th>
+                                                <td class="component-education">{!! $teacher->education !!}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%">Experience</th>
+                                                <td class="component-experience">{!! $teacher->experience !!}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Age</th>
+                                                <td>{{ $teacher->age }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Nationality</th>
+                                                <td>{{ $teacher->nationality }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Address</th>
+                                                <td>{{ $teacher->address }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> City</th>
+                                                <td>{{ $teacher->city }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
+                                                <th scope="row" width="30%"> Country</th>
+                                                <td>{{ $teacher->country }}</td>
+                                            </tr>
+                                            <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Teacher image</th>
                                                 <td>
                                                     <img class="thumbnail-show" alt=""

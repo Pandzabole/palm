@@ -18,14 +18,14 @@
                 </ul>
             </div>
             <div class="row clearfix gallery" id="b-portfolio_isotop">
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
+                            <img src="{{ asset('front-css/assets/images/classes/c11200x700.jpg') }}" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
+                            <div class="b-portfolio_info_in home-classes-info" >
                                 <h3 class="b-portfolio_title">
                                     <a href="portfolio-single.html" rel="">Class title</a>
                                 </h3>
@@ -42,14 +42,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
+                            <img src="{{ asset('front-css/assets/images/classes/c11200x700.jpg') }}" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
+                            <div class="b-portfolio_info_in home-classes-info" >
                                 <h3 class="b-portfolio_title">
                                     <a href="portfolio-single.html" rel="">Class title</a>
                                 </h3>
@@ -66,64 +66,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-print p-1">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
+                            <img src="{{ asset('front-css/assets/images/classes/c11200x700.jpg') }}" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
-                                <h3 class="b-portfolio_title">
-                                    <a href="portfolio-single.html" rel="">Class title</a>
-                                </h3>
-                                <h4 class="text-white text-uppercase">
-                                    Class price
-                                </h4>
-                                <h4 class="text-white text-uppercase">
-                                    Main category
-                                </h4>
-                                <h4 class="text-white text-uppercase">
-                                    Sub category
-                                </h4>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-pictures p-1">
-                    <div class="b-portfolio_single">
-                        <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
-                        <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
-                        </div>
-                        <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
-                                <h3 class="b-portfolio_title">
-                                    <a href="portfolio-single.html" rel="">Class title</a>
-                                </h3>
-                                <h4 class="text-white text-uppercase">
-                                    Class price
-                                </h4>
-                                <h4 class="text-white text-uppercase">
-                                    Main category
-                                </h4>
-                                <h4 class="text-white text-uppercase">
-                                    Sub category
-                                </h4>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
-                    <div class="b-portfolio_single">
-                        <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
-                        <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
-                        </div>
-                        <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
+                            <div class="b-portfolio_info_in home-classes-info" >
                                 <h3 class="b-portfolio_title">
                                     <a href="portfolio-single.html" rel="">Class title</a>
                                 </h3>
@@ -140,14 +90,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
+                            <img src="{{ asset('front-css/assets/images/classes/c11200x700.jpg') }}" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
+                            <div class="b-portfolio_info_in home-classes-info" >
                                 <h3 class="b-portfolio_title">
                                     <a href="portfolio-single.html" rel="">Class title</a>
                                 </h3>
@@ -164,14 +114,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-print p-1">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
+                            <img src="{{ asset('front-css/assets/images/classes/c11200x700.jpg') }}" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
+                            <div class="b-portfolio_info_in home-classes-info" >
                                 <h3 class="b-portfolio_title">
                                     <a href="portfolio-single.html" rel="">Class title</a>
                                 </h3>
@@ -186,17 +136,16 @@
                                 </h4>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-xs-12 proj-cat-pictures p-1">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
                     <div class="b-portfolio_single">
                         <a href="portfolio-single.html" class="b-portfolio_link" rel=""></a>
                         <div class="b-portfolio_img b-img_zoom">
-                            <img src="front-css/assets/images/classes/class.jpg" class="img-fluid d-block" alt="">
+                            <img src="{{ asset('front-css/assets/images/classes/c11200x700.jpg') }}" class="img-fluid d-block" alt="">
                         </div>
                         <div class="b-portfolio_info">
-                            <div class="b-portfolio_info_in">
+                            <div class="b-portfolio_info_in home-classes-info" >
                                 <h3 class="b-portfolio_title">
                                     <a href="portfolio-single.html" rel="">Class title</a>
                                 </h3>
@@ -211,7 +160,6 @@
                                 </h4>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

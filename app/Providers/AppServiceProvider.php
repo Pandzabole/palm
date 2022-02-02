@@ -223,6 +223,14 @@ class AppServiceProvider extends ServiceProvider
                 return new \App\Repositories\GendersRepository(new \App\Models\Gender());
             }
         );
+
+
+        $this->app->singleton(
+            \App\Repositories\Contracts\ClassCategoryClassSubCategory::class,
+            static function () {
+                return new \App\Repositories\ClassCategoryClassSubCategory(new \App\Models\ClassCategoryClassSubCategory());
+            }
+        );
     }
 
     /**

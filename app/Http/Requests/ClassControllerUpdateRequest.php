@@ -27,19 +27,25 @@ class ClassControllerUpdateRequest extends FormRequest
         $rules = [
             'name' => 'required|string',
             'description' => 'required|string',
+            'description_first' => 'required|string',
+            'description_second' => 'required|string',
+            'level' => 'required|string',
             'price_usd' => 'required|numeric',
             'price_eur' => 'required|numeric',
             'price_omr' => 'required|numeric',
             'price_sar' => 'required|numeric',
             'discount' => 'sometimes',
+            'class_length' => 'required|numeric',
+            'age_restriction' => 'sometimes',
+            'materials' => 'sometimes',
             'discount_percentage' => 'required_unless:discount,null',
             'class_category_id' =>'required|exists:class_categories,id',
-            'class_sub_category_id' =>'required|exists:class_sub_categories,id',
+            'class_sub_category_id' =>'required|exists:class_category_class_sub_category,class_sub_category_id',
             'teacher_id' =>'required|exists:teachers,id',
             'class_location' => 'required',
-            'image_desktop' => 'nullable|mimes:jpeg,bmp,png',
+            'image_desktop' => 'nullable',
             'media_desktop_id' => 'nullable|exists:media,id',
-            'image_mobile' => 'nullable|mimes:jpeg,bmp,png',
+            'image_mobile' => 'nullable',
             'media_mobile_id' => 'nullable|exists:media,id',
         ];
 
@@ -52,6 +58,8 @@ class ClassControllerUpdateRequest extends FormRequest
             $rules['image_mobile'] = 'nullable|required_without:media_id|mimes:jpeg,bmp,png';
             $rules['media_mobile_id'] = 'nullable|required_without:image_mobile|exists:media,id';
         }
+
+        return $rules;
 
         return $rules;
     }

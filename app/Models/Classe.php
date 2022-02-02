@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Mediable;
+use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class Classe extends Model
 {
     use Mediable;
     use HasFactory;
+    use HasUuid;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +24,7 @@ class Classe extends Model
      * @var string[]
      */
     protected $fillable = [
+        'uuid',
         'name',
         'description',
         'price_usd',
@@ -36,7 +39,13 @@ class Classe extends Model
         'teacher_id',
         'discount',
         'discount_percentage',
-        'popular'
+        'popular',
+        'description_first',
+        'description_second',
+        'level',
+        'class_length',
+        'age_restriction',
+        'materials'
     ];
 
     protected $with = [

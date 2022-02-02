@@ -23,6 +23,14 @@ class Teacher extends Model
         'email',
         'phone',
         'url',
+        'description',
+        'education',
+        'experience',
+        'age',
+        'nationality',
+        'address',
+        'city',
+        'country'
     ];
 
     /**
@@ -32,6 +40,7 @@ class Teacher extends Model
      */
     protected $with = [
         'gender',
+        'media'
     ];
 
     /**

@@ -23,6 +23,7 @@ use App\Http\Controllers\ClassCategoryController;
 use App\Http\Controllers\ClassSubCategoryController;
 use App\Http\Controllers\ClassReservationController;
 use App\Http\Controllers\Layout\ReservationClassController;
+use App\Http\Controllers\Layout\ClassController as FrontClassController;
 use App\Http\Controllers\Layout\ContactController as FrontContactController;
 use App\Http\Controllers\ClassLocation;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,9 @@ Route::get('/set-language-layout', [HomeController::class, 'setLanguage'])->name
 Route::middleware('language.layout')->group(static function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('contact-us', [FrontContactController::class, 'index'])->name('contact-us');
+Route::get('single-class/{uuid}', [FrontClassController::class, 'showSingleClass'])->name('single-class');
+Route::get('all-classes', [FrontClassController::class, 'index'])->name('all-classes');
+Route::get('sub-classes/{uuid}', [FrontClassController::class, 'showSubCategoryClasses'])->name('sub-classes');
 Route::resource('reservation-class', ReservationClassController::class);
 /** Return contact view*/
 
@@ -125,6 +129,8 @@ Route::prefix('admin')->middleware(['auth', 'language'])->group(static function 
 
     Route::resource('sub-categories', ClassSubCategoryController::class);
     Route::get('sub-categories-data', [ClassSubCategoryController::class, 'getData'])->name('sub-categories.data');
+    Route::get('class-sub-categories', [ClassSubCategoryController::class, 'getSubCategories'])->name('class-sub-categories');
+
 
     Route::resource('class-reservation', ClassReservationController::class);
     Route::get('classes-reservation-data', [ClassReservationController::class, 'getData'])->name('classes-reservation.data');

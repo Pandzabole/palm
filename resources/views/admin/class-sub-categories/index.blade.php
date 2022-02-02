@@ -17,7 +17,8 @@
                     <table class="table" id="data-table">
                         <thead class="text-primary pb-5 pt-5">
                         <tr>
-                            <th> Name</th>
+                            <th> Sub category</th>
+                            <th> Main category</th>
                             <th class="text-right"> Action</th>
                         </tr>
                         </thead>
@@ -42,6 +43,7 @@
                 order: [[0, 'desc']],
                 columns: [
                     {data: 'name', name: 'name', sortable: true},
+                    {data: 'categories', name: 'categories', sortable: true},
                     {data: 'actions', name: 'actions', sortable: false, searchable: false, className: 'text-right'},
                 ]
             });

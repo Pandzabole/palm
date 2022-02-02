@@ -15,6 +15,7 @@ class CreateClassSubCategoriesTable extends Migration
     {
         Schema::create('class_sub_categories', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->string('name');
             $table->timestamps();
         });

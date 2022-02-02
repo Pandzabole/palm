@@ -18,9 +18,17 @@ class CreateTeachersTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignIdFor(Gender::class);
+            $table->longText('description');
+            $table->longText('education');
+            $table->longText('experience');
             $table->string('email');
             $table->string('phone');
-            $table->string('url');
+            $table->string('nationality');
+            $table->string('address');
+            $table->string('city');
+            $table->string('country');
+            $table->integer('age');
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

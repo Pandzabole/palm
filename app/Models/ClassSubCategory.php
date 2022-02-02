@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\HasUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class ClassSubCategory extends Model
 {
     use HasFactory;
+    use HasUuid;
 
     /**
      * The relations to eager load on every query.
@@ -25,6 +27,7 @@ class ClassSubCategory extends Model
      * @var string[]
      */
     protected $fillable = [
+        'uuid',
         'name',
     ];
 

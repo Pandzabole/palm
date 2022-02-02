@@ -30,21 +30,27 @@ class ClassSubCategorySeeder extends Seeder
     {
         return [
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Painting',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Cakes',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Football',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Learning',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Teaching',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'Accounting',
             ]
         ];
@@ -57,21 +63,27 @@ class ClassSubCategorySeeder extends Seeder
     {
         return [
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'تلوين',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'كيك',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'كرة القدم',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'التعلم',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'تعليم',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'محاسبة',
             ]
         ];
@@ -84,21 +96,27 @@ class ClassSubCategorySeeder extends Seeder
     {
         return [
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'تلوين',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'كيك',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'كرة القدم',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'التعلم',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'تعليم',
             ],
             [
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
                 'name' => 'محاسبة',
             ]
         ];

@@ -20,6 +20,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\Facades\DataTables;
 
 class ClassController extends Controller
@@ -158,11 +159,6 @@ class ClassController extends Controller
         $position = $this->classesRepository->getAll()->pluck('position')->max() + 1;
         $data['position'] = $position;
         $classes = $this->classesRepository->store($data);
-        $classCategoryId = [$request->get('class_category_id')];
-        $classSubCategoryId = $request->get('class_sub_category_id');
-        $classSubCategoryRepository = $this->classSubCategoryRepository->findOneById($classSubCategoryId);
-
-        $this->classCategoryRepository->attach($classSubCategoryRepository, 'classCategory', $classCategoryId);
 
         $this->classesRepository->attach($classes, 'locations', $data['class_location']);
 
@@ -213,7 +209,7 @@ class ClassController extends Controller
         $mediaDesktop = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'desktop']);
         $mediaMobile = $this->mediaRepository->findByFilters('created_at', 'desc', ['config' => 'mobile']);
         $classCategory = $this->classCategoryRepository->findByFilters()->pluck('name', 'id');
-        $classSubCategory = $this->classSubCategoryRepository->findByFilters()->pluck('name', 'id');
+        $classSubCategory = $this->classSubCategoryRepository->findOneById($class->class_sub_category_id);
         $classLocation = $this->classLocationRepository->findByFilters();
         $selectedLocations = $class->locations->pluck('id')->toArray();
         $teacher = $this->teacherRepository->findByFilters()->pluck('name', 'id');
@@ -246,12 +242,6 @@ class ClassController extends Controller
 
         $this->classesRepository->update($class, $data);
         $this->classesRepository->sync($class, 'locations', $data['class_location']);
-
-        $classCategoryId = [$request->get('class_category_id')];
-        $classSubCategoryId = $request->get('class_sub_category_id');
-        $classSubCategoryRepository = $this->classSubCategoryRepository->findOneById($classSubCategoryId);
-
-        $this->classCategoryRepository->sync($classSubCategoryRepository, 'classCategory', $classCategoryId);
 
         $files = [
             [

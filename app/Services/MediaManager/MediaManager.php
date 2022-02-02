@@ -81,8 +81,9 @@ class MediaManager
     /**
      * @param $model
      * @param $files
+     * @param $withResponsive
      */
-    public function uploadTypedMedia($model, $files): void
+    public function uploadTypedMedia($model, $files, $withResponsive = false): void
     {
         foreach ($files as $fileData) {
             $type = data_get($fileData, 'type');
@@ -91,7 +92,7 @@ class MediaManager
             $media = null;
 
             if ($file) {
-                $media = $this->uploadSingleFile($file, $type);
+                $media = $this->uploadSingleFile($file, $type, $withResponsive);
             }
 
             if ($mediaId) {

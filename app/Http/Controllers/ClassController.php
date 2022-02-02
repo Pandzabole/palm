@@ -258,7 +258,7 @@ class ClassController extends Controller
             ]
         ];
 
-        $this->mediaManager->uploadTypedMedia($class, $files);
+        $this->mediaManager->uploadTypedMedia($class, $files, true);
 
         return redirect()
             ->route('classes.show', $class->id)

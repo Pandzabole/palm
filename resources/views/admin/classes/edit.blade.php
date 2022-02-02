@@ -9,7 +9,7 @@
                     <h4 class="card-title text-left"> Fields with <span class="text-danger">*</span> are required </h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('classes.update', $class->id)}}">
+                    <form method="POST" action="{{route('classes.update', $class->id)}}" enctype="multipart/form-data">
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="row">

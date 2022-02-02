@@ -52,11 +52,11 @@
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Education</th>
-                                                <td class="component-testimonials_first">{!! $teacher->testimonials_first !!}</td>
+                                                <td class="component-education">{!! $teacher->education !!}</td>
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%">Experience</th>
-                                                <td class="component-testimonials_second">{!! $teacher->testimonials_second !!}</td>
+                                                <td class="component-experience">{!! $teacher->experience !!}</td>
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Age</th>

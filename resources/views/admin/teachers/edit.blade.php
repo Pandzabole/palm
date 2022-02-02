@@ -132,24 +132,24 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-md-6 form-group @if($errors->has('testimonials_first')) has-danger @endif">
-                                <label for="testimonials_first">Education <span class="text-danger">*</span></label>
-                                <textarea name="testimonials_first"
+                            <div class="col-md-6 form-group @if($errors->has('education')) has-danger @endif">
+                                <label for="education">Education <span class="text-danger">*</span></label>
+                                <textarea name="education"
                                           cols="30" rows="5"
                                           class="form-control summernote"
-                                          required>{{ old('testimonials_first') ?? $teacher->testimonials_first }}</textarea>
-                                @if($errors->has('testimonials_first'))
-                                    <span class="text-danger">*{{ $errors->first('testimonials_first') }}</span>
+                                          required>{{ old('education') ?? $teacher->education }}</textarea>
+                                @if($errors->has('education'))
+                                    <span class="text-danger">*{{ $errors->first('education') }}</span>
                                 @endif
                             </div>
-                            <div class="col-md-6 form-group @if($errors->has('testimonials_second')) has-danger @endif">
-                                <label for="testimonials_second">Experience <span class="text-danger">*</span></label>
-                                <textarea name="testimonials_second"
+                            <div class="col-md-6 form-group @if($errors->has('experience')) has-danger @endif">
+                                <label for="experience">Experience <span class="text-danger">*</span></label>
+                                <textarea name="experience"
                                           cols="30" rows="5"
                                           class="form-control summernote"
-                                          required>{{ old('testimonials_second') ?? $teacher->testimonials_second }}</textarea>
-                                @if($errors->has('testimonials_second'))
-                                    <span class="text-danger">*{{ $errors->first('testimonials_second') }}</span>
+                                          required>{{ old('experience') ?? $teacher->experience }}</textarea>
+                                @if($errors->has('experience'))
+                                    <span class="text-danger">*{{ $errors->first('experience') }}</span>
                                 @endif
                             </div>
                         </div>

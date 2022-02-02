@@ -12,11 +12,11 @@
                     <div class="b-decent-title-wrap">
 {{--                        <p class="b-decent-subtitle">WOOCOMMERCE</p>--}}
                         <div class="b-decent-title">
-                            <span>Single Product SINGLE PRODUCT SINGLE PRODUCT SINGLE PRODUCT</span>
+                            <span>{{ $class->name }}</span>
                         </div>
-                        <p class="b-decent-after-title">
-                            Single product page by product ID
-                        </p>
+{{--                        <p class="b-decent-after-title">--}}
+{{--                            Single product page by product ID--}}
+{{--                        </p>--}}
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="b-testimonial_content text-center">
                                         <strong>{{ $class->teacher->name }}</strong><br>
-                                        <p> {!! $class->teacher->testimonials_first !!} </p
+                                        <p> {!! $class->teacher->education !!} </p
                                         <footer>
                                             <strong>Experience</strong><br>
                                         </footer>
@@ -92,7 +92,7 @@
                                     </div>
                                     <div class="b-testimonial_content text-center">
                                         <strong>{{ $class->teacher->name }}</strong><br>
-                                        <p> {!! $class->teacher->testimonials_second !!} </p>
+                                        <p> {!! $class->teacher->experience !!} </p>
                                         <footer>
                                             <strong>Education</strong>
                                         </footer>
@@ -102,6 +102,7 @@
                         </div>
                     </div>
                 </section>
+               <p class="text-center"><strong>About teacher</strong></p>
             <p>{!! $class->teacher->description !!}</p>
             </div>
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 book-main">

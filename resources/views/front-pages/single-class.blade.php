@@ -74,11 +74,11 @@
                             <div class="b-testimonial_single">
                                 <div class="b-testimonial_inner">
                                     <div class="b-testimonial_avatar">
-                                        <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->firstMediaUrl()) }}" alt="" title="" width="200" height="200">
+                                        <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->responsiveSingleImage('300')) }}" alt="" title="" width="200" height="200">
                                     </div>
                                     <div class="b-testimonial_content text-center">
                                         <strong>{{ $class->teacher->name }}</strong><br>
-                                        <p> {!! $class->teacher->education !!} </p
+                                        <p> {!! $class->teacher->education !!} </p>
                                         <footer>
                                             <strong>Experience</strong><br>
                                         </footer>
@@ -88,7 +88,7 @@
                             <div class="b-testimonial_single">
                                 <div class="b-testimonial_inner">
                                     <div class="b-testimonial_avatar">
-                                        <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->firstMediaUrl()) }}" alt="" title="" width="100" height="100">
+                                        <img class="img-fluid rounded-circle m-auto d-block" src="{{ asset( $class->teacher->responsiveSingleImage('300')) }}" alt="" title="">
                                     </div>
                                     <div class="b-testimonial_content text-center">
                                         <strong>{{ $class->teacher->name }}</strong><br>

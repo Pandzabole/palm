@@ -115,7 +115,13 @@ class TeacherController extends Controller
     {
         $data = $request->all();
         $teacher = $this->teacherRepository->store($data);
-        $this->mediaManager->uploadMedia($request->allFiles(), $teacher, [$request->get('media_id')]);
+        $this->mediaManager->uploadMedia($request->allFiles(),
+            $teacher,
+            [$request->get('media_id')],
+            '',
+            false,
+            true
+        );
 
         return redirect()
             ->route('teachers.show', $teacher->id)
@@ -165,7 +171,13 @@ class TeacherController extends Controller
         $teacher = $this->teacherRepository->findOneById($id);
         $this->teacherRepository->update($teacher, $data);
 
-        $this->mediaManager->uploadMedia($request->allFiles(), $teacher, [$request->get('media_id')]);
+        $this->mediaManager->uploadMedia($request->allFiles(),
+            $teacher,
+            [$request->get('media_id')],
+            '',
+            false,
+            true
+        );
 
         return redirect()
             ->route('teachers.show', $teacher->id)

@@ -48,6 +48,15 @@ trait Mediable
     }
 
     /**
+     * @param string $data
+     * @return null|string
+     */
+    public function responsiveSingleImage(string $data): ?string
+    {
+        return optional($this->firstMedia())->getUrlResponsive($data);
+    }
+
+    /**
      * @return null|string
      */
     public function firstMediaThumb(): ?string

@@ -12,5 +12,12 @@ return [
     'class-location' => 'Class location',
     'skill-level' => 'Skill level',
     'price' => 'Price',
-    'no-classes' => 'For the selected criterion there is no classes'
+    'no-classes' => 'For the selected criterion there is no classes',
+    'class-category' => 'Class category',
+    'class-sub-category' => 'Class sub category',
+    'class-teacher' => 'Class teacher',
+    'class-length' => 'Class length',
+    'age-restriction' => 'Age restriction',
+    'class-material' => 'Class materials',
+    'minutes' => 'minutes'
 ];

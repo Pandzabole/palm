@@ -17,6 +17,8 @@ return [
     'class-sub-category' => 'Class sub category',
     'class-teacher' => 'Class teacher',
     'class-length' => 'Class length',
+    'book-class' => 'Book class',
+    'additional-information' => 'Additional information',
     'age-restriction' => 'Age restriction',
     'class-material' => 'Class materials',
     'minutes' => 'minutes'

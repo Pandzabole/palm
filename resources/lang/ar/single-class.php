@@ -17,6 +17,8 @@ return [
     'class-sub-category' => 'فئة فرعية فئة',
     'class-teacher' => 'معلم الصف',
     'class-length' => 'طول الفصل',
+    'book-class' => 'فئة الكتاب',
+    'additional-information' => 'معلومة اضافية',
     'age-restriction' => 'شرط العمر أو السن',
     'class-material' => 'مواد تعليمية',
     'minutes' => 'الدقائق'

@@ -128,3 +128,12 @@
 .b-testimonial_content footer span::after {
     content: " - ";
 }
+
+.class-information-title{
+    font-size: 18px;
+}
+
+.class-information-head{
+    color: #1daaa3;
+    font-size: 18px;
+}

@@ -115,12 +115,10 @@
                             <div class="row">
                                 <ul class="nav nav-tabs clearfix" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#tab-011" role="tab" data-toggle="tab">Book
-                                            Class</a>
+                                        <a class="nav-link active" href="#tab-011" role="tab" data-toggle="tab">{{__('single-class.book-class')}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#tab-022" role="tab" data-toggle="tab">Additional
-                                            information</a>
+                                        <a class="nav-link" href="#tab-022" role="tab" data-toggle="tab">{{__('single-class.additional-information')}}</a>
                                     </li>
                                 </ul>
                                 <!-- Tab panes -->
@@ -136,41 +134,27 @@
                                                             class="price-book-class"> {{ $class->price_usd }}  DOL </span>
                                                     </h5>
                                                     <hr class="hr-underline-eur">
-                                                    <h5><strong> {{__('single-class.skill-level')}} : </strong>
-                                                        <span> {{ $class->level }}  </span></h5>
-                                                    <h5><strong> {{__('single-class.class-location')}} : </strong>
-                                                        @foreach($class->locations as $location)
-                                                            <span> {{ $location->location }}  </span>
-                                                        @endforeach
-                                                    </h5>
                                                 @endif
                                                 @if($session === 'database-ar')
                                                     <h5 class="text-center"><span class="single-class-index"> <span
-                                                                class="price-book-class"> {{ $class->price_sar }} AED</span></span>
+                                                                class="price-book-class">AED {{ $class->price_sar }} </span></span>
                                                     </h5>
                                                     <hr class="hr-underline">
-                                                    <h5><span> {{ $class->level  }} </span> :
-                                                        <strong> {{__('single-class.skill-level')}}  </strong></h5>
-                                                    <h5>
-                                                        @foreach($class->locations as $location)
-                                                            <span> {{ $location->location }}  </span>
-                                                        @endforeach :
-                                                        <strong> {{__('single-class.class-location')}} </strong></h5>
                                                 @endif
                                                 @if($session === 'database-om')
                                                     <h5 class="text-center"><span class="single-class-index"><span
-                                                                class="price-book-class">  {{ $class->price_omr }} OMR</span></span>
+                                                                class="price-book-class"> OMR {{ $class->price_omr }} </span></span>
                                                     </h5>
                                                     <hr class="hr-underline">
-                                                    <h5><span> {{ $class->level  }} </span> :
-                                                        <strong> {{__('single-class.skill-level')}}  </strong></h5>
-                                                    <h5>
-                                                        @foreach($class->locations as $location)
-                                                            <span> {{ $location->location }}  </span>
-                                                        @endforeach :
-                                                        <strong> {{__('single-class.class-location')}} </strong></h5>
                                                 @endif
-                                                <h5><strong>{{__('single-class.short-description')}}</strong></h5>
+                                                    <h5><strong class="class-information-head"> {{__('single-class.skill-level')}} : </strong>
+                                                        <span class="class-information-title"> {{ $class->level }}  </span></h5>
+                                                    <h5><strong class="class-information-head"> {{__('single-class.class-location')}} : </strong>
+                                                        @foreach($class->locations as $location)
+                                                            <span class="class-information-title"> {{ $location->location }}  </span>
+                                                        @endforeach
+                                                    </h5>
+                                                <h5><strong class="class-information-head">{{__('single-class.short-description')}}</strong></h5>
                                                 <p>{!! $class->description !!}</p>
                                                 <div
                                                     class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12 text-center">
@@ -266,101 +250,46 @@
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab-02">
-                            <table class="b-shop_attributes" style="max-width: 90%">
-                                <tbody>
-                                <tr>
-                                    @if($session === 'database-en')
-                                        <th>{{__('single-class.skill-level')}} :</th>
-                                        <td><p class=" text-left"> {{ $class->level }}</p></td>
-                                        <th>{{__('single-class.class-category')}} :</th>
-                                        <td><p class=" text-left">{{ $class->classCategory->name }}</p></td>
-                                        <th>{{__('single-class.class-sub-category')}} :</th>
-                                        <td><p class=" text-left">{{ $class->classSubCategory->name }}</p></td>
+                            <div class="row clearfix">
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                        <span class="class-information-head">{{__('single-class.skill-level')}} :</span>
+                                        <span class="text-left class-information-title"> {{ $class->level }}</span>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                        <span class="class-information-head">{{__('single-class.class-category')}} :</span>
+                                        <span class="text-left class-information-title"> {{ $class->classCategory->name}}</span>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                        <span class="class-information-head">{{__('single-class.class-sub-category')}} :</span>
+                                        <span class="text-left class-information-title"> {{ $class->classSubCategory->name }}</span>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                        <span class="class-information-head">{{__('single-class.class-teacher')}} :</span>
+                                        <span class="text-left class-information-title"> {{ $class->teacher->name }}</span>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                        <span class="class-information-head">{{__('single-class.class-length')}} :</span>
+                                        <span class="text-left class-information-title"> {{ $class->class_length }} {{__('single-class.minutes')}} </span>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                        <span class="class-information-head">{{__('single-class.class-location')}} :</span>
+                                        @foreach($class->locations as $location)
+                                            <span class="text-left class-information-title"> {{ $location->location }},</span>
+                                        @endforeach
+                                    </div>
+                                    @if($class->age_restriction)
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                            <span class="class-information-head">{{__('single-class.age-restriction')}} :</span>
+                                            <span class="text-left class-information-title"> {{ $class->age_restriction }}</span>
+                                        </div>
                                     @endif
-                                    @if($session === 'database-ar')
-                                        <td><p class=" text-left"> {{ $class->level }}</p></td>
-                                        <th> : {{__('single-class.class-category')}}</th>
-                                        <td><p class=" text-left">{{ $class->classCategory->name }}</p></td>
-                                        <th> : {{__('single-class.class-category')}}</th>
-                                        <td><p class=" text-left">{{ $class->classSubCategory->name }}</p></td>
-                                        <th> : {{__('single-class.class-sub-category')}}</th>
+                                    @if($class->materials)
+                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 mb-3">
+                                            <span class="class-information-head">{{__('single-class.class-material')}} :</span>
+                                            <span class="text-left class-information-title"> {{ $class->materials }}</span>
+                                        </div>
                                     @endif
-                                    @if($session === 'database-om')
-                                        <td><p class=" text-left"> {{ $class->level }}</p></td>
-                                        <th> : {{__('single-class.class-category')}}</th>
-                                        <td><p class=" text-left">{{ $class->classCategory->name }}</p></td>
-                                        <th> : {{__('single-class.class-category')}}</th>
-                                        <td><p class=" text-left">{{ $class->classSubCategory->name }}</p></td>
-                                        <th> : {{__('single-class.class-sub-category')}}</th>
-                                    @endif
-
-                                </tr>
-                                <tr>
-                                    @if($session === 'database-en')
-                                        <th>{{__('single-class.class-teacher')}} :</th>
-                                        <td><p class=" text-left"> {{ $class->teacher->name }}</p></td>
-                                        <th>{{__('single-class.class-length')}} :</th>
-                                        <td>
-                                            <p class=" text-left"> {{ $class->class_length }} {{__('single-class.minutes')}}</p>
-                                        </td>
-                                        <th>{{__('single-class.class-location')}} :</th>
-                                        <td>  @foreach($class->locations as $location)
-                                                <p class=" text-left"> {{ $location->location }},
-                                                </p>
-                                            @endforeach
-                                        </td>
-                                    @endif
-                                    @if($session === 'database-ar')
-                                        <td><p class=" text-left"> {{ $class->teacher->name }}</p></td>
-                                        <th> : {{__('single-class.class-teacher')}}</th>
-                                        <td>
-                                            <p class=" text-left"> {{ $class->class_length }} {{__('single-class.minutes')}} </p>
-                                        </td>
-                                        <th>: {{__('single-class.class-length')}} </th>
-                                        <td>  @foreach($class->locations as $location)
-                                                <p class=" text-left"> {{ $location->location }},
-                                                </p>
-                                            @endforeach
-                                        </td>
-                                        <th>: {{__('single-class.class-location')}}</th>
-                                    @endif
-                                    @if($session === 'database-om')
-                                        <td><p class=" text-left"> {{ $class->teacher->name }}</p></td>
-                                        <th> : {{__('single-class.class-teacher')}}</th>
-                                        <td>
-                                            <p class=" text-left"> {{ $class->class_length }} {{__('single-class.minutes')}} </p>
-                                        </td>
-                                        <th>: {{__('single-class.class-length')}} </th>
-                                        <td>  @foreach($class->locations as $location)
-                                                <p class=" text-left"> {{ $location->location }},
-                                                </p>
-                                            @endforeach
-                                        </td>
-                                        <th>: {{__('single-class.class-location')}}</th>
-                                    @endif
-                                </tr>
-                                <tr>
-                                    @if($session === 'database-en')
-                                        @if($class->materials)
-                                        <th>{{__('single-class.class-material')}} :</th>
-                                        <td><p class=" text-left"> {{ $class->materials }}</p></td>
-                                        @endif
-                                    @endif
-                                    @if($session === 'database-ar')
-                                            @if($class->materials)
-                                            <td><p class=" text-left"> {{ $class->materials }}</p></td>
-                                        <th>: {{__('single-class.class-material')}}</th>
-                                     @endif
-                                    @endif
-                                        @if($session === 'database-om')
-                                            @if($class->materials)
-                                                <td><p class=" text-left"> {{ $class->materials }}</p></td>
-                                                <th>: {{__('single-class.class-material')}}</th>
-                                            @endif
-                                        @endif
-                                </tr>
-                                </tbody>
-                            </table>
+                            </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab-03">
                             <div class="row clearfix">

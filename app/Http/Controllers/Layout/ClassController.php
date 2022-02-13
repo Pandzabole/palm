@@ -87,7 +87,7 @@ class ClassController extends Controller
     {
         $this->frontLayoutDataService->getData();
         $class = $this->classesRepository->findOneBy(['uuid' => $uuid]);
-        $relatedClasses = $this->classesRepository->getAll()->take(3);
+        $relatedClasses = $this->classesRepository->getAll()->take(3)->load('classSubCategory');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
 
         return view('front-pages.single-class', compact('mainCategories', 'class', 'relatedClasses'));

@@ -3,7 +3,7 @@
 @section('content')
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
-            <h1 class="b-page-title text-center">{{ $class->name }}</h1>
+            <h1 class="b-page-title text-center">{{ $class->classCategory->name }}</h1>
         </div>
         <div class="container container-single-class-header">
             <div class="row">
@@ -28,7 +28,7 @@
                                 </div>
                                 @if($session === 'database-en')
                                     <div class="b-product_labels b-labels_rounded b-new image-on-image-single-class">
-                                        <span class="b-product_label">{{ $class->price_usd }} DOL </span>
+                                        <span class="b-product_label">{{ $class->price_usd }} $ </span>
                                     </div>
                                 @endif
                             </div>
@@ -126,7 +126,7 @@
                                                         <span
                                                             class="price-book-class"> {{ $class->price_eur }} EUR or </span>
                                                         <span
-                                                            class="price-book-class"> {{ $class->price_usd }}  DOL </span>
+                                                            class="price-book-class"> {{ $class->price_usd }}  $ </span>
                                                     </h5>
                                                     <hr class="hr-underline-eur">
                                                 @endif
@@ -390,7 +390,7 @@
             <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
                 <div class="b-section_title">
                     <h4 class="text-center text-uppercase">
-                        RELATED CLASSES
+                        RECOMMENDED CLASSES
                         <span class="b-title_separator"><span></span></span>
                     </h4>
                 </div>
@@ -399,23 +399,20 @@
                         @foreach($relatedClasses as $relatedClass)
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-4">
                                 <div class="b-portfolio_single">
-                                    <a href="" class="b-portfolio_link" rel=""></a>
+                                    <a href="{{ route('single-class', $relatedClass->uuid) }}" class="b-portfolio_link" rel=""></a>
                                     <div class="b-portfolio_img b-img_zoom">
                                         <img src="{{ asset( $relatedClass->mobileImage()->getUrlResponsive('1200')) }}" class="img-fluid d-block" alt="{{ $relatedClass->name }}">
                                     </div>
                                     <div class="b-portfolio_info">
                                         <div class="b-portfolio_info_in home-classes-info" >
                                             <h3 class="b-portfolio_title">
-                                                <a href="" rel="">{{ $relatedClass->name }}</a>
+                                                <a href="{{ route('single-class', $relatedClass->uuid) }}" rel="">{{ $relatedClass->name }}</a>
                                             </h3>
                                             <h4 class="text-white text-uppercase">
-                                                Class price
+                                                {{ $relatedClass->classCategory->name }}
                                             </h4>
                                             <h4 class="text-white text-uppercase">
-                                                Main category
-                                            </h4>
-                                            <h4 class="text-white text-uppercase">
-                                                Sub category
+                                                {{ $relatedClass->classSubCategory->name }}
                                             </h4>
                                         </div>
                                     </div>

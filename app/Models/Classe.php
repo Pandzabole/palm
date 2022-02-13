@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 
 class Classe extends Model
@@ -53,7 +54,8 @@ class Classe extends Model
         'classSubCategory',
         'teacher',
         'locations',
-        'media'
+        'media',
+        'review'
     ];
 
     protected $casts = [
@@ -92,5 +94,13 @@ class Classe extends Model
     public function locations(): BelongsToMany
     {
         return $this->belongsToMany(ClassLocation::class);
+    }
+
+    /**
+     * @return HasOne
+     */
+    public function review(): HasOne
+    {
+        return $this->hasOne(Review::class);
     }
 }

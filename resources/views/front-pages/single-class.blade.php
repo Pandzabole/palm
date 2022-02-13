@@ -5,18 +5,13 @@
         <div class="b-page-title-wrap class-header-text mt-1">
             <h1 class="b-page-title text-center">{{ $class->name }}</h1>
         </div>
-
         <div class="container container-single-class-header">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="b-decent-title-wrap">
-                        {{--                        <p class="b-decent-subtitle">WOOCOMMERCE</p>--}}
                         <div class="b-decent-title">
                             <span>{{ $class->name }}</span>
                         </div>
-                        {{--                        <p class="b-decent-after-title">--}}
-                        {{--                            Single product page by product ID--}}
-                        {{--                        </p>--}}
                     </div>
                 </div>
             </div>
@@ -233,9 +228,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#tab-03" role="tab" data-toggle="tab">Class reviews (0)</a>
                         </li>
-                        {{--                    <li class="nav-item">--}}
-                        {{--                        <a class="nav-link" href="#tab-04" role="tab" data-toggle="tab">Shipping & Delivery</a>--}}
-                        {{--                    </li>--}}
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -394,343 +386,42 @@
                 </div>
             </div>
         </div>
-
-        <section id="b-products">
-            <div class="b-section_title">
-                <h4 class="text-center text-uppercase">
-                    RELATED CLASSES
-                    <span class="b-title_separator"><span></span></span>
-                </h4>
-            </div>
-            <div class="b-products b-product_grid b-product_grid_four mb-4">
-                <div class="container">
-                    <div class="clearfix owl-carousel owl-theme" id="b-related_products">
-                        <div>
-                            <div class="b-product_grid_single">
-                                <div class="b-product_grid_header">
-                                    <a href="#">
-                                        <img
-                                            data-src="front-css/assets/images/products/product-single/product_grid_10_01.jpg, front-css/assets/images/products/product-single/product_grid_10_02.jpg"
-                                            src=" front-css/assets/images/products/product-single/product_grid_10_01.jpg"
-                                            class="img-fluid img-switch d-block m-auto" alt="" style="">
-                                    </a>
-                                    <div class="b-product_grid_action">
-                                        <a href="javascript:void(0)" data-whishurl="whishlist.html"
-                                           data-toggle="tooltip" data-placement="left" title=""
-                                           data-original-title="Add to Whishlist">
-                                            <i class="icon-heart icons b-add_to_whish">
-                                                <img src="front-css/assets/images/classes/class.jpg"
-                                                     class="g-loading_gif" alt="">
-                                            </i>
-                                        </a>
-                                        <i data-toggle="tooltip" data-placement="left" title=""
-                                           class="icon-refresh icons" data-original-title="Compare"></i>
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">
-                                            <i data-toggle="tooltip" data-placement="left" title=""
-                                               class="icon-magnifier-add icons" data-original-title="Quick View"></i>
-                                        </a>
+        <section id="b-portfolio">
+            <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
+                <div class="b-section_title">
+                    <h4 class="text-center text-uppercase">
+                        RELATED CLASSES
+                        <span class="b-title_separator"><span></span></span>
+                    </h4>
+                </div>
+                <div class="container-fluid">
+                    <div class="row clearfix gallery" id="b-portfolio_isotop">
+                        @foreach($relatedClasses as $relatedClass)
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-4">
+                                <div class="b-portfolio_single">
+                                    <a href="" class="b-portfolio_link" rel=""></a>
+                                    <div class="b-portfolio_img b-img_zoom">
+                                        <img src="{{ asset( $relatedClass->mobileImage()->getUrlResponsive('1200')) }}" class="img-fluid d-block" alt="{{ $relatedClass->name }}">
                                     </div>
-                                </div>
-                                <div class="b-product_grid_info">
-                                    <h3 class="product-title">
-                                        <a href="#">Houble strap backpack</a>
-                                    </h3>
-                                    <div class="clearfix">
-                                        <div class="b-product_grid_toggle float-left">
-                                            <span class="b-price">$120</span>
-                                            <span class="b-add_cart">
-                                              <i class="icon-basket icons"></i>
-                                              <a href="#">Select Options</a>
-                                          </span>
-                                        </div>
-                                        <div class="b-product_options float-right">
-                                            <ul class="pl-0 mb-0 list-unstyled">
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-black"
-                                                          data-original-title="Black"></span>
-                                                </li>
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-blue"
-                                                          data-original-title="Blue"></span>
-                                                </li>
-                                            </ul>
+                                    <div class="b-portfolio_info">
+                                        <div class="b-portfolio_info_in home-classes-info" >
+                                            <h3 class="b-portfolio_title">
+                                                <a href="" rel="">{{ $relatedClass->name }}</a>
+                                            </h3>
+                                            <h4 class="text-white text-uppercase">
+                                                Class price
+                                            </h4>
+                                            <h4 class="text-white text-uppercase">
+                                                Main category
+                                            </h4>
+                                            <h4 class="text-white text-uppercase">
+                                                Sub category
+                                            </h4>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div>
-                            <div class="b-product_grid_single">
-                                <div class="b-product_grid_header">
-                                    <a href="#">
-                                        <img
-                                            data-src="front-css/assets/images/products/product-single/product_grid_11_01.jpg, front-css/assets/images/products/product-single/product_grid_11_02.jpg"
-                                            src="front-css/assets/images/products/product-single/product_grid_11_01.jpg"
-                                            class="img-fluid img-switch d-block m-auto" alt="" style="">
-                                    </a>
-                                    <div class="b-product_grid_action">
-                                        <a href="javascript:void(0)" data-whishurl="whishlist.html"
-                                           data-toggle="tooltip" data-placement="left" title=""
-                                           data-original-title="Add to Whishlist">
-                                            <i class="icon-heart icons b-add_to_whish">
-                                                <img src="front-css/assets/images/products/product_loading.gif"
-                                                     class="g-loading_gif" alt="">
-                                            </i>
-                                        </a>
-                                        <i data-toggle="tooltip" data-placement="left" title=""
-                                           class="icon-refresh icons" data-original-title="Compare"></i>
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">
-                                            <i data-toggle="tooltip" data-placement="left" title=""
-                                               class="icon-magnifier-add icons" data-original-title="Quick View"></i>
-                                        </a>
-                                    </div>
-                                    <div class="b-product_labels b-labels_rounded b-new">
-                                        <span class="b-product_label">New</span>
-                                    </div>
-                                </div>
-                                <div class="b-product_grid_info">
-                                    <h3 class="product-title">
-                                        <a href="#">Basic contrast sneakers</a>
-                                    </h3>
-                                    <div class="clearfix">
-                                        <div class="b-product_grid_toggle float-left">
-                                            <span class="b-price">$20</span>
-                                            <span class="b-add_cart">
-                                              <i class="icon-basket icons"></i>
-                                              <a href="#">Select Options</a>
-                                          </span>
-                                        </div>
-                                        <div class="b-product_options float-right">
-                                            <ul class="pl-0 mb-0 list-unstyled">
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-black"
-                                                          data-original-title="Black"></span>
-                                                </li>
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-brown"
-                                                          data-original-title="Brown"></span>
-                                                </li>
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-red"
-                                                          data-original-title="Red"></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="b-product_grid_single">
-                                <div class="b-product_grid_header">
-                                    <a href="#">
-                                        <img
-                                            data-src="front-css/assets/images/products/product-single/product_grid_12_01.jpg, front-css/assets/images/products/product-single/product_grid_12_02.jpg"
-                                            src="front-css/assets/images/products/product-single/product_grid_12_01.jpg"
-                                            class="img-fluid img-switch d-block m-auto" alt="" style="">
-                                    </a>
-                                    <div class="b-product_grid_action">
-                                        <a href="javascript:void(0)" data-whishurl="whishlist.html"
-                                           data-toggle="tooltip" data-placement="left" title=""
-                                           data-original-title="Add to Whishlist">
-                                            <i class="icon-heart icons b-add_to_whish">
-                                                <img src="front-css/assets/images/products/product_loading.gif"
-                                                     class="g-loading_gif" alt="">
-                                            </i>
-                                        </a>
-                                        <i data-toggle="tooltip" data-placement="left" title=""
-                                           class="icon-refresh icons" data-original-title="Compare"></i>
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">
-                                            <i data-toggle="tooltip" data-placement="left" title=""
-                                               class="icon-magnifier-add icons" data-original-title="Quick View"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="b-product_grid_info">
-                                    <h3 class="product-title">
-                                        <a href="#">Basic Korean-style coat</a>
-                                    </h3>
-                                    <div class="clearfix">
-                                        <div class="b-product_grid_toggle float-left">
-                                            <span class="b-price">$214</span>
-                                            <span class="b-add_cart">
-                                              <i class="icon-basket icons"></i>
-                                              <a href="#">Add to cart</a>
-                                          </span>
-                                        </div>
-                                        <div class="b-product_options float-right">
-                                            <ul class="pl-0 mb-0 list-unstyled">
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-brown"
-                                                          data-original-title="Brown"></span>
-                                                </li>
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-blue"
-                                                          data-original-title="Blue"></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="b-product_grid_single">
-                                <div class="b-product_grid_header">
-                                    <a href="#">
-                                        <img
-                                            data-src="front-css/assets/images/products/product-single/product_grid_13_01.jpg, front-css/assets/images/products/product-single/product_grid_13_02.jpg"
-                                            src="front-css/assets/images/products/product-single/product_grid_13_01.jpg"
-                                            class="img-fluid img-switch d-block m-auto" alt="" style="">
-                                    </a>
-                                    <div class="b-product_grid_action">
-                                        <a href="javascript:void(0)" data-whishurl="whishlist.html"
-                                           data-toggle="tooltip" data-placement="left" title=""
-                                           data-original-title="Add to Whishlist">
-                                            <i class="icon-heart icons b-add_to_whish">
-                                                <img src="front-css/assets/images/products/product_loading.gif"
-                                                     class="g-loading_gif" alt="">
-                                            </i>
-                                        </a>
-                                        <i data-toggle="tooltip" data-placement="left" title=""
-                                           class="icon-refresh icons" data-original-title="Compare"></i>
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">
-                                            <i data-toggle="tooltip" data-placement="left" title=""
-                                               class="icon-magnifier-add icons" data-original-title="Quick View"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="b-product_grid_info">
-                                    <h3 class="product-title">
-                                        <a href="#">Before decaf phone case</a>
-                                    </h3>
-                                    <div class="clearfix">
-                                        <div class="b-product_grid_toggle float-left">
-                                            <span class="b-price">$49</span>
-                                            <span class="b-add_cart">
-                                              <i class="icon-basket icons"></i>
-                                              <a href="#">Add to cart</a>
-                                          </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="b-product_grid_single">
-                                <div class="b-product_grid_header">
-                                    <a href="#">
-                                        <img
-                                            data-src="front-css/assets/images/products/product-single/product_grid_11_01.jpg, front-css/assets/images/products/product-single/product_grid_11_02.jpg"
-                                            src="front-css/assets/images/products/product-single/product_grid_11_01.jpg"
-                                            class="img-fluid img-switch d-block m-auto" alt="" style="">
-                                    </a>
-                                    <div class="b-product_grid_action">
-                                        <a href="javascript:void(0)" data-whishurl="whishlist.html"
-                                           data-toggle="tooltip" data-placement="left" title=""
-                                           data-original-title="Add to Whishlist">
-                                            <i class="icon-heart icons b-add_to_whish">
-                                                <img src="front-css/assets/images/products/product_loading.gif"
-                                                     class="g-loading_gif" alt="">
-                                            </i>
-                                        </a>
-                                        <i data-toggle="tooltip" data-placement="left" title=""
-                                           class="icon-refresh icons" data-original-title="Compare"></i>
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">
-                                            <i data-toggle="tooltip" data-placement="left" title=""
-                                               class="icon-magnifier-add icons" data-original-title="Quick View"></i>
-                                        </a>
-                                    </div>
-                                    <div class="b-product_labels b-labels_rounded b-new">
-                                        <span class="b-product_label">New</span>
-                                    </div>
-                                </div>
-                                <div class="b-product_grid_info">
-                                    <h3 class="product-title">
-                                        <a href="#">Basic contrast sneakers</a>
-                                    </h3>
-                                    <div class="clearfix">
-                                        <div class="b-product_grid_toggle float-left">
-                                            <span class="b-price">$20</span>
-                                            <span class="b-add_cart">
-                                              <i class="icon-basket icons"></i>
-                                              <a href="#">Select Options</a>
-                                          </span>
-                                        </div>
-                                        <div class="b-product_options float-right">
-                                            <ul class="pl-0 mb-0 list-unstyled">
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-black"
-                                                          data-original-title="Black"></span>
-                                                </li>
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-brown"
-                                                          data-original-title="Brown"></span>
-                                                </li>
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-red"
-                                                          data-original-title="Red"></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="b-product_grid_single">
-                                <div class="b-product_grid_header">
-                                    <a href="#">
-                                        <img
-                                            data-src="front-css/assets/images/products/product-single/product_grid_12_01.jpg, front-css/assets/images/products/product-single/product_grid_12_02.jpg"
-                                            src="front-css/assets/images/products/product-single/product_grid_12_01.jpg"
-                                            class="img-fluid img-switch d-block m-auto" alt="" style="">
-                                    </a>
-                                    <div class="b-product_grid_action">
-                                        <a href="javascript:void(0)" data-whishurl="whishlist.html"
-                                           data-toggle="tooltip" data-placement="left" title=""
-                                           data-original-title="Add to Whishlist">
-                                            <i class="icon-heart icons b-add_to_whish">
-                                                <img src="front-css/assets/images/products/product_loading.gif"
-                                                     class="g-loading_gif" alt="">
-                                            </i>
-                                        </a>
-                                        <i data-toggle="tooltip" data-placement="left" title=""
-                                           class="icon-refresh icons" data-original-title="Compare"></i>
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">
-                                            <i data-toggle="tooltip" data-placement="left" title=""
-                                               class="icon-magnifier-add icons" data-original-title="Quick View"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="b-product_grid_info">
-                                    <h3 class="product-title">
-                                        <a href="#">Basic Korean-style coat</a>
-                                    </h3>
-                                    <div class="clearfix">
-                                        <div class="b-product_grid_toggle float-left">
-                                            <span class="b-price">$214</span>
-                                            <span class="b-add_cart">
-                                              <i class="icon-basket icons"></i>
-                                              <a href="#">Add to cart</a>
-                                          </span>
-                                        </div>
-                                        <div class="b-product_options float-right">
-                                            <ul class="pl-0 mb-0 list-unstyled">
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-brown"
-                                                          data-original-title="Brown"></span>
-                                                </li>
-                                                <li>
-                                                    <span data-toggle="tooltip" title="" class="b-blue"
-                                                          data-original-title="Blue"></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

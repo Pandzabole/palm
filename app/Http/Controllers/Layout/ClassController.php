@@ -97,8 +97,17 @@ class ClassController extends Controller
         $class = $this->classesRepository->findOneBy(['uuid' => $uuid]);
         $relatedClasses = $this->classesRepository->getAll()->take(3);
         $mainCategories = $this->classCategoryRepository->getAll();
+        $classReview = $this->reviewRepository->findByFilters(
+            'created_at',
+            'desc',
+            [
+                'classe_id' => $class->id,
+                'publish' => true,
 
-        return view('front-pages.single-class', compact('mainCategories', 'class', 'relatedClasses'));
+            ]
+        );
+
+        return view('front-pages.single-class', compact('mainCategories', 'class', 'relatedClasses', 'classReview'));
 
     }
 

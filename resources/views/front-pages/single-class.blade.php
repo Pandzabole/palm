@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="b-product_labels b-labels_rounded b-new image-on-image-single-class">
                                     @if($session === 'database-en')
-                                        <span class="b-product_label">{{ $class->price_eur }} EUR </span>
+                                        <span class="b-product_label">{{ $class->price_eur }} € </span>
                                     @endif
                                     @if($session === 'database-ar')
                                         <span class="b-product_label"> {{ $class->price_sar }} AED </span>
@@ -126,11 +126,11 @@
                                                 @if($session === 'database-en')
                                                     <h5 class="text-center"><span class="single-class-index"> {{__('single-class.price')}} : </span>
                                                         <span
-                                                            class="price-book-class"> {{ $class->price_eur }} EUR or </span>
+                                                            class="price-book-class"> {{ $class->price_eur }} € or </span>
                                                         <span
                                                             class="price-book-class"> {{ $class->price_usd }}  $ </span>
                                                     </h5>
-                                                    <hr class="hr-underline-eur">
+                                                    <hr class="hr-underline-`eur`">
                                                 @endif
                                                 @if($session === 'database-ar')
                                                     <h5 class="text-center"><span class="single-class-index"> <span
@@ -225,7 +225,7 @@
             </div>
         </div>
 
-        <div class="b-product_tabs">
+        <div class="b-product_tabs" style="background-color: #fafafa">
             <div class="container container-single-class">
                 <div class="row">
                     <ul class="nav nav-tabs clearfix" role="tablist">
@@ -236,10 +236,11 @@
                             <a class="nav-link" href="#tab-02" role="tab" data-toggle="tab">Class information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab-03" role="tab" data-toggle="tab">Class reviews (0)</a>
+                            <a class="nav-link" href="#tab-03" role="tab" data-toggle="tab">Class reviews ({{ count($classReview) }})</a>
                         </li>
                     </ul>
                     <!-- Tab panes -->
+
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active show" id="tab-01">
                             <div class="row clearfix">
@@ -304,35 +305,38 @@
                         <div role="tabpanel" class="tab-pane fade" id="tab-03">
                             <div class="row clearfix">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    @if(count($classReview) > 0)
                                     <div class="b-review_listing_wrapper">
                                         <h5 class="pb-2"><b>Reviews</b></h5>
                                         <div class="b-review_listing">
                                             <div class="b-review_single">
-                                                <img src="front-css/assets/images/products/product-single/user.png"
-                                                     class="img-fluid" alt="">
-                                                <div class="b-review_header clearfix">
-                                                    <p class="float-left">
-                                                        <em>Your review is awaiting approval</em>
-                                                    </p>
-                                                    <p class="float-right">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="icon-star icons"></i>
-                                                        <i class="icon-star icons"></i>
-                                                        <i class="icon-star icons"></i>
-                                                    </p>
-                                                </div>
                                                 <div class="b-review_content">
-                                                    <p>Dis vestibulum ullamcorper senectus conubia suspendisse
-                                                        vestibulum nam condimentum aliquet ipsum justo. </p>
+                                                    @foreach($classReview->take(2) as $review)
+                                                    <p class="pb-4"> {{ $review->description }} <br>
+                                                        <strong>{{ $review->client_name }} </strong>
+                                                    </p>
+                                                    @endforeach
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @else
+                                        <div class="b-review_header clearfix">
+                                            <p class="text-center">
+                                                <em>Unfortunately there are no comments for this class</em>
+                                            </p>
+                                        </div>
+                                    @endif
+
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="b-review_form_wrapper">
                                         <h5 class="pb-2"><b>Add a review</b></h5>
+                                        <div class="b-review_header clearfix">
+                                            <p class="float-left">
+                                                <em>Your review is awaiting approval</em>
+                                            </p>
+                                        </div>
                                         <p class="b-comment_notes pb-2">
                                             <span id="b-email_notes">Your email address will not be published.</span>
                                             Required fields are marked
@@ -343,18 +347,18 @@
                                             <p class="b-comment_form_comment">
                                                 <label for="clientComment">Your review <span
                                                         class="b-required">*</span></label>
-                                                <textarea id="clientComment" name="comment" cols="45" rows="8"
+                                                <textarea class="textarea-review" id="clientComment" name="comment" cols="45" rows="8"
                                                           aria-required="true" required="" ></textarea>
                                             </p>
                                             <p class="b-comment_form_author">
                                                 <label for="clientName">Name <span class="b-required">*</span></label>
                                                 <input id="clientName" name="author" type="text" value="" size="30"
-                                                       aria-required="true" required="">
+                                                       aria-required="true" required="" class="textarea-review">
                                             </p>
                                             <p class="b-comment_form_email clearfix">
                                                 <label for="clientEmail">Email <span class="b-required">*</span></label>
                                                 <input id="clientEmail" name="email" type="email" value="" size="30"
-                                                       aria-required="true" required="">
+                                                       aria-required="true" required="" class="textarea-review">
                                             </p>
                                             <p>
                                                 <button class="btn" type="submit">submit</button>

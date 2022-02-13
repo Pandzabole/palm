@@ -79,10 +79,13 @@ class ClassController extends Controller
     {
         $this->frontLayoutDataService->getData();
         $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
-        $classes = $this->classesRepository->findByFilters('created_at', 'desc', ['class_sub_category_id' => $classSubCategoryId]);
+        $classes = $this->classesRepository->findByPaginate(
+            3,
+            'created_at',
+            'desc',
+            ['class_sub_category_id' => $classSubCategoryId]);
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $singleClass = $classes->first();
-//        $session = Session::get('db_language_layout');
 
         return view('front-pages.all-sub-classes', compact('classes', 'mainCategories', 'singleClass'));
     }

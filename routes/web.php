@@ -53,6 +53,7 @@ Route::get('contact-us', [FrontContactController::class, 'index'])->name('contac
 Route::get('single-class/{uuid}', [FrontClassController::class, 'showSingleClass'])->name('single-class');
 Route::get('all-classes', [FrontClassController::class, 'index'])->name('all-classes');
 Route::get('sub-classes/{uuid}', [FrontClassController::class, 'showSubCategoryClasses'])->name('sub-classes');
+Route::post('submit-review-form', [FrontClassController::class, 'reviewClass'])->name('submit-review-form');
 Route::resource('reservation-class', ReservationClassController::class);
 /** Return contact view*/
 

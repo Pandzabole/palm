@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->longText('description');
             $table->string('client_name');
             $table->string('client_email');
+            $table->boolean('publish')->default(false);
             $table->foreignIdFor(Classe::class);
             $table->timestamps();
         });

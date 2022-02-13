@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Review;
+use App\Repositories\Contracts\ReviewRepository;
 use App\Services\MediaManager\Providers\ImageProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
@@ -229,6 +231,13 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Contracts\ClassCategoryClassSubCategory::class,
             static function () {
                 return new \App\Repositories\ClassCategoryClassSubCategory(new \App\Models\ClassCategoryClassSubCategory());
+            }
+        );
+
+        $this->app->singleton(
+            ReviewRepository::class,
+            static function () {
+                return new \App\Repositories\ReviewRepository(new Review());
             }
         );
     }

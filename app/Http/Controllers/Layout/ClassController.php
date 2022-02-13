@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Layout;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ClassCategoryRepository;
 use App\Repositories\Contracts\ClassesRepository;
+use App\Repositories\Contracts\ReviewRepository;
 use App\Repositories\Contracts\ClassSubCategoryRepository;
 use App\Services\FrontLayout\FrontLayoutDataService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -28,6 +30,9 @@ class ClassController extends Controller
     /** @var FrontLayoutDataService $frontLayoutDataService */
     public $frontLayoutDataService;
 
+    /** @var ReviewRepository $reviewRepository */
+    public $reviewRepository;
+
     /**
      * ActivityCategoryController constructor.
      *
@@ -35,18 +40,21 @@ class ClassController extends Controller
      * @param ClassSubCategoryRepository $classSubCategoryRepository
      * @param FrontLayoutDataService $frontLayoutDataService
      * @param ClassesRepository $classesRepository
+     * @param ReviewRepository $reviewRepository
      */
     public function __construct(
         ClassCategoryRepository $classCategoryRepository,
         ClassSubCategoryRepository $classSubCategoryRepository,
         FrontLayoutDataService $frontLayoutDataService,
-        ClassesRepository $classesRepository
+        ClassesRepository $classesRepository,
+        ReviewRepository $reviewRepository
     )
     {
         $this->classCategoryRepository = $classCategoryRepository;
         $this->classSubCategoryRepository = $classSubCategoryRepository;
         $this->frontLayoutDataService = $frontLayoutDataService;
         $this->classesRepository = $classesRepository;
+        $this->reviewRepository = $reviewRepository;
     }
 
     /**
@@ -92,6 +100,16 @@ class ClassController extends Controller
 
         return view('front-pages.single-class', compact('mainCategories', 'class', 'relatedClasses'));
 
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function reviewClass(Request $request): JsonResponse
+    {
+        $this->reviewRepository->store($request->all());
+        return response()->json(['success'=>'Successfully'], 200);
     }
 
     /**

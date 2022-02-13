@@ -49,6 +49,9 @@ class Classe extends Model
         'materials'
     ];
 
+    /**
+     * @var string[]
+     */
     protected $with = [
         'classCategory',
         'classSubCategory',
@@ -58,6 +61,9 @@ class Classe extends Model
         'review'
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'discount' => 'boolean',
         'highlighted' => 'boolean',

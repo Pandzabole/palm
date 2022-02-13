@@ -110,10 +110,12 @@
                             <div class="row">
                                 <ul class="nav nav-tabs clearfix" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#tab-011" role="tab" data-toggle="tab">{{__('single-class.book-class')}}</a>
+                                        <a class="nav-link active" href="#tab-011" role="tab"
+                                           data-toggle="tab">{{__('single-class.book-class')}}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#tab-022" role="tab" data-toggle="tab">{{__('single-class.additional-information')}}</a>
+                                        <a class="nav-link" href="#tab-022" role="tab"
+                                           data-toggle="tab">{{__('single-class.additional-information')}}</a>
                                     </li>
                                 </ul>
                                 <!-- Tab panes -->
@@ -142,14 +144,22 @@
                                                     </h5>
                                                     <hr class="hr-underline">
                                                 @endif
-                                                    <h5><strong class="class-information-head"> {{__('single-class.skill-level')}} : </strong>
-                                                        <span class="class-information-title"> {{ $class->level }}  </span></h5>
-                                                    <h5><strong class="class-information-head"> {{__('single-class.class-location')}} : </strong>
-                                                        @foreach($class->locations as $location)
-                                                            <span class="class-information-title"> {{ $location->location }}  </span>
-                                                        @endforeach
-                                                    </h5>
-                                                <h5><strong class="class-information-head">{{__('single-class.short-description')}}</strong></h5>
+                                                <h5><strong
+                                                        class="class-information-head"> {{__('single-class.skill-level')}}
+                                                        : </strong>
+                                                    <span class="class-information-title"> {{ $class->level }}  </span>
+                                                </h5>
+                                                <h5><strong
+                                                        class="class-information-head"> {{__('single-class.class-location')}}
+                                                        : </strong>
+                                                    @foreach($class->locations as $location)
+                                                        <span
+                                                            class="class-information-title"> {{ $location->location }}  </span>
+                                                    @endforeach
+                                                </h5>
+                                                <h5><strong
+                                                        class="class-information-head">{{__('single-class.short-description')}}</strong>
+                                                </h5>
                                                 <p>{!! $class->description !!}</p>
                                                 <div
                                                     class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12 text-center">
@@ -243,44 +253,52 @@
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab-02">
                             <div class="row clearfix">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <span class="class-information-head">{{__('single-class.skill-level')}} :</span>
+                                    <span class="text-left class-information-title"> {{ $class->level }}</span>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <span class="class-information-head">{{__('single-class.class-category')}} :</span>
+                                    <span
+                                        class="text-left class-information-title"> {{ $class->classCategory->name}}</span>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <span
+                                        class="class-information-head">{{__('single-class.class-sub-category')}} :</span>
+                                    <span
+                                        class="text-left class-information-title"> {{ $class->classSubCategory->name }}</span>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <span class="class-information-head">{{__('single-class.class-teacher')}} :</span>
+                                    <span class="text-left class-information-title"> {{ $class->teacher->name }}</span>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <span class="class-information-head">{{__('single-class.class-length')}} :</span>
+                                    <span
+                                        class="text-left class-information-title"> {{ $class->class_length }} {{__('single-class.minutes')}} </span>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
+                                    <span class="class-information-head">{{__('single-class.class-location')}} :</span>
+                                    @foreach($class->locations as $location)
+                                        <span
+                                            class="text-left class-information-title"> {{ $location->location }},</span>
+                                    @endforeach
+                                </div>
+                                @if($class->age_restriction)
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                        <span class="class-information-head">{{__('single-class.skill-level')}} :</span>
-                                        <span class="text-left class-information-title"> {{ $class->level }}</span>
+                                        <span
+                                            class="class-information-head">{{__('single-class.age-restriction')}} :</span>
+                                        <span
+                                            class="text-left class-information-title"> {{ $class->age_restriction }}</span>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                        <span class="class-information-head">{{__('single-class.class-category')}} :</span>
-                                        <span class="text-left class-information-title"> {{ $class->classCategory->name}}</span>
+                                @endif
+                                @if($class->materials)
+                                    <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 mb-3">
+                                        <span
+                                            class="class-information-head">{{__('single-class.class-material')}} :</span>
+                                        <span class="text-left class-information-title"> {{ $class->materials }}</span>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                        <span class="class-information-head">{{__('single-class.class-sub-category')}} :</span>
-                                        <span class="text-left class-information-title"> {{ $class->classSubCategory->name }}</span>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                        <span class="class-information-head">{{__('single-class.class-teacher')}} :</span>
-                                        <span class="text-left class-information-title"> {{ $class->teacher->name }}</span>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                        <span class="class-information-head">{{__('single-class.class-length')}} :</span>
-                                        <span class="text-left class-information-title"> {{ $class->class_length }} {{__('single-class.minutes')}} </span>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                        <span class="class-information-head">{{__('single-class.class-location')}} :</span>
-                                        @foreach($class->locations as $location)
-                                            <span class="text-left class-information-title"> {{ $location->location }},</span>
-                                        @endforeach
-                                    </div>
-                                    @if($class->age_restriction)
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
-                                            <span class="class-information-head">{{__('single-class.age-restriction')}} :</span>
-                                            <span class="text-left class-information-title"> {{ $class->age_restriction }}</span>
-                                        </div>
-                                    @endif
-                                    @if($class->materials)
-                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-xs-12 mb-3">
-                                            <span class="class-information-head">{{__('single-class.class-material')}} :</span>
-                                            <span class="text-left class-information-title"> {{ $class->materials }}</span>
-                                        </div>
-                                    @endif
+                                @endif
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab-03">
@@ -320,52 +338,34 @@
                                             Required fields are marked
                                             <span class="b-required">*</span>
                                         </p>
-                                        <p class="b-rating_area">
-                                            <span class="d-inline-block pr-3">Your Rating:</span>
-                                            <a href="#" class="d-inline-block mr-3">
-                                                <i class="icon-star icons"></i>
-                                            </a>
-                                            <a href="#" class="d-inline-block b-active mr-3">
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                            </a>
-                                            <a href="#" class="d-inline-block mr-3">
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                            </a>
-                                            <a href="#" class="d-inline-block mr-3">
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                            </a>
-                                            <a href="#" class="d-inline-block mr-3">
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                                <i class="icon-star icons"></i>
-                                            </a>
-                                        </p>
-                                        <p class="b-comment_form_comment">
-                                            <label for="comment">Your review <span class="b-required">*</span></label>
-                                            <textarea id="comment" name="comment" cols="45" rows="8"
-                                                      aria-required="true" required=""></textarea>
-                                        </p>
-                                        <p class="b-comment_form_author">
-                                            <label for="author">Name <span class="b-required">*</span></label>
-                                            <input id="author" name="author" type="text" value="" size="30"
-                                                   aria-required="true" required="">
-                                        </p>
-                                        <p class="b-comment_form_email clearfix">
-                                            <label for="email">Email <span class="b-required">*</span></label>
-                                            <input id="email" name="email" type="email" value="" size="30"
-                                                   aria-required="true" required="">
-                                        </p>
-                                        <p>
-                                            <button class="btn" type="submit">submit</button>
-                                        </p>
+                                        <form action="" id="reviewComment">
+                                            <input type="hidden" value="{{ $class->id }}" id="classId">
+                                            <p class="b-comment_form_comment">
+                                                <label for="clientComment">Your review <span
+                                                        class="b-required">*</span></label>
+                                                <textarea id="clientComment" name="comment" cols="45" rows="8"
+                                                          aria-required="true" required="" ></textarea>
+                                            </p>
+                                            <p class="b-comment_form_author">
+                                                <label for="clientName">Name <span class="b-required">*</span></label>
+                                                <input id="clientName" name="author" type="text" value="" size="30"
+                                                       aria-required="true" required="">
+                                            </p>
+                                            <p class="b-comment_form_email clearfix">
+                                                <label for="clientEmail">Email <span class="b-required">*</span></label>
+                                                <input id="clientEmail" name="email" type="email" value="" size="30"
+                                                       aria-required="true" required="">
+                                            </p>
+                                            <p>
+                                                <button class="btn" type="submit">submit</button>
+                                            </p>
+                                        </form>
+                                        <div class="alert alert-success" role="alert" id="successMsg" style="display: none" >
+                                            Thank you for getting in touch!
+                                        </div>
+                                        <div class="alert alert-error" role="alert" id="errorMsg" style="display: none">
+                                            Ups something went wrong !!
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -399,14 +399,17 @@
                         @foreach($relatedClasses as $relatedClass)
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-4">
                                 <div class="b-portfolio_single">
-                                    <a href="{{ route('single-class', $relatedClass->uuid) }}" class="b-portfolio_link" rel=""></a>
+                                    <a href="{{ route('single-class', $relatedClass->uuid) }}" class="b-portfolio_link"
+                                       rel=""></a>
                                     <div class="b-portfolio_img b-img_zoom">
-                                        <img src="{{ asset( $relatedClass->mobileImage()->getUrlResponsive('1200')) }}" class="img-fluid d-block" alt="{{ $relatedClass->name }}">
+                                        <img src="{{ asset( $relatedClass->mobileImage()->getUrlResponsive('1200')) }}"
+                                             class="img-fluid d-block" alt="{{ $relatedClass->name }}">
                                     </div>
                                     <div class="b-portfolio_info">
-                                        <div class="b-portfolio_info_in home-classes-info" >
+                                        <div class="b-portfolio_info_in home-classes-info">
                                             <h3 class="b-portfolio_title">
-                                                <a href="{{ route('single-class', $relatedClass->uuid) }}" rel="">{{ $relatedClass->name }}</a>
+                                                <a href="{{ route('single-class', $relatedClass->uuid) }}"
+                                                   rel="">{{ $relatedClass->name }}</a>
                                             </h3>
                                             <h4 class="text-white text-uppercase">
                                                 {{ $relatedClass->classCategory->name }}
@@ -423,4 +426,37 @@
                 </div>
             </div>
         </section>
+        @endsection
+        @section('js-links')
+
+            <script>
+                $('#reviewComment').on('submit',function(e){
+                    e.preventDefault();
+
+                    let clientComment = $('#clientComment').val();
+                    let clientName = $('#clientName').val();
+                    let clientEmail = $('#clientEmail').val();
+                    let classId = $('#classId').val();
+
+                    $.ajax({
+                        url: "/submit-review-form",
+                        type:"POST",
+                        data:{
+                            "_token": "{{ csrf_token() }}",
+                            description:clientComment,
+                            client_name:clientName,
+                            client_email:clientEmail,
+                            classe_id:classId,
+                        },
+                        success:function(response){
+                            $('#successMsg').show();
+                            console.log(response);
+                        },
+                        error: function(response) {
+                            $('#errorMsg').show();
+                        },
+                    });
+                });
+            </script>
+
 @endsection

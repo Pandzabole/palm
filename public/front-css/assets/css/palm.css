@@ -137,3 +137,9 @@
     color: #1daaa3;
     font-size: 18px;
 }
+
+.alert-error{
+    background-color: #e0a6a2;
+    border-color: #eb4034;
+    color: #eb4034;
+}

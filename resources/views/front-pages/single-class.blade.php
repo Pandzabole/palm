@@ -225,13 +225,13 @@
                 <div class="row">
                     <ul class="nav nav-tabs clearfix" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#tab-01" role="tab" data-toggle="tab">Description</a>
+                            <a class="nav-link active" href="#tab-01" role="tab" data-toggle="tab">Class description</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#tab-02" role="tab" data-toggle="tab">Class information</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#tab-03" role="tab" data-toggle="tab">Reviews (0)</a>
+                            <a class="nav-link" href="#tab-03" role="tab" data-toggle="tab">Class reviews (0)</a>
                         </li>
                         {{--                    <li class="nav-item">--}}
                         {{--                        <a class="nav-link" href="#tab-04" role="tab" data-toggle="tab">Shipping & Delivery</a>--}}

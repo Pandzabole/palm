@@ -31,7 +31,7 @@
                             <thead class="text-primary">
                             <tr>
                                 <th> Position</th>
-                                <th> Teacher </th>
+                                <th> Class </th>
                                 <th> Categories</th>
                                 <th> Discounted</th>
                                 <th> On home page</th>

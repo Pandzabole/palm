@@ -165,8 +165,8 @@
                                                 <span class="b-price price-style">OMR {{ $class->price_omr }}</span>
                                             @endif
                                         <span class="b-add_cart">
-                                          <i class="icon-eye icons"></i>
-                                          <a href="{{ route('single-class', $class->id) }}">{{ $class->level}}</a>
+                                          <i class="icon-eye icons">
+                                          <a href="{{ route('single-class', $class->id) }}">{{ $class->level}}</a></i>
                                       </span>
                                     </div>
                                 </div>
@@ -215,18 +215,8 @@
 
                 </div>
             </div>
-{{--            {{ $classes->links() }}--}}
-            <div class="b-pagination pt-2 pb-4">
-                <ul class="pl-0 text-center list-unstyled mb-0">
-                    <li><a href="#" class="b-current_page">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">...</a></li>
-                    <li><a href="#">21</a></li>
-                    <li><a href="#">22</a></li>
-                    <li><a href="#"><i class="icon-arrow-right icons"></i></a></li>
-                </ul>
+            <div class="text-center">
+                {{ $classes->links() }}
             </div>
         </div>
     </div>

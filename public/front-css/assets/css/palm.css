@@ -147,3 +147,16 @@
 .textarea-review{
     background-color: white !important;
 }
+
+.pagination{
+    padding-left: 46% !important;
+}
+
+.page-item.active .page-link {
+    background-color: #1daaa3;
+    border-color: #1daaa3;
+}
+
+.page-link{
+    color: #1daaa3;
+}

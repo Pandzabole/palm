@@ -7,6 +7,7 @@ use App\Repositories\Contracts\ReviewRepository;
 use App\Services\MediaManager\Providers\ImageProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Pagination\Paginator;
 use Imagick;
 
 class AppServiceProvider extends ServiceProvider
@@ -250,5 +251,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         JsonResource::withoutWrapping();
+        Paginator::useBootstrap();
     }
 }

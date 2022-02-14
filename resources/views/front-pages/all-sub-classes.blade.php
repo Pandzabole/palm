@@ -150,19 +150,19 @@
                                 </div>
                             </div>
                             <div class="b-product_grid_info">
-                                <h3 class="product-title">
+                                <h3 class="product-title text-center">
                                     <a href="{{ route('single-class', $class->id) }}">{{ $class->name }}</a>
                                 </h3>
-                                <div class="clearfix">
-                                    <div class="b-product_grid_toggle float-left">
+                                <div class="clearfix text-center">
+                                    <div class="b-product_grid_toggle  text-center">
                                         @if($session === 'database-ar')
-                                            <span class="b-price price-style">AED {{ $class->price_sar }} </span>
+                                            <span class="b-price price-style text-center">AED {{ $class->price_sar }} </span>
                                         @endif
                                             @if($session === 'database-en')
-                                                <span class="b-price price-style">{{ $class->price_usd }} $ or {{ $class->price_eur }} €</span>
+                                                <span class="b-price price-style text-center">{{ $class->price_usd }} $ or {{ $class->price_eur }} €</span>
                                             @endif
                                             @if($session === 'database-om')
-                                                <span class="b-price price-style">OMR {{ $class->price_omr }}</span>
+                                                <span class="b-price price-style text-center">OMR {{ $class->price_omr }}</span>
                                             @endif
                                         <span class="b-add_cart">
                                           <i class="icon-eye icons">

@@ -17,7 +17,5 @@ class FrontLayoutDataService
 
         session()->put('locale', $langSession);
 
-        $languageList = config('languages');
-        $session = Session::get('db_language_layout');
     }
 }

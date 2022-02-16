@@ -71,6 +71,14 @@ class Media extends Model
     {
         return Storage::disk('public')->url($this->directory . '/' . $this->base_file_name);
     }
+    /**
+     * @param string $data
+     * @return string
+     */
+    public function getUrlResponsive(string $data): string
+    {
+        return Storage::disk('public')->url($this->directory . '/' . $this->file_name . '-' . $data . '.' . $this->extension);
+    }
 
     /**
      * @return string

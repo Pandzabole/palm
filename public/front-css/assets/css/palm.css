@@ -128,3 +128,44 @@
 .b-testimonial_content footer span::after {
     content: " - ";
 }
+
+.class-information-title{
+    font-size: 18px;
+}
+
+.class-information-head{
+    color: #1daaa3;
+    font-size: 18px;
+}
+
+.alert-error{
+    background-color: #e0a6a2;
+    border-color: #eb4034;
+    color: #eb4034;
+}
+
+.textarea-review{
+    background-color: white !important;
+}
+
+.pagination{
+    padding-left: 46% !important;
+}
+
+.page-item.active .page-link {
+    background-color: #1daaa3;
+    border-color: #1daaa3;
+}
+
+.page-link{
+    color: #1daaa3;
+}
+
+.b-filters_area{
+    display: block;
+}
+
+.b-filters_inner_area{
+    background-color: white;
+    border: 1px solid #1daaa3;
+}

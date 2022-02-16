@@ -43,9 +43,9 @@ class ClassControllerUpdateRequest extends FormRequest
             'class_sub_category_id' =>'required|exists:class_category_class_sub_category,class_sub_category_id',
             'teacher_id' =>'required|exists:teachers,id',
             'class_location' => 'required',
-            'image_desktop' => 'nullable',
+            'image_desktop' => 'nullable|mimes:jpeg,bmp,png',
             'media_desktop_id' => 'nullable|exists:media,id',
-            'image_mobile' => 'nullable',
+            'image_mobile' => 'nullable|mimes:jpeg,bmp,png',
             'media_mobile_id' => 'nullable|exists:media,id',
         ];
 

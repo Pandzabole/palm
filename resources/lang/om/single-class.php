@@ -9,8 +9,17 @@ return [
     'btn' => 'ارسل رسالة',
     'btn-book-class' => 'احجز صفًا',
     'short-description' => 'وصف قصير',
-    'class-location' => 'موقع الفصل',
+    'class-location' => 'موقع المنزل',
     'skill-level' => 'مستوى المهارة',
     'price' => 'السعر',
-    'no-classes' => 'بالنسبة للمعيار المحدد لا توجد فئات'
+    'no-classes' => 'بالنسبة للمعيار المحدد لا توجد فئات',
+    'class-category' => 'فئة الفصل',
+    'class-sub-category' => 'فئة فرعية فئة',
+    'class-teacher' => 'معلم الصف',
+    'class-length' => 'طول الفصل',
+    'book-class' => 'فئة الكتاب',
+    'additional-information' => 'معلومة اضافية',
+    'age-restriction' => 'شرط العمر أو السن',
+    'class-material' => 'مواد تعليمية',
+    'minutes' => 'الدقائق'
 ];

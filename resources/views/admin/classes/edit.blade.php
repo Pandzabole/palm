@@ -9,7 +9,7 @@
                     <h4 class="card-title text-left"> Fields with <span class="text-danger">*</span> are required </h4>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="{{route('classes.update', $class->id)}}">
+                    <form method="POST" action="{{route('classes.update', $class->id)}}" enctype="multipart/form-data">
                         @csrf
                         {{ method_field('PUT') }}
                         <div class="row">
@@ -288,7 +288,7 @@
                                         'resource' => $class,
                                         'mediaModal' => 'media-modal-desktop'
                                    ])
-                                <p class="form-control-label">Required image: landscape <span
+                                <p class="form-control-label">Recommended dimensions: 1200px x 700px<span
                                         class="image-desktop-portrait"></span>
                                 </p>
                                 <span
@@ -306,7 +306,7 @@
                                         'resource' => $class,
                                         'mediaModal' => 'media-modal-mobile'
                                   ])
-                                <p class="form-control-label">Required image: landscape <span
+                                <p class="form-control-label">Recommended dimensions: 1200px x 700px<span
                                         class="image-desktop-portrait"></span>
                                 </p>
                                 <span

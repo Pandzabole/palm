@@ -261,7 +261,7 @@
                                 <label class="form-control-label" for="image">Main Image <span
                                         class="text-danger">*</span> </label>
                                 @include('partials.media.form', ['inputName' => 'image_desktop', 'mediaName' => 'media_desktop_id',  'mediaModal' => 'media-modal-desktop', 'exists' => false])
-                                <p class="form-control-label">Required dimensions: 1200px x 300px<span
+                                <p class="form-control-label">Recommended dimensions: 1200px x 700px<span
                                         class="image-desktop-portrait"></span>
                                 </p>
                                 <span class="text-danger d-none error-span"></span>
@@ -270,7 +270,7 @@
                                 <label class="form-control-label" for="image">Second Image <span
                                         class="text-danger">*</span> </label>
                                 @include('partials.media.form', ['inputName' => 'image_mobile', 'mediaName' => 'media_mobile_id', 'mediaModal' => 'media-modal-mobile', 'exists' => false])
-                                <p class="form-control-label">Required dimensions: 1200px x 300px <span
+                                <p class="form-control-label">Recommended dimensions: 1200px x 700px <span
                                         class="image-desktop-portrait"></span>
                                 </p>
                                 <span class="text-danger d-none error-span"></span>

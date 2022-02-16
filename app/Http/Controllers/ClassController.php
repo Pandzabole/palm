@@ -168,6 +168,7 @@ class ClassController extends Controller
             $classes,
             [$request->get('media_desktop_id')],
             Media::DESKTOP,
+            true,
             true
         );
         $this->mediaManager->uploadMedia(
@@ -175,6 +176,7 @@ class ClassController extends Controller
             $classes,
             [$request->get('media_mobile_id')],
             Media::MOBILE,
+            true,
             true
         );
 
@@ -256,7 +258,7 @@ class ClassController extends Controller
             ]
         ];
 
-        $this->mediaManager->uploadTypedMedia($class, $files);
+        $this->mediaManager->uploadTypedMedia($class, $files, true);
 
         return redirect()
             ->route('classes.show', $class->id)

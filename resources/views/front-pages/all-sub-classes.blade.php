@@ -37,14 +37,14 @@
                         Showing 1–12 of 292 results
                     </p>
                     <div class="b-filter_button d-inline-block">
-                        <a href="javascript:;" class="b-open_filters">Filters</a>
+                        <a href="javascript:;" class="b-open_filters b-btn_open">Additional filters</a>
                     </div>
                 </div>
             </div>
             <div class="b-filters_area mt-2">
                 <div class="b-filters_inner_area">
                     <div class="row clearfix">
-                        <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-6 col-xs-12">
+                        <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                             <h5 class="b-filter_title">Sort by</h5>
                             <form action="#">
                                 <ul>
@@ -57,7 +57,7 @@
                                 </ul>
                             </form>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-6 col-xs-12">
+                        <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                             <h5 class="b-filter_title">Price Filter</h5>
                             <form action="#">
                                 <ul>
@@ -69,59 +69,9 @@
                                 </ul>
                             </form>
                         </div>
-                        <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-6 col-xs-12">
-                            <h5 class="b-filter_title">FILTER BY COLOR</h5>
-                            <form action="#">
-                                <ul class="b-color_filter">
-                                    <li>
-                                        <a href="#">
-                                            <span class="b-color_circle b-black"></span>
-                                            Black
-                                        </a>
-                                        <span class="b-count float-right">(7)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="b-color_circle b-brown"></span>
-                                            Brown
-                                        </a>
-                                        <span class="b-count float-right">(7)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="b-color_circle b-yellow"></span>
-                                            Yellow
-                                        </a>
-                                        <span class="b-count float-right">(6)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="b-color_circle b-red"></span>
-                                            Red
-                                        </a>
-                                        <span class="b-count float-right">(5)</span>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="b-acitve">
-                                            <span class="b-color_circle b-blue"></span>
-                                            Blue
-                                        </a>
-                                        <span class="b-count float-right">(8)</span>
-                                    </li>
-                                </ul>
-                            </form>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-6 col-xs-12">
-                            <h5 class="b-filter_title">FILTER BY SIZE</h5>
-                            <form action="#">
-                                <ul class="b-list_ib">
-                                    <li><a href="#" class="b-acitve">L <span class="b-count_number">(4)</span></a></li>
-                                    <li><a href="#">M <span class="b-count_number">(9)</span></a></li>
-                                    <li><a href="#">XL <span class="b-count_number">(7)</span></a></li>
-                                    <li><a href="#">S <span class="b-count_number">(3)</span></a></li>
-                                    <li><a href="#">XS <span class="b-count_number">(5)</span></a></li>
-                                </ul>
-                            </form>
+                        <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
+                            <h5 class="b-filter_title">FILTER BY SKILL LEVEL</h5>
+                            <a href=""></a>
                         </div>
                     </div>
                 </div>
@@ -220,5 +170,14 @@
             </div>
         </div>
     </div>
+{{--    https://stackoverflow.com/questions/50745721/updating-a-blade-in-laravel-via-ajax--}}
 
+@endsection
+@section('js-links')
+    @parent
+    <script>
+
+            let clientComment =  {!! $classes->toJson() !!};
+            console.log(clientComment)
+    </script>
 @endsection

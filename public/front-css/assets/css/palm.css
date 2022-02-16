@@ -160,3 +160,12 @@
 .page-link{
     color: #1daaa3;
 }
+
+.b-filters_area{
+    display: block;
+}
+
+.b-filters_inner_area{
+    background-color: white;
+    border: 1px solid #1daaa3;
+}

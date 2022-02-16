@@ -147,7 +147,7 @@
                                                 <h5><strong
                                                         class="class-information-head"> {{__('single-class.skill-level')}}
                                                         : </strong>
-                                                    <span class="class-information-title"> {{ $class->level }}  </span>
+                                                    <span class="class-information-title"> {{ $class->classLevel->level }}  </span>
                                                 </h5>
                                                 <h5><strong
                                                         class="class-information-head"> {{__('single-class.class-location')}}
@@ -256,7 +256,7 @@
                             <div class="row clearfix">
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                     <span class="class-information-head">{{__('single-class.skill-level')}} :</span>
-                                    <span class="text-left class-information-title"> {{ $class->level }}</span>
+                                    <span class="text-left class-information-title"> {{ $class->classLevel->level }}</span>
                                 </div>
                                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3">
                                     <span class="class-information-head">{{__('single-class.class-category')}} :</span>

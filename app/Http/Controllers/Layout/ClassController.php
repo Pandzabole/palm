@@ -7,6 +7,8 @@ use App\Repositories\Contracts\ClassCategoryRepository;
 use App\Repositories\Contracts\ClassesRepository;
 use App\Repositories\Contracts\ReviewRepository;
 use App\Repositories\Contracts\ClassSubCategoryRepository;
+use App\Repositories\Contracts\ClassLevelRepository;
+use App\Repositories\Contracts\ClassLocationRepository;
 use App\Services\FrontLayout\FrontLayoutDataService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,9 +25,14 @@ class ClassController extends Controller
     /** @var ClassesRepository $classesRepository */
     public $classesRepository;
 
-
     /** @var ClassSubCategoryRepository $classSubCategoryRepository */
     public $classSubCategoryRepository;
+
+    /** @var ClassLevelRepository $classLevelRepository */
+    public $classLevelRepository;
+
+    /** @var ClassLocationRepository $classLocationRepository */
+    public $classLocationRepository;
 
     /** @var FrontLayoutDataService $frontLayoutDataService */
     public $frontLayoutDataService;
@@ -38,6 +45,8 @@ class ClassController extends Controller
      *
      * @param ClassCategoryRepository $classCategoryRepository
      * @param ClassSubCategoryRepository $classSubCategoryRepository
+     * @param ClassLevelRepository $classLevelRepository
+     * @param ClassLocationRepository $classLocationRepository
      * @param FrontLayoutDataService $frontLayoutDataService
      * @param ClassesRepository $classesRepository
      * @param ReviewRepository $reviewRepository
@@ -45,6 +54,8 @@ class ClassController extends Controller
     public function __construct(
         ClassCategoryRepository $classCategoryRepository,
         ClassSubCategoryRepository $classSubCategoryRepository,
+        ClassLevelRepository $classLevelRepository,
+        ClassLocationRepository $classLocationRepository,
         FrontLayoutDataService $frontLayoutDataService,
         ClassesRepository $classesRepository,
         ReviewRepository $reviewRepository
@@ -52,6 +63,8 @@ class ClassController extends Controller
     {
         $this->classCategoryRepository = $classCategoryRepository;
         $this->classSubCategoryRepository = $classSubCategoryRepository;
+        $this->classLevelRepository = $classLevelRepository;
+        $this->classLocationRepository = $classLocationRepository;
         $this->frontLayoutDataService = $frontLayoutDataService;
         $this->classesRepository = $classesRepository;
         $this->reviewRepository = $reviewRepository;
@@ -79,15 +92,25 @@ class ClassController extends Controller
     {
         $this->frontLayoutDataService->getData();
         $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
         $classes = $this->classesRepository->findByPaginate(
             3,
             'created_at',
             'desc',
             ['class_sub_category_id' => $classSubCategoryId]);
+
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $singleClass = $classes->first();
 
-        return view('front-pages.all-sub-classes', compact('classes', 'mainCategories', 'singleClass'));
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation'
+                ));
     }
 
     /**

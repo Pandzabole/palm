@@ -43,7 +43,7 @@ class Classe extends Model
         'popular',
         'description_first',
         'description_second',
-        'level',
+        'class_level_id',
         'class_length',
         'age_restriction',
         'materials'
@@ -58,7 +58,8 @@ class Classe extends Model
         'teacher',
         'locations',
         'media',
-        'review'
+        'review',
+        'classLevel'
     ];
 
     /**
@@ -108,5 +109,13 @@ class Classe extends Model
     public function review(): HasOne
     {
         return $this->hasOne(Review::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function classLevel(): BelongsTo
+    {
+        return $this->belongsTo(ClassLevel::class);
     }
 }

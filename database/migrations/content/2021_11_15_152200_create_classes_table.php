@@ -3,7 +3,7 @@
 use App\Models\ClassCategory;
 use App\Models\ClassSubCategory;
 use App\Models\Teacher;
-use App\Models\ClassLocation;
+use App\Models\ClassLevel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,7 +24,6 @@ class CreateClassesTable extends Migration
             $table->longText('description');
             $table->longText('description_first');
             $table->longText('description_second');
-            $table->string('level');
             $table->unsignedDecimal('price_usd',  8,  2);
             $table->unsignedDecimal('price_eur', 8,  2);
             $table->unsignedDecimal('price_sar', 8,  2);
@@ -41,6 +40,7 @@ class CreateClassesTable extends Migration
             $table->foreignIdFor(ClassCategory::class);
             $table->foreignIdFor(ClassSubCategory::class);
             $table->foreignIdFor(Teacher::class);
+            $table->foreignIdFor(ClassLevel::class);
             $table->timestamps();
         });
     }

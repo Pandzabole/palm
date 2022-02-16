@@ -166,17 +166,24 @@
                                     <span class="text-danger">*{{ $errors->first('class_location') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group col-md-6 @if($errors->has('level')) has-danger @endif">
-                                <label for="level" class="asterisk">Class level <span class="text-danger">*</span>
-                                </label>
-                                <input id="level" class="form-control" placeholder="Class level"
-                                       name="level"
-                                       required
-                                       value="{{ old('level')}}">
-                                @if($errors->has('level'))
-                                    <span class="text-danger">*{{ $errors->first('level') }}</span>
+                            <div class="form-group col-md-6 @if($errors->has('class_level_id')) has-danger @endif">
+                                <label for="level">Class Level <span class="text-danger">*</span> </label>
+                                <select class="form-control category-search" id="class_level"
+                                        data-toggle="select" data-placeholder="Filter by class level"
+                                        name="class_level_id">
+                                    <option value="0">All levels</option>
+                                    @foreach($classLevel as $level => $id)
+                                        <option @if(old('class_level_id') == $level) selected @endif
+                                        value="{{ $level }}">{{ $id }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('class_level_id'))
+                                    <span class="text-danger">*{{ $errors->first('class_level_id') }}</span>
                                 @endif
                             </div>
+
+
+
                             <div class="form-group col-md-6 @if($errors->has('class_length')) has-danger @endif">
                                 <label for="class_length" class="asterisk">Class length (in minutes )<span
                                         class="text-danger">*</span> </label>

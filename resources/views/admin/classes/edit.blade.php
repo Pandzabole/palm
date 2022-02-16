@@ -176,15 +176,17 @@
                                 <span class="text-danger d-none error-span error-class_location"></span>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group @if($errors->has('level')) has-danger @endif">
-                                    <label for="level">Class level <span class="text-danger">*</span> </label>
-                                    <input id="level" class="form-control" placeholder="Class level"
-                                           name="level"
-                                           required
-                                           value="{{ old('level') ?? $class->level }}">
-                                    @if($errors->has('level'))
-                                        <span class="text-danger">*{{ $errors->first('level') }}</span>
-                                    @endif
+                                <div class="form-group">
+                                    <label for="teacher_id">Teacher <span class="text-danger">*</span> </label>
+                                    <select class="form-control category-search" id="class_level"
+                                            data-toggle="select" data-placeholder="Filter by class level"
+                                            name="class_level_id">
+                                        @foreach($classLevel as $id => $level))
+                                        <option @if($id === $class->classLevel->id) selected
+                                                @endif value="{{$id}}">{{$level}} </option>
+                                        @endforeach
+                                    </select>
+                                    <span class="text-danger d-none error-span error-teacher_id"></span>
                                 </div>
                             </div>
                         </div>

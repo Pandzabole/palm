@@ -60,7 +60,7 @@
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Class level</th>
-                                                <td>{{ $classes->level }}</td>
+                                                <td>{{ $classes->classLevel->level }}</td>
                                             </tr>
                                             <tr class="border-bottom">
                                                 <th scope="row" width="30%"> Class length</th>

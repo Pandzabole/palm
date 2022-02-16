@@ -26,6 +26,7 @@
                 </div>
             </div>
         </div>
+
         @if($singleClass)
             <div class="container  container-single-class">
                 <div class="row clearfix b-shop_head">
@@ -74,7 +75,7 @@
                                 <h5 class="b-filter_title">FILTER BY SKILL LEVEL</h5>
                                 <ul>
                                     @foreach($classLevel as $level)
-                                        <li><a href="#">{{ $level->level }} </a></li>
+                                        <li><a href="{{ route('level-filter', [$level->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}">{{ $level->level }} </a></li>
                                     @endforeach
                                 </ul>
                             </div>

@@ -31,13 +31,16 @@ class ClassLevelSeeder extends Seeder
         return [
             [
                 'level' => 'Beginner',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'level' => 'Intermediate',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
                 'level' => 'Advanced',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
         ];
@@ -51,13 +54,16 @@ class ClassLevelSeeder extends Seeder
         return [
             [
                 'level' => 'مبتدئ',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'level' => 'متوسط',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
                 'level' => 'متقدم',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
         ];
@@ -71,13 +77,17 @@ class ClassLevelSeeder extends Seeder
         return [
             [
                 'level' => 'مبتدئ',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'level' => 'متوسط',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
                 'level' => 'متقدم',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+
             ],
         ];
     }

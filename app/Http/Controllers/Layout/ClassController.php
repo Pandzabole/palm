@@ -52,13 +52,13 @@ class ClassController extends Controller
      * @param ReviewRepository $reviewRepository
      */
     public function __construct(
-        ClassCategoryRepository $classCategoryRepository,
+        ClassCategoryRepository    $classCategoryRepository,
         ClassSubCategoryRepository $classSubCategoryRepository,
-        ClassLevelRepository $classLevelRepository,
-        ClassLocationRepository $classLocationRepository,
-        FrontLayoutDataService $frontLayoutDataService,
-        ClassesRepository $classesRepository,
-        ReviewRepository $reviewRepository
+        ClassLevelRepository       $classLevelRepository,
+        ClassLocationRepository    $classLocationRepository,
+        FrontLayoutDataService     $frontLayoutDataService,
+        ClassesRepository          $classesRepository,
+        ReviewRepository           $reviewRepository
     )
     {
         $this->classCategoryRepository = $classCategoryRepository;
@@ -96,7 +96,7 @@ class ClassController extends Controller
         $classLocation = $this->classLocationRepository->findByFilters();
 
         $classes = $this->classesRepository->findByPaginate(
-            3,
+            1,
             'created_at',
             'desc',
             ['class_sub_category_id' => $classSubCategoryId]);
@@ -110,8 +110,31 @@ class ClassController extends Controller
                 'singleClass',
                 'classLevel',
                 'classLocation'
-                ));
+            ));
     }
+
+    public function classLevelFilter($levelUuid, $subUuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $subUuid])->id;
+        $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $levelUuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classes = $this->classesRepository->findByPaginate(
+            1,
+            'created_at',
+            'desc',
+            ['class_sub_category_id' => $classSubCategoryId, 'class_level_id' => $classLevelId]);
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation'
+            ));    }
 
     /**
      * @param $uuid
@@ -144,7 +167,7 @@ class ClassController extends Controller
     public function reviewClass(Request $request): JsonResponse
     {
         $this->reviewRepository->store($request->all());
-        return response()->json(['success'=>'Successfully'], 200);
+        return response()->json(['success' => 'Successfully'], 200);
     }
 
     /**
@@ -160,7 +183,7 @@ class ClassController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -171,7 +194,7 @@ class ClassController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -182,7 +205,7 @@ class ClassController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -193,8 +216,8 @@ class ClassController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -205,7 +228,7 @@ class ClassController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

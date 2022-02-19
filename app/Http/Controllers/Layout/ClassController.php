@@ -96,7 +96,7 @@ class ClassController extends Controller
         $classLocation = $this->classLocationRepository->findByFilters();
 
         $classes = $this->classesRepository->findByPaginate(
-            1,
+            3,
             'created_at',
             'desc',
             ['class_sub_category_id' => $classSubCategoryId]);

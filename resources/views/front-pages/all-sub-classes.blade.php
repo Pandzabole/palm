@@ -48,27 +48,19 @@
                 <div class="b-filters_area mt-2">
                     <div class="b-filters_inner_area">
                         <div class="row clearfix">
-                            <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-12 col-xs-12">
+                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                                 <h5 class="b-filter_title">Sort by</h5>
                                 <form action="#">
                                     <ul>
-                                        <li><a href="#" class="b-acitve">Default</a></li>
                                         <li><a href="#">Popularity</a></li>
-                                        <li><a href="#">Average rating</a></li>
+                                        <li><a href="#">Discounted</a></li>
                                         <li><a href="#">Newness</a></li>
                                         <li><a href="#">Price: low to high</a></li>
                                         <li><a href="#">Price: high to low</a></li>
                                     </ul>
                                 </form>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-12 col-xs-12">
-                                <h5 class="b-filter_title">Filter by</h5>
-                                    <ul>
-                                        <li><a href="#">Discounted</a></li>
-                                        <li><a href="#">Popular</a></li>
-                                    </ul>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-12 col-xs-12">
+                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                                 <h5 class="b-filter_title">FILTER BY CLASS LOCATION</h5>
                                     <ul>
                                         @foreach($classLocation as $location)
@@ -76,7 +68,7 @@
                                         @endforeach
                                     </ul>
                             </div>
-                            <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-12 col-xs-12">
+                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                                 <h5 class="b-filter_title">FILTER BY SKILL LEVEL</h5>
                                 <ul>
                                     @foreach($classLevel as $level)

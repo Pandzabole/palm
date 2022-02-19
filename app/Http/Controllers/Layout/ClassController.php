@@ -113,6 +113,11 @@ class ClassController extends Controller
             ));
     }
 
+    /**
+     * @param $levelUuid
+     * @param $subUuid
+     * @return Application|Factory|View
+     */
     public function classLevelFilter($levelUuid, $subUuid)
     {
         $this->frontLayoutDataService->getData();
@@ -121,7 +126,7 @@ class ClassController extends Controller
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
         $classes = $this->classesRepository->findByPaginate(
-            1,
+            12,
             'created_at',
             'desc',
             ['class_sub_category_id' => $classSubCategoryId, 'class_level_id' => $classLevelId]);
@@ -134,7 +139,40 @@ class ClassController extends Controller
                 'singleClass',
                 'classLevel',
                 'classLocation'
-            ));    }
+            ));
+    }
+
+    /**
+     * @param $locationUuid
+     * @param $subUuid
+     * @return Application|Factory|View
+     */
+    public function classLocationFilter($locationUuid, $subUuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $subUuid])->id;
+        $classLocationId = $this->classLocationRepository->findOneBy(['uuid' => $locationUuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => $classLocationId],
+            [],
+            ['class_sub_category_id' => $classSubCategoryId],
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation'
+            ));
+    }
 
     /**
      * @param $uuid

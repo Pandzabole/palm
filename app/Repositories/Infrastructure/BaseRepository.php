@@ -74,6 +74,14 @@ interface BaseRepository
     public function findByHasRelationship(string $relationship, array $data);
 
     /**
+     * @param string $relationship
+     * @param array $data
+     * @param array $orWhereData
+     * @param array $whereCriteria
+     */
+    public function findByHasOrWhereRelationship(string $relationship, array $data, array $orWhereData, array $whereCriteria = []);
+
+    /**
      * Save a resource.
      *
      * @param array $data

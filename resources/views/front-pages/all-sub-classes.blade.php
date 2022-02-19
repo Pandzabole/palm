@@ -66,7 +66,7 @@
                                 <form action="#">
                                     <ul>
                                         @foreach($classLocation as $location)
-                                            <li><a href="#"> {{$location->location}} </a></li>
+                                            <li><a href="{{ route('location-filter', [$location->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}"> {{$location->location}} </a></li>
                                         @endforeach
                                     </ul>
                                 </form>
@@ -132,12 +132,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('js-links')
-    @parent
-    <script>
-
-        let clientComment = {!! $classes->toJson() !!};
-        console.log(clientComment)
-    </script>
 @endsection

@@ -31,16 +31,20 @@ class ClassLocationSeeder extends Seeder
         return [
             [
                 'location' => 'Home',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'location' => 'Online',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
                 'location' => 'Outdoors',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'location' => 'To be discussed',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ]
         ];
     }
@@ -53,16 +57,20 @@ class ClassLocationSeeder extends Seeder
         return [
             [
                 'location' => 'مسكن',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'location' => 'متصل',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
                 'location' => 'في الهواء الطلق',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'location' => 'للنقاش',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ]
         ];
     }
@@ -75,16 +83,20 @@ class ClassLocationSeeder extends Seeder
         return [
             [
                 'location' => 'مسكن',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'location' => 'متصل',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
                 'location' => 'في الهواء الطلق',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
                 'location' => 'للنقاش',
+                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ]
         ];
     }

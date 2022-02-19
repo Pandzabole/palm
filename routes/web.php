@@ -54,6 +54,7 @@ Route::get('single-class/{uuid}', [FrontClassController::class, 'showSingleClass
 Route::get('all-classes', [FrontClassController::class, 'index'])->name('all-classes');
 Route::get('sub-classes/{uuid}', [FrontClassController::class, 'showSubCategoryClasses'])->name('sub-classes');
 Route::get('level-filter/{levelUuid}/{subUuid}', [FrontClassController::class, 'classLevelFilter'])->name('level-filter');
+Route::get('location-filter/{locationUuid}/{subUuid}', [FrontClassController::class, 'classLocationFilter'])->name('location-filter');
 Route::post('submit-review-form', [FrontClassController::class, 'reviewClass'])->name('submit-review-form');
 Route::resource('reservation-class', ReservationClassController::class);
 /** Return contact view*/

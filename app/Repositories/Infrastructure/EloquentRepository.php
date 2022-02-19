@@ -78,6 +78,21 @@ abstract class EloquentRepository implements BaseRepository
     }
 
     /**
+     * @inheritDoc
+     */
+    public function findByHasOrWhereRelationship(string $relationship, array $data, array $orWhereData, array $whereCriteria = [])
+    {
+        return $this->model->whereHas(
+            $relationship,
+            function (Builder $query) use ($data, $orWhereData) {
+                $query->where($data);
+                $query->orWhere($orWhereData);
+                return $query;
+            }
+        )->where($whereCriteria);
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function findByPaginate(

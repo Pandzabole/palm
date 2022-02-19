@@ -15,6 +15,7 @@ class CreateClassLocationsTable extends Migration
     {
         Schema::create('class_locations', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->string('location');
             $table->timestamps();
         });

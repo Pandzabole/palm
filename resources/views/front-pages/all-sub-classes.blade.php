@@ -5,7 +5,7 @@
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
             @if($singleClass)
-                <h1 class="b-page-title text-center">{{ $singleClass->classCategory->name}} classes</h1>
+                <h1 class="b-page-title text-center">{{ $singleClass->classCategory->name}}</h1>
 
             @else
                 <h1 class="b-page-title text-center">{{__('single-class.no-classes')}} </h1>
@@ -19,7 +19,7 @@
                     @if($singleClass)
                         <div class="b-decent-title-wrap">
                             <div class="b-decent-title">
-                                <span>{{ $singleClass->classSubCategory->name}} classes</span>
+                                <span>{{ $singleClass->classSubCategory->name}}</span>
                             </div>
                         </div>
                     @endif
@@ -41,38 +41,39 @@
                             Showing 1–12 of 292 results
                         </p>
                         <div class="b-filter_button d-inline-block">
-                            <a href="javascript:;" class="b-open_filters b-btn_open">Additional filters</a>
+                            <a href="javascript:;" class="b-open_filters b-btn_open">{{__('single-class.additional-filter')}}</a>
                         </div>
                     </div>
                 </div>
-                <div class="b-filters_area mt-2">
+                <div class="b-filters_area mt-2 main-filters">
                     <div class="b-filters_inner_area">
                         <div class="row clearfix">
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
-                                <h5 class="b-filter_title">Sort by</h5>
-                                <form action="#">
-                                    <ul>
-                                        <li><a href="#">Popularity</a></li>
-                                        <li><a href="#">Discounted</a></li>
-                                        <li><a href="#">Newness</a></li>
-                                        <li><a href="#">Price: low to high</a></li>
-                                        <li><a href="#">Price: high to low</a></li>
-                                    </ul>
-                                </form>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
-                                <h5 class="b-filter_title">FILTER BY CLASS LOCATION</h5>
-                                    <ul>
-                                        @foreach($classLocation as $location)
-                                            <li><a href="{{ route('location-filter', [$location->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}"> {{$location->location}} </a></li>
-                                        @endforeach
+                                <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.sort-by')}}</h5>
+                                    <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
+                                        <li><a href="{{ route('discount-classes', $mainCategories[0]->classSubCategory[0]->uuid) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
+                                        <li><a href="{{ route('popular-classes', $mainCategories[0]->classSubCategory[0]->uuid) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
+                                        <li><a href="#" class="filter-font">{{__('single-class.price-low')}}</a></li>
+                                        <li><a href="#" class="filter-font">{{__('single-class.price-high')}}</a></li>
                                     </ul>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
-                                <h5 class="b-filter_title">FILTER BY SKILL LEVEL</h5>
-                                <ul>
+                                <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.filter-location')}}</h5>
+                                <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
+                                    @foreach($classLocation as $location)
+                                        <li>
+                                            <a href="{{ route('location-filter', [$location->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font"> {{$location->location}} </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
+                                <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.filter-skill-level')}}</h5>
+                                <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLevel as $level)
-                                        <li><a href="{{ route('level-filter', [$level->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}">{{ $level->level }} </a></li>
+                                        <li>
+                                            <a href="{{ route('level-filter', [$level->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{ $level->level }} </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -81,52 +82,112 @@
                 </div>
             </div>
         @endif
-        <div class="b-products b-product_grid b-product_grid_four mb-4">
-            <div class="container container-single-class">
-                <div class="row clearfix">
-                    @foreach($classes as $class)
-                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="b-product_grid_single">
-                                <div class="b-product_grid_header">
-                                    <a href="{{ route('single-class', $class->uuid) }}">
-                                        <img src="{{ asset( $class->desktopImage()->getUrl()) }}" class="" alt=""
-                                             style="">
-                                    </a>
-                                    <div class="b-product_grid_action">
-                                    </div>
-                                </div>
-                                <div class="b-product_grid_info">
-                                    <h3 class="product-title text-center">
-                                        <a href="{{ route('single-class', $class->id) }}">{{ $class->name }}</a>
-                                    </h3>
-                                    <div class="clearfix text-center">
-                                        <div class="b-product_grid_toggle  text-center">
-                                            @if($session === 'database-ar')
-                                                <span
-                                                    class="b-price price-style text-center">AED {{ $class->price_sar }} </span>
-                                            @endif
-                                            @if($session === 'database-en')
-                                                <span class="b-price price-style text-center">{{ $class->price_usd }} $ or {{ $class->price_eur }} €</span>
-                                            @endif
-                                            @if($session === 'database-om')
-                                                <span
-                                                    class="b-price price-style text-center">OMR {{ $class->price_omr }}</span>
-                                            @endif
-                                            <span class="b-add_cart">
-                                          <i class="icon-eye icons">
-                                          <a href="{{ route('single-class', $class->id) }}">{{ $class->classLevel->level}}</a></i>
-                                      </span>
+        {{--        <div class="b-products b-product_grid b-product_grid_four mb-4">--}}
+        {{--            <div class="container container-single-class">--}}
+        {{--                <div class="row clearfix">--}}
+        {{--                    @foreach($classes as $class)--}}
+        {{--                    @endforeach--}}
+        {{--                </div>--}}
+        {{--            </div>--}}
+        {{--            <div class="text-center">--}}
+        {{--                {{ $classes->links() }}--}}
+        {{--            </div>--}}
+        {{--        </div>--}}
+        <div class="container  container-single-class">
+            <section id="b-portfolio">
+                <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
+                    <div class="container-fluid">
+                        <div class="row clearfix gallery" id="b-portfolio_isotop">
+                            @foreach($classes as $class)
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 proj-cat-mock-ups mb-4">
+                                    <div class="b-portfolio_single">
+                                        <a href="{{ route('single-class', $class->uuid) }}" class="b-portfolio_link"
+                                           rel=""></a>
+                                        <div class="b-portfolio_img b-img_zoom">
+                                            <img src="{{ asset( $class->mobileImage()->getUrlResponsive('1200')) }}"
+                                                 class="img-fluid d-block" alt="{{ $class->name }}">
+                                        </div>
+                                        @if($class->discount === true)
+                                        <div class="b-product_labels b-labels_rounded b-new discounted-badge">
+                                            <span class="b-product_label"><strong> % </strong></span>
+                                        </div>
+                                        @endif
+
+                                        @if($class->popular === true)
+                                            <div class="b-product_labels b-labels_rounded b-new popular-badge">
+                                                <span class="b-product_label"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
+                                            </div>
+                                        @endif
+
+                                        <div class="b-portfolio_info">
+                                            <div class="b-portfolio_info_in home-classes-info">
+                                                <h3 class="b-portfolio_title">
+                                                    <a href="{{ route('single-class', $class->uuid) }}"
+                                                       rel="">{{ $class->name }}</a>
+                                                </h3>
+                                                <h4 class="text-white text-uppercase">
+                                                    {{ $class->classCategory->name }}
+                                                </h4>
+                                                <h4 class="text-white text-uppercase">
+                                                    {{ $class->classSubCategory->name }}
+                                                </h4>
+                                            </div>
                                         </div>
                                     </div>
+                                    @if($session === 'database-en')
+                                        <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                            <span
+                                                class="@if($class->discount === true)decoration-line-through @endif"> {{__('single-class.price')}} : </span>
+                                            <span
+                                                class="price-book-class @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_eur }} € or </span>
+                                            <span
+                                                class="price-book-class @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_usd }}  $ </span>
+                                            @if($class->discount === true)
+                                                <br>
+                                                <span>{{__('single-class.discount')}}  : </span>
+                                                <span class="price-book-class-discount"> {{ $class->priceCalculate($class->price_eur, $class->discount_percentage) }} € or</span>
+                                                <span class="price-book-class-discount"> {{ $class->priceCalculate($class->price_usd, $class->discount_percentage) }} $ </span>
+                                            @endif
+                                        </h5>
+                                        <hr class="hr-underline-`eur`">
+                                    @endif
+                                    @if($session === 'database-ar')
+                                        <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                            @if($class->discount === true)
+                                                <span
+                                                    class="price-book-class-discount">AED {{ $class->priceCalculate($class->price_sar, $class->discount_percentage) }}</span>
+                                                <span> : {{__('single-class.discount')}}</span>
+                                                <br>
+                                                <span
+                                                    class="price-book-class @if($class->discount === true)decoration-line-through @endif">AED {{ $class->price_sar }} </span>
+                                                <span class="single-class-index"> : {{__('single-class.price')}}</span>
+                                              @endif
+                                        </h5>
+                                        <hr class="hr-underline-`eur`">
+                                    @endif
+                                    @if($session === 'database-om')
+                                        <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                            @if($class->discount === true)
+                                                <span
+                                                    class="price-book-class-discount">OMR {{ $class->priceCalculate($class->price_omr, $class->discount_percentage) }}</span>
+                                                <span> : {{__('single-class.discount')}}</span>
+                                                <br>
+                                                <span
+                                                    class="price-book-class @if($class->discount === true)decoration-line-through @endif">OMR {{ $class->price_omr }} </span>
+                                                <span class="single-class-index"> : {{__('single-class.price')}}</span>
+                                            @endif
+                                        </h5>
+                                        <hr class="hr-underline-`eur`">
+                                    @endif
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                    @endforeach
+                    </div>
                 </div>
-            </div>
-            <div class="text-center">
-                {{ $classes->links() }}
-            </div>
+                <div class="text-center">
+                    {{ $classes->links() }}
+                </div>
+            </section>
         </div>
     </div>
 @endsection

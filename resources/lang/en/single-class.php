@@ -21,5 +21,14 @@ return [
     'additional-information' => 'Additional information',
     'age-restriction' => 'Age restriction',
     'class-material' => 'Class materials',
-    'minutes' => 'minutes'
+    'minutes' => 'minutes',
+    'discount' => 'Discounted price',
+    'discount-badge' => 'Discounted',
+    'popularity' => 'Popularity',
+    'price-low' => 'Price: low to high',
+    'price-high' => 'Price: high to low',
+    'sort-by' => 'sort by',
+    'filter-location' => 'Filter by class location',
+    'filter-skill-level' => 'Filter by skill level',
+    'additional-filter' => 'Additional filters',
 ];

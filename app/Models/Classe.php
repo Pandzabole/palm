@@ -116,4 +116,15 @@ class Classe extends Model
     {
         return $this->belongsTo(ClassLevel::class);
     }
+
+    /**
+     * @param $price
+     * @param $discount
+     * @return string
+     */
+    public function priceCalculate($price, $discount): string
+    {
+        $calculatedPrice = $price - ($price * ($discount / 100));
+        return  number_format((float)$calculatedPrice, 2, '.', '');
+    }
 }

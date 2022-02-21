@@ -169,3 +169,34 @@
     background-color: white;
     border: 1px solid #1daaa3;
 }
+
+.main-filters{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.decoration-line-through{
+    text-decoration: line-through;
+}
+
+.discounted-badge{
+    top: 15px;
+    left: 25px;
+    font-size: 25px;
+    background-color: orangered;
+}
+
+.popular-badge{
+    top: 15px;
+    left: 88px;
+    font-size: 25px;
+}
+
+.price-book-class-discount{
+    color: orangered;
+    font-size: 20px;
+}
+
+.filter-font{
+    font-size: 16px;
+}

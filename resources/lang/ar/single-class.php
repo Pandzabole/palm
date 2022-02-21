@@ -21,5 +21,14 @@ return [
     'additional-information' => 'معلومة اضافية',
     'age-restriction' => 'شرط العمر أو السن',
     'class-material' => 'مواد تعليمية',
-    'minutes' => 'الدقائق'
+    'minutes' => 'الدقائق',
+    'discount' => 'سعر مخفض',
+    'discount-badge' => 'مخفضة',
+    'popularity' => 'شعبية',
+    'price-low' => 'السعر من الارخص للاعلى',
+    'price-high' => 'السعر الاعلى الى الادنى',
+    'sort-by' => 'صنف حسب',
+    'filter-location' => 'تصفية حسب موقع الفصل',
+    'filter-skill-level' => 'تصفية حسب مستوى المهارة',
+    'additional-filter' => 'مرشحات إضافية',
 ];

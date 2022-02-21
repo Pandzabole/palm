@@ -236,6 +236,63 @@ class ClassController extends Controller
      * @param $uuid
      * @return Application|Factory|View
      */
+    public function lowToHighPrice($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'asc',
+            ['class_sub_category_id' => $classSubCategoryId]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function highToLowPrice($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'desc',
+            ['class_sub_category_id' => $classSubCategoryId]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation'
+            ));
+    }
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
     public function showSingleClass($uuid)
     {
         $this->frontLayoutDataService->getData();

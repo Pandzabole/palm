@@ -171,8 +171,8 @@
 }
 
 .main-filters{
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 22px;
+    padding-right: 22px;
 }
 
 .decoration-line-through{
@@ -180,23 +180,28 @@
 }
 
 .discounted-badge{
-    top: 15px;
-    left: 25px;
+    top: 40px;
+    left: 40px;
     font-size: 25px;
     background-color: orangered;
 }
 
 .popular-badge{
-    top: 15px;
-    left: 88px;
+    top: 40px;
+    left: 80%;
     font-size: 25px;
 }
 
 .price-book-class-discount{
     color: orangered;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .filter-font{
     font-size: 16px;
+}
+
+.main-text-font{
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.9);
 }

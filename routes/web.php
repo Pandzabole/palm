@@ -57,6 +57,8 @@ Route::get('level-filter/{levelUuid}/{subUuid}', [FrontClassController::class, '
 Route::get('location-filter/{locationUuid}/{subUuid}', [FrontClassController::class, 'classLocationFilter'])->name('location-filter');
 Route::get('popular-classes/{uuid}', [FrontClassController::class, 'popularClasses'])->name('popular-classes');
 Route::get('discount-classes/{uuid}', [FrontClassController::class, 'discountedClasses'])->name('discount-classes');
+Route::get('low-to-high-price/{uuid}', [FrontClassController::class, 'lowToHighPrice'])->name('low-to-high-price');
+Route::get('high-to-low-price/{uuid}', [FrontClassController::class, 'highToLowPrice'])->name('high-to-low-price');
 Route::post('submit-review-form', [FrontClassController::class, 'reviewClass'])->name('submit-review-form');
 Route::resource('reservation-class', ReservationClassController::class);
 /** Return contact view*/

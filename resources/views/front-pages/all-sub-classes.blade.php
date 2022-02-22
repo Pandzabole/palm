@@ -2,7 +2,6 @@
 
 @section('content')
 
-    @dd($classes)
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
             @if($singleClass)
@@ -100,7 +99,7 @@
                     <div class="container-fluid">
                         <div class="row clearfix gallery" id="b-portfolio_isotop">
                             @foreach($classes as $class)
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 proj-cat-mock-ups mb-4 p-4">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 proj-cat-mock-ups mb-4 p-4">
                                     <div class="b-portfolio_single">
                                         <a href="{{ route('single-class', $class->uuid) }}" class="b-portfolio_link"
                                            rel=""></a>
@@ -119,7 +118,18 @@
                                                 <span class="b-product_label"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
                                             </div>
                                         @endif
-
+                                        <div class="info-class">
+                                            <h6 class="text-white text-uppercase" style="padding-top: 20%">
+                                                <a href="{{ route('single-class', $class->uuid) }}" class="text-white"
+                                                   rel="">{{ $class->name }}</a>
+                                            </h6>
+{{--                                            <h6 class="text-white text-uppercase">--}}
+{{--                                                {{ $class->classCategory->name }}--}}
+{{--                                            </h6>--}}
+{{--                                            <h6 class="text-white text-uppercase">--}}
+{{--                                                {{ $class->classSubCategory->name }}--}}
+{{--                                            </h6>--}}
+                                        </div>
                                         <div class="b-portfolio_info">
                                             <div class="b-portfolio_info_in home-classes-info">
                                                 <h3 class="b-portfolio_title">

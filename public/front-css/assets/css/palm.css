@@ -67,7 +67,7 @@
 }
 
 .container-single-class{
-    width: 80%;
+    width: 85%
 }
 
 .price-book-class{
@@ -204,4 +204,15 @@
 .main-text-font{
     font-size: 18px;
     color: rgba(0, 0, 0, 0.9);
+}
+
+.info-class{
+    position: absolute;
+    padding-top: 20px;
+    top:18%;
+    width: 50%;
+    height: 40%;
+    left: 23%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
 }

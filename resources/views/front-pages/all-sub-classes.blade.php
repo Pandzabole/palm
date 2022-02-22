@@ -99,8 +99,14 @@
                     <div class="container-fluid">
                         <div class="row clearfix gallery" id="b-portfolio_isotop">
                             @foreach($classes as $class)
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 proj-cat-mock-ups mb-4 p-4">
+                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 proj-cat-mock-ups  class-main-div-picture">
                                     <div class="b-portfolio_single">
+                                        <hr class="hr-underline-`eur` hr-under-line-mobile">
+                                        <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                            <span
+                                                class="main-text-font"> {{ $class->name }}
+                                            </span>
+                                        </h5>
                                         <a href="{{ route('single-class', $class->uuid) }}" class="b-portfolio_link"
                                            rel=""></a>
                                         <div class="b-portfolio_img b-img_zoom">
@@ -113,23 +119,23 @@
                                         </div>
                                         @endif
 
-                                        @if($class->popular === true)
-                                            <div class="b-product_labels b-labels_rounded b-new popular-badge">
-                                                <span class="b-product_label"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>
-                                            </div>
-                                        @endif
-                                        <div class="info-class">
-                                            <h6 class="text-white text-uppercase" style="padding-top: 20%">
-                                                <a href="{{ route('single-class', $class->uuid) }}" class="text-white"
-                                                   rel="">{{ $class->name }}</a>
-                                            </h6>
+    {{--                                        @if($class->popular === true)--}}
+    {{--                                            <div class="b-product_labels b-labels_rounded b-new popular-badge">--}}
+    {{--                                                <span class="b-product_label"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>--}}
+    {{--                                            </div>--}}
+    {{--                                        @endif--}}
+{{--                                        <div class="info-class">--}}
+{{--                                            <h6 class="text-white text-uppercase" style="padding-top: 20%">--}}
+{{--                                                <a href="{{ route('single-class', $class->uuid) }}" class="text-white"--}}
+{{--                                                   rel="">{{ $class->name }}</a>--}}
+{{--                                            </h6>--}}
 {{--                                            <h6 class="text-white text-uppercase">--}}
 {{--                                                {{ $class->classCategory->name }}--}}
 {{--                                            </h6>--}}
 {{--                                            <h6 class="text-white text-uppercase">--}}
 {{--                                                {{ $class->classSubCategory->name }}--}}
 {{--                                            </h6>--}}
-                                        </div>
+{{--                                        </div>--}}
                                         <div class="b-portfolio_info">
                                             <div class="b-portfolio_info_in home-classes-info">
                                                 <h3 class="b-portfolio_title">

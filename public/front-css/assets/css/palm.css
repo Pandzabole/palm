@@ -180,14 +180,14 @@
 }
 
 .discounted-badge{
-    top: 40px;
-    left: 40px;
+    top: 24%;
+    left: 5%;
     font-size: 25px;
     background-color: orangered;
 }
 
 .popular-badge{
-    top: 40px;
+    top: 24%;
     left: 80%;
     font-size: 25px;
 }
@@ -215,4 +215,55 @@
     left: 23%;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
+}
+
+.class-main-div-picture{
+    margin-bottom: 2% !important;
+    padding: 15px !important;
+}
+
+/* Media */
+
+@media (max-width: 576px) {
+    .discounted-badge{
+     display: none;
+    }
+}
+
+@media (max-width: 1230px) {
+    .discounted-badge{
+        top: 25%;
+        left: 5%;
+        font-size: 25px;
+        background-color: orangered;
+    }
+}
+
+@media (max-width: 992px) {
+    .container-single-class{
+        width: 100%
+    }
+
+    .b-page-title{
+        font-size: 1.8rem;
+    }
+
+    .class-main-div-picture{
+        margin-bottom: 0 !important;
+    }
+
+    .hr-under-line-mobile{
+        display: none;
+    }
+
+    .pagination{
+        padding-left: 37% !important;
+    }
+
+    .discounted-badge{
+        top: 15%;
+        left: 5%;
+        font-size: 25px;
+        background-color: orangered;
+    }
 }

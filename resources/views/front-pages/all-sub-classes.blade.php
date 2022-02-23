@@ -82,17 +82,6 @@
                 </div>
             </div>
         @endif
-        {{--        <div class="b-products b-product_grid b-product_grid_four mb-4">--}}
-        {{--            <div class="container container-single-class">--}}
-        {{--                <div class="row clearfix">--}}
-        {{--                    @foreach($classes as $class)--}}
-        {{--                    @endforeach--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--            <div class="text-center">--}}
-        {{--                {{ $classes->links() }}--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
         <div class="container  container-single-class">
             <section id="b-portfolio">
                 <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
@@ -118,24 +107,6 @@
                                             <span class="b-product_label"><strong> % </strong></span>
                                         </div>
                                         @endif
-
-    {{--                                        @if($class->popular === true)--}}
-    {{--                                            <div class="b-product_labels b-labels_rounded b-new popular-badge">--}}
-    {{--                                                <span class="b-product_label"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span>--}}
-    {{--                                            </div>--}}
-    {{--                                        @endif--}}
-{{--                                        <div class="info-class">--}}
-{{--                                            <h6 class="text-white text-uppercase" style="padding-top: 20%">--}}
-{{--                                                <a href="{{ route('single-class', $class->uuid) }}" class="text-white"--}}
-{{--                                                   rel="">{{ $class->name }}</a>--}}
-{{--                                            </h6>--}}
-{{--                                            <h6 class="text-white text-uppercase">--}}
-{{--                                                {{ $class->classCategory->name }}--}}
-{{--                                            </h6>--}}
-{{--                                            <h6 class="text-white text-uppercase">--}}
-{{--                                                {{ $class->classSubCategory->name }}--}}
-{{--                                            </h6>--}}
-{{--                                        </div>--}}
                                         <div class="b-portfolio_info">
                                             <div class="b-portfolio_info_in home-classes-info">
                                                 <h3 class="b-portfolio_title">

@@ -222,6 +222,18 @@
     padding: 15px !important;
 }
 
+.custom-btn{
+    background-color: #1daaa3 !important;
+    border-color: #1daaa3 !important;
+    color: white !important;
+}
+
+.custom-btn:hover{
+    background-color: #175754 !important;
+    border-color: #175754 !important;
+    color: white !important;
+}
+
 /* Media */
 
 @media (max-width: 576px) {

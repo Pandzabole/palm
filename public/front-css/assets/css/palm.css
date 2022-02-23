@@ -197,6 +197,11 @@
     font-size: 18px;
 }
 
+.price-book-class-discount-single{
+    color: orangered;
+    font-size: 24px;
+}
+
 .filter-font{
     font-size: 16px;
 }

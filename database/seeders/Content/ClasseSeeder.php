@@ -26,7 +26,7 @@ class ClasseSeeder extends Seeder
     protected function getEnData(): void
     {
         Classe::factory()
-            ->count(2)
+            ->count(8)
             ->create()
             ->each(
                 function ($class) {

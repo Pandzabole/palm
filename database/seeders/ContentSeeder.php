@@ -23,6 +23,7 @@ use Database\Seeders\Content\ClassSubCategorySeeder;
 use Database\Seeders\Content\ClassLocationSeeder;
 use Database\Seeders\Content\TeacherSeeder;
 use Database\Seeders\Content\ClassMainSubCategory;
+use Database\Seeders\Content\ClasseSeeder;
 use Illuminate\Database\Seeder;
 
 class ContentSeeder extends Seeder
@@ -55,6 +56,7 @@ class ContentSeeder extends Seeder
         $this->call(TeacherSeeder::class);
         $this->call(ClassMainSubCategory::class);
         $this->call(ClassLevelSeeder::class);
+        $this->call(ClasseSeeder::class);
 
     }
 }

@@ -19,10 +19,6 @@
                     @endif
                 </ul>
             </div>
-
-
-
-
             <div class="row clearfix gallery" id="b-portfolio_isotop">
                 <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
                     <div class="b-portfolio_single">

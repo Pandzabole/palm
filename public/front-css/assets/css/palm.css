@@ -233,12 +233,28 @@
     color: white !important;
 }
 
+.btn-close-mobile-menu{
+    background-color: #1daaa3;
+    border-radius: 5px;
+    padding: 17px 45px;
+    color: white;
+    position: absolute;
+    bottom: 3%;
+    left: 40%;
+
+}
+
 .custom-btn:hover{
     background-color: #175754 !important;
     border-color: #175754 !important;
     color: white !important;
 }
 
+.b-main_menu-wrapper{
+    width: 100%;
+    height: 70%;
+    left: -100%;
+}
 /* Media */
 
 @media (max-width: 576px) {

@@ -185,6 +185,10 @@ var App = (function(window){
         $(this).parent().find(".dropdown-inner").slideToggle("slow");
         return false;
       });
+        $(document).on('click', '#close-mobile-menu', function(e) {
+            $("body").toggleClass('mobile-menu-open');
+            return false;
+        });
     },
 
     ToggleAccountForm: function(){

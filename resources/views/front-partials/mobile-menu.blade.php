@@ -1,5 +1,10 @@
 <!-- MOBILE MENU-->
-<div class="b-main_menu-wrapper hidden-lg-up">
+@if($session === 'database-om' || $session === 'database-ar')
+    <div class="b-main_menu-wrapper hidden-lg-up" style="max-width: 100%" >
+
+@else
+    <div class="b-main_menu-wrapper hidden-lg-up">
+@endif
     <ul class="mobile-top">
         <li class="search">
             <div class="search-holder-mobile">
@@ -8,43 +13,18 @@
             </div>
         </li>
     </ul>
-    <ul class="categories">
-        <li class="has-sub dropdown-wrapper from-bottom">
-            <a href="index.html"><span class="top">Home</span><i class="fa fa-angle-down"></i></a>
-            <div class="dropdown-content sub-holder dropdown-left narrow">
-                <div class="dropdown-inner">
-                    <div class="clearfix">
-                        <div class="col-xs-12 col-sm-12 ">
-                            <div class="menu-item">
-                                <!-- CATEGORIES CONTENT -->
-                                <div class="categories">
-                                    <div class="clearfix">
-                                        <div class="col-sm-12 hover-menu text-uppercase">
-                                            <ul>
-                                                <li><a href="index.html">HOME DEFAULT</a></li>
-                                                <li><a href="home-lingerie.html">Lingerie store</a></li>
-                                                <li><a href="home-watch.html">HOME Watches</a></li>
-                                                <li><a href="home-minimalist.html">home minimalist</a></li>
-                                                <li><a href="home-jewellery.html">home jewellery</a></li>
-                                                <li><a href="home-furniture.html">home furniture</a></li>
-                                                <li><a href="home-full-width.html">home fashion full</a></li>
-                                                <li><a href="home-fashion.html">home fashion</a></li>
-                                                <li><a href="home-cosmetics.html">home cosmetics</a></li>
-                                                <li><a href="home-dark.html">home dark</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row -->
-                </div>
-            </div>
+    <ul class="categories @if($session === 'database-om' || $session === 'database-ar') text-right @else text-center @endif ">
+        <li>
+            <a href="{{ route('home') }}"><span class="top">{{__('home-page.home')}}</span></a>
         </li>
         <!-- Top level items -->
         <li class=" has-sub dropdown-wrapper from-bottom">
-            <a href="shop-grid-three.html"><span class="top">Shop</span><i class="fa fa-angle-down"></i></a>
+            @if($session === 'database-om' || $session === 'database-ar')
+                <a href="shop-grid-three.html"><span class="top"><span class="fa fa-angle-down mr-2"></span>{{__('home-page.all-classes')}}</span></a>
+
+            @else
+                <a href="shop-grid-three.html"><span class="top">{{__('home-page.all-classes')}}</span><i class="fa fa-angle-down"></i></a>
+        @endif
             <!-- Sub Menu items -->
             <div class="dropdown-content sub-holder dropdown-left narrow">
                 <div class="dropdown-inner">
@@ -55,9 +35,9 @@
                                     <div class="clearfix">
                                         <div class="col-sm-12 hover-menu">
                                             <ul>
-                                                <li><a href="shop-grid-three.html">shop</a></li>
-                                                <li><a href="product-single.html">single product</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
+                                                @foreach($mainCategories as $key => $mainCategory)
+                                                    <li><a href="shop-grid-three.html">{{ $mainCategory->name }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </div>
                                     </div>
@@ -69,52 +49,13 @@
             </div>
         </li>
         <li>
-            <a href="blog-default.html"><span class="top">Blog</span></a>
+            <a href="blog-default.html"><span class="top">{{__('home-page.mount-offer')}}</span></a>
         </li>
         <li>
-            <a href="portfolio.html"><span class="top">Portfolio</span></a>
-        </li>
-        <li class="has-sub dropdown-wrapper from-bottom">
-            <a href="#"><span class="top">Accessories</span><i class="fa fa-angle-down"></i></a>
-            <div class="dropdown-content sub-holder dropdown-left narrow">
-                <div class="dropdown-inner">
-                    <div class="clearfix">
-                        <div class="col-xs-12 col-sm-12 ">
-                            <div class="menu-item">
-                                <div class="categories">
-                                    <div class="clearfix">
-                                        <div class="col-sm-12 hover-menu">
-                                            <ul>
-                                                <li><a href="contact-01.html">contact us</a></li>
-                                                <li><a href="faq.html">faq</a></li>
-                                                <li><a href="our-gallery">our gallery</a></li>
-                                                <li><a href="our-services.html">our services</a></li>
-                                                <li><a href="shop-grid-three">our shop</a></li>
-                                                <li><a href="our-gallery.html">our gallery</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <a href="cart-default.html"><span class="top">Cart</span></a>
-        </li>
-        <li>
-            <a href="my-account.html"><span class="top">My Account</span></a>
-        </li>
-        <li>
-            <a href="#"><span class="top">wishlist</span></a>
-        </li>
-        <li>
-            <a href="my-account.html"><span class="top">login</span></a>
+            <a href="{{route('contact-us')}}"><span class="top">{{__('home-page.contact')}}</span></a>
         </li>
     </ul>
+        <buttton class="btn-close-mobile-menu" id="close-mobile-menu">{{__('home-page.close')}}</buttton>
 </div>
-
 
 @yield('mobile-menu')

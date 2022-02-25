@@ -28,9 +28,9 @@ class SliderUpdateRequest extends FormRequest
             'steps.*' => new UploadImageRule(false),
             'steps.*.cta' => 'nullable|string',
             'steps.*.url' => 'nullable|string',
-            'steps.*.image_desktop' => 'nullable|mimes:jpeg,bmp,png|dimensions:width=1920,height=950',
+            'steps.*.image_desktop' => 'nullable|mimes:jpeg,bmp,png',
             'steps.*.media_desktop_id' => 'nullable|exists:media,id',
-            'steps.*.image_mobile' => 'nullable|mimes:jpeg,bmp,png|dimensions:width=750,height=1686',
+            'steps.*.image_mobile' => 'nullable|mimes:jpeg,bmp,png',
             'steps.*.media_mobile_id' => 'nullable|exists:media,id',
             'deleted_steps.*' => 'nullable|exists:slider_items,id',
         ];

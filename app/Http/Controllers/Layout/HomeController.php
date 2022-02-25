@@ -8,6 +8,7 @@ use App\Repositories\Contracts\ActivitiesRepository;
 use App\Repositories\Contracts\LanguagesRepository;
 use App\Repositories\Contracts\ClassesRepository;
 use App\Repositories\Contracts\ClassCategoryRepository;
+use App\Repositories\Contracts\SliderItemsRepository;
 use Illuminate\Contracts\Foundation\Application;
 use App\Services\FrontLayout\FrontLayoutDataService;
 use Illuminate\Contracts\View\Factory;
@@ -33,6 +34,9 @@ class HomeController extends Controller
     /** @var ClassCategoryRepository $classCategoryRepository */
     public $classCategoryRepository;
 
+    /** @var SliderItemsRepository $sliderItemsRepository */
+    public $sliderItemsRepository;
+
     /** @var FrontLayoutDataService $frontLayoutDataService */
     public $frontLayoutDataService;
 
@@ -45,13 +49,15 @@ class HomeController extends Controller
      * @param ClassesRepository $classesRepository
      * @param ClassCategoryRepository $classCategoryRepository
      * @param FrontLayoutDataService $frontLayoutDataService
+     * @param SliderItemsRepository $sliderItemsRepository
      */
     public function __construct(
         ActivitiesRepository $activityCategoriesRepository,
         LanguagesRepository $languagesRepository,
         ClassesRepository $classesRepository,
         FrontLayoutDataService $frontLayoutDataService,
-        ClassCategoryRepository $classCategoryRepository
+        ClassCategoryRepository $classCategoryRepository,
+        SliderItemsRepository $sliderItemsRepository
     )
     {
         $this->activityCategoriesRepository = $activityCategoriesRepository;
@@ -59,6 +65,7 @@ class HomeController extends Controller
         $this->classesRepository = $classesRepository;
         $this->classCategoryRepository = $classCategoryRepository;
         $this->frontLayoutDataService = $frontLayoutDataService;
+        $this->sliderItemsRepository = $sliderItemsRepository;
     }
 
     /**
@@ -72,8 +79,9 @@ class HomeController extends Controller
         $languageList = config('languages');
         $session = Session::get('db_language_layout');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $sliderItems = $this->sliderItemsRepository->getAll();
 
-        return view('main', compact('languageList', 'session', 'mainCategories'));
+        return view('main', compact('languageList', 'session', 'mainCategories', 'sliderItems'));
     }
 
     /**

@@ -28,9 +28,9 @@ class SliderCreateRequest extends FormRequest
             'steps.*' => new UploadImageRule(),
             'steps.*.cta' => 'nullable|string',
             'steps.*.url' => 'nullable|string',
-            'steps.*.image_desktop' => 'nullable|required_without:steps.*.media_desktop_id|mimes:jpeg,bmp,png|dimensions:width=1920,height=950',
+            'steps.*.image_desktop' => 'nullable|required_without:steps.*.media_desktop_id|mimes:jpeg,bmp,png',
             'steps.*.media_desktop_id' => 'nullable|required_without:steps.*.image_desktop|exists:media,id',
-            'steps.*.image_mobile' => 'nullable|required_without:steps.*.media_mobile_id|mimes:jpeg,bmp,png|dimensions:width=750,height=1686',
+            'steps.*.image_mobile' => 'nullable|required_without:steps.*.media_mobile_id|mimes:jpeg,bmp,png',
             'steps.*.media_mobile_id' => 'nullable|required_without:steps.*.image_mobile|exists:media,id',
         ];
     }

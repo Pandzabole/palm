@@ -13,5 +13,6 @@ return [
     'make-booking' => 'قم بحجز الفصل',
     'call-you' => 'سوف نتصل بك - سنتواصل معك',
     'local-classes' => 'فئات محلية',
-    'close' => 'يغلق'
+    'new-classes' => 'فصول جديدة',
+
 ];

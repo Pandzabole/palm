@@ -13,5 +13,6 @@ return [
     'make-booking' => 'Make a booking the class',
     'call-you' => 'We will contact you',
     'local-classes' => 'Local Classes',
-    'close' => 'Close'
+    'close' => 'Close',
+    'new-classes' => 'New Classes',
 ];

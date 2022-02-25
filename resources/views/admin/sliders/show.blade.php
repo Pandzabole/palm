@@ -43,12 +43,12 @@
                                                             <table class="table table-borderless">
                                                                 <tbody>
                                                                 <tr class="border-bottom">
-                                                                    <th scope="row" width="30%"> Cta</th>
-                                                                    <td>{{ $step->cta }}</td>
+                                                                    <th scope="row" width="30%"> Main text</th>
+                                                                    <td>{{ $step->main_text }}</td>
                                                                 </tr>
                                                                 <tr class="border-bottom">
-                                                                    <th scope="row" width="30%"> Url</th>
-                                                                    <td>{{ $step->url }}</td>
+                                                                    <th scope="row" width="30%"> Second text</th>
+                                                                    <td>{{ $step->second_text }}</td>
                                                                 </tr>
                                                                 <tr class="border-bottom">
                                                                     <th scope="row" width="30%">Image Desktop</th>

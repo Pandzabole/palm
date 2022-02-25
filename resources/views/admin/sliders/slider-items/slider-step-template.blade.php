@@ -13,15 +13,15 @@
         <div class="card-body">
             <div class="form-row">
                 <div class="form-group col-md-6 error-danger">
-                    <label> CTA </label>
-                    <input type="text" class="form-control submit-data input-cta" placeholder="CTA" name="cta"
+                    <label> Main text </label>
+                    <input type="text" class="form-control submit-data input-main_text" placeholder=" Main text" name="main_text"
                            value=""
                            required>
                     <span class="text-danger d-none error-span"></span>
                 </div>
                 <div class="form-group col-md-6 error-danger">
-                    <label> URL </label>
-                    <input type="text" class="form-control submit-data input-url" placeholder="URL" name="url"
+                    <label> Second text </label>
+                    <input type="text" class="form-control submit-data input-second_text" placeholder="Second text" name="second_text"
                            value=""
                            required>
                     <span class="text-danger d-none error-span"></span>
@@ -29,22 +29,18 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6 error-danger">
-                    <label class="form-control-label" for="image">Desktop Image</label>
+                    <label class="form-control-label" for="image">Main Image</label>
                     @include('partials.media.form', ['inputName' => 'image_desktop', 'mediaName' => 'media_desktop_id',  'mediaModal' => 'media-modal-desktop', 'exists' => false])
-                    <p class="form-control-label">Required image: landscape <span
+                    <p class="form-control-label">Recommended dimensions: 1200px x 700px <span
                             class="image-desktop-portrait"></span>
-                        <span
-                            class="form-control-label recommended-image-dimension">width: 1920px, height: 950px</span>
                     </p>
                     <span class="text-danger d-none error-span"></span>
                 </div>
                 <div class="form-group col-md-6 error-danger">
-                    <label class="form-control-label" for="image">Mobile Image</label>
+                    <label class="form-control-label" for="image">Second Image</label>
                     @include('partials.media.form', ['inputName' => 'image_mobile', 'mediaName' => 'media_mobile_id', 'mediaModal' => 'media-modal-mobile', 'exists' => false])
-                    <p class="form-control-label">Required image: portrait <span
-                            class="image-mobile-portrait"></span>
-                        <span
-                            class="recommended-image-dimension form-control-label"> width: 750px,  height: 1686px</span>
+                    <p class="form-control-label">Recommended dimensions: 1200px x 700px <span
+                            class="image-desktop-portrait"></span>
                     </p>
                     <span class="text-danger d-none error-span"></span>
                 </div>

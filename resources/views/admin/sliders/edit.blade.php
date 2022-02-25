@@ -37,30 +37,30 @@
                                                 <div class="card-body">
                                                     <div class="form-row">
                                                         <div
-                                                            class="form-group col-md-6 error-danger error-danger-steps-{{ $step->position  }}-cta">
-                                                            <label> Cta </label>
-                                                            <input type="text" class="form-control submit-data input-cta"
-                                                                   placeholder="Cta" name="steps[{{ $step->position }}][cta]"
-                                                                   value="{{ $step->cta }}"
+                                                            class="form-group col-md-6 error-danger error-danger-steps-{{ $step->position  }}-main_text">
+                                                            <label> Main text </label>
+                                                            <input type="text" class="form-control submit-data input-main_text"
+                                                                   placeholder="Main text" name="steps[{{ $step->position }}][main_text]"
+                                                                   value="{{ $step->main_text }}"
                                                                    required>
                                                             <span
-                                                                class="text-danger d-none error-span error-steps-{{ $step->position  }}-cta"></span>
+                                                                class="text-danger d-none error-span error-steps-{{ $step->position  }}-main_text"></span>
                                                         </div>
                                                         <div
-                                                            class="form-group col-md-6 error-danger error-danger-steps-{{ $step->position  }}-url">
-                                                            <label> Url </label>
-                                                            <input type="text" class="form-control submit-data input-url"
-                                                                   placeholder="Url" name="steps[{{ $step->position }}][url]"
-                                                                   value="{{ $step->url }}"
+                                                            class="form-group col-md-6 error-danger error-danger-steps-{{ $step->position  }}-second_text">
+                                                            <label> Second text </label>
+                                                            <input type="text" class="form-control submit-data input-second_text"
+                                                                   placeholder="Second text" name="steps[{{ $step->position }}][second_text]"
+                                                                   value="{{ $step->second_text }}"
                                                                    required>
                                                             <span
-                                                                class="text-danger d-none error-span error-steps-{{ $step->position  }}-url"></span>
+                                                                class="text-danger d-none error-span error-steps-{{ $step->position  }}-second_text"></span>
                                                         </div>
                                                     </div>
                                                     <div class="form-row">
                                                         <div
                                                             class="form-group col-md-6 error-danger error-danger-steps-{{ $step->position  }}-image_desktop error-danger-steps-{{ $step->position  }}-media_id error-danger-steps-{{ $step->position  }}">
-                                                            <label class="asterisk"> Image Desktop</label>
+                                                            <label class="asterisk"> Main image</label>
                                                             @include('partials.media.form', [
                                                                     'mediaUrl' => optional($step->desktopImage())->getUrl(),
                                                                     'inputName' => "steps[". $step->position ."][image_desktop]",
@@ -70,16 +70,15 @@
                                                                     'resource' => $step,
                                                                     'mediaModal' => 'media-modal-desktop'
                                                                ])
-                                                            <p class="form-control-label">Required image: landscape <span
+                                                            <p class="form-control-label">Recommended dimensions: 1200px x 700px <span
                                                                     class="image-desktop-portrait"></span>
-                                                                <span class="form-control-label recommended-image-dimension">width: 1920px, height: 950px</span>
                                                             </p>
                                                             <span
                                                                 class="text-danger d-none error-span error-steps-{{ $step->position  }}-image_desktop error-steps-{{ $step->position  }}-media_id error-steps-{{ $step->position  }}"></span>
                                                         </div>
                                                         <div
                                                             class="form-group col-md-6 error-danger error-danger-steps-{{ $step->position  }}-image_mobile error-danger-steps-{{ $step->position  }}-media_id error-danger-steps-{{ $step->position  }}">
-                                                            <label class="asterisk"> Image Mobile</label>
+                                                            <label class="asterisk"> Second image</label>
                                                             @include('partials.media.form', [
                                                                     'mediaUrl' => optional($step->mobileImage())->getUrl(),
                                                                     'inputName' => "steps[". $step->position ."][image_mobile]",
@@ -89,9 +88,8 @@
                                                                     'resource' => $step,
                                                                     'mediaModal' => 'media-modal-mobile'
                                                                ])
-                                                            <p class="form-control-label">Required image: portrait <span
-                                                                    class="image-mobile-portrait"></span>
-                                                                <span class="recommended-image-dimension form-control-label"> width: 750px,  height: 1686px</span>
+                                                            <p class="form-control-label">Recommended dimensions: 1200px x 700px <span
+                                                                    class="image-desktop-portrait"></span>
                                                             </p>
                                                             <span
                                                                 class="text-danger d-none error-span error-steps-{{ $step->position  }}-image_mobile error-steps-{{ $step->position  }}-media_id error-steps-{{ $step->position  }}"></span>

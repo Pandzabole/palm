@@ -20,7 +20,9 @@
                      data-paddingright="[0,0,0,0]"
                      data-paddingbottom="[0,0,0,0]"
                      data-paddingleft="[0,0,0,0]"
-                     style="font-size: 250px; font-family: lora; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 0.2); z-index: 999">{{__('home-page.new-classes')}} </div>
+                     style="font-size: 250px; font-family: lora; line-height: 22px; font-weight: 400; color: rgba(255, 255, 255, 0.2); z-index: 999">
+                    {{ $slider->second_text }}
+                </div>
                 <div class="tp-caption  tp-resizeme"
                      data-x="['left','left','left','center']"
                      data-hoffset="['50','20','20','0']"
@@ -38,7 +40,7 @@
                      data-paddingbottom="[0,0,0,0]"
                      data-paddingleft="[0,0,0,0]"
                      style="font-size: 120px; line-height: 22px; font-weight: 700; color: rgb(255, 255, 255); z-index: 999">
-                    {{__('home-page.new-classes')}}
+                    {{ $slider->main_text }}
                 </div>
 {{--                <div class="tp-caption tp-resizeme"--}}
 {{--                     data-x="['left','left','left','center']"--}}

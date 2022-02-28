@@ -177,7 +177,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="teacher_id">Teacher <span class="text-danger">*</span> </label>
+                                    <label for="class_level_id">Class Level <span class="text-danger">*</span> </label>
                                     <select class="form-control category-search" id="class_level"
                                             data-toggle="select" data-placeholder="Filter by class level"
                                             name="class_level_id">

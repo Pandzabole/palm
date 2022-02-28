@@ -96,7 +96,7 @@ class ClassController extends Controller
         $classLocation = $this->classLocationRepository->findByFilters();
 
         $classes = $this->classesRepository->findByPaginate(
-            3,
+            12,
             'created_at',
             'desc',
             ['class_sub_category_id' => $classSubCategoryId]);
@@ -120,9 +120,11 @@ class ClassController extends Controller
      */
     public function classLevelFilter($levelUuid, $subUuid)
     {
+
         $this->frontLayoutDataService->getData();
         $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $subUuid])->id;
         $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $levelUuid])->id;
+
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
         $classes = $this->classesRepository->findByPaginate(

@@ -39,7 +39,7 @@
                                                                                 text-right @else text-left @endif">
                                                                                 <ul>
                                                                                     <li>
-                                                                                        <a href="{{ route('sub-classes', $classSub->uuid) }}">{{$classSub->name}}</a>
+                                                                                        <a href="{{ route('sub-classes', ['lang' => $selectedLanguageLayout, $classSub->uuid]) }}">{{$classSub->name}}</a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>

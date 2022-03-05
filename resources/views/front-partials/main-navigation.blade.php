@@ -13,7 +13,7 @@
                             <div class="b-main_menu text-center">
                                 <ul class="categories pl-0 mb-0 list-unstyled">
                                     <li class="b-has_sub b-dropdown_wrapper from-bottom nav-link @if(request()->is('contact-us*')) active @endif">
-                                        <a href="{{route('contact-us')}}"><span class="top">{{__('home-page.contact')}} </span></a>
+                                        <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span class="top">{{__('home-page.contact')}} </span></a>
                                     </li>
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
                                         <a href="shop-grid-three.html" class=" description ">
@@ -21,11 +21,11 @@
                                         <div class="b-dropdown_content sub-holder dropdown-left" style="width: 992px;"></div>
                                     </li>
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                        <a href="{{ route('all-classes') }}" class=" description ">
+                                        <a href="{{ route('all-classes', ['lang' => $selectedLanguageLayout]) }}" class=" description ">
                                             <span class="top">{{__('home-page.all-classes')}}</span></a>
                                     </li>
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                        <a href="{{ route('home') }}" class=" description ">
+                                        <a href="{{ route('home', ['lang' => $selectedLanguageLayout]) }}" class=" description ">
                                             <span class="top">{{__('home-page.home')}}</span></a>
                                     </li>
 
@@ -37,13 +37,13 @@
                                     <!-- Mega menu -->
                                     <!-- Top level items -->
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                        <a href="{{ route('home') }}" class=" description ">
+                                        <a href="{{ route('home', ['lang' => $selectedLanguageLayout]) }}" class=" description ">
                                             <span class="top">{{__('home-page.home')}}</span></a>
                                         <!-- Sub Menu items -->
                                     </li>
                                     <!-- Top level items -->
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                        <a href="{{ route('all-classes') }}" class=" description ">
+                                        <a href="{{ route('all-classes', ['lang' => $selectedLanguageLayout]) }}" class=" description ">
                                             <span class="top">{{__('home-page.all-classes')}}</span></a>
                                     </li>
                                     <!-- Mountly offer -->
@@ -55,7 +55,7 @@
                                     </li>
                                     <!-- Top level items -->
                                     <li class="b-has_sub b-dropdown_wrapper from-bottom nav-link @if(request()->is('contact-us*')) active @endif">
-                                        <a href="{{route('contact-us')}}"><span class="top">{{__('home-page.contact')}} </span></a>
+                                        <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span class="top">{{__('home-page.contact')}} </span></a>
                                     </li>
                                 </ul>
                             </div>

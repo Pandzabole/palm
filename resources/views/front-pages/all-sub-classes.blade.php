@@ -19,7 +19,7 @@
                     @if($singleClass)
                         <div class="b-decent-title-wrap">
                             <div class="b-decent-title">
-                                <span>{{ $singleClass->classSubCategory->name}}</span>
+                                <span>{{ $singleClass->classSubCategory->name}} pera</span>
                             </div>
                         </div>
                     @endif
@@ -51,10 +51,10 @@
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                                 <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.sort-by')}}</h5>
                                     <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
-                                        <li><a href="{{ route('discount-classes', $mainCategories[0]->classSubCategory[0]->uuid) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
-                                        <li><a href="{{ route('popular-classes', $mainCategories[0]->classSubCategory[0]->uuid) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
-                                        <li><a href="{{ route('low-to-high-price', $mainCategories[0]->classSubCategory[0]->uuid ) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
-                                        <li><a href="{{ route('high-to-low-price', $mainCategories[0]->classSubCategory[0]->uuid) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
+                                        <li><a href="{{ route('discount-classes', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
+                                        <li><a href="{{ route('popular-classes', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
+                                        <li><a href="{{ route('low-to-high-price', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
+                                        <li><a href="{{ route('high-to-low-price', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
                                     </ul>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
@@ -62,7 +62,7 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLocation as $location)
                                         <li>
-                                            <a href="{{ route('location-filter', [$location->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font"> {{$location->location}} </a>
+                                            <a href="{{ route('location-filter', ['lang' => $selectedLanguageLayout, $location->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font"> {{$location->location}} </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -72,7 +72,7 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLevel as $level)
                                         <li>
-                                            <a href="{{ route('level-filter', [$level->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{ $level->level }} </a>
+                                            <a href="{{ route('level-filter', ['lang' => $selectedLanguageLayout, $level->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{ $level->level }} </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -96,7 +96,7 @@
                                                 class="main-text-font"> {{ $class->name }}
                                             </span>
                                         </h5>
-                                        <a href="{{ route('single-class', $class->uuid) }}" class="b-portfolio_link"
+                                        <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $class->uuid]) }}" class="b-portfolio_link"
                                            rel=""></a>
                                         <div class="b-portfolio_img b-img_zoom">
                                             <img src="{{ asset( $class->mobileImage()->getUrlResponsive('1200')) }}"
@@ -110,7 +110,7 @@
                                         <div class="b-portfolio_info">
                                             <div class="b-portfolio_info_in home-classes-info">
                                                 <h3 class="b-portfolio_title">
-                                                    <a href="{{ route('single-class', $class->uuid) }}"
+                                                    <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $class->uuid])}}"
                                                        rel="">{{ $class->name }}</a>
                                                 </h3>
                                                 <h4 class="text-white text-uppercase">

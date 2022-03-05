@@ -118,7 +118,6 @@ class ClassController extends Controller
                     ['model' => $class, 'routeModelName' => 'classes']
                 );
             })
-            ->editColumn('highlighted', 'admin.classes.datatables.highlighted')
             ->editColumn('discount', 'admin.classes.datatables.discounted')
             ->editColumn('date', static function ($class) {
                 return $class->created_at;
@@ -126,6 +125,9 @@ class ClassController extends Controller
             ->rawColumns(['actions', 'highlighted', 'discount'])
             ->addColumn('categories', static function (Classe $class) {
                 return $class->classCategory->pluck('name')->implode(', ');
+            })
+            ->addColumn('sub.categories', static function (Classe $class) {
+                return $class->classSubCategory->pluck('name')->implode(', ');
             })
             ->make(true);
     }

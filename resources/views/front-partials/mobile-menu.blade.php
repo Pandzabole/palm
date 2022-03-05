@@ -15,7 +15,7 @@
     </ul>
     <ul class="categories @if($session === 'database-om' || $session === 'database-ar') text-right @else text-center @endif ">
         <li>
-            <a href="{{ route('home') }}"><span class="top">{{__('home-page.home')}}</span></a>
+            <a href="{{ route('home', ['lang' => $selectedLanguageLayout]) }}"><span class="top">{{__('home-page.home')}}</span></a>
         </li>
         <!-- Top level items -->
         <li class=" has-sub dropdown-wrapper from-bottom">
@@ -52,7 +52,7 @@
             <a href="blog-default.html"><span class="top">{{__('home-page.mount-offer')}}</span></a>
         </li>
         <li>
-            <a href="{{route('contact-us')}}"><span class="top">{{__('home-page.contact')}}</span></a>
+            <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span class="top">{{__('home-page.contact')}}</span></a>
         </li>
     </ul>
         <buttton class="btn-close-mobile-menu" id="close-mobile-menu">{{__('home-page.close')}}</buttton>

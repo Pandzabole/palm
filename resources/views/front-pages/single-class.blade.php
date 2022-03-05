@@ -468,7 +468,7 @@
                         @foreach($relatedClasses as $relatedClass)
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-4">
                                 <div class="b-portfolio_single">
-                                    <a href="{{ route('single-class', $relatedClass->uuid) }}" class="b-portfolio_link"
+                                    <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $relatedClass->uuid]) }}" class="b-portfolio_link"
                                        rel=""></a>
                                     <hr class="hr-underline-`eur`">
 
@@ -484,7 +484,7 @@
                                     <div class="b-portfolio_info">
                                         <div class="b-portfolio_info_in home-classes-info">
                                             <h3 class="b-portfolio_title">
-                                                <a href="{{ route('single-class', $relatedClass->uuid) }}"
+                                                <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $relatedClass->uuid]) }}"
                                                    rel="">{{ $relatedClass->name }}</a>
                                             </h3>
                                             <h4 class="text-white text-uppercase">

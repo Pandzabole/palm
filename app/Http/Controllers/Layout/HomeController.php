@@ -91,7 +91,6 @@ class HomeController extends Controller
     public function setLanguage(Request $request): RedirectResponse
     {
         $language = $request->get('lang');
-
         $language = $this->languagesRepository->findOneBy(['short' => $language]);
         Session::put(['db_language_layout' => $language->connection_name, 'db_language_name_layout' => $language->short]);
         return redirect()->route('home');

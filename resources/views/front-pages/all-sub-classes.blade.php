@@ -1,7 +1,6 @@
 @extends('front-layout.app')
 
 @section('content')
-
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
             @if($singleClass)
@@ -19,7 +18,7 @@
                     @if($singleClass)
                         <div class="b-decent-title-wrap">
                             <div class="b-decent-title">
-                                <span>{{ $singleClass->classSubCategory->name}} pera</span>
+                                <span>{{ $singleClass->classSubCategory->name}}</span>
                             </div>
                         </div>
                     @endif
@@ -51,8 +50,8 @@
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                                 <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.sort-by')}}</h5>
                                     <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
-                                        <li><a href="{{ route('discount-classes', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
-                                        <li><a href="{{ route('popular-classes', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
+                                        <li><a href="{{ route('discount-classes', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
+                                        <li><a href="{{ route('popular-classes', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
                                         <li><a href="{{ route('low-to-high-price', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
                                         <li><a href="{{ route('high-to-low-price', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
                                     </ul>
@@ -62,7 +61,7 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLocation as $location)
                                         <li>
-                                            <a href="{{ route('location-filter', ['lang' => $selectedLanguageLayout, $location->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font"> {{$location->location}} </a>
+                                            <a href="{{ route('location-filter', ['lang' => $selectedLanguageLayout, $location->uuid, $uuid]) }}" class="filter-font"> {{$location->location}} </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -72,7 +71,7 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLevel as $level)
                                         <li>
-                                            <a href="{{ route('level-filter', ['lang' => $selectedLanguageLayout, $level->uuid, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{ $level->level }} </a>
+                                            <a href="{{ route('level-filter', ['lang' => $selectedLanguageLayout, $level->uuid, $uuid]) }}" class="filter-font">{{ $level->level }} </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -87,8 +86,9 @@
                 <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
                     <div class="container-fluid">
                         <div class="row clearfix gallery" id="b-portfolio_isotop">
+
                             @foreach($classes as $class)
-                                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 proj-cat-mock-ups  class-main-div-picture">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 proj-cat-mock-ups  class-main-div-picture">
                                     <div class="b-portfolio_single">
                                         <hr class="hr-underline-`eur` hr-under-line-mobile">
                                         <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
@@ -107,7 +107,7 @@
                                             <span class="b-product_label"><strong> % </strong></span>
                                         </div>
                                         @endif
-                                        <div class="b-portfolio_info">
+                                        <div class="b-portfolio_info @if($class->discount === true) b-portfolio_info-custom-discount @else b-portfolio_info-custom @endif">
                                             <div class="b-portfolio_info_in home-classes-info">
                                                 <h3 class="b-portfolio_title">
                                                     <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $class->uuid])}}"
@@ -137,7 +137,6 @@
                                                 <span class="price-book-class-discount"> {{ $class->priceCalculate($class->price_usd, $class->discount_percentage) }} $ </span>
                                             @endif
                                         </h5>
-                                        <hr class="hr-underline-`eur`">
                                     @endif
                                     @if($session === 'database-ar')
                                         <h5 class="main-text-font @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
@@ -152,7 +151,6 @@
                                                 <span class="single-class-index main-text-font"> : {{__('single-class.price')}}</span>
 
                                         </h5>
-                                        <hr class="hr-underline-`eur`">
                                     @endif
                                     @if($session === 'database-om')
                                         <h5 class="main-text-font @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
@@ -166,7 +164,6 @@
                                                     class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif">OMR {{ $class->price_omr }} </span>
                                                 <span class="single-class-index main-text-font"> : {{__('single-class.price')}}</span>
                                         </h5>
-                                        <hr class="hr-underline-`eur`">
                                     @endif
                                 </div>
                             @endforeach

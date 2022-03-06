@@ -53,8 +53,8 @@ Route::get('contact-us', [FrontContactController::class, 'index'])->name('contac
 Route::get('single-class/{uuid}', [FrontClassController::class, 'showSingleClass'])->name('single-class');
 Route::get('all-classes', [FrontClassController::class, 'index'])->name('all-classes');
 Route::get('sub-classes/{uuid}', [FrontClassController::class, 'showSubCategoryClasses'])->name('sub-classes');
-Route::get('level-filter/{levelUuid}/{subUuid}', [FrontClassController::class, 'classLevelFilter'])->name('level-filter');
-Route::get('location-filter/{locationUuid}/{subUuid}', [FrontClassController::class, 'classLocationFilter'])->name('location-filter');
+Route::get('level-filter/{levelUuid}/{uuid}', [FrontClassController::class, 'classLevelFilter'])->name('level-filter');
+Route::get('location-filter/{locationUuid}/{uuid}', [FrontClassController::class, 'classLocationFilter'])->name('location-filter');
 Route::get('popular-classes/{uuid}', [FrontClassController::class, 'popularClasses'])->name('popular-classes');
 Route::get('discount-classes/{uuid}', [FrontClassController::class, 'discountedClasses'])->name('discount-classes');
 Route::get('low-to-high-price/{uuid}', [FrontClassController::class, 'lowToHighPrice'])->name('low-to-high-price');

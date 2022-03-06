@@ -109,7 +109,8 @@ class ClassController extends Controller
                 'mainCategories',
                 'singleClass',
                 'classLevel',
-                'classLocation'
+                'classLocation',
+                'uuid'
             ));
     }
 
@@ -118,11 +119,11 @@ class ClassController extends Controller
      * @param $subUuid
      * @return Application|Factory|View
      */
-    public function classLevelFilter($levelUuid, $subUuid)
+    public function classLevelFilter($levelUuid, $uuid)
     {
 
         $this->frontLayoutDataService->getData();
-        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $subUuid])->id;
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
         $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $levelUuid])->id;
 
         $classLevel = $this->classLevelRepository->findByFilters();
@@ -140,7 +141,8 @@ class ClassController extends Controller
                 'mainCategories',
                 'singleClass',
                 'classLevel',
-                'classLocation'
+                'classLocation',
+                'uuid'
             ));
     }
 
@@ -149,10 +151,10 @@ class ClassController extends Controller
      * @param $subUuid
      * @return Application|Factory|View
      */
-    public function classLocationFilter($locationUuid, $subUuid)
+    public function classLocationFilter($locationUuid, $uuid)
     {
         $this->frontLayoutDataService->getData();
-        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $subUuid])->id;
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
         $classLocationId = $this->classLocationRepository->findOneBy(['uuid' => $locationUuid])->id;
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
@@ -172,7 +174,8 @@ class ClassController extends Controller
                 'mainCategories',
                 'singleClass',
                 'classLevel',
-                'classLocation'
+                'classLocation',
+                'uuid'
             ));
     }
 
@@ -201,7 +204,8 @@ class ClassController extends Controller
                 'mainCategories',
                 'singleClass',
                 'classLevel',
-                'classLocation'
+                'classLocation',
+                'uuid'
             ));
     }
 
@@ -230,7 +234,8 @@ class ClassController extends Controller
                 'mainCategories',
                 'singleClass',
                 'classLevel',
-                'classLocation'
+                'classLocation',
+                'uuid'
             ));
     }
 
@@ -259,7 +264,8 @@ class ClassController extends Controller
                 'mainCategories',
                 'singleClass',
                 'classLevel',
-                'classLocation'
+                'classLocation',
+                'uuid'
             ));
     }
 
@@ -288,7 +294,8 @@ class ClassController extends Controller
                 'mainCategories',
                 'singleClass',
                 'classLevel',
-                'classLocation'
+                'classLocation',
+                'uuid'
             ));
     }
     /**

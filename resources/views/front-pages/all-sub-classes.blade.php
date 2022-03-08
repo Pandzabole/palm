@@ -90,7 +90,6 @@
                             @foreach($classes as $class)
                                 <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups  class-main-div-picture">
                                     <div class="b-portfolio_single">
-                                        <hr class="hr-underline-`eur` hr-under-line-mobile">
                                         <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
                                             <span
                                                 class="main-text-font-single"> {{ $class->name }}
@@ -133,7 +132,25 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                        @if($session === 'database-om' || $session === 'database-ar')
+                                            @foreach($class->locations as $location)
+                                                {{ $location->location }}
+                                            @endforeach
+                                                <i class="icon-location-pin custom-icon-location"></i>
+                                                <br>
+                                                 {{ $class->teacher->name }} : <i class="icon-notebook custom-icon-location"></i>
+                                        @else
+                                            <i class="icon-location-pin custom-icon-location"></i>
+                                            @foreach($class->locations as $location)
+                                              <span class="main-text-font-single">{{ $location->location }}</span>
+                                            @endforeach
+                                            <br>
+                                            <i class="icon-notebook custom-icon-location"></i> <span class="main-text-font-single"> : {{ $class->teacher->name }}</span>
 
+                                        @endif
+                                    </h5>
+                                    <hr class="hr-underline-`eur` hr-under-line-mobile">
                                 </div>
                             @endforeach
                         </div>

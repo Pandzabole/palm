@@ -88,12 +88,12 @@
                         <div class="row clearfix gallery" id="b-portfolio_isotop">
 
                             @foreach($classes as $class)
-                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 proj-cat-mock-ups  class-main-div-picture">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups  class-main-div-picture">
                                     <div class="b-portfolio_single">
                                         <hr class="hr-underline-`eur` hr-under-line-mobile">
                                         <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
                                             <span
-                                                class="main-text-font"> {{ $class->name }}
+                                                class="main-text-font-single"> {{ $class->name }}
                                             </span>
                                         </h5>
                                         <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $class->uuid]) }}" class="b-portfolio_link"
@@ -107,6 +107,17 @@
                                             <span class="b-product_label"><strong> % </strong></span>
                                         </div>
                                         @endif
+                                        <div class="price-discount">
+                                                    <h5 class="pt-2">
+                                                        <span class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_eur }} € or </span>
+                                                        <span class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_usd }}  $ </span>
+                                                        @if($class->discount === true)
+                                                            <br>
+                                                            <span class="main-text-font"> {{ $class->priceCalculate($class->price_eur, $class->discount_percentage) }} € or</span>
+                                                            <span class="main-text-font"> {{ $class->priceCalculate($class->price_usd, $class->discount_percentage) }} $ </span>
+                                                        @endif
+                                                    </h5>
+                                            </div>
                                         <div class="b-portfolio_info @if($class->discount === true) b-portfolio_info-custom-discount @else b-portfolio_info-custom @endif">
                                             <div class="b-portfolio_info_in home-classes-info">
                                                 <h3 class="b-portfolio_title">
@@ -122,49 +133,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @if($session === 'database-en')
-                                        <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
-                                            <span
-                                                class="main-text-font @if($class->discount === true)decoration-line-through @endif"> {{__('single-class.price')}} : </span>
-                                            <span
-                                                class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_eur }} € or </span>
-                                            <span
-                                                class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_usd }}  $ </span>
-                                            @if($class->discount === true)
-                                                <br>
-                                                <span class="main-text-font"> {{__('single-class.discount')}}  : </span>
-                                                <span class="price-book-class-discount"> {{ $class->priceCalculate($class->price_eur, $class->discount_percentage) }} € or</span>
-                                                <span class="price-book-class-discount"> {{ $class->priceCalculate($class->price_usd, $class->discount_percentage) }} $ </span>
-                                            @endif
-                                        </h5>
-                                    @endif
-                                    @if($session === 'database-ar')
-                                        <h5 class="main-text-font @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
-                                            @if($class->discount === true)
-                                                <span
-                                                    class="price-book-class-discount">AED {{ $class->priceCalculate($class->price_sar, $class->discount_percentage) }}</span>
-                                                <span class="main-text-font"> : {{__('single-class.discount')}}</span>
-                                                <br>
-                                            @endif
-                                                <span
-                                                    class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif">AED {{ $class->price_sar }} </span>
-                                                <span class="single-class-index main-text-font"> : {{__('single-class.price')}}</span>
 
-                                        </h5>
-                                    @endif
-                                    @if($session === 'database-om')
-                                        <h5 class="main-text-font @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
-                                            @if($class->discount === true)
-                                                <span
-                                                    class="price-book-class-discount ">OMR {{ $class->priceCalculate($class->price_omr, $class->discount_percentage) }}</span>
-                                                <span class="main-text-font">  : {{__('single-class.discount')}}</span>
-                                                <br>
-                                            @endif
-                                                <span
-                                                    class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif">OMR {{ $class->price_omr }} </span>
-                                                <span class="single-class-index main-text-font"> : {{__('single-class.price')}}</span>
-                                        </h5>
-                                    @endif
                                 </div>
                             @endforeach
                         </div>

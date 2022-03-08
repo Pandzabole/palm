@@ -474,7 +474,7 @@
 
                                     <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-center @endif pt-2">
                                             <span
-                                                class="main-text-font"> {{ $relatedClass->name }}
+                                                class="main-text-font-single"> {{ $relatedClass->name }}
                                             </span>
                                     </h5>
                                     <div class="b-portfolio_img b-img_zoom">

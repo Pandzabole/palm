@@ -36,7 +36,7 @@
                                         <div class="col-sm-12 hover-menu">
                                             <ul>
                                                 @foreach($mainCategories as $key => $mainCategory)
-                                                    <li><a href="shop-grid-three.html">{{ $mainCategory->name }}</a></li>
+                                                    <li><a href="{{ route('main-category', ['lang' => $selectedLanguageLayout, $mainCategory->uuid]) }}">{{ $mainCategory->name }}</a></li>
                                                 @endforeach
                                             </ul>
                                         </div>

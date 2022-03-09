@@ -52,8 +52,8 @@
                                     <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                         <li><a href="{{ route('discount-classes', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
                                         <li><a href="{{ route('popular-classes', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
-                                        <li><a href="{{ route('low-to-high-price', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
-                                        <li><a href="{{ route('high-to-low-price', ['lang' => $selectedLanguageLayout, $mainCategories[0]->classSubCategory[0]->uuid]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
+                                        <li><a href="{{ route('low-to-high-price', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
+                                        <li><a href="{{ route('high-to-low-price', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
                                     </ul>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">

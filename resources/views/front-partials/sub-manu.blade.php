@@ -17,7 +17,7 @@
                             <!-- Arts and Entertanemet -->
                             @foreach($mainCategories as $key => $mainCategory)
                                 <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                    <a href="shop-grid-three.html" class=" description ">
+                                    <a href="{{ route('main-category', ['lang' => $selectedLanguageLayout, $mainCategory->uuid]) }}" class=" description ">
                                         <span class="top"> {{ $mainCategory->name }} </span><i
                                             class="fa fa-angle-down"></i></a>
                                     <!-- Sub Menu items -->

@@ -16,7 +16,7 @@
                                         <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span class="top">{{__('home-page.contact')}} </span></a>
                                     </li>
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                        <a href="shop-grid-three.html" class=" description ">
+                                        <a href="{{ route('all-discounted-classes') }}" class=" description ">
                                             <span class="top">{{__('home-page.mount-offer')}}</span><i class="menu-tag sale">{{__('home-page.discount')}}</i></a>
                                         <div class="b-dropdown_content sub-holder dropdown-left" style="width: 992px;"></div>
                                     </li>
@@ -48,7 +48,7 @@
                                     </li>
                                     <!-- Mountly offer -->
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                        <a href="shop-grid-three.html" class=" description ">
+                                        <a href="{{ route('all-discounted-classes') }}" class=" description ">
                                             <span class="top">{{__('home-page.mount-offer')}}</span><i class="menu-tag sale">{{__('home-page.discount')}}</i></a>
                                         <!-- Sub Menu items -->
                                         <div class="b-dropdown_content sub-holder dropdown-left" style="width: 992px;"></div>

@@ -48,5 +48,6 @@ return [
     'unfortunately' => 'Unfortunately there are no comments for this class',
     'thank-you' => 'Thank you for getting in touch!',
     'not-good' => 'Ups something went wrong !!',
-    'all-classes' => 'All classes'
+    'all-classes' => 'All classes',
+    'discounted-classes' => 'Mountly offer classes',
 ];

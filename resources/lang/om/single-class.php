@@ -48,5 +48,6 @@ return [
     'unfortunately' => 'للأسف لا توجد تعليقات لهذا الفصل',
     'thank-you' => 'شكرا لك على تواصلك!',
     'not-good' => 'شكا من الخطأ حدث !!',
-    'all-classes' => 'جميع الفئات'
+    'all-classes' => 'جميع الفئات',
+    'discounted-classes' => 'تقدم دروس ماونتلي'
 ];

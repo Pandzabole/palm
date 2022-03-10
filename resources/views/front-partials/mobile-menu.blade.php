@@ -20,10 +20,10 @@
         <!-- Top level items -->
         <li class=" has-sub dropdown-wrapper from-bottom">
             @if($session === 'database-om' || $session === 'database-ar')
-                <a href="shop-grid-three.html"><span class="top"><span class="fa fa-angle-down mr-2"></span>{{__('home-page.all-classes')}}</span></a>
+                <a href="{{ route('all-classes', ['lang' => $selectedLanguageLayout]) }}"><span class="top"><span class="fa fa-angle-down mr-2"></span>{{__('home-page.all-classes')}}</span></a>
 
             @else
-                <a href="shop-grid-three.html"><span class="top">{{__('home-page.all-classes')}}</span><i class="fa fa-angle-down"></i></a>
+                <a href="{{ route('all-classes', ['lang' => $selectedLanguageLayout]) }}"><span class="top">{{__('home-page.all-classes')}}</span><i class="fa fa-angle-down"></i></a>
         @endif
             <!-- Sub Menu items -->
             <div class="dropdown-content sub-holder dropdown-left narrow">

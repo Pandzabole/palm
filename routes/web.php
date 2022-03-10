@@ -52,6 +52,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('contact-us', [FrontContactController::class, 'index'])->name('contact-us');
 Route::get('single-class/{uuid}', [FrontClassController::class, 'showSingleClass'])->name('single-class');
 Route::get('all-classes', [FrontClassController::class, 'allClasses'])->name('all-classes');
+Route::get('online-classes', [FrontClassController::class, 'allOnlineClasses'])->name('online-classes');
 Route::get('sub-classes/{uuid}', [FrontClassController::class, 'showSubCategoryClasses'])->name('sub-classes');
 Route::get('main-category/{uuid}', [FrontClassController::class, 'showMainCategoryClasses'])->name('main-category');
 Route::get('level-filter/{levelUuid}/{uuid}', [FrontClassController::class, 'classLevelFilter'])->name('level-filter');

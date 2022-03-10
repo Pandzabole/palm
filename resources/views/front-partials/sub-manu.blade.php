@@ -9,7 +9,7 @@
                             <!-- Top level items -->
                             @if($session === 'database-en')
                                 <li class=" b-has_sub b-dropdown_wrapper from-bottom online-class-bg">
-                                    <a href="index.html" class=" description ">
+                                    <a href="{{ route('online-classes') }}" class=" description ">
                                         <span class="top online-class-color">{{__('home-page.on-line')}}</span></a>
                                     <!-- Sub Menu items -->
                                 </li>

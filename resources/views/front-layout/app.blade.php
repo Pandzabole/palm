@@ -17,13 +17,17 @@
     @yield('content')
     @include('front-partials.footer')
 
-    <div class="b-search_popup">
+    <div class="b-search_popup search-custom-layout">
         <form role="search" method="get" id="searchform" class="searchform  basel-ajax-search" action="#" data-thumbnail="1" data-price="1" data-count="3">
             <div>
                 <label class="screen-reader-text" for="s"></label>
                 <input type="text" placeholder="Search for products" value="" name="s" id="s" autocomplete="off">
                 <input type="hidden" name="post_type" id="post_type" value="product">
                 <button type="submit" class="b-searchsubmit" id="b-searchsubmit">Search</button>
+                <div class="search-result">rezultati</div>
+                <div class="search-result">rezultati</div>
+                <div class="search-result">rezultati</div>
+                <div class="search-result">rezultati</div>
             </div>
         </form>
         <span class="b-close_search" id="b-close_search">close</span>

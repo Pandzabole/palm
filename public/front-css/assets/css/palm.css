@@ -298,6 +298,30 @@
     color: #1daaa3;
     margin-right: 3px;
 }
+
+.search-custom-layout{
+}
+
+.search-custom-layout input[type="text"]{
+    font-size: 30px;
+    height: 100px;
+}
+
+
+
+.search-result{
+    font-size: 30px !important;
+    color: #1daaa3;
+    margin-top: 10px;
+}
+
+.b-search_popup .b-searchsubmit::before{
+    font-size: 30px !important;
+}
+
+.b-search_popup .b-close_search{
+    font-size: 20px !important;
+}
 /* Media */
 
 @media (max-width: 576px) {

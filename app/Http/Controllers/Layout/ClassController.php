@@ -897,6 +897,7 @@ class ClassController extends Controller
      */
     public function reviewClass(Request $request): JsonResponse
     {
+
         $this->reviewRepository->store($request->all());
         return response()->json(['success' => 'Successfully'], 200);
     }

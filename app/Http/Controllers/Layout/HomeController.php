@@ -80,8 +80,12 @@ class HomeController extends Controller
         $session = Session::get('db_language_layout');
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $sliderItems = $this->sliderItemsRepository->getAll();
+        $homeClasses = $this->classesRepository->findByFilters('created_at', 'asc', ['highlighted' => true]);
+        if(count($homeClasses) < 6){
+            $homeClasses = $this->classesRepository->findByFilters()->take(6);
+        }
 
-        return view('main', compact('languageList', 'session', 'mainCategories', 'sliderItems'));
+        return view('main', compact('languageList', 'session', 'mainCategories', 'sliderItems', 'homeClasses'));
     }
 
     /**

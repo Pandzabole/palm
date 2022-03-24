@@ -31,10 +31,11 @@
                             <thead class="text-primary">
                             <tr>
                                 <th> Position</th>
-                                <th> Class </th>
+                                <th> Class title</th>
                                 <th> Categories</th>
                                 <th> Sub Categories</th>
                                 <th> Discounted</th>
+                                <th> On home page</th>
                                 <th class="text-right"> Action</th>
                             </tr>
                             </thead>
@@ -83,7 +84,8 @@
                         {data: 'class_category.name', name: 'category', searchable: true},
                         {data: 'class_sub_category.name', name: 'category', searchable: true},
                         {data: 'discount', name: 'discount'},
-                        {data: 'actions', name: 'actions', sortable: false, searchable: false, className: 'text-right'},
+                        {data: 'highlighted', name: 'highlighted'},
+                        {data: 'actions', name: 'actions', sortable: true, searchable: false, className: 'text-right'},
                     ]
                 });
                 dataTable.on('row-reorder', function (e, diff) {

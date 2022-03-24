@@ -119,6 +119,7 @@ class ClassController extends Controller
                 );
             })
             ->editColumn('discount', 'admin.classes.datatables.discounted')
+            ->editColumn('highlighted', 'admin.classes.datatables.highlighted')
             ->editColumn('date', static function ($class) {
                 return $class->created_at;
             })
@@ -320,6 +321,6 @@ class ClassController extends Controller
 
         return redirect()
             ->route('classes.index')
-            ->with('success', 'News highlighted successfully!');
+            ->with('success', 'Class is on home page');
     }
 }

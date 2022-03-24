@@ -307,7 +307,9 @@
     height: 100px;
 }
 
-
+.b-portfolio_grid .b-portfolio_single .b-portfolio_info{
+    background-color: rgba(63, 191, 191, 0.7) !important;
+}
 
 .search-result{
     font-size: 30px !important;

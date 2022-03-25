@@ -901,4 +901,14 @@ class ClassController extends Controller
         $this->reviewRepository->store($request->all());
         return response()->json(['success' => 'Successfully'], 200);
     }
+
+    public function searchClasses(Request $request)
+    {
+        $data = $request->get('search');
+        $classes = $this->classesRepository->searchData(
+            $data,
+         );
+        dd($classes);
+
+    }
 }

@@ -80,6 +80,7 @@ Route::get('high-to-low-price-all', [FrontClassController::class, 'highToLowPric
 Route::get('high-to-low-price-discount', [FrontClassController::class, 'highToLowPriceDiscount'])->name('high-to-low-price-discount');
 Route::get('all-discounted-classes', [FrontClassController::class, 'allDiscountedClasses'])->name('all-discounted-classes');
 Route::post('submit-review-form', [FrontClassController::class, 'reviewClass'])->name('submit-review-form');
+Route::get('search-class', [FrontClassController::class, 'searchClasses'])->name('search-class');
 Route::resource('reservation-class', ReservationClassController::class);
 /** Return contact view*/
 

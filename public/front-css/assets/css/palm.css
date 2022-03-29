@@ -260,6 +260,11 @@
    color: red;
 }
 
+.hr-list{
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
 .custom-btn:hover{
     background-color: #175754 !important;
     border-color: #175754 !important;

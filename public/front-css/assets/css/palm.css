@@ -240,12 +240,8 @@
 
 .btn-close-mobile-menu{
     background-color: #1daaa3;
-    border-radius: 5px;
-    padding: 17px 45px;
+    padding: 17px 30px;
     color: white;
-    position: absolute;
-    bottom: 3%;
-    left: 34%;
 }
 
 .custom-btn:hover{

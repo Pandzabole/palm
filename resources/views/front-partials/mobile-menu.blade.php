@@ -55,7 +55,11 @@
             <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span class="top">{{__('home-page.contact')}}</span></a>
         </li>
     </ul>
-        <buttton class="btn-close-mobile-menu" id="close-mobile-menu">{{__('home-page.close')}}</buttton>
+        <ul>
+            <li class="btn-close-mobile-menu text-center" id="close-mobile-menu">
+                {{__('home-page.close')}}
+            </li>
+        </ul>
 </div>
 
 @yield('mobile-menu')

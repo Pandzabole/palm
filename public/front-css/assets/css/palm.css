@@ -244,6 +244,22 @@
     color: white;
 }
 
+.search-result-mobile-href{
+    color: #1daaa3 !important;
+}
+
+.search-result-mobile{
+    padding: 5px 0;
+}
+
+.no-search-results-mobile{
+    padding: 5px 0;
+}
+
+.no-search-results-mobile{
+   color: red;
+}
+
 .custom-btn:hover{
     background-color: #175754 !important;
     border-color: #175754 !important;

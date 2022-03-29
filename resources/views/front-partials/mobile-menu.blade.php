@@ -14,14 +14,13 @@
                     <input type="text" placeholder="Search for classes" value="" name="search" id="search-mobile" autocomplete="off">
             </form>
         </li>
-        <li id="results-mobile">
-            <p></p>
-        </li>
-        <li class="no-search-results-mobile" id="no-search-mobile">
+        <li class="no-search-results-mobile text-center" id="no-search-mobile">
             No search results
         </li>
+        <li id="results-mobile">
+        </li>
     </ul>
-    <ul class="categories @if($session === 'database-om' || $session === 'database-ar') text-right @else text-center @endif ">
+    <ul class="categories @if($session === 'database-om' || $session === 'database-ar') text-right @else text-center @endif menu-list-mobile">
         <li>
             <a href="{{ route('home', ['lang' => $selectedLanguageLayout]) }}"><span class="top">{{__('home-page.home')}}</span></a>
         </li>
@@ -64,7 +63,7 @@
         </li>
     </ul>
         <ul>
-            <li class="btn-close-mobile-menu text-center" id="close-mobile-menu">
+            <li class="btn-close-mobile-menu text-center mt-5" id="close-mobile-menu">
                 {{__('home-page.close')}}
             </li>
         </ul>
@@ -79,12 +78,14 @@
                     $('#no-search-mobile').hide();
                     $('#search-mobile').val('');
                     $('.search-result-mobile').empty();
+                    $('.menu-list-mobile').show()
                 });
 
                 $('#no-search-mobile').hide()
 
                 $('#search-mobile').on('keyup', function (e) {
                     e.preventDefault()
+                    $('.menu-list-mobile').hide()
                     let search = $(this).val();
                     if (search.length === 0) {
                         $('.search-result-mobile').empty();
@@ -106,12 +107,13 @@
                                     let url = '{{  route('single-class', ['lang' => $selectedLanguageLayout, ":id"]) }}';
                                     url = url.replace(':id', subcategory.uuid);
 
-                                    $('#results-mobile').append('<div class="search-result-mobile"><a href="' + url + '"> '  + subcategory.name + '</a> </div>');
+                                    $('#results-mobile').append('<div class="search-result-mobile"><a class="search-result-mobile-href" href="' + url + '"> '  + subcategory.name + '</a> </div>');
                                 })
                             }
                             if (data.classes.length === 0) {
                                 $('.search-result-mobile').empty();
-                                $('#no-search-mobile').show()
+                                $('#results-mobile').empty();
+                                $('#no-search-mobile').show();
                             }
                         }
                     });

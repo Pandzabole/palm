@@ -49,7 +49,7 @@
             </div>
         </li>
         <li>
-            <a href="blog-default.html"><span class="top">{{__('home-page.mount-offer')}}</span></a>
+            <a href="{{ route('all-discounted-classes', ['lang' => $selectedLanguageLayout]) }}"><span class="top">{{__('home-page.mount-offer')}}</span></a>
         </li>
         <li>
             <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span class="top">{{__('home-page.contact')}}</span></a>

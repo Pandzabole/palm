@@ -3,7 +3,7 @@
         <div class="clearfix row">
             <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-12 col-xs-6">
                 <div class="b-logo text-sm-left text-lg-center text-xl-center">
-                    <a href="index.html" class="d-inline-block"><img src="{{ asset('front-css/assets/images/logo.png') }}" class="img-fluid d-block" alt=""></a>
+                    <a href="{{ route('home', ['lang' => $selectedLanguageLayout]) }}" class="d-inline-block"><img src="{{ asset('front-css/assets/images/logo.png') }}" class="img-fluid d-block" alt=""></a>
                 </div>
             </div>
             <div class="col-xl-5 col-lg-5 col-mb-5 col-sm-12 col-xs-12 hidden-sm-down hidden-md-down">
@@ -16,7 +16,7 @@
                                         <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span class="top">{{__('home-page.contact')}} </span></a>
                                     </li>
                                     <li class=" b-has_sub b-dropdown_wrapper from-bottom">
-                                        <a href="{{ route('all-discounted-classes') }}" class=" description ">
+                                        <a href="{{ route('all-discounted-classes', ['lang' => $selectedLanguageLayout]) }}" class=" description ">
                                             <span class="top">{{__('home-page.mount-offer')}}</span><i class="menu-tag sale">{{__('home-page.discount')}}</i></a>
                                         <div class="b-dropdown_content sub-holder dropdown-left" style="width: 992px;"></div>
                                     </li>

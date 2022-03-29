@@ -18,6 +18,7 @@
             No search results
         </li>
         <li id="results-mobile">
+
         </li>
     </ul>
     <ul class="categories @if($session === 'database-om' || $session === 'database-ar') text-right @else text-center @endif menu-list-mobile">
@@ -79,6 +80,7 @@
                     $('#search-mobile').val('');
                     $('.search-result-mobile').empty();
                     $('.menu-list-mobile').show()
+                    $('#results-mobile').empty();
                 });
 
                 $('#no-search-mobile').hide()
@@ -89,6 +91,8 @@
                     let search = $(this).val();
                     if (search.length === 0) {
                         $('.search-result-mobile').empty();
+                        $('.menu-list-mobile').show()
+                        $('#results-mobile').empty();
                     }
                     $.ajax({
                         url: "{{ route('search-class') }}",
@@ -114,6 +118,7 @@
                                 $('.search-result-mobile').empty();
                                 $('#results-mobile').empty();
                                 $('#no-search-mobile').show();
+                                $('.menu-list-mobile').show()
                             }
                         }
                     });

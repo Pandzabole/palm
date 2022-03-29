@@ -150,7 +150,8 @@
                                                     @if($class->discount === true)
                                                         <br>
                                                         <h5 class="text-center"> <span class="single-class-index">
-                                                            <span class="price-book-class-discount-single"> AED {{ $class->priceCalculate($class->price_sar, $class->discount_percentage) }}
+                                                            <span
+                                                                class="price-book-class-discount-single"> AED {{ $class->priceCalculate($class->price_sar, $class->discount_percentage) }}
                                                         </h5>
                                                     @endif
                                                     <hr class="hr-underline">
@@ -159,12 +160,13 @@
                                                     <h5 class="text-center"><span class="single-class-index"><span
                                                                 class="price-book-class @if($class->discount === true)decoration-line-through @endif"> OMR {{ $class->price_omr }} </span></span>
                                                     </h5>
-                                                        @if($class->discount === true)
-                                                            <br>
-                                                            <h5 class="text-center"> <span class="single-class-index">
-                                                            <span class="price-book-class-discount-single"> OMR {{ $class->priceCalculate($class->price_omr, $class->discount_percentage) }}
-                                                            </h5>
-                                                        @endif
+                                                    @if($class->discount === true)
+                                                        <br>
+                                                        <h5 class="text-center"> <span class="single-class-index">
+                                                            <span
+                                                                class="price-book-class-discount-single"> OMR {{ $class->priceCalculate($class->price_omr, $class->discount_percentage) }}
+                                                        </h5>
+                                                    @endif
                                                     <hr class="hr-underline">
                                                 @endif
                                                 <h5 class=" @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
@@ -468,7 +470,8 @@
                         @foreach($relatedClasses as $relatedClass)
                             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-4">
                                 <div class="b-portfolio_single">
-                                    <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $relatedClass->uuid]) }}" class="b-portfolio_link"
+                                    <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $relatedClass->uuid]) }}"
+                                       class="b-portfolio_link"
                                        rel=""></a>
                                     <hr class="hr-underline-`eur`">
 
@@ -504,7 +507,7 @@
         </section>
         @endsection
         @section('js-links')
-
+            @parent
             <script>
                 $('#reviewComment').on('submit', function (e) {
                     e.preventDefault();
@@ -534,5 +537,4 @@
                     });
                 });
             </script>
-
 @endsection

@@ -902,13 +902,16 @@ class ClassController extends Controller
         return response()->json(['success' => 'Successfully'], 200);
     }
 
-    public function searchClasses(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function searchClasses(Request $request): JsonResponse
     {
         $data = $request->get('search');
-        $classes = $this->classesRepository->searchData(
-            $data,
-         );
-        dd($classes);
+        $classes = $this->classesRepository->searchData($data,);
+
+        return response()->json(['classes' => $classes], 200);
 
     }
 }

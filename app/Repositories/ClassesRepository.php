@@ -16,26 +16,21 @@ class ClassesRepository extends EloquentRepository implements ClassesRepositoryI
         string $request
     )
     {
-//        return $this->model->with($relation)
-//            ->where($column, 'LIKE', '%' . $data . '%')
-//            ->orWhere($columnRelation, 'LIKE', '%' . $data . '%')
-//            ->orWhere($columnPivot, 'LIKE', '%' . $data . '%')
-//            ->paginate(2);
-
-         $query = $this->model->with('classCategory', 'classSubCategory')
-            ->where(function($query) use ($request) {
+        $query = $this->model->with('classCategory', 'classSubCategory')
+            ->where(function ($query) use ($request) {
                 if ($request) {
                     $query->where('name', 'Like', '%' . $request . '%')
-                        ->orWhereHas('classCategory', function ($query2) use ($request) {
-                            $query2->where('name', 'Like', '%' . $request . '%');
+                        ->orWhereHas('classCategory', function ($query) use ($request) {
+                            $query->where('name', 'Like', '%' . $request . '%');
+                        })
+                        ->orWhereHas('classSubCategory', function ($query) use ($request) {
+                            $query->where('name', 'Like', '%' . $request . '%');
                         });
 
                 }
             });
 
-        return $query->get()    ;
+//        return $query->paginate(5);
+        return $query->get();
     }
-
-
-
 }

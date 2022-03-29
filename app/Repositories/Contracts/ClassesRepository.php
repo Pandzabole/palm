@@ -10,7 +10,5 @@ interface ClassesRepository extends BaseRepository
      * @param string $request
      * @return mixed
      */
-    public function searchData(
-        string $request
-    );
+    public function searchData(string $request);
 }

@@ -315,6 +315,17 @@
     font-size: 30px !important;
     color: #1daaa3;
     margin-top: 10px;
+    cursor: pointer;
+}
+
+.no-search-results {
+    font-size: 30px !important;
+    color: red;
+    margin-top: 10px;
+}
+
+.search-color{
+    color: #1daaa3;
 }
 
 .b-search_popup .b-searchsubmit::before{

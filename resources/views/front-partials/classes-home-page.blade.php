@@ -22,7 +22,8 @@
             </div>
                 <div class="row clearfix gallery" id="b-portfolio_isotop">
                     @foreach($homeClasses as $class)
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-xs-12 proj-cat-mock-ups p-1 mb-2 pl-3 pr-3">
+                        <p class="main-text-font-single mb-4 text-uppercase  mb-1"> {{ $class->name }}</p>
                         <div class="b-portfolio_single">
                             <a href="{{ route('single-class', $class->uuid) }}" class="b-portfolio_link" rel=""></a>
                             <div class="b-portfolio_img b-img_zoom">
@@ -41,6 +42,24 @@
                                     </h4>
                                 </div>
                             </div>
+                            <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                @if($session === 'database-om' || $session === 'database-ar')
+                                    @foreach($class->locations as $location)
+                                        {{ $location->location }}
+                                    @endforeach
+                                    <i class="icon-location-pin custom-icon-location"></i>
+                                    <br>
+                                    {{ $class->teacher->name }} : <i class="icon-notebook custom-icon-location"></i>
+                                @else
+                                    <i class="icon-location-pin custom-icon-location"></i>
+                                    @foreach($class->locations as $location)
+                                        <span class="main-text-font-single">{{ $location->location }}</span>
+                                    @endforeach
+                                    <br>
+                                    <i class="icon-notebook custom-icon-location"></i> <span class="main-text-font-single"> : {{ $class->teacher->name }}</span>
+
+                                @endif
+                            </h5>
                         </div>
                     </div>
                     @endforeach

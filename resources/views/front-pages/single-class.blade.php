@@ -327,9 +327,10 @@
                                     class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mb-3 @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @if($session === 'database-om' || $session === 'database-ar')
                                         <span
-                                            class="text-left class-information-title"> {{ $class->teacher->name }}</span>
-                                        <span
                                             class="class-information-head">{{__('single-class.class-teacher')}} :</span>
+                                        <span
+                                            class="text-left class-information-title"> {{ $class->teacher->name }}</span>
+
                                     @else
                                         <span
                                             class="class-information-head">{{__('single-class.class-teacher')}} :</span>

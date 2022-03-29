@@ -48,7 +48,7 @@
                                 let url = '{{  route('single-class', ['lang' => $selectedLanguageLayout, ":id"]) }}';
                                 url = url.replace(':id', subcategory.uuid);
 
-                                $('#results').append('<div class="search-result"><a href="' + url + '"> '  + subcategory.name + '</a> </div>');
+                                $('#results').append('<div class="search-result"><a class="search-result-mobile-href" href="' + url + '"> '  + subcategory.name + '</a> </div>');
                             })
                         }
                         if (data.classes.length === 0) {

@@ -363,6 +363,9 @@
     .discounted-badge{
         display: none;
     }
+    .how-its-work{
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 992px) {

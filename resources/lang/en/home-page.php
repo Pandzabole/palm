@@ -15,4 +15,9 @@ return [
     'local-classes' => 'Local Classes',
     'close' => 'Close',
     'new-classes' => 'New Classes',
+    'classes' => 'CLASSES',
+    'customer-reviews' => 'CUSTOMERS REVIEWS',
+    'instagram-likes' => 'INSTAGRAM LIKES',
+    'facebook-likes' => 'FACEBOOK LIKES',
+    'why-us' => 'WHY US',
 ];

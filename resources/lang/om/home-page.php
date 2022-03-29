@@ -15,4 +15,9 @@ return [
     'local-classes' => 'فئات محلية',
     'close' => 'يغلق',
     'new-classes' => 'فصول جديدة',
+    'classes' => 'الطبقات',
+    'customer-reviews' => 'آراء العملاء',
+    'instagram-likes' => ' مثل انستغرا',
+    'facebook-likes' => 'اعجابات الفيسبوك',
+    'why-us' => 'لماذا نحن',
 ];

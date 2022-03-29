@@ -14,5 +14,9 @@ return [
     'call-you' => 'سوف نتصل بك - سنتواصل معك',
     'local-classes' => 'فئات محلية',
     'new-classes' => 'فصول جديدة',
-
+    'classes' => 'الطبقات',
+    'customer-reviews' => 'آراء العملاء',
+    'instagram-likes' => ' مثل انستغرا',
+    'facebook-likes' => 'اعجابات الفيسبوك',
+    'why-us' => 'لماذا نحن',
 ];

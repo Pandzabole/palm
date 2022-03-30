@@ -1,4 +1,4 @@
-<!-- FAVICON -->
+vj<!-- FAVICON -->
 <link rel="shortcut icon" href="{{ asset('front-css/assets/images/favicon.png') }}">
 
 <!-- CSS:: FONTS -->

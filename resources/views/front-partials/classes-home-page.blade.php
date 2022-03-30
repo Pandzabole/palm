@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
-                                @if($session === 'database-om' || $session === 'database-ar')
+                                 @if($session === 'database-om' || $session === 'database-ar')
                                     @foreach($class->locations as $location)
                                         {{ $location->location }}
                                     @endforeach

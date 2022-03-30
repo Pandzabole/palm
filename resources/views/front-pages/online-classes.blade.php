@@ -50,8 +50,8 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     <li><i class="fa fa-percent custom-icon-location"></i> <a href="{{ route('discount-online', ['lang' => $selectedLanguageLayout]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
                                     <li><i class="fa fa-fighter-jet custom-icon-location"></i> <a href="{{ route('popular-online', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
-                                    <li><i class="fa fa-sort-amount-desc custom-icon-location"></i> <a href="{{ route('low-to-high-price-all', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
-                                    <li><i class="fa fa-sort-amount-asc custom-icon-location"></i> <a href="{{ route('high-to-low-price-all', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
+                                    <li><i class="fa fa-sort-amount-desc custom-icon-location"></i> <a href="{{ route('low-to-high-price-online', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
+                                    <li><i class="fa fa-sort-amount-asc custom-icon-location"></i> <a href="{{ route('high-to-low-online', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
                                 </ul>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
@@ -59,7 +59,7 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLocation as $location)
                                         <li>
-{{--                                            <i class="fa fa-home custom-icon-location"></i> <a href="{{ route('location-filter-all', ['lang' => $selectedLanguageLayout, $location->uuid]) }}" class="filter-font"> {{$location->location}} </a>--}}
+                                            <i class="fa fa-home custom-icon-location"></i> <a href="{{ route('location-filter-all', ['lang' => $selectedLanguageLayout, $location->uuid]) }}" class="filter-font"> {{$location->location}} </a>
                                         </li>
                                     @endforeach
                                 </ul>

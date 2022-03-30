@@ -542,7 +542,7 @@ class ClassController extends Controller
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $singleClass = $classes->first();
 
-        return view('front-pages.all-classes',
+        return view('front-pages.online-classes',
             compact('classes',
                 'mainCategories',
                 'singleClass',
@@ -551,6 +551,60 @@ class ClassController extends Controller
             ));
     }
 
+    /**
+     * @return Application|Factory|View
+     */
+    public function lowToHighPriceOnline()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+        )->orderBy('price_eur', 'asc')->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function highToLowPriceOnline()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+        )->orderBy('price_eur', 'desc')->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
     /**
      * @return Application|Factory|View
      */

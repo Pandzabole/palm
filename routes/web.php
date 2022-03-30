@@ -67,11 +67,7 @@ Route::get('popular-classes/{uuid}', [FrontClassController::class, 'popularClass
 Route::get('popular-classes-main/{uuid}', [FrontClassController::class, 'popularClassesMain'])->name('popular-classes-main');
 Route::get('popular-classes-all', [FrontClassController::class, 'popularClassesAll'])->name('popular-classes-all');
 Route::get('popular-classes-discount', [FrontClassController::class, 'popularClassesDiscount'])->name('popular-classes-discount');
-
-
 Route::get('popular-online', [FrontClassController::class, 'popularOnlineClasses'])->name('popular-online');
-
-
 Route::get('discount-classes/{uuid}', [FrontClassController::class, 'discountedClasses'])->name('discount-classes');
 Route::get('discount-classes-main/{uuid}', [FrontClassController::class, 'discountedClassesMain'])->name('discount-classes-main');
 Route::get('discount-classes-all', [FrontClassController::class, 'discountedClassesAll'])->name('discount-classes-all');
@@ -80,9 +76,11 @@ Route::get('low-to-high-price/{uuid}', [FrontClassController::class, 'lowToHighP
 Route::get('low-to-high-price-main/{uuid}', [FrontClassController::class, 'lowToHighPriceMain'])->name('low-to-high-price-main');
 Route::get('low-to-high-price-all', [FrontClassController::class, 'lowToHighPriceAll'])->name('low-to-high-price-all');
 Route::get('low-to-high-price-discount', [FrontClassController::class, 'lowToHighPriceDiscount'])->name('low-to-high-price-discount');
+Route::get('low-to-high-price-online', [FrontClassController::class, 'lowToHighPriceOnline'])->name('low-to-high-price-online');
 Route::get('high-to-low-price/{uuid}', [FrontClassController::class, 'highToLowPrice'])->name('high-to-low-price');
 Route::get('high-to-low-price-main/{uuid}', [FrontClassController::class, 'highToLowPriceMain'])->name('high-to-low-price-main');
 Route::get('high-to-low-price-all', [FrontClassController::class, 'highToLowPriceAll'])->name('high-to-low-price-all');
+Route::get('high-to-low-online', [FrontClassController::class, 'highToLowPriceOnline'])->name('high-to-low-online');
 Route::get('high-to-low-price-discount', [FrontClassController::class, 'highToLowPriceDiscount'])->name('high-to-low-price-discount');
 Route::get('all-discounted-classes', [FrontClassController::class, 'allDiscountedClasses'])->name('all-discounted-classes');
 Route::post('submit-review-form', [FrontClassController::class, 'reviewClass'])->name('submit-review-form');

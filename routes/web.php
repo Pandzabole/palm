@@ -67,9 +67,15 @@ Route::get('popular-classes/{uuid}', [FrontClassController::class, 'popularClass
 Route::get('popular-classes-main/{uuid}', [FrontClassController::class, 'popularClassesMain'])->name('popular-classes-main');
 Route::get('popular-classes-all', [FrontClassController::class, 'popularClassesAll'])->name('popular-classes-all');
 Route::get('popular-classes-discount', [FrontClassController::class, 'popularClassesDiscount'])->name('popular-classes-discount');
+
+
+Route::get('popular-online', [FrontClassController::class, 'popularOnlineClasses'])->name('popular-online');
+
+
 Route::get('discount-classes/{uuid}', [FrontClassController::class, 'discountedClasses'])->name('discount-classes');
 Route::get('discount-classes-main/{uuid}', [FrontClassController::class, 'discountedClassesMain'])->name('discount-classes-main');
 Route::get('discount-classes-all', [FrontClassController::class, 'discountedClassesAll'])->name('discount-classes-all');
+Route::get('discount-online', [FrontClassController::class, 'discountedOnlineClasses'])->name('discount-online');
 Route::get('low-to-high-price/{uuid}', [FrontClassController::class, 'lowToHighPrice'])->name('low-to-high-price');
 Route::get('low-to-high-price-main/{uuid}', [FrontClassController::class, 'lowToHighPriceMain'])->name('low-to-high-price-main');
 Route::get('low-to-high-price-all', [FrontClassController::class, 'lowToHighPriceAll'])->name('low-to-high-price-all');

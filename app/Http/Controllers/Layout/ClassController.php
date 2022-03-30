@@ -526,6 +526,34 @@ class ClassController extends Controller
     /**
      * @return Application|Factory|View
      */
+    public function popularOnlineClasses()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+            ['popular' => true]
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
     public function popularClassesDiscount()
     {
         $this->frontLayoutDataService->getData();
@@ -665,6 +693,34 @@ class ClassController extends Controller
                 'classLevel',
                 'classLocation',
                 'uuid'
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function discountedOnlineClasses()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+            ['discount' => true]
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
             ));
     }
 

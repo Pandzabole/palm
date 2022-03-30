@@ -50,4 +50,5 @@ return [
     'not-good' => 'Ups something went wrong !!',
     'all-classes' => 'All classes',
     'discounted-classes' => 'Mountly offer classes',
+    'online' => 'Online classes'
 ];

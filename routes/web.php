@@ -59,6 +59,7 @@ Route::get('level-filter/{levelUuid}/{uuid}', [FrontClassController::class, 'cla
 Route::get('level-filter-main/{levelUuid}/{uuid}', [FrontClassController::class, 'classLevelFilterMain'])->name('level-filter-main');
 Route::get('level-filter-all/{uuid}', [FrontClassController::class, 'classLevelFilterAll'])->name('level-filter-all');
 Route::get('level-filter-discount/{uuid}', [FrontClassController::class, 'classLevelFilterDiscount'])->name('level-filter-discount');
+Route::get('level-filter-online/{uuid}', [FrontClassController::class, 'classLevelFilterOnline'])->name('level-filter-online');
 Route::get('location-filter/{locationUuid}/{uuid}', [FrontClassController::class, 'classLocationFilter'])->name('location-filter');
 Route::get('location-filter-main/{locationUuid}/{uuid}', [FrontClassController::class, 'classLocationFilterMain'])->name('location-filter-main');
 Route::get('location-filter-all/{uuid}', [FrontClassController::class, 'classLocationFilterAll'])->name('location-filter-all');

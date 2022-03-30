@@ -103,10 +103,9 @@ class ClassController extends Controller
     public function allDiscountedClasses()
     {
         $this->frontLayoutDataService->getData();
+
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
-
-
         $classes = $this->classesRepository->findByPaginate(
             12,
             'created_at',
@@ -133,10 +132,9 @@ class ClassController extends Controller
     public function allOnlineClasses()
     {
         $this->frontLayoutDataService->getData();
+
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
-
-
         $classes = $this->classesRepository->findByHasOrWhereRelationship(
             'locations',
             ['class_location_id' => 2],
@@ -223,13 +221,12 @@ class ClassController extends Controller
      */
     public function classLevelFilter($levelUuid, $uuid)
     {
-
         $this->frontLayoutDataService->getData();
         $classMainCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
         $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $levelUuid])->id;
-
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
+
         $classes = $this->classesRepository->findByPaginate(
             12,
             'created_at',
@@ -254,12 +251,11 @@ class ClassController extends Controller
      */
     public function classLevelFilterDiscount($uuid)
     {
-
         $this->frontLayoutDataService->getData();
         $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $uuid])->id;
-
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
+
         $classes = $this->classesRepository->findByPaginate(
             12,
             'created_at',
@@ -282,9 +278,39 @@ class ClassController extends Controller
      * @param $uuid
      * @return Application|Factory|View
      */
+    public function classLevelFilterOnline($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+            ['class_level_id' => $classLevelId]
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
     public function classLevelFilterAll($uuid)
     {
-
         $this->frontLayoutDataService->getData();
         $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $uuid])->id;
         $classLevel = $this->classLevelRepository->findByFilters();
@@ -317,9 +343,9 @@ class ClassController extends Controller
         $this->frontLayoutDataService->getData();
         $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
         $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $levelUuid])->id;
-
         $classLevel = $this->classLevelRepository->findByFilters();
         $classLocation = $this->classLocationRepository->findByFilters();
+
         $classes = $this->classesRepository->findByPaginate(
             12,
             'created_at',
@@ -605,6 +631,7 @@ class ClassController extends Controller
                 'classLocation',
             ));
     }
+
     /**
      * @return Application|Factory|View
      */
@@ -988,6 +1015,7 @@ class ClassController extends Controller
         $class = $this->classesRepository->findOneBy(['uuid' => $uuid]);
         $relatedClasses = $this->classesRepository->getAll()->take(3);
         $mainCategories = $this->classCategoryRepository->getAll();
+
         $classReview = $this->reviewRepository->findByFilters(
             'created_at',
             'desc',
@@ -1007,7 +1035,6 @@ class ClassController extends Controller
      */
     public function reviewClass(Request $request): JsonResponse
     {
-
         $this->reviewRepository->store($request->all());
         return response()->json(['success' => 'Successfully'], 200);
     }

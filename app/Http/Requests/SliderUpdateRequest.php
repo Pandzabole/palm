@@ -26,11 +26,11 @@ class SliderUpdateRequest extends FormRequest
     {
         return [
             'steps.*' => new UploadImageRule(false),
-            'steps.*.cta' => 'nullable|string',
-            'steps.*.url' => 'nullable|string',
-            'steps.*.image_desktop' => 'nullable|mimes:jpeg,bmp,png|dimensions:width=1920,height=950',
+            'steps.*.main_text' => 'nullable|string',
+            'steps.*.second_text' => 'nullable|string',
+            'steps.*.image_desktop' => 'nullable|mimes:jpeg,bmp,png',
             'steps.*.media_desktop_id' => 'nullable|exists:media,id',
-            'steps.*.image_mobile' => 'nullable|mimes:jpeg,bmp,png|dimensions:width=750,height=1686',
+            'steps.*.image_mobile' => 'nullable|mimes:jpeg,bmp,png',
             'steps.*.media_mobile_id' => 'nullable|exists:media,id',
             'deleted_steps.*' => 'nullable|exists:slider_items,id',
         ];
@@ -45,8 +45,8 @@ class SliderUpdateRequest extends FormRequest
     {
         return [
             'steps.*' => 'slider',
-            'steps.*.cta' => 'slider cta',
-            'steps.*.url' => 'slider url',
+            'steps.*.main_text' => 'slider main text',
+            'steps.*.second_text' => 'slider second text',
             'steps.*.image_desktop' => 'slider image desktop',
             'steps.*.image_mobile' => 'slider image mobile',
             'steps.*.media_desktop_id' => 'slider existing desktop media',

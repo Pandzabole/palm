@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassLocationsTable extends Migration
+class CreateClassLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateClassLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_locations', function (Blueprint $table) {
+        Schema::create('class_levels', function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
-            $table->string('location');
+            $table->string('level');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateClassLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_locations');
+        Schema::dropIfExists('class_levels');
     }
 }

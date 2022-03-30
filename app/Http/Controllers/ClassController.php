@@ -10,6 +10,7 @@ use App\Repositories\Contracts\ClassCategoryRepository;
 use App\Repositories\Contracts\ClassSubCategoryRepository;
 use App\Repositories\Contracts\TeacherRepository;
 use App\Repositories\Contracts\MediaRepository;
+use App\Repositories\Contracts\ClassLevelRepository;
 use App\Services\MediaManager\MediaManager;
 use App\Http\Requests\ClassControllerCreateRequest;
 use App\Http\Requests\ClassControllerUpdateRequest;
@@ -43,6 +44,9 @@ class ClassController extends Controller
     /** @var ClassSubCategoryRepository $classSubCategoryRepository */
     public $classSubCategoryRepository;
 
+    /** @var ClassLevelRepository $classLevelRepository */
+    public $classLevelRepository;
+
     /** @var TeacherRepository $teacherRepository */
     public $teacherRepository;
 
@@ -55,6 +59,7 @@ class ClassController extends Controller
      * @param ClassLocationRepository $classLocationRepository
      * @param ClassCategoryRepository $classCategoryRepository
      * @param ClassSubCategoryRepository $classSubCategoryRepository
+     * @param ClassLevelRepository $classLevelRepository
      * @param TeacherRepository $teacherRepository
      */
     public function __construct(
@@ -64,6 +69,7 @@ class ClassController extends Controller
         ClassLocationRepository    $classLocationRepository,
         ClassCategoryRepository    $classCategoryRepository,
         ClassSubCategoryRepository $classSubCategoryRepository,
+        ClassLevelRepository       $classLevelRepository,
         TeacherRepository          $teacherRepository
     )
     {
@@ -73,6 +79,7 @@ class ClassController extends Controller
         $this->classLocationRepository = $classLocationRepository;
         $this->classCategoryRepository = $classCategoryRepository;
         $this->classSubCategoryRepository = $classSubCategoryRepository;
+        $this->classLevelRepository = $classLevelRepository;
         $this->teacherRepository = $teacherRepository;
     }
 
@@ -111,14 +118,17 @@ class ClassController extends Controller
                     ['model' => $class, 'routeModelName' => 'classes']
                 );
             })
-            ->editColumn('highlighted', 'admin.classes.datatables.highlighted')
             ->editColumn('discount', 'admin.classes.datatables.discounted')
+            ->editColumn('highlighted', 'admin.classes.datatables.highlighted')
             ->editColumn('date', static function ($class) {
                 return $class->created_at;
             })
             ->rawColumns(['actions', 'highlighted', 'discount'])
             ->addColumn('categories', static function (Classe $class) {
                 return $class->classCategory->pluck('name')->implode(', ');
+            })
+            ->addColumn('sub.categories', static function (Classe $class) {
+                return $class->classSubCategory->pluck('name')->implode(', ');
             })
             ->make(true);
     }
@@ -136,6 +146,8 @@ class ClassController extends Controller
         $classSubCategory = $this->classSubCategoryRepository->findByFilters()->pluck('name', 'id');
         $classLocation = $this->classLocationRepository->findByFilters()->pluck('location', 'id');
         $teacher = $this->teacherRepository->findByFilters()->pluck('name', 'id');
+        $classLevel = $this->classLevelRepository->findByFilters()->pluck('level', 'id');
+
 
         return view('admin.classes.create', compact(
             'mediaDesktop',
@@ -143,7 +155,8 @@ class ClassController extends Controller
             'classCategory',
             'classSubCategory',
             'classLocation',
-            'teacher'
+            'teacher',
+            'classLevel'
         ));
     }
 
@@ -215,6 +228,7 @@ class ClassController extends Controller
         $classLocation = $this->classLocationRepository->findByFilters();
         $selectedLocations = $class->locations->pluck('id')->toArray();
         $teacher = $this->teacherRepository->findByFilters()->pluck('name', 'id');
+        $classLevel = $this->classLevelRepository->findByFilters()->pluck('level', 'id');
 
         return view('admin.classes.edit', compact('class',
             'mediaDesktop',
@@ -223,7 +237,8 @@ class ClassController extends Controller
             'classSubCategory',
             'classLocation',
             'selectedLocations',
-            'teacher'
+            'teacher',
+            'classLevel'
         ));
     }
 
@@ -306,6 +321,6 @@ class ClassController extends Controller
 
         return redirect()
             ->route('classes.index')
-            ->with('success', 'News highlighted successfully!');
+            ->with('success', 'Class is on home page');
     }
 }

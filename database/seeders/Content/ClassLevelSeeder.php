@@ -2,16 +2,16 @@
 
 namespace Database\Seeders\Content;
 
-use Illuminate\Database\Seeder;
-use App\Models\ClassLocation;
+use App\Models\ClassLevel;
 use App\Traits\SeedContainable;
+use Illuminate\Database\Seeder;
 
-class ClassLocationSeeder extends Seeder
+class ClassLevelSeeder extends Seeder
 {
     use SeedContainable;
 
     /** @var string $modelClass */
-    private $modelClass = ClassLocation::class;
+    private $modelClass = ClassLevel::class;
 
     /**
      * Run the database seeds.
@@ -30,22 +30,19 @@ class ClassLocationSeeder extends Seeder
     {
         return [
             [
-                'location' => 'Home',
+                'level' => 'Beginner',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
-                'location' => 'Online',
+                'level' => 'Intermediate',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
-                'location' => 'Outdoors',
+                'level' => 'Advanced',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+
             ],
-            [
-                'location' => 'To be discussed',
-                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
-            ]
         ];
     }
 
@@ -56,22 +53,19 @@ class ClassLocationSeeder extends Seeder
     {
         return [
             [
-                'location' => 'مسكن',
+                'level' => 'مبتدئ',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
-                'location' => 'متصل',
+                'level' => 'متوسط',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
-                'location' => 'في الهواء الطلق',
+                'level' => 'متقدم',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+
             ],
-            [
-                'location' => 'للنقاش',
-                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
-            ]
         ];
     }
 
@@ -82,22 +76,19 @@ class ClassLocationSeeder extends Seeder
     {
         return [
             [
-                'location' => 'مسكن',
+                'level' => 'مبتدئ',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
             ],
             [
-                'location' => 'متصل',
+                'level' => 'متوسط',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
 
             ],
             [
-                'location' => 'في الهواء الطلق',
+                'level' => 'متقدم',
                 'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
+
             ],
-            [
-                'location' => 'للنقاش',
-                'uuid' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
-            ]
         ];
     }
 }

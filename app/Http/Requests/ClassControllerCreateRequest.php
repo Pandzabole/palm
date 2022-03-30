@@ -28,7 +28,6 @@ class ClassControllerCreateRequest extends FormRequest
             'description' => 'required|string',
             'description_first' => 'required|string',
             'description_second' => 'required|string',
-            'level' => 'required|string',
             'price_usd' => 'required|numeric',
             'price_eur' => 'required|numeric',
             'price_omr' => 'required|numeric',
@@ -37,7 +36,8 @@ class ClassControllerCreateRequest extends FormRequest
             'discount_percentage' => 'required_unless:discount,null',
             'class_category_id' =>'required|exists:class_categories,id',
             'class_sub_category_id' =>'required|exists:class_category_class_sub_category,class_sub_category_id',
-            'teacher_id' =>'required|exists:teachers,id',
+            'teacher_id' => 'required|exists:teachers,id',
+            'class_level_id' => 'required|exists:class_levels,id',
             'class_location' => 'required',
             'class_length' => 'required|numeric',
             'age_restriction' => 'sometimes',
@@ -61,6 +61,7 @@ class ClassControllerCreateRequest extends FormRequest
             'class_category_id' =>'categories',
             'class_sub_category_id' =>'categories',
             'teacher_id' =>'teacher',
+            'class_level_id' => 'class level',
             'discount_percentage' => 'Class discount',
             'discount' => 'discount not checked'
         ];

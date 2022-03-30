@@ -1,120 +1,139 @@
 <!-- MOBILE MENU-->
-<div class="b-main_menu-wrapper hidden-lg-up">
-    <ul class="mobile-top">
-        <li class="search">
-            <div class="search-holder-mobile">
-                <input type="text" name="search-mobile" value="" placeholder="Search" class="form-control">
-                <a class="fa fa-search"></a>
-            </div>
-        </li>
-    </ul>
-    <ul class="categories">
-        <li class="has-sub dropdown-wrapper from-bottom">
-            <a href="index.html"><span class="top">Home</span><i class="fa fa-angle-down"></i></a>
-            <div class="dropdown-content sub-holder dropdown-left narrow">
-                <div class="dropdown-inner">
-                    <div class="clearfix">
-                        <div class="col-xs-12 col-sm-12 ">
-                            <div class="menu-item">
-                                <!-- CATEGORIES CONTENT -->
-                                <div class="categories">
-                                    <div class="clearfix">
-                                        <div class="col-sm-12 hover-menu text-uppercase">
-                                            <ul>
-                                                <li><a href="index.html">HOME DEFAULT</a></li>
-                                                <li><a href="home-lingerie.html">Lingerie store</a></li>
-                                                <li><a href="home-watch.html">HOME Watches</a></li>
-                                                <li><a href="home-minimalist.html">home minimalist</a></li>
-                                                <li><a href="home-jewellery.html">home jewellery</a></li>
-                                                <li><a href="home-furniture.html">home furniture</a></li>
-                                                <li><a href="home-full-width.html">home fashion full</a></li>
-                                                <li><a href="home-fashion.html">home fashion</a></li>
-                                                <li><a href="home-cosmetics.html">home cosmetics</a></li>
-                                                <li><a href="home-dark.html">home dark</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- row -->
-                </div>
-            </div>
-        </li>
-        <!-- Top level items -->
-        <li class=" has-sub dropdown-wrapper from-bottom">
-            <a href="shop-grid-three.html"><span class="top">Shop</span><i class="fa fa-angle-down"></i></a>
-            <!-- Sub Menu items -->
-            <div class="dropdown-content sub-holder dropdown-left narrow">
-                <div class="dropdown-inner">
-                    <div class="clearfix">
-                        <div class="col-xs-12 col-sm-12 ">
-                            <div class="menu-item">
-                                <div class="categories">
-                                    <div class="clearfix">
-                                        <div class="col-sm-12 hover-menu">
-                                            <ul>
-                                                <li><a href="shop-grid-three.html">shop</a></li>
-                                                <li><a href="product-single.html">single product</a></li>
-                                                <li><a href="checkout.html">checkout</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <a href="blog-default.html"><span class="top">Blog</span></a>
-        </li>
-        <li>
-            <a href="portfolio.html"><span class="top">Portfolio</span></a>
-        </li>
-        <li class="has-sub dropdown-wrapper from-bottom">
-            <a href="#"><span class="top">Accessories</span><i class="fa fa-angle-down"></i></a>
-            <div class="dropdown-content sub-holder dropdown-left narrow">
-                <div class="dropdown-inner">
-                    <div class="clearfix">
-                        <div class="col-xs-12 col-sm-12 ">
-                            <div class="menu-item">
-                                <div class="categories">
-                                    <div class="clearfix">
-                                        <div class="col-sm-12 hover-menu">
-                                            <ul>
-                                                <li><a href="contact-01.html">contact us</a></li>
-                                                <li><a href="faq.html">faq</a></li>
-                                                <li><a href="our-gallery">our gallery</a></li>
-                                                <li><a href="our-services.html">our services</a></li>
-                                                <li><a href="shop-grid-three">our shop</a></li>
-                                                <li><a href="our-gallery.html">our gallery</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-        <li>
-            <a href="cart-default.html"><span class="top">Cart</span></a>
-        </li>
-        <li>
-            <a href="my-account.html"><span class="top">My Account</span></a>
-        </li>
-        <li>
-            <a href="#"><span class="top">wishlist</span></a>
-        </li>
-        <li>
-            <a href="my-account.html"><span class="top">login</span></a>
-        </li>
-    </ul>
-</div>
+@if($session === 'database-om' || $session === 'database-ar')
+    <div class="b-main_menu-wrapper hidden-lg-up" style="max-width: 100%">
 
+        @else
+            <div class="b-main_menu-wrapper hidden-lg-up">
+                @endif
+                <ul class="mobile-top mb-2">
+                    <li class="search">
+                        <form role="search" method="get" id="searchform-mobile"
+                              class="searchform-mobile  basel-ajax-search" action="" data-thumbnail="1"
+                              data-price="1" data-count="3">
+                            @csrf
+                            <label class="screen-reader-text" for="s"></label>
+                            <input type="text" placeholder="Search for classes" value="" name="search"
+                                   id="search-mobile" autocomplete="off">
+                        </form>
+                    </li>
+                    <li class="no-search-results-mobile text-center" id="no-search-mobile">
+                        No search results
+                    </li>
+                    <li id="results-mobile" class="text-center">
 
-@yield('mobile-menu')
+                    </li>
+                </ul>
+                <ul class="categories @if($session === 'database-om' || $session === 'database-ar') text-right @else text-center @endif menu-list-mobile">
+                    <li>
+                        <a href="{{ route('home', ['lang' => $selectedLanguageLayout]) }}"><span
+                                class="top">{{__('home-page.home')}}</span></a>
+                    </li>
+                    <!-- Top level items -->
+                    <li class=" has-sub dropdown-wrapper from-bottom">
+                        @if($session === 'database-om' || $session === 'database-ar')
+                            <a href="{{ route('all-classes', ['lang' => $selectedLanguageLayout]) }}"><span class="top"><span
+                                        class="fa fa-angle-down mr-2"></span>{{__('home-page.all-classes')}}</span></a>
+
+                        @else
+                            <a href="{{ route('all-classes', ['lang' => $selectedLanguageLayout]) }}"><span
+                                    class="top">{{__('home-page.all-classes')}}</span><i
+                                    class="fa fa-angle-down"></i></a>
+                    @endif
+                    <!-- Sub Menu items -->
+                        <div class="dropdown-content sub-holder dropdown-left narrow">
+                            <div class="dropdown-inner">
+                                <div class="clearfix">
+                                    <div class="col-xs-12 col-sm-12 ">
+                                        <div class="menu-item">
+                                            <div class="categories">
+                                                <div class="clearfix">
+                                                    <div class="col-sm-12 hover-menu">
+                                                        <ul>
+                                                            @foreach($mainCategories as $key => $mainCategory)
+                                                                <li>
+                                                                    <a href="{{ route('main-category', ['lang' => $selectedLanguageLayout, $mainCategory->uuid]) }}">{{ $mainCategory->name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{{ route('all-discounted-classes', ['lang' => $selectedLanguageLayout]) }}"><span
+                                class="top">{{__('home-page.mount-offer')}}</span></a>
+                    </li>
+                    <li>
+                        <a href="{{route('contact-us', ['lang' => $selectedLanguageLayout])}}"><span
+                                class="top">{{__('home-page.contact')}}</span></a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="btn-close-mobile-menu text-center mt-5" id="close-mobile-menu">
+                        {{__('home-page.close')}}
+                    </li>
+                </ul>
+            </div>
+
+            @yield('mobile-menu')
+        @section('js-links')
+            @parent
+            <script>
+                $(document).ready(function () {
+                    $('.btn-close-mobile-menu').on('click', function () {
+                        $('#no-search-mobile').hide();
+                        $('#search-mobile').val('');
+                        $('.search-result-mobile').empty();
+                        $('.menu-list-mobile').show()
+                        $('#results-mobile').empty();
+                    });
+
+                    $('#no-search-mobile').hide()
+
+                    $('#search-mobile').on('keyup', function (e) {
+                        e.preventDefault()
+                        $('#results-mobile').empty();
+                        $('.menu-list-mobile').hide()
+                        let search = $(this).val();
+                        if (search.length === 0) {
+                            $('.search-result-mobile').empty();
+                            $('.menu-list-mobile').show()
+                            $('#results-mobile').empty();
+                        }
+                        $.ajax({
+                            url: "{{ route('search-class') }}",
+                            search: search,
+                            data: {
+                                search: search,
+                                _token: "{{ csrf_token() }}"
+                            },
+                            type: "GET",
+                            success: function (data) {
+                                if (data) {
+                                    $('.search-result-mobile').empty();
+                                    $('#no-search-mobile').hide();
+                                    $.each(data.classes, function (index, subcategory) {
+
+                                        let url = '{{  route('single-class', ['lang' => $selectedLanguageLayout, ":id"]) }}';
+                                        url = url.replace(':id', subcategory.uuid);
+
+                                        $('#results-mobile').append('<div class="search-result-mobile"><a class="search-result-mobile-href" href="' + url + '"> ' + subcategory.name + '</a> <hr class="hr-list"></div>');
+                                    })
+                                }
+                                if (data.classes.length === 0) {
+                                    $('.search-result-mobile').empty();
+                                    $('#results-mobile').empty();
+                                    $('#no-search-mobile').show();
+                                    $('.menu-list-mobile').show()
+                                }
+                            }
+                        });
+                    })
+                })
+            </script>
+    @endsection

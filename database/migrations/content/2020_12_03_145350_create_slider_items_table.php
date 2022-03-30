@@ -16,10 +16,8 @@ class CreateSliderItemsTable extends Migration
     {
         Schema::create('slider_items', function (Blueprint $table) {
             $table->id();
-            $table->string('cta')->nullable();
-            $table->string('url')->nullable();
-            $table->text('description')->nullable();
-            $table->string('cta_type')->default('internal');
+            $table->string('main_text')->nullable();
+            $table->string('second_text')->nullable();
             $table->unsignedInteger('position');
             $table->foreignIdFor(Slider::class);
             $table->timestamps();

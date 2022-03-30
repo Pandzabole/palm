@@ -4,7 +4,7 @@
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
             @if($singleClass)
-                <h1 class="b-page-title text-center">{{__('single-class.all-classes')}} </h1>
+                <h1 class="b-page-title text-center">{{ $singleClass->classCategory->name}}</h1>
             @else
                 <h1 class="b-page-title text-center">{{__('single-class.no-classes')}} </h1>
             @endif
@@ -15,7 +15,7 @@
                     @if($singleClass)
                         <div class="b-decent-title-wrap">
                             <div class="b-decent-title">
-                                <span>{{__('single-class.all-classes')}} </span>
+                                <span>{{ $singleClass->classCategory->name}}</span>
                             </div>
                         </div>
                     @endif
@@ -43,10 +43,10 @@
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
                                 <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.sort-by')}}</h5>
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
-                                    <li><i class="fa fa-percent custom-icon-location"></i> <a href="{{ route('discount-classes-all', ['lang' => $selectedLanguageLayout]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
-                                    <li><i class="fa fa-fighter-jet custom-icon-location"></i> <a href="{{ route('popular-classes-all', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
-                                    <li><i class="fa fa-sort-amount-desc custom-icon-location"></i> <a href="{{ route('low-to-high-price-all', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
-                                    <li><i class="fa fa-sort-amount-asc custom-icon-location"></i> <a href="{{ route('high-to-low-price-all', ['lang' => $selectedLanguageLayout]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
+                                    <li><i class="fa fa-percent custom-icon-location"></i> <a href="{{ route('discount-classes-main', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
+                                    <li><i class="fa fa-fighter-jet custom-icon-location"></i><a href="{{ route('popular-classes-main', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
+                                    <li><i class="fa fa-sort-amount-desc custom-icon-location"></i><a href="{{ route('low-to-high-price-main', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
+                                    <li><i class="fa fa-sort-amount-asc custom-icon-location"></i> <a href="{{ route('high-to-low-price-main', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
                                 </ul>
                             </div>
                             <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
@@ -54,7 +54,7 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLocation as $location)
                                         <li>
-                                            <i class="fa fa-home custom-icon-location"></i> <a href="{{ route('location-filter-all', ['lang' => $selectedLanguageLayout, $location->uuid]) }}" class="filter-font"> {{$location->location}} </a>
+                                            <i class="fa fa-home custom-icon-location"></i><a href="{{ route('location-filter-main', ['lang' => $selectedLanguageLayout, $location->uuid, $uuid]) }}" class="filter-font"> {{$location->location}} </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -64,7 +64,7 @@
                                 <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
                                     @foreach($classLevel as $level)
                                         <li>
-                                            <i class="fa fa-play custom-icon-location"></i> <a href="{{ route('level-filter-all', ['lang' => $selectedLanguageLayout, $level->uuid]) }}" class="filter-font">{{ $level->level }} </a>
+                                            <i class="fa fa-play custom-icon-location"></i> <a href="{{ route('level-filter-main', ['lang' => $selectedLanguageLayout, $level->uuid, $uuid]) }}" class="filter-font">{{ $level->level }} </a>
                                         </li>
                                     @endforeach
                                 </ul>

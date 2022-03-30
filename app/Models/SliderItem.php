@@ -20,9 +20,8 @@ class SliderItem extends Model
      */
     protected $fillable = [
         'slider_id',
-        'cta',
-        'description',
-        'url',
+        'main_text',
+        'second_text',
         'position'
     ];
 

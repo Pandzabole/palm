@@ -7,6 +7,8 @@ use App\Repositories\Contracts\ClassCategoryRepository;
 use App\Repositories\Contracts\ClassesRepository;
 use App\Repositories\Contracts\ReviewRepository;
 use App\Repositories\Contracts\ClassSubCategoryRepository;
+use App\Repositories\Contracts\ClassLevelRepository;
+use App\Repositories\Contracts\ClassLocationRepository;
 use App\Services\FrontLayout\FrontLayoutDataService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -23,9 +25,14 @@ class ClassController extends Controller
     /** @var ClassesRepository $classesRepository */
     public $classesRepository;
 
-
     /** @var ClassSubCategoryRepository $classSubCategoryRepository */
     public $classSubCategoryRepository;
+
+    /** @var ClassLevelRepository $classLevelRepository */
+    public $classLevelRepository;
+
+    /** @var ClassLocationRepository $classLocationRepository */
+    public $classLocationRepository;
 
     /** @var FrontLayoutDataService $frontLayoutDataService */
     public $frontLayoutDataService;
@@ -38,20 +45,26 @@ class ClassController extends Controller
      *
      * @param ClassCategoryRepository $classCategoryRepository
      * @param ClassSubCategoryRepository $classSubCategoryRepository
+     * @param ClassLevelRepository $classLevelRepository
+     * @param ClassLocationRepository $classLocationRepository
      * @param FrontLayoutDataService $frontLayoutDataService
      * @param ClassesRepository $classesRepository
      * @param ReviewRepository $reviewRepository
      */
     public function __construct(
-        ClassCategoryRepository $classCategoryRepository,
+        ClassCategoryRepository    $classCategoryRepository,
         ClassSubCategoryRepository $classSubCategoryRepository,
-        FrontLayoutDataService $frontLayoutDataService,
-        ClassesRepository $classesRepository,
-        ReviewRepository $reviewRepository
+        ClassLevelRepository       $classLevelRepository,
+        ClassLocationRepository    $classLocationRepository,
+        FrontLayoutDataService     $frontLayoutDataService,
+        ClassesRepository          $classesRepository,
+        ReviewRepository           $reviewRepository
     )
     {
         $this->classCategoryRepository = $classCategoryRepository;
         $this->classSubCategoryRepository = $classSubCategoryRepository;
+        $this->classLevelRepository = $classLevelRepository;
+        $this->classLocationRepository = $classLocationRepository;
         $this->frontLayoutDataService = $frontLayoutDataService;
         $this->classesRepository = $classesRepository;
         $this->reviewRepository = $reviewRepository;
@@ -62,13 +75,82 @@ class ClassController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function allClasses()
     {
         $this->frontLayoutDataService->getData();
-        $languageList = config('languages');
-        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
 
-        return view('front-pages.all-classes', compact('languageList', 'mainCategories'));
+        $classes = $this->classesRepository->findByPaginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function allDiscountedClasses()
+    {
+        $this->frontLayoutDataService->getData();
+
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['discount' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.disconted-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Application|Factory|View
+     */
+    public function allOnlineClasses()
+    {
+        $this->frontLayoutDataService->getData();
+
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
     }
 
     /**
@@ -79,15 +161,848 @@ class ClassController extends Controller
     {
         $this->frontLayoutDataService->getData();
         $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
         $classes = $this->classesRepository->findByPaginate(
-            3,
+            12,
             'created_at',
             'desc',
             ['class_sub_category_id' => $classSubCategoryId]);
+
         $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
         $singleClass = $classes->first();
 
-        return view('front-pages.all-sub-classes', compact('classes', 'mainCategories', 'singleClass'));
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function showMainCategoryClasses($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_category_id' => $classMainCategoryId]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-main-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+
+    }
+
+    /**
+     * @param $levelUuid
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLevelFilter($levelUuid, $uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classMainCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $levelUuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_sub_category_id' => $classMainCategoryId, 'class_level_id' => $classLevelId]);
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLevelFilterDiscount($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['discount' => true, 'class_level_id' => $classLevelId]);
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.disconted-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLevelFilterOnline($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+            ['class_level_id' => $classLevelId]
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLevelFilterAll($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_level_id' => $classLevelId]);
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $levelUuid
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLevelFilterMain($levelUuid, $uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevelId = $this->classLevelRepository->findOneBy(['uuid' => $levelUuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_category_id' => $classMainCategoryId, 'class_level_id' => $classLevelId]);
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-main-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $locationUuid
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLocationFilter($locationUuid, $uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLocationId = $this->classLocationRepository->findOneBy(['uuid' => $locationUuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => $classLocationId],
+            [],
+            ['class_sub_category_id' => $classSubCategoryId],
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLocationFilterDiscount($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLocationId = $this->classLocationRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => $classLocationId],
+            [],
+            ['discount' => true],
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.disconted-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $locationUuid
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLocationFilterAll($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLocationId = $this->classLocationRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => $classLocationId],
+            [],
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $locationUuid
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function classLocationFilterMain($locationUuid, $uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+        $classLocationId = $this->classLocationRepository->findOneBy(['uuid' => $locationUuid])->id;
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => $classLocationId],
+            [],
+            ['class_category_id' => $classMainCategoryId],
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-main-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function popularClasses($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_sub_category_id' => $classSubCategoryId, 'popular' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function popularClassesAll()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['popular' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function popularOnlineClasses()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+            ['popular' => true]
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function lowToHighPriceOnline()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+        )->orderBy('price_eur', 'asc')->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function highToLowPriceOnline()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+        )->orderBy('price_eur', 'desc')->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function popularClassesDiscount()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['popular' => true, 'discount' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.disconted-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function popularClassesMain($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_sub_category_id' => $classMainCategoryId, 'popular' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-main-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function discountedClasses($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_sub_category_id' => $classSubCategoryId, 'discount' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function discountedClassesAll()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['discount' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function discountedClassesMain($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'created_at',
+            'desc',
+            ['class_sub_category_id' => $classMainCategoryId, 'discount' => true]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-main-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function discountedOnlineClasses()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByHasOrWhereRelationship(
+            'locations',
+            ['class_location_id' => 2],
+            [],
+            ['discount' => true]
+        )->paginate(12);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.online-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function lowToHighPrice($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classSubCategoryId = $this->classSubCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'asc',
+            ['class_sub_category_id' => $classSubCategoryId]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-sub-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function lowToHighPriceAll()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'asc',
+        );
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function lowToHighPriceDiscount()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'asc',
+            ['discount' => true]
+        );
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.disconted-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function lowToHighPriceMain($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'asc',
+            ['class_sub_category_id' => $classMainCategoryId]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-main-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function highToLowPriceAll()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'desc',
+        );
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function highToLowPriceDiscount()
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'desc',
+            ['discount' => true]
+        );
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.disconted-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+            ));
+    }
+
+    /**
+     * @param $uuid
+     * @return Application|Factory|View
+     */
+    public function highToLowPriceMain($uuid)
+    {
+        $this->frontLayoutDataService->getData();
+        $classLevel = $this->classLevelRepository->findByFilters();
+        $classLocation = $this->classLocationRepository->findByFilters();
+        $classMainCategoryId = $this->classCategoryRepository->findOneBy(['uuid' => $uuid])->id;
+
+        $classes = $this->classesRepository->findByPaginate(
+            12,
+            'price_eur',
+            'desc',
+            ['class_sub_category_id' => $classMainCategoryId]);
+
+        $mainCategories = $this->classCategoryRepository->getAll()->load('classSubCategory');
+        $singleClass = $classes->first();
+
+        return view('front-pages.all-main-classes',
+            compact('classes',
+                'mainCategories',
+                'singleClass',
+                'classLevel',
+                'classLocation',
+                'uuid'
+            ));
     }
 
     /**
@@ -100,6 +1015,7 @@ class ClassController extends Controller
         $class = $this->classesRepository->findOneBy(['uuid' => $uuid]);
         $relatedClasses = $this->classesRepository->getAll()->take(3);
         $mainCategories = $this->classCategoryRepository->getAll();
+
         $classReview = $this->reviewRepository->findByFilters(
             'created_at',
             'desc',
@@ -111,7 +1027,6 @@ class ClassController extends Controller
         );
 
         return view('front-pages.single-class', compact('mainCategories', 'class', 'relatedClasses', 'classReview'));
-
     }
 
     /**
@@ -121,72 +1036,19 @@ class ClassController extends Controller
     public function reviewClass(Request $request): JsonResponse
     {
         $this->reviewRepository->store($request->all());
-        return response()->json(['success'=>'Successfully'], 200);
+        return response()->json(['success' => 'Successfully'], 200);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
-    public function create()
+    public function searchClasses(Request $request): JsonResponse
     {
-        //
-    }
+        $data = $request->get('search');
+        $classes = $this->classesRepository->searchData($data,);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        return response()->json(['classes' => $classes], 200);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -29,7 +29,7 @@ class ClassControllerUpdateRequest extends FormRequest
             'description' => 'required|string',
             'description_first' => 'required|string',
             'description_second' => 'required|string',
-            'level' => 'required|string',
+            'class_level_id' => 'required|exists:class_levels,id',
             'price_usd' => 'required|numeric',
             'price_eur' => 'required|numeric',
             'price_omr' => 'required|numeric',
@@ -60,8 +60,6 @@ class ClassControllerUpdateRequest extends FormRequest
         }
 
         return $rules;
-
-        return $rules;
     }
 
     /**
@@ -76,6 +74,7 @@ class ClassControllerUpdateRequest extends FormRequest
             'class_category_id' =>'categories',
             'class_sub_category_id' =>'categories',
             'teacher_id' =>'teacher',
+            'class_level_id' => 'class level',
             'discount_percentage' => 'Class discount',
             'discount' => 'discount not checked'
         ];

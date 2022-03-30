@@ -112,28 +112,31 @@ class SliderController extends Controller
     {
         $slider = $this->slidersRepository->store([]);
         $steps = $request->get('steps');
-
         if ($steps) {
             foreach ($steps as $position => $step) {
                 $data = [
-                    'cta' => data_get($step, 'cta'),
-                    'url' => data_get($step, 'url'),
+                    'main_text' => data_get($step, 'main_text'),
+                    'second_text' => data_get($step, 'second_text'),
                     'position' => $position,
                     'slider_id' => $slider->id
                 ];
                 $sliderStep = $this->sliderItemsRepository->store($data);
+
                 $this->mediaManager->uploadMedia(
                     [$request->file("steps.{$position}.image_desktop")],
                     $sliderStep,
                     [data_get($step, 'media_desktop_id')],
                     Media::DESKTOP,
-                    true
+                    true,
+                     true
+
                 );
                 $this->mediaManager->uploadMedia(
                     [$request->file("steps.{$position}.image_mobile")],
                     $sliderStep,
                     [data_get($step, 'media_mobile_id')],
                     Media::MOBILE,
+                    true,
                     true
                 );
             }
@@ -180,14 +183,13 @@ class SliderController extends Controller
     public function update(SliderUpdateRequest $request, int $id): JsonResponse
     {
         $slider = $this->slidersRepository->findOneById($id);
-
         if ($steps = $request->get('steps')) {
             foreach ($steps as $position => $step) {
                 $data = [
                     'position' => $position,
                     'slider_id' => $slider->id,
-                    'cta' => data_get($step, 'cta'),
-                    'url' => data_get($step, 'url'),
+                    'main_text' => data_get($step, 'main_text'),
+                    'second_text' => data_get($step, 'second_text'),
                 ];
                 $sliderStep = $this->sliderItemsRepository->updateOrCreate(
                     ['id' => data_get($step, 'step_id')],
@@ -207,7 +209,7 @@ class SliderController extends Controller
                     ]
                 ];
 
-                $this->mediaManager->uploadTypedMedia($sliderStep, $files);
+                $this->mediaManager->uploadTypedMedia($sliderStep, $files, true);
             }
         }
 

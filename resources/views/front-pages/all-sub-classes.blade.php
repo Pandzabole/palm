@@ -1,183 +1,159 @@
 @extends('front-layout.app')
 
 @section('content')
-
     <div class="b-wrapper">
         <div class="b-page-title-wrap class-header-text mt-1">
             @if($singleClass)
-                <h1 class="b-page-title text-center">{{ $singleClass->classCategory->name}} classes</h1>
-
+                <h1 class="b-page-title text-center">{{ $singleClass->classCategory->name}}</h1>
             @else
                 <h1 class="b-page-title text-center">{{__('single-class.no-classes')}} </h1>
             @endif
-
         </div>
-
         <div class="container container-single-class">
             <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <div class="b-decent-title-wrap">
-                        <div class="b-decent-title">
-                            <span>{{ $singleClass->classSubCategory->name}} classes</span>
+                    @if($singleClass)
+                        <div class="b-decent-title-wrap">
+                            <div class="b-decent-title">
+                                <span>{{ $singleClass->classSubCategory->name}}</span>
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        @if($singleClass)
+            <div class="container  container-single-class">
+                <div class="row clearfix b-shop_head">
+                    <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-6 col-xs-12">
+
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-6 col-xs-12 text-right">
+                        <p class="b-result_count d-inline-block hidden-md-down">
+                            Showing {{count($classes->items())}}–{{$classes->total()}} of {{ $classes->total() }} results
+                        </p>
+                        <div class="b-filter_button d-inline-block">
+                            <a href="javascript:;" class="b-open_filters b-btn_open">{{__('single-class.additional-filter')}}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="b-filters_area mt-2 main-filters">
+                    <div class="b-filters_inner_area">
+                        <div class="row clearfix">
+                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
+                                <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.sort-by')}}</h5>
+                                    <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
+                                        <li><i class="fa fa-percent custom-icon-location"></i> <a href="{{ route('discount-classes', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font text-left">{{__('single-class.discount')}}</a></li>
+                                        <li><i class="fa fa-fighter-jet custom-icon-location"></i><a href="{{ route('popular-classes', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.popularity')}}</a></li>
+                                        <li><i class="fa fa-sort-amount-desc custom-icon-location"></i> <a href="{{ route('low-to-high-price', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.price-low')}}</a></li>
+                                        <li><i class="fa fa-sort-amount-asc custom-icon-location"></i> <a href="{{ route('high-to-low-price', ['lang' => $selectedLanguageLayout, $uuid]) }}" class="filter-font">{{__('single-class.price-high')}}</a></li>
+                                    </ul>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
+                                <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.filter-location')}}</h5>
+                                <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
+                                    @foreach($classLocation as $location)
+                                        <li>
+                                            <i class="fa fa-home custom-icon-location"></i> <a href="{{ route('location-filter', ['lang' => $selectedLanguageLayout, $location->uuid, $uuid]) }}" class="filter-font"> {{$location->location}} </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
+                                <h5 class="b-filter_title @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('single-class.filter-skill-level')}}</h5>
+                                <ul class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">
+                                    @foreach($classLevel as $level)
+                                        <li>
+                                            <i class="fa fa-play custom-icon-location"></i> <a href="{{ route('level-filter', ['lang' => $selectedLanguageLayout, $level->uuid, $uuid]) }}" class="filter-font">{{ $level->level }} </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
         <div class="container  container-single-class">
-            <div class="row clearfix b-shop_head">
-                <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-6 col-xs-12">
-                    <nav class="b-shop_breadcrumb">
-                        <a href="#">Home</a>
-                        <span> Shop</span>
-                    </nav>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-6 col-xs-12 text-right">
-                    <p class="b-result_count d-inline-block hidden-md-down">
-                        Showing 1–12 of 292 results
-                    </p>
-                    <div class="b-filter_button d-inline-block">
-                        <a href="javascript:;" class="b-open_filters b-btn_open">Additional filters</a>
-                    </div>
-                </div>
-            </div>
-            <div class="b-filters_area mt-2">
-                <div class="b-filters_inner_area">
-                    <div class="row clearfix">
-                        <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
-                            <h5 class="b-filter_title">Sort by</h5>
-                            <form action="#">
-                                <ul>
-                                    <li><a href="#" class="b-acitve">Default</a></li>
-                                    <li><a href="#">Popularity</a></li>
-                                    <li><a href="#">Average rating</a></li>
-                                    <li><a href="#">Newness</a></li>
-                                    <li><a href="#">Price: low to high</a></li>
-                                    <li><a href="#">Price: high to low</a></li>
-                                </ul>
-                            </form>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
-                            <h5 class="b-filter_title">Price Filter</h5>
-                            <form action="#">
-                                <ul>
-                                    <li><a href="#" class="b-acitve">All</a></li>
-                                    <li><a href="#">£0.00 - £150.00</a></li>
-                                    <li><a href="#">£150.00 - £300.00</a></li>
-                                    <li><a href="#">£300.00 - £450.00</a></li>
-                                    <li><a href="#">£450.00+</a></li>
-                                </ul>
-                            </form>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-mb-4 col-sm-12 col-xs-12">
-                            <h5 class="b-filter_title">FILTER BY SKILL LEVEL</h5>
-                            <a href=""></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="b-products b-product_grid b-product_grid_four mb-4">
-            <div class="container container-single-class">
-                <div class="row clearfix">
-                    @foreach($classes as $class)
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                        <div class="b-product_grid_single">
-                            <div class="b-product_grid_header">
-                                <a href="{{ route('single-class', $class->uuid) }}">
-                                    <img src="{{ asset( $class->desktopImage()->getUrl()) }}" class="" alt="" style="">
-                                </a>
-                                <div class="b-product_grid_action">
-{{--                                    <a href="javascript:void(0)" data-whishurl="whishlist.html" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Whishlist">--}}
-{{--                                        <i class="icon-heart icons b-add_to_whish">--}}
-{{--                                            <img src="{{ asset( $class->desktopImage()->getThumbUrl()) }}" class="g-loading_gif" alt="">--}}
-{{--                                        </i>--}}
-{{--                                    </a>--}}
-{{--                                    <i data-toggle="tooltip" data-placement="left" title="" class="icon-refresh icons" data-original-title="Compare"></i>--}}
-{{--                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">--}}
-{{--                                        <i data-toggle="tooltip" data-placement="left" title="" class="icon-magnifier-add icons" data-original-title="Quick View"></i>--}}
-{{--                                    </a>--}}
-                                </div>
-                            </div>
-                            <div class="b-product_grid_info">
-                                <h3 class="product-title text-center">
-                                    <a href="{{ route('single-class', $class->id) }}">{{ $class->name }}</a>
-                                </h3>
-                                <div class="clearfix text-center">
-                                    <div class="b-product_grid_toggle  text-center">
-                                        @if($session === 'database-ar')
-                                            <span class="b-price price-style text-center">AED {{ $class->price_sar }} </span>
+            <section id="b-portfolio">
+                <div class="b-portfolio_grid b-portfolio_grid_full mb-1">
+                    <div class="container-fluid">
+                        <div class="row clearfix gallery" id="b-portfolio_isotop">
+
+                            @foreach($classes as $class)
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12 proj-cat-mock-ups  class-main-div-picture">
+                                    <div class="b-portfolio_single">
+                                        <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                            <span
+                                                class="main-text-font-single"> {{ $class->name }}
+                                            </span>
+                                        </h5>
+                                        <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $class->uuid]) }}" class="b-portfolio_link"
+                                           rel=""></a>
+                                        <div class="b-portfolio_img b-img_zoom">
+                                            <img src="{{ asset( $class->mobileImage()->getUrlResponsive('1200')) }}"
+                                                 class="img-fluid d-block" alt="{{ $class->name }}">
+                                        </div>
+                                        @if($class->discount === true)
+                                        <div class="b-product_labels b-labels_rounded b-new discounted-badge">
+                                            <span class="b-product_label"><strong> % </strong></span>
+                                        </div>
                                         @endif
-                                            @if($session === 'database-en')
-                                                <span class="b-price price-style text-center">{{ $class->price_usd }} $ or {{ $class->price_eur }} €</span>
-                                            @endif
-                                            @if($session === 'database-om')
-                                                <span class="b-price price-style text-center">OMR {{ $class->price_omr }}</span>
-                                            @endif
-                                        <span class="b-add_cart">
-                                          <i class="icon-eye icons">
-                                          <a href="{{ route('single-class', $class->id) }}">{{ $class->level}}</a></i>
-                                      </span>
+                                        <div class="price-discount">
+                                                    <h5 class="pt-2">
+                                                        <span class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_eur }} € or </span>
+                                                        <span class="price-book-class main-text-font @if($class->discount === true)decoration-line-through @endif"> {{ $class->price_usd }}  $ </span>
+                                                        @if($class->discount === true)
+                                                            <br>
+                                                            <span class="main-text-font"> {{ $class->priceCalculate($class->price_eur, $class->discount_percentage) }} € or</span>
+                                                            <span class="main-text-font"> {{ $class->priceCalculate($class->price_usd, $class->discount_percentage) }} $ </span>
+                                                        @endif
+                                                    </h5>
+                                            </div>
+                                        <div class="b-portfolio_info @if($class->discount === true) b-portfolio_info-custom-discount @else b-portfolio_info-custom @endif">
+                                            <div class="b-portfolio_info_in home-classes-info">
+                                                <h3 class="b-portfolio_title">
+                                                    <a href="{{ route('single-class', ['lang' => $selectedLanguageLayout, $class->uuid])}}"
+                                                       rel="">{{ $class->name }}</a>
+                                                </h3>
+                                                <h4 class="text-white text-uppercase">
+                                                    {{ $class->classCategory->name }}
+                                                </h4>
+                                                <h4 class="text-white text-uppercase">
+                                                    {{ $class->classSubCategory->name }}
+                                                </h4>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <h5 class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif pt-2">
+                                        @if($session === 'database-om' || $session === 'database-ar')
+                                            @foreach($class->locations as $location)
+                                                {{ $location->location }}
+                                            @endforeach
+                                                <i class="icon-location-pin custom-icon-location"></i>
+                                                <br>
+                                                 {{ $class->teacher->name }} : <i class="icon-notebook custom-icon-location"></i>
+                                        @else
+                                            <i class="icon-location-pin custom-icon-location"></i>
+                                            @foreach($class->locations as $location)
+                                              <span class="main-text-font-single">{{ $location->location }}</span>
+                                            @endforeach
+                                            <br>
+                                            <i class="icon-notebook custom-icon-location"></i> <span class="main-text-font-single"> : {{ $class->teacher->name }}</span>
+
+                                        @endif
+                                    </h5>
+                                    <hr class="hr-underline-`eur` hr-under-line-mobile">
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                    @endforeach
-                        {{--                @if($session === 'database-ar')--}}
-                        {{--                        <div>{{$classe->price_usd}}</div>--}}
-                        {{--                    @endif--}}
-
-{{--                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12">--}}
-{{--                        <div class="b-product_grid_single">--}}
-{{--                            <div class="b-product_grid_header">--}}
-{{--                                <a href="#">--}}
-{{--                                    <img data-src="assets/images/products/home/product_grid_04_01.jpg, assets/images/products/home/product_grid_04_02.jpg" src="{{ asset('front-css/assets/images/classes/class110244.jpg') }}" class="img-fluid img-switch d-block" alt="" style="">--}}
-{{--                                </a>--}}
-{{--                                <div class="b-product_grid_action">--}}
-{{--                                    <a href="javascript:void(0)" data-whishurl="whishlist.html" data-toggle="tooltip" data-placement="left" title="" data-original-title="Add to Whishlist">--}}
-{{--                                        <i class="icon-heart icons b-add_to_whish">--}}
-{{--                                            <img src="{{ asset('front-css/assets/images/classes/class110244.jpg') }}" class="g-loading_gif" alt="">--}}
-{{--                                        </i>--}}
-{{--                                    </a>--}}
-{{--                                    <i data-toggle="tooltip" data-placement="left" title="" class="icon-refresh icons" data-original-title="Compare"></i>--}}
-{{--                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#b-qucik_view">--}}
-{{--                                        <i data-toggle="tooltip" data-placement="left" title="" class="icon-magnifier-add icons" data-original-title="Quick View"></i>--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                            <div class="b-product_grid_info">--}}
-{{--                                <h3 class="product-title">--}}
-{{--                                    <a href="#">Before decaf phone case</a>--}}
-{{--                                </h3>--}}
-{{--                                <div class="clearfix">--}}
-{{--                                    <div class="b-product_grid_toggle float-left">--}}
-{{--                                        <span class="b-price">$49</span>--}}
-{{--                                        <span class="b-add_cart">--}}
-{{--                                          <i class="icon-basket icons"></i>--}}
-{{--                                          <a href="#">Add to cart</a>--}}
-{{--                                      </span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-
                 </div>
-            </div>
-            <div class="text-center">
-                {{ $classes->links() }}
-            </div>
+                <div class="text-center">
+                    {{ $classes->links() }}
+                </div>
+            </section>
         </div>
     </div>
-{{--    https://stackoverflow.com/questions/50745721/updating-a-blade-in-laravel-via-ajax--}}
-
-@endsection
-@section('js-links')
-    @parent
-    <script>
-
-            let clientComment =  {!! $classes->toJson() !!};
-            console.log(clientComment)
-    </script>
 @endsection

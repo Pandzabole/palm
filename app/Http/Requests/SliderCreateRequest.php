@@ -26,11 +26,11 @@ class SliderCreateRequest extends FormRequest
     {
         return [
             'steps.*' => new UploadImageRule(),
-            'steps.*.cta' => 'nullable|string',
-            'steps.*.url' => 'nullable|string',
-            'steps.*.image_desktop' => 'nullable|required_without:steps.*.media_desktop_id|mimes:jpeg,bmp,png|dimensions:width=1920,height=950',
+            'steps.*.main_text' => 'nullable|string',
+            'steps.*.second_text' => 'nullable|string',
+            'steps.*.image_desktop' => 'nullable|required_without:steps.*.media_desktop_id|mimes:jpeg,bmp,png',
             'steps.*.media_desktop_id' => 'nullable|required_without:steps.*.image_desktop|exists:media,id',
-            'steps.*.image_mobile' => 'nullable|required_without:steps.*.media_mobile_id|mimes:jpeg,bmp,png|dimensions:width=750,height=1686',
+            'steps.*.image_mobile' => 'nullable|required_without:steps.*.media_mobile_id|mimes:jpeg,bmp,png',
             'steps.*.media_mobile_id' => 'nullable|required_without:steps.*.image_mobile|exists:media,id',
         ];
     }
@@ -44,12 +44,12 @@ class SliderCreateRequest extends FormRequest
     {
         return [
             'steps.*' => 'slider',
-            'steps.*.cta' => 'slider cta',
-            'steps.*.url' => 'slider url',
-            'steps.*.image_desktop' => 'slider image desktop',
-            'steps.*.image_mobile' => 'slider image mobile',
-            'steps.*.media_desktop_id' => 'slider existing desktop media',
-            'steps.*.media_mobile_id' => 'slider existing mobile media',
+            'steps.*.main_text' => 'slider main text',
+            'steps.*.second_text' => 'slider second text',
+            'steps.*.image_desktop' => 'slider main image',
+            'steps.*.image_mobile' => 'slider second image',
+            'steps.*.media_desktop_id' => 'slider existing main media',
+            'steps.*.media_mobile_id' => 'slider existing second media',
         ];
     }
 }

@@ -4,19 +4,16 @@ namespace App\Models;
 
 use App\Traits\Mediable;
 use App\Traits\HasUuid;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-
 class Classe extends Model
 {
-    use Mediable;
     use HasFactory;
+    use Mediable;
     use HasUuid;
 
     /**
@@ -43,7 +40,7 @@ class Classe extends Model
         'popular',
         'description_first',
         'description_second',
-        'level',
+        'class_level_id',
         'class_length',
         'age_restriction',
         'materials'
@@ -58,7 +55,8 @@ class Classe extends Model
         'teacher',
         'locations',
         'media',
-        'review'
+        'review',
+        'classLevel'
     ];
 
     /**
@@ -108,5 +106,24 @@ class Classe extends Model
     public function review(): HasOne
     {
         return $this->hasOne(Review::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function classLevel(): BelongsTo
+    {
+        return $this->belongsTo(ClassLevel::class);
+    }
+
+    /**
+     * @param $price
+     * @param $discount
+     * @return string
+     */
+    public function priceCalculate($price, $discount): string
+    {
+        $calculatedPrice = $price - ($price * ($discount / 100));
+        return  number_format((float)$calculatedPrice, 2, '.', '');
     }
 }

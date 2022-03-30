@@ -32,7 +32,7 @@ class SliderSeeder extends Seeder
 
         SliderItemFactory::resetPosition();
         SliderItem::factory()
-            ->count(3)
+            ->count(2)
             ->create(['slider_id' => $slider->id])
             ->each(
                 function ($sliderItem) {

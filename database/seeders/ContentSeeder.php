@@ -11,6 +11,7 @@ use Database\Seeders\Content\NewsSeeder;
 use Database\Seeders\Content\PagesTableSeeder;
 use Database\Seeders\Content\MarketsTableSeeder;
 use Database\Seeders\Content\PublishSeeder;
+use Database\Seeders\Content\ClassLevelSeeder;
 use Database\Seeders\Content\StaticComponentsContactSeeder;
 use Database\Seeders\Content\StaticComponentsHomeSeeder;
 use Database\Seeders\Content\StaticComponentsOurWaterSeeder;
@@ -22,6 +23,7 @@ use Database\Seeders\Content\ClassSubCategorySeeder;
 use Database\Seeders\Content\ClassLocationSeeder;
 use Database\Seeders\Content\TeacherSeeder;
 use Database\Seeders\Content\ClassMainSubCategory;
+use Database\Seeders\Content\ClasseSeeder;
 use Illuminate\Database\Seeder;
 
 class ContentSeeder extends Seeder
@@ -53,6 +55,8 @@ class ContentSeeder extends Seeder
         $this->call(ClassSubCategorySeeder::class);
         $this->call(TeacherSeeder::class);
         $this->call(ClassMainSubCategory::class);
+        $this->call(ClassLevelSeeder::class);
+        $this->call(ClasseSeeder::class);
 
     }
 }

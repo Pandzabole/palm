@@ -25,11 +25,9 @@ class SliderItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'cta_type' => 'internal',
             'position' => self::$position++,
-            'url' => $this->faker->url,
-            'cta' => $this->faker->word,
-            'description' => $this->faker->text,
+            'main_text' => 'New classes',
+            'second_text' => 'New classes',
         ];
     }
 }

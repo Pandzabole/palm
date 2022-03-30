@@ -1,10 +1,9 @@
 <section id="b-portfolio">
     <div class="b-section_title text-center">
         <div class="b-section_title text-center">
-            <span>BOOK YOUR CLASS</span>
+            <span>{{__('home-page.book-class')}}</span>
             <h2 class="text-uppercase">
-                WHY US
-                <hr style="width: 200px; position: center">
+                {{__('home-page.why-us')}}
                 <hr style="width: 200px; position: center">
             </h2>
         </div>
@@ -19,10 +18,10 @@
                         <i class="icons icon-screen-desktop"></i>
                     </div>
                     <div class="b-count_down_val">
-                        <span>1500</span>
+                        <span>150</span>
                     </div>
                     <div class="b-count_down_text">
-                        <span>WEB PAGES READY</span>
+                        <span>{{__('home-page.classes')}}</span>
                     </div>
                 </div>
             </div>
@@ -32,36 +31,36 @@
                         <i class="icons icon-bubbles"></i>
                     </div>
                     <div class="b-count_down_val">
-                        <span>150</span>
+                        <span>650</span>
                     </div>
                     <div class="b-count_down_text">
-                        <span>CUSTOMERS REVIEWS</span>
+                        <span>{{__('home-page.customer-reviews')}}</span>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-6 col-xs-12">
                 <div class="b-count_down text-center mb-5 mb-lg-0">
                     <div class="b-count_down_icon">
-                        <i class="icons icon-settings"></i>
+                        <i class="icons icon-social-instagram"></i>
                     </div>
                     <div class="b-count_down_val">
-                        <span>5</span>
+                        <span>15000</span>
                     </div>
                     <div class="b-count_down_text">
-                        <span>YEARS OF DEVELOPING</span>
+                        <span>{{__('home-page.instagram-likes')}}</span>
                     </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-3 col-mb-3 col-sm-6 col-xs-12">
                 <div class="b-count_down text-center mb-5 mb-lg-0">
                     <div class="b-count_down_icon">
-                        <i class="icons icon-like"></i>
+                        <i class="icons icon-social-facebook"></i>
                     </div>
                     <div class="b-count_down_val">
                         <span>1500</span>
                     </div>
                     <div class="b-count_down_text">
-                        <span>FACEBOOK LIKES</span>
+                        <span>{{__('home-page.facebook-likes')}}</span>
                     </div>
                 </div>
             </div>

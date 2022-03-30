@@ -18,13 +18,13 @@
                                 <span class="nav-link-text">Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/pages*')) active @endif"
-                               href="{{ route('pages.index') }}">
-                                <i class="ni ni-books text-primary"></i>
-                                <span class="nav-link-text">Menu</span>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link @if(request()->is('admin/pages*')) active @endif"--}}
+{{--                               href="{{ route('pages.index') }}">--}}
+{{--                                <i class="ni ni-books text-primary"></i>--}}
+{{--                                <span class="nav-link-text">Menu</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
                             <a class="nav-link @if(request()->is('admin/class-reservation*')) active @endif"
                                href="{{ route('class-reservation.index') }}">
@@ -76,90 +76,90 @@
                                 <span class="nav-link-text">Teachers</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/page-components*')) active @endif"
-                               href="#navbar-components" data-toggle="collapse" role="button"
-                               @if(request()->is(['admin/page-component*'])) aria-expanded="true" @endif
-                               aria-controls="navbar-components">
-                                <i class="ni ni-ungroup text-info"></i>
-                                <span class="nav-link-text">Pages</span>
-                            </a>
-                            <div class="collapse @if(request()->is('admin/page-components/*')) show @endif"
-                                 id="navbar-components">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('components.show', 'home') }}"
-                                           class="nav-link @if(request()->is('admin/page-components/home*')) active @endif">
-                                            <span class="sidenav-normal"> Home </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('components.show', 'contact') }}"
-                                           class="nav-link @if(request()->is('admin/page-components/contact*')) active @endif">
-                                            <span class="sidenav-normal"> Contact </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('components.show', 'our-water') }}"
-                                           class="nav-link @if(request()->is('admin/page-components/our-water*')) active @endif">
-                                            <span class="sidenav-normal"> Our water </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/news*')) active @endif" href="#navbar-news"
-                               data-toggle="collapse" role="button"
-                               @if(request()->is('admin/news*')) aria-expanded="true"
-                               @endif aria-controls="navbar-news">
-                                <i class="ni ni-single-copy-04 text-info"></i>
-                                <span class="nav-link-text">News</span>
-                            </a>
-                            <div class="collapse @if(request()->is('admin/news*')) show @endif" id="navbar-news">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('news.index') }}"
-                                           class="nav-link @if(request()->is('admin/news')) active @endif">
-                                            <span class="sidenav-normal"> News </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('news-categories.index') }}"
-                                           class="nav-link @if(request()->is('admin/news-categories')) active @endif">
-                                            <span class="sidenav-normal"> News Categories </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/activ*')) active @endif"
-                               href="#navbar-activities"
-                               data-toggle="collapse" role="button"
-                               @if(request()->is('admin/activ*')) aria-expanded="true"
-                               @endif aria-controls="navbar-activities">
-                                <i class="ni ni-ui-04 text-info"></i>
-                                <span class="nav-link-text">Activities</span>
-                            </a>
-                            <div class="collapse @if(request()->is('admin/activi*')) show @endif"
-                                 id="navbar-activities">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('activities.index') }}"
-                                           class="nav-link @if(request()->is('admin/activities')) active @endif">
-                                            <span class="sidenav-normal"> Activities </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('activity-categories.index') }}"
-                                           class="nav-link @if(request()->is('admin/activity-categories')) active @endif">
-                                            <span class="sidenav-normal"> Activity Categories </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link @if(request()->is('admin/page-components*')) active @endif"--}}
+{{--                               href="#navbar-components" data-toggle="collapse" role="button"--}}
+{{--                               @if(request()->is(['admin/page-component*'])) aria-expanded="true" @endif--}}
+{{--                               aria-controls="navbar-components">--}}
+{{--                                <i class="ni ni-ungroup text-info"></i>--}}
+{{--                                <span class="nav-link-text">Pages</span>--}}
+{{--                            </a>--}}
+{{--                            <div class="collapse @if(request()->is('admin/page-components/*')) show @endif"--}}
+{{--                                 id="navbar-components">--}}
+{{--                                <ul class="nav nav-sm flex-column">--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('components.show', 'home') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/page-components/home*')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> Home </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('components.show', 'contact') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/page-components/contact*')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> Contact </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('components.show', 'our-water') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/page-components/our-water*')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> Our water </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link @if(request()->is('admin/news*')) active @endif" href="#navbar-news"--}}
+{{--                               data-toggle="collapse" role="button"--}}
+{{--                               @if(request()->is('admin/news*')) aria-expanded="true"--}}
+{{--                               @endif aria-controls="navbar-news">--}}
+{{--                                <i class="ni ni-single-copy-04 text-info"></i>--}}
+{{--                                <span class="nav-link-text">News</span>--}}
+{{--                            </a>--}}
+{{--                            <div class="collapse @if(request()->is('admin/news*')) show @endif" id="navbar-news">--}}
+{{--                                <ul class="nav nav-sm flex-column">--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('news.index') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/news')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> News </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('news-categories.index') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/news-categories')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> News Categories </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link @if(request()->is('admin/activ*')) active @endif"--}}
+{{--                               href="#navbar-activities"--}}
+{{--                               data-toggle="collapse" role="button"--}}
+{{--                               @if(request()->is('admin/activ*')) aria-expanded="true"--}}
+{{--                               @endif aria-controls="navbar-activities">--}}
+{{--                                <i class="ni ni-ui-04 text-info"></i>--}}
+{{--                                <span class="nav-link-text">Activities</span>--}}
+{{--                            </a>--}}
+{{--                            <div class="collapse @if(request()->is('admin/activi*')) show @endif"--}}
+{{--                                 id="navbar-activities">--}}
+{{--                                <ul class="nav nav-sm flex-column">--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('activities.index') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/activities')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> Activities </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nav-item">--}}
+{{--                                        <a href="{{ route('activity-categories.index') }}"--}}
+{{--                                           class="nav-link @if(request()->is('admin/activity-categories')) active @endif">--}}
+{{--                                            <span class="sidenav-normal"> Activity Categories </span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
 
                         <li class="nav-item">
                             <a class="nav-link @if(request()->is('admin/sliders*')) active @endif"
@@ -168,20 +168,20 @@
                                 <span class="nav-link-text">Slider</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->is('admin/certificates*')) active @endif"
-                               href="{{ route('certificates.index') }}">
-                                <i class="ni ni-paper-diploma text-primary"></i>
-                                <span class="nav-link-text">Certificates</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('markets.index') }}"
-                               class="nav-link @if(request()->is('admin/markets*')) active @endif">
-                                <i class="ni ni-square-pin text-primary"></i>
-                                <span class="nav-link-text">Markets</span>
-                            </a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link @if(request()->is('admin/certificates*')) active @endif"--}}
+{{--                               href="{{ route('certificates.index') }}">--}}
+{{--                                <i class="ni ni-paper-diploma text-primary"></i>--}}
+{{--                                <span class="nav-link-text">Certificates</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a href="{{ route('markets.index') }}"--}}
+{{--                               class="nav-link @if(request()->is('admin/markets*')) active @endif">--}}
+{{--                                <i class="ni ni-square-pin text-primary"></i>--}}
+{{--                                <span class="nav-link-text">Markets</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
                             <a href="{{ route('contacts.index', 'contacts') }}"
                                class="nav-link @if(request()->is('admin/contacts*')) active @endif">

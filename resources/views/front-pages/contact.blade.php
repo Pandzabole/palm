@@ -6,30 +6,30 @@
             <div class="row clearfix">
                 <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-12 col-xs-12">
                     <div class="b-title b-title_line_right">
-                        <h2 class="text-uppercase">{{__('contact.touch-us')}}</h2>
+                        <h2 class="text-uppercase @if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('contact.touch-us')}}</h2>
                     </div>
                     <div class="clearfix row">
                         <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>{{__('contact.name')}} <i style="color: red;">*</i> <span id="userName-info" class="info"></span></label>
+                                <label class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('contact.name')}} <i style="color: red;">*</i> <span id="userName-info" class="info"></span></label>
                                 <input required="" type="text" name="userName" id="userName">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-mb-6 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>{{__('contact.email')}} <i style="color: red;">*</i>  <span id="userEmail-info" class="info"></span></label>
+                                <label class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('contact.email')}} <i style="color: red;">*</i>  <span id="userEmail-info" class="info"></span></label>
                                 <input required="" type="email" name="userEmail" id="userEmail">
                             </div>
                         </div>
                         <div class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>{{__('contact.subject')}} </label>
+                                <label class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('contact.subject')}} </label>
                                 <input  type="text" name="subject" id="subject">
                             </div>
                         </div>
                         <div class="col-xl-12 col-lg-12 col-mb-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <label>{{__('contact.message')}}</label>
+                                <label class="@if($session === 'database-om' || $session === 'database-ar') text-right @else text-left @endif">{{__('contact.message')}}</label>
                                 <textarea name="content" id="content"></textarea>
                             </div>
                         </div>

@@ -10,15 +10,15 @@ function setNewStepProperties(newStep, stepsNumber) {
     newStep.find('.step-link').attr('href', '#collapse-' + stepsNumber).attr('aria-controls', 'collapse-' + stepsNumber);
     newStep.find('.step-collapse').attr('id', 'collapse-' + stepsNumber).attr('aria-labelledby', 'heading-' + stepsNumber);
 
-    let inputCta = newStep.find('.input-cta');
-    let inputUrl = newStep.find('.input-url');
+    let inputCta = newStep.find('.input-main_text');
+    let inputUrl = newStep.find('.input-second_text');
     let inputImageDesktop = newStep.find('.input-image_desktop');
     let inputImageMobile = newStep.find('.input-image_mobile');
     let inputMediaDesktop = newStep.find('.media_desktop_id');
     let inputMediaMobile = newStep.find('.media_mobile_id');
 
-    inputCta.attr('name', 'steps[' + stepsNumber + '][cta]');
-    inputUrl.attr('name', 'steps[' + stepsNumber + '][url]');
+    inputCta.attr('name', 'steps[' + stepsNumber + '][main_text]');
+    inputUrl.attr('name', 'steps[' + stepsNumber + '][second_text]');
     inputImageDesktop.attr('name', 'steps[' + stepsNumber + '][image_desktop]');
     inputImageMobile.attr('name', 'steps[' + stepsNumber + '][image_mobile]');
     inputMediaDesktop.attr('name', 'steps[' + stepsNumber + '][media_desktop_id]');
@@ -29,13 +29,13 @@ function setNewStepProperties(newStep, stepsNumber) {
     let inputImageDesktopFormGroup = inputImageDesktop.closest('.error-danger');
     let inputImageMobileFormGroup = inputImageMobile.closest('.error-danger');
 
-    inputCtaFormGroup.addClass('error-danger-steps-' + stepsNumber + '-cta');
-    inputUrlFormGroup.addClass('error-danger-steps-' + stepsNumber + '-url');
+    inputCtaFormGroup.addClass('error-danger-steps-' + stepsNumber + '-main_text');
+    inputUrlFormGroup.addClass('error-danger-steps-' + stepsNumber + '-second_text');
     inputImageDesktopFormGroup.addClass('error-danger-steps-' + stepsNumber + '-image_desktop').addClass('error-danger-steps-' + stepsNumber + '-media_desktop_id').addClass('error-danger-steps-' + stepsNumber);
     inputImageMobileFormGroup.addClass('error-danger-steps-' + stepsNumber + '-image_mobile').addClass('error-danger-steps-' + stepsNumber + '-media_mobile_id').addClass('error-danger-steps-' + stepsNumber);
 
-    inputCtaFormGroup.find('.error-span').addClass('error-steps-' + stepsNumber + '-cta');
-    inputUrlFormGroup.find('.error-span').addClass('error-steps-' + stepsNumber + '-url');
+    inputCtaFormGroup.find('.error-span').addClass('error-steps-' + stepsNumber + '-main_text');
+    inputUrlFormGroup.find('.error-span').addClass('error-steps-' + stepsNumber + '-second_text');
     inputImageDesktopFormGroup.find('.error-span').addClass('error-steps-' + stepsNumber + '-image_desktop').addClass('error-steps-' + stepsNumber + '-media_desktop_id').addClass('error-steps-' + stepsNumber);
     inputImageMobileFormGroup.find('.error-span').addClass('error-steps-' + stepsNumber + '-image_mobile').addClass('error-steps-' + stepsNumber + '-media_mobile_id').addClass('error-steps-' + stepsNumber);
 }
